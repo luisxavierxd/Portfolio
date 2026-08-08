@@ -1,0 +1,25 @@
+# AI / agent tooling & dev artifacts — never publish
+superpowers/
+.superpowers/
+**/superpowers*
+.claude/
+CLAUDE.md
+.claude*
+.cursor/
+.aider*
+.continue/
+.mcp/
+*.agent.md
+AGENTS.md
+.ai/
+# this spec is a working doc, not part of the site
+IMPLEMENTATION.md
+
+# reviewer findings (kept locally for next session, not published)
+review/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
