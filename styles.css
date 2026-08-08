@@ -674,15 +674,18 @@ button:focus-visible,
       color-mix(in srgb, var(--dim) 14%, transparent) 0 1px, transparent 1px 20px);
 }
 
-.trace path,
-.trace polyline,
-.trace line {
+.trace path {
   fill: none;
   stroke: var(--ch);
-  stroke-width: 2;
+  /* User-unit stroke width, not screen px: these paths carry pathLength="1"
+     and draw via stroke-dasharray/-dashoffset, which Chromium resolves in
+     user-space. vector-effect:non-scaling-stroke would resolve the dash in
+     screen units instead and desync it from pathLength, clipping the trace.
+     Sized so the rendered stroke lands near 2px at each SVG's viewBox scale:
+     card traces (viewBox 0 0 120 36, render ~250-340px wide, scale ~2.1-2.8x). */
+  stroke-width: 0.8;
   stroke-linecap: round;
   stroke-linejoin: round;
-  vector-effect: non-scaling-stroke;
 }
 
 /* markers Task 4 may drop on waypoint/route traces */
@@ -693,6 +696,10 @@ button:focus-visible,
 }
 
 .hero__trace path {
+  /* hero viewBox is 0 0 400 120, rendered ~328-560px wide across breakpoints
+     (scale ~0.8-1.4x) — a much larger user-space unit than the card traces,
+     so it needs a proportionally larger stroke-width to still read as ~2px. */
+  stroke-width: 1.8;
   filter: drop-shadow(0 0 6px color-mix(in srgb, var(--ch) 32%, transparent));
 }
 
