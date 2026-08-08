@@ -165,9 +165,10 @@
     return 'es';
   }
 
+  var hadHashOnInit = langFromHash() !== null;
   var currentLang = initialLang();
 
-  function applyLanguage(lang) {
+  function applyLanguage(lang, writeHash) {
     if (!i18n[lang]) lang = 'es';
     currentLang = lang;
     var dict = i18n[lang];
@@ -198,14 +199,19 @@
       toggle.textContent = lang === 'es' ? 'EN' : 'ES';
     }
 
-    history.replaceState(null, '', '#' + lang);
+    /* Only touch the URL when the language is the result of a choice —
+       a toggle click, or a hash that was already present on load — not
+       on a plain default-language first visit (spec §7, §8). */
+    if (writeHash) {
+      history.replaceState(null, '', '#' + lang);
+    }
   }
 
   function initLangToggle() {
     var toggle = document.getElementById('lang-toggle');
     if (!toggle) return;
     toggle.addEventListener('click', function () {
-      applyLanguage(currentLang === 'es' ? 'en' : 'es');
+      applyLanguage(currentLang === 'es' ? 'en' : 'es', true);
     });
   }
 
@@ -301,20 +307,24 @@
      6. Init. Script is loaded with `defer`, so the DOM is already parsed
         by the time this runs.
      -------------------------------------------------------------------- */
-  applyLanguage(currentLang);
+  applyLanguage(currentLang, hadHashOnInit);
   initLangToggle();
   drawTraces();
   initBookingTabs();
   setFooterYear();
 
   /* Calendly's widget.js is async — its globals may not exist yet when
-     this file runs, so the initial (default, in-person) load is guarded
-     behind the window `load` event. */
+     this file runs, so the initial load is guarded behind the window
+     `load` event. `load` waits on external resources, so a user can
+     click a different tab before it fires; load whichever tab is
+     actually selected at that moment (not always in-person) so the
+     widget content doesn't silently overwrite the visible tab state. */
   window.addEventListener('load', function () {
+    var selectedTab = document.querySelector('.tabs[role="tablist"] [role="tab"][aria-selected="true"]');
     var defaultTab = document.getElementById('tab-inperson');
-    var defaultUrl = defaultTab
-      ? defaultTab.getAttribute('data-url')
+    var url = (selectedTab || defaultTab)
+      ? (selectedTab || defaultTab).getAttribute('data-url')
       : 'https://calendly.com/luisxaviergpa-proton/30min';
-    loadCalendly(defaultUrl);
+    loadCalendly(url);
   });
 })();
