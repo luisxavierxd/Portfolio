@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luis Xavier García Pimentel Ascencio — Ingeniería en Robótica</title>
+<meta name="description" content="Estudiante de Ingeniería en Robótica · ROS2 · Edge AI · ESP32 · EEG · robótica de competencia.">
+
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               script-src 'self' https://assets.calendly.com;
+               style-src 'self' 'unsafe-inline' https://assets.calendly.com https://fonts.googleapis.com;
+               frame-src https://calendly.com;
+               img-src 'self' data: https:;
+               font-src 'self' https://fonts.gstatic.com;
+               connect-src 'self' https://calendly.com;">
+
+<meta property="og:title" content="Convierto sensores en decisiones.">
+<meta property="og:description" content="Estudiante de Ingeniería en Robótica · ROS2 · Edge AI · ESP32 · EEG · robótica de competencia.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://luisxavierxd.github.io/portfolio/">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Saltar al contenido</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Navegación principal">
+    <a class="brand" href="#main">
+      <span class="brand__mark">LX</span>
+    </a>
+    <ul class="nav__links">
+      <li><a class="nav__link" href="#projects" data-i18n="nav.projects">Proyectos</a></li>
+      <li><a class="nav__link" href="#about" data-i18n="nav.about">Sobre mí</a></li>
+      <li><a class="nav__link" href="#book" data-i18n="nav.book">Agenda</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Cambiar idioma / Change language">EN</button>
+      <a class="btn btn--primary btn--small" href="#book" data-i18n="nav.bookCta">Agendar</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <section class="hero">
+    <svg class="trace hero__trace" viewBox="0 0 400 120" aria-hidden="true" focusable="false"><!-- TRACE: hero --></svg>
+    <div class="hero__content">
+      <h1 class="hero__heading" data-i18n="hero.heading">Convierto sensores en decisiones.</h1>
+      <p class="hero__subline" data-i18n="hero.subline">Estudiante de Ingeniería en Robótica · ROS2 · Edge AI · ESP32 · EEG · robótica de competencia.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#book" data-i18n="hero.cta.primary">Agendar una reunión</a>
+        <a class="btn btn--secondary" href="#projects" data-i18n="hero.cta.secondary">Ver proyectos</a>
+      </div>
+      <ul class="social">
+        <li><a class="social__link" href="https://github.com/luisxavierxd" target="_blank" rel="noopener noreferrer" data-i18n="social.github">GitHub</a></li>
+        <li><a class="social__link" href="https://www.linkedin.com/in/luis-xavier-garcía-pimentel-ascencio-251508333" target="_blank" rel="noopener noreferrer" data-i18n="social.linkedin">LinkedIn</a></li>
+        <li><a class="social__link" href="mailto:luisxaviergpa@proton.me" data-i18n="social.email">Email</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects" class="section section--projects" aria-labelledby="projects-heading">
+    <h2 id="projects-heading" class="section__eyebrow" data-i18n="projects.eyebrow">Tablero de lecturas</h2>
+
+    <div class="board">
+
+      <article class="channel" data-channel="amber" style="--ch: var(--ch-amber)">
+        <p class="channel__addr">CH.01</p>
+        <h3 class="channel__name">JTCS</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">06</span>
+          <span class="reading__unit" data-i18n="proj.jtcs.unit">conteo por carril</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: jtcs --></svg>
+        <p class="channel__tagline" data-i18n="proj.jtcs.tagline">Semáforos que se adaptan al tráfico en tiempo real.</p>
+        <p class="channel__blurb" data-i18n="proj.jtcs.blurb">Control de intersecciones con visión en el borde: un detector YOLOv11 cuenta vehículos por carril y reparte el verde con una fórmula derivada de Webster (HCM/MUTCD). Dashboard en React con simulación de red y ondas verdes; corre en Raspberry Pi. Guadalahacks 2026.</p>
+        <ul class="badges">
+          <li class="badge">YOLOv11</li>
+          <li class="badge">Computer Vision</li>
+          <li class="badge">React 19</li>
+          <li class="badge">Node.js</li>
+          <li class="badge">WebSocket</li>
+          <li class="badge">Python</li>
+          <li class="badge">Raspberry Pi</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/JTCS" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" data-channel="green" style="--ch: var(--ch-green)">
+        <p class="channel__addr">CH.02</p>
+        <h3 class="channel__name">NeuroBeat</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">250 Hz</span>
+          <span class="reading__unit" data-i18n="proj.neurobeat.unit">EEG · 8 canales</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: neurobeat --></svg>
+        <p class="channel__tagline" data-i18n="proj.neurobeat.tagline">Un juego que controlas con la mente.</p>
+        <p class="channel__blurb" data-i18n="proj.neurobeat.blurb">Traduce señales EEG del headset Unicorn Black (8 canales) en acciones de juego: filtrado notch/bandpass/ICA, un modelo EEGNet detecta parpadeos deliberados y el giroscopio mueve el cursor, todo por UDP hacia un juego en Unity. Hackathon Brain.io.</p>
+        <ul class="badges">
+          <li class="badge">EEG</li>
+          <li class="badge">EEGNet</li>
+          <li class="badge">Signal Processing</li>
+          <li class="badge">Python</li>
+          <li class="badge">UDP</li>
+          <li class="badge">Unity</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/NeuroBeat" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" data-channel="cyan" style="--ch: var(--ch-cyan)">
+        <p class="channel__addr">CH.03</p>
+        <h3 class="channel__name">TelemetryStack</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">4200 rpm</span>
+          <span class="reading__unit" data-i18n="proj.telemetry.unit">telemetría en vivo</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: telemetrystack --></svg>
+        <p class="channel__tagline" data-i18n="proj.telemetry.tagline">Telemetría en vivo para coches de competencia SAE.</p>
+        <p class="channel__blurb" data-i18n="proj.telemetry.blurb">Stack de telemetría en tiempo real: sensores en un ESP32 (RPM, temperatura, GPS, suspensión) enviados por LoRa 915 MHz o WiFi hacia InfluxDB + Grafana. Firmware FreeRTOS (dual-core, dual-SPI). Cualquier equipo lo adopta editando solo un .env.</p>
+        <ul class="badges">
+          <li class="badge">ESP32</li>
+          <li class="badge">LoRa</li>
+          <li class="badge">FreeRTOS</li>
+          <li class="badge">InfluxDB</li>
+          <li class="badge">Grafana</li>
+          <li class="badge">Docker</li>
+          <li class="badge">Python</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/TelemetryStack" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" data-channel="violet" style="--ch: var(--ch-violet)">
+        <p class="channel__addr">CH.04</p>
+        <h3 class="channel__name">Robot Interprepas Jesuitas 2025</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">Nav2</span>
+          <span class="reading__unit" data-i18n="proj.robot.unit">navegación autónoma</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: robot --></svg>
+        <p class="channel__tagline" data-i18n="proj.robot.tagline">Robot autónomo con ROS2 y navegación.</p>
+        <p class="channel__blurb" data-i18n="proj.robot.blurb">Robot diferencial sobre ROS2: navegación con Nav2, LiDAR LDROBOT, interfaz de hardware por Arduino y teleoperación por joystick. Robótica de competencia con el stack estándar de la industria.</p>
+        <ul class="badges">
+          <li class="badge">ROS2</li>
+          <li class="badge">Nav2</li>
+          <li class="badge">LiDAR</li>
+          <li class="badge">Arduino</li>
+          <li class="badge">C++</li>
+          <li class="badge">Python</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/Robot_Interprepas_Jesuitas_2025" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" data-channel="coral" style="--ch: var(--ch-coral)">
+        <p class="channel__addr">CH.05</p>
+        <h3 class="channel__name">Mapa Interactivo TEC GDL "Borrego Merodeador"</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">A → B</span>
+          <span class="reading__unit" data-i18n="proj.mapatec.unit">ruta peatonal</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: mapatec --></svg>
+        <p class="channel__tagline" data-i18n="proj.mapatec.tagline">Rutas peatonales dentro del campus.</p>
+        <p class="channel__blurb" data-i18n="proj.mapatec.blurb">Mapa interactivo del campus GDL con cálculo de rutas peatonales entre edificios usando datos públicos de OpenStreetMap. La ubicación se procesa solo en tu dispositivo, con aviso de privacidad conforme a la LFPDPPP. Proyecto independiente, no oficial.</p>
+        <ul class="badges">
+          <li class="badge">JavaScript</li>
+          <li class="badge">OpenStreetMap</li>
+          <li class="badge">Geolocation</li>
+          <li class="badge">Routing</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--demo" href="https://luisxavierxd.github.io/MapaInteractivoTEC_GDL/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/MapaInteractivoTEC_GDL" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" data-channel="lime" style="--ch: var(--ch-lime)">
+        <p class="channel__addr">CH.06</p>
+        <h3 class="channel__name">MadRams · Biblioteca de Cursos</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">SAE</span>
+          <span class="reading__unit" data-i18n="proj.madrams.unit">formación de equipo</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: madrams --></svg>
+        <p class="channel__tagline" data-i18n="proj.madrams.tagline">Portal de formación del equipo Baja SAE.</p>
+        <p class="channel__blurb" data-i18n="proj.madrams.blurb">Biblioteca de cursos de nuevo ingreso para MadRams (Minibaja SAE, Tec GDL): cursos por categoría y nivel, con un render 3D del coche por secuencia de imágenes. HTML/CSS/JS estático.</p>
+        <ul class="badges">
+          <li class="badge">HTML</li>
+          <li class="badge">CSS</li>
+          <li class="badge">JavaScript</li>
+          <li class="badge">UX</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--demo" href="https://luisxavierxd.github.io/MadRamsBibliotecaCursos/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/MadRamsBibliotecaCursos" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="board__more"><a class="link" href="https://github.com/luisxavierxd?tab=repositories" target="_blank" rel="noopener noreferrer" data-i18n="projects.more">Ver todo en GitHub</a></p>
+  </section>
+
+  <section id="about" class="section section--about" aria-labelledby="about-heading">
+    <h2 id="about-heading" class="section__heading" data-i18n="about.heading">Sobre mí</h2>
+    <p class="about__bio" data-i18n="about.bio">Soy estudiante de Ingeniería en Robótica en el Tec de Monterrey, Campus Guadalajara. Me interesa el camino completo del sensor a la decisión: adquirir señales, procesarlas y convertirlas en acciones — en visión en el borde, sistemas embebidos y robótica de competencia. Formo parte del equipo Baja SAE MadRams.</p>
+
+    <div class="skills">
+      <div class="skills__group">
+        <span class="skills__dot" data-channel="amber" style="--ch: var(--ch-amber)" aria-hidden="true"></span>
+        <span class="skills__group-name" data-i18n="about.skills.edgeai">Edge AI / Visión</span>
+        <ul class="pills">
+          <li class="pill">YOLOv11</li>
+          <li class="pill">OpenCV</li>
+          <li class="pill">EEGNet</li>
+          <li class="pill">signal processing</li>
+        </ul>
+      </div>
+      <div class="skills__group">
+        <span class="skills__dot" data-channel="violet" style="--ch: var(--ch-violet)" aria-hidden="true"></span>
+        <span class="skills__group-name" data-i18n="about.skills.robotics">Robótica / Robotics</span>
+        <ul class="pills">
+          <li class="pill">ROS2</li>
+          <li class="pill">Nav2</li>
+          <li class="pill">LiDAR</li>
+          <li class="pill">teleop</li>
+        </ul>
+      </div>
+      <div class="skills__group">
+        <span class="skills__dot" data-channel="cyan" style="--ch: var(--ch-cyan)" aria-hidden="true"></span>
+        <span class="skills__group-name" data-i18n="about.skills.embedded">Embebidos / Embedded</span>
+        <ul class="pills">
+          <li class="pill">ESP32</li>
+          <li class="pill">FreeRTOS</li>
+          <li class="pill">LoRa 915 MHz</li>
+          <li class="pill">Arduino</li>
+        </ul>
+      </div>
+      <div class="skills__group">
+        <span class="skills__dot" data-channel="green" style="--ch: var(--ch-green)" aria-hidden="true"></span>
+        <span class="skills__group-name" data-i18n="about.skills.fullstack">Full-stack / Datos</span>
+        <ul class="pills">
+          <li class="pill">React</li>
+          <li class="pill">Node.js</li>
+          <li class="pill">WebSocket</li>
+          <li class="pill">InfluxDB</li>
+          <li class="pill">Grafana</li>
+          <li class="pill">Docker</li>
+        </ul>
+      </div>
+      <div class="skills__group">
+        <span class="skills__dot" data-channel="lime" style="--ch: var(--ch-lime)" aria-hidden="true"></span>
+        <span class="skills__group-name" data-i18n="about.skills.languages">Lenguajes / Languages</span>
+        <ul class="pills">
+          <li class="pill">Python</li>
+          <li class="pill">C++</li>
+          <li class="pill">C</li>
+          <li class="pill">JavaScript</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" class="section section--book" aria-labelledby="book-heading">
+    <h2 id="book-heading" class="section__heading" data-i18n="book.heading">Agenda</h2>
+    <p class="book__intro" data-i18n="book.intro">¿Quieres platicar de un proyecto? Aparta 30 minutos: presencial en campus o por Zoom.</p>
+
+    <div class="tabs" role="tablist" aria-label="Tipo de reunión">
+      <button class="tab is-active" role="tab" id="tab-inperson" aria-selected="true" aria-controls="calendly-inline" data-url="https://calendly.com/luisxaviergpa-proton/30min" data-i18n="book.tab.inperson">Presencial</button>
+      <button class="tab" role="tab" id="tab-zoom" aria-selected="false" tabindex="-1" aria-controls="calendly-inline" data-url="https://calendly.com/luisxaviergpa-proton/new-meeting" data-i18n="book.tab.zoom">Zoom</button>
+    </div>
+
+    <div id="calendly-inline" class="calendly-inline-widget"
+         data-url="https://calendly.com/luisxaviergpa-proton/30min"
+         style="min-width:320px;height:700px;"></div>
+
+    <p class="book__footnote" data-i18n="book.footnote">La reservación se gestiona a través de Calendly.</p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <ul class="footer__links">
+    <li><a class="footer__link" href="https://github.com/luisxavierxd" target="_blank" rel="noopener noreferrer" data-i18n="social.github">GitHub</a></li>
+    <li><a class="footer__link" href="https://www.linkedin.com/in/luis-xavier-garcía-pimentel-ascencio-251508333" target="_blank" rel="noopener noreferrer" data-i18n="social.linkedin">LinkedIn</a></li>
+    <li><a class="footer__link" href="mailto:luisxaviergpa@proton.me" data-i18n="social.email">Email</a></li>
+  </ul>
+  <p class="footer__meta">© <span id="year"></span> · <span data-i18n="footer.tagline">sitio estático en GitHub Pages</span></p>
+</footer>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script src="main.js" defer></script>
+</body>
+</html>
