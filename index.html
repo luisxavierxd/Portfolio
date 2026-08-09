@@ -45,7 +45,7 @@
       <li><a class="nav__link" href="#book" data-i18n="nav.book">Agenda</a></li>
     </ul>
     <div class="nav__actions">
-      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Cambiar idioma / Change language" data-i18n-aria="langToggle.ariaLabel">EN</button>
+      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="EN — cambiar a inglés" data-i18n-aria="langToggle.ariaLabel">EN</button>
       <a class="btn btn--primary btn--small" href="#book" data-i18n="nav.bookCta">Agendar</a>
     </div>
   </nav>
@@ -54,17 +54,23 @@
 <main id="main" tabindex="-1">
 
   <section class="hero">
-    <svg class="trace hero__trace" viewBox="0 0 400 120" aria-hidden="true" focusable="false"><!-- TRACE: hero —
-         raw sensor noise on the left, decaying as it is filtered, resolving into a
-         two-step discrete output that latches at the marker. sensor -> decision. -->
-      <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            d="M16 66 L22 38 L29 84 L35 52 L43 92 L49 44 L56 74 L63 40 L70 88 L78 58 L84 46 L91 90
-               L99 60 L105 78 L112 48 L119 82 L127 62 L134 72 L141 55 L148 80 L156 64 L163 70
-               L170 58 L178 74 L185 63 L192 69 L200 61 L207 71 L214 65 L221 66 L232 66"/>
-      <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            d="M232 66 V48 H278 V30 H370"/>
-      <circle cx="370" cy="30" r="5"/>
-    </svg>
+    <div class="hero__scope">
+      <svg class="trace hero__trace" viewBox="0 0 400 120" aria-hidden="true" focusable="false"><!-- TRACE: hero —
+           raw sensor noise on the left, decaying as it is filtered, resolving into a
+           two-step discrete output that latches at the marker. sensor -> decision. -->
+        <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              d="M16 66 L22 38 L29 84 L35 52 L43 92 L49 44 L56 74 L63 40 L70 88 L78 58 L84 46 L91 90
+                 L99 60 L105 78 L112 48 L119 82 L127 62 L134 72 L141 55 L148 80 L156 64 L163 70
+                 L170 58 L178 74 L185 63 L192 69 L200 61 L207 71 L214 65 L221 66 L232 66"/>
+        <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              d="M232 66 V48 H278 V30 H370"/>
+        <circle cx="370" cy="30" r="5"/>
+      </svg>
+      <p class="hero__axis">
+        <span class="hero__axis-in" data-i18n="hero.scope.in">IN · CRUDO</span>
+        <span class="hero__axis-out" data-i18n="hero.scope.out">OUT · DECISIÓN</span>
+      </p>
+    </div>
     <div class="hero__content">
       <h1 class="hero__heading" data-i18n="hero.heading">Convierto sensores en decisiones.</h1>
       <p class="hero__subline" data-i18n="hero.subline">Estudiante de Ingeniería en Robótica · ROS2 · Edge AI · ESP32 · EEG · robótica de competencia.</p>
@@ -346,12 +352,19 @@
     <p class="book__intro" data-i18n="book.intro">¿Quieres platicar de un proyecto? Aparta 30 minutos: presencial en campus o por Zoom.</p>
 
     <div class="tabs" role="tablist" aria-label="Tipo de reunión" data-i18n-aria="book.tabsAriaLabel">
-      <button class="tab is-active" role="tab" id="tab-inperson" aria-selected="true" aria-controls="calendly-inline" data-url="https://calendly.com/luisxaviergpa-proton/30min" data-i18n="book.tab.inperson">Presencial</button>
-      <button class="tab" role="tab" id="tab-zoom" aria-selected="false" tabindex="-1" aria-controls="calendly-inline" data-url="https://calendly.com/luisxaviergpa-proton/new-meeting" data-i18n="book.tab.zoom">Zoom</button>
+      <!-- background_color / text_color / primary_color ask Calendly to render the
+           embed in the panel's own palette instead of its default white. -->
+      <button class="tab is-active" role="tab" id="tab-inperson" aria-selected="true" aria-controls="calendly-inline" data-url="https://calendly.com/luisxaviergpa-proton/30min?background_color=111721&amp;text_color=d7dee8&amp;primary_color=38bdf8" data-i18n="book.tab.inperson">Presencial</button>
+      <button class="tab" role="tab" id="tab-zoom" aria-selected="false" tabindex="-1" aria-controls="calendly-inline" data-url="https://calendly.com/luisxaviergpa-proton/new-meeting?background_color=111721&amp;text_color=d7dee8&amp;primary_color=38bdf8" data-i18n="book.tab.zoom">Zoom</button>
     </div>
 
-    <div id="calendly-inline" class="calendly-inline-widget" role="tabpanel" tabindex="0"
-         data-url="https://calendly.com/luisxaviergpa-proton/30min"
+    <!-- Deliberately neither .calendly-inline-widget nor data-url yet: widget.js
+         auto-initialises every .calendly-inline-widget it finds, which pulled
+         ~2.9 MB of booking payload on every page view (and throws on an element
+         that has the class but no data-url). main.js adds the class and calls
+         Calendly.initInlineWidget only once the section nears the viewport.
+         The inline min-width/height stays so the reserved space keeps CLS at 0. -->
+    <div id="calendly-inline" class="book__panel" role="tabpanel" tabindex="0"
          style="min-width:320px;height:700px;"></div>
 
     <p class="book__footnote" data-i18n="book.footnote">La reservación se gestiona a través de Calendly.</p>

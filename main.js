@@ -19,10 +19,14 @@
       'nav.about': 'Sobre mí',
       'nav.book': 'Agenda',
       'nav.bookCta': 'Agendar',
-      'langToggle.ariaLabel': 'Cambiar idioma',
+      /* WCAG 2.5.3: the accessible name has to contain the visible label,
+         which is the code of the language you can switch TO. */
+      'langToggle.ariaLabel': 'EN — cambiar a inglés',
 
       'hero.heading': 'Convierto sensores en decisiones.',
       'hero.subline': 'Estudiante de Ingeniería en Robótica · ROS2 · Edge AI · ESP32 · EEG · robótica de competencia.',
+      'hero.scope.in': 'IN · CRUDO',
+      'hero.scope.out': 'OUT · DECISIÓN',
       'hero.cta.primary': 'Agendar una reunión',
       'hero.cta.secondary': 'Ver proyectos',
 
@@ -86,10 +90,12 @@
       'nav.about': 'About',
       'nav.book': 'Book',
       'nav.bookCta': 'Book',
-      'langToggle.ariaLabel': 'Change language',
+      'langToggle.ariaLabel': 'ES — switch to Spanish',
 
       'hero.heading': 'I turn sensors into decisions.',
       'hero.subline': 'Robotics Engineering student · ROS2 · Edge AI · ESP32 · EEG · competition robotics.',
+      'hero.scope.in': 'IN · RAW',
+      'hero.scope.out': 'OUT · DECISION',
       'hero.cta.primary': 'Book a meeting',
       'hero.cta.secondary': 'View projects',
 
@@ -213,6 +219,18 @@
     toggle.addEventListener('click', function () {
       applyLanguage(currentLang === 'es' ? 'en' : 'es', true);
     });
+
+    /* Browser back/forward across #es/#en, or a hand-edited fragment, is a
+       same-document transition: nothing reloads, so re-apply the language
+       here. history.replaceState (used by the toggle) does not fire this,
+       so there is no feedback loop. A non-language fragment (#book) is
+       ignored — it must not reset the visitor's choice. */
+    window.addEventListener('hashchange', function () {
+      var fromHash = langFromHash();
+      if (fromHash && fromHash !== currentLang) {
+        applyLanguage(fromHash, false);
+      }
+    });
   }
 
   /* --------------------------------------------------------------------
@@ -239,11 +257,98 @@
     var el = document.getElementById('calendly-inline');
     if (!el) return;
     el.innerHTML = '';
+    /* Calendly's own class is added only now — carrying it from page load
+       would have let widget.js auto-init the embed (see index.html). */
+    el.classList.add('calendly-inline-widget');
     if (window.Calendly && Calendly.initInlineWidget) {
       Calendly.initInlineWidget({ url: url, parentElement: el });
     } else {
       el.setAttribute('data-url', url); // fallback to auto-init
     }
+  }
+
+  var DEFAULT_BOOKING_URL = 'https://calendly.com/luisxaviergpa-proton/30min';
+  var calendlyPending = false; // a load is queued and will read the live tab
+
+  /* Always resolve the URL from whichever tab is actually selected right now,
+     never from a value captured earlier — a queued load must not overwrite a
+     tab the visitor picked while it was waiting. */
+  function currentBookingUrl() {
+    var selectedTab = document.querySelector('.tabs[role="tablist"] [role="tab"][aria-selected="true"]');
+    var tab = selectedTab || document.getElementById('tab-inperson');
+    return (tab && tab.getAttribute('data-url')) || DEFAULT_BOOKING_URL;
+  }
+
+  function calendlyReady() {
+    return !!(window.Calendly && window.Calendly.initInlineWidget);
+  }
+
+  /* widget.js is async, so its globals may not exist yet. Wait on the script
+     element's own load event rather than polling; if it already loaded, or is
+     missing/blocked, fall through immediately (loadCalendly's data-url branch
+     then covers the auto-init case). */
+  function whenCalendlyReady(callback) {
+    if (calendlyReady()) {
+      callback();
+      return;
+    }
+    var script = document.querySelector('script[src*="assets.calendly.com"]');
+    if (!script) {
+      callback();
+      return;
+    }
+    var done = false;
+    var fire = function () {
+      if (done) return;
+      done = true;
+      callback();
+    };
+    script.addEventListener('load', fire);
+    script.addEventListener('error', fire);
+  }
+
+  /* Ask for the widget. Idempotent while a load is queued. */
+  function requestCalendly() {
+    if (calendlyReady()) {
+      loadCalendly(currentBookingUrl());
+      return;
+    }
+    if (calendlyPending) return; // the queued load reads the live tab itself
+    calendlyPending = true;
+    whenCalendlyReady(function () {
+      calendlyPending = false;
+      loadCalendly(currentBookingUrl());
+    });
+  }
+
+  /* The booking embed is ~2.9 MB of third-party payload (booking JS/CSS,
+     Stripe, a pixel script). Loading it on window `load` cost every visitor
+     that weight before they showed any interest in booking. Hold it until the
+     booking section is about to enter the viewport — the generous rootMargin
+     means it is ready by the time the visitor actually arrives — and the
+     container keeps its reserved height either way, so CLS stays 0. */
+  function initCalendlyDefer() {
+    var section = document.getElementById('book');
+    if (!section) return;
+
+    if (typeof window.IntersectionObserver !== 'function') {
+      /* No IntersectionObserver: fall back to the previous behaviour rather
+         than leaving the section empty. */
+      window.addEventListener('load', requestCalendly);
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) {
+          observer.disconnect();
+          requestCalendly();
+          return;
+        }
+      }
+    }, { rootMargin: '800px 0px' });
+
+    observer.observe(section);
   }
 
   function initBookingTabs() {
@@ -260,8 +365,10 @@
         t.tabIndex = selected ? 0 : -1;
         t.classList.toggle('is-active', selected);
       }
-      var url = tab.getAttribute('data-url');
-      if (url) loadCalendly(url);
+      /* Clicking a tab is booking intent, so it also brings the widget
+         forward if the observer hasn't fired yet. requestCalendly() always
+         resolves the URL from the tab that is selected at that moment. */
+      requestCalendly();
     }
 
     for (var i = 0; i < tabs.length; i++) {
@@ -311,20 +418,6 @@
   initLangToggle();
   drawTraces();
   initBookingTabs();
+  initCalendlyDefer();
   setFooterYear();
-
-  /* Calendly's widget.js is async — its globals may not exist yet when
-     this file runs, so the initial load is guarded behind the window
-     `load` event. `load` waits on external resources, so a user can
-     click a different tab before it fires; load whichever tab is
-     actually selected at that moment (not always in-person) so the
-     widget content doesn't silently overwrite the visible tab state. */
-  window.addEventListener('load', function () {
-    var selectedTab = document.querySelector('.tabs[role="tablist"] [role="tab"][aria-selected="true"]');
-    var defaultTab = document.getElementById('tab-inperson');
-    var url = (selectedTab || defaultTab)
-      ? (selectedTab || defaultTab).getAttribute('data-url')
-      : 'https://calendly.com/luisxaviergpa-proton/30min';
-    loadCalendly(url);
-  });
 })();
