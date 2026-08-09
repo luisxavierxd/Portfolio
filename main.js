@@ -12,6 +12,7 @@
   var i18n = {
     es: {
       'meta.title': 'Luis Xavier García Pimentel Ascencio — Ingeniería en Robótica',
+      'meta.ogImageAlt': 'Trazo de señal que pasa de ruido a una decisión discreta, sobre fondo azul-carbón, junto al nombre Luis Xavier García Pimentel Ascencio.',
       'a11y.skip': 'Saltar al contenido',
       'nav.ariaLabel': 'Navegación principal',
       'nav.subtitle': 'Ingeniería en Robótica · Tec GDL',
@@ -85,6 +86,7 @@
     },
     en: {
       'meta.title': 'Luis Xavier García Pimentel Ascencio — Robotics Engineering',
+      'meta.ogImageAlt': 'A signal trace resolving from noise into a discrete decision on a blue-charcoal field, beside the name Luis Xavier García Pimentel Ascencio.',
       'a11y.skip': 'Skip to content',
       'nav.ariaLabel': 'Main navigation',
       'nav.subtitle': 'Robotics Engineering · Tec GDL',
