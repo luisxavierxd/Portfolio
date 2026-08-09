@@ -1,4 +1,4 @@
-/* main.js — i18n toggle, trace draw-on-load, Calendly tabs, footer year.
+/* main.js — i18n toggle, Calendly tabs, footer year.
    No browser storage APIs or cookies used anywhere in this file. Language
    state lives in memory and in location.hash only. */
 
@@ -6,12 +6,12 @@
   'use strict';
 
   /* --------------------------------------------------------------------
-     1. i18n dictionary — covers every data-i18n / data-i18n-aria key in
-        index.html, both directions (verified mechanically, see task-5
-        report). English copy is verbatim from IMPLEMENTATION.md §§2-7.
+     1. i18n dictionary — covers every data-i18n / data-i18n-aria /
+        data-i18n-content key in index.html, in both directions.
      -------------------------------------------------------------------- */
   var i18n = {
     es: {
+      'meta.title': 'Luis Xavier García Pimentel Ascencio — Ingeniería en Robótica',
       'a11y.skip': 'Saltar al contenido',
       'nav.ariaLabel': 'Navegación principal',
       'nav.subtitle': 'Ingeniería en Robótica · Tec GDL',
@@ -68,10 +68,10 @@
       'about.heading': 'Sobre mí',
       'about.bio': 'Soy estudiante de Ingeniería en Robótica en el Tec de Monterrey, Campus Guadalajara. Me interesa el camino completo del sensor a la decisión: adquirir señales, procesarlas y convertirlas en acciones — en visión en el borde, sistemas embebidos y robótica de competencia. Formo parte del equipo Baja SAE MadRams.',
       'about.skills.edgeai': 'Edge AI / Visión',
-      'about.skills.robotics': 'Robótica / Robotics',
-      'about.skills.embedded': 'Embebidos / Embedded',
+      'about.skills.robotics': 'Robótica',
+      'about.skills.embedded': 'Embebidos',
       'about.skills.fullstack': 'Full-stack / Datos',
-      'about.skills.languages': 'Lenguajes / Languages',
+      'about.skills.languages': 'Lenguajes',
 
       'book.heading': 'Agenda',
       'book.intro': '¿Quieres platicar de un proyecto? Aparta 30 minutos: presencial en campus o por Zoom.',
@@ -79,10 +79,12 @@
       'book.tab.inperson': 'Presencial',
       'book.tab.zoom': 'Zoom',
       'book.footnote': 'La reservación se gestiona a través de Calendly.',
+      'book.loading': 'CARGANDO CALENDARIO…',
 
       'footer.tagline': 'sitio estático en GitHub Pages'
     },
     en: {
+      'meta.title': 'Luis Xavier García Pimentel Ascencio — Robotics Engineering',
       'a11y.skip': 'Skip to content',
       'nav.ariaLabel': 'Main navigation',
       'nav.subtitle': 'Robotics Engineering · Tec GDL',
@@ -148,6 +150,7 @@
       'book.tab.inperson': 'In-person',
       'book.tab.zoom': 'Zoom',
       'book.footnote': 'Booking is handled by Calendly.',
+      'book.loading': 'LOADING CALENDAR…',
 
       'footer.tagline': 'static site on GitHub Pages'
     }
@@ -199,6 +202,19 @@
       }
     }
 
+    /* Page metadata (title, description, OG tags) is read by search engines
+       and link-preview crawlers, not just visitors, so it has to track the
+       toggle too — same dictionary, written to `content` instead of
+       textContent. */
+    var contentNodes = document.querySelectorAll('[data-i18n-content]');
+    for (var k = 0; k < contentNodes.length; k++) {
+      var contentNode = contentNodes[k];
+      var contentKey = contentNode.getAttribute('data-i18n-content');
+      if (Object.prototype.hasOwnProperty.call(dict, contentKey)) {
+        contentNode.setAttribute('content', dict[contentKey]);
+      }
+    }
+
     var toggle = document.getElementById('lang-toggle');
     if (toggle) {
       /* the toggle's label shows the language you can switch TO */
@@ -207,7 +223,7 @@
 
     /* Only touch the URL when the language is the result of a choice —
        a toggle click, or a hash that was already present on load — not
-       on a plain default-language first visit (spec §7, §8). */
+       on a plain default-language first visit. */
     if (writeHash) {
       history.replaceState(null, '', '#' + lang);
     }
@@ -234,37 +250,23 @@
   }
 
   /* --------------------------------------------------------------------
-     3. Trace draw-on-load. styles.css already drives the animation and
-        guarantees the drawn end state via CSS alone; .is-drawn is only
-        an idempotent pin. Skip under prefers-reduced-motion — the CSS
-        reduced-motion block already forces the fully-drawn state on its
-        own, so there is nothing for this to add.
-     -------------------------------------------------------------------- */
-  function drawTraces() {
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return;
-    }
-    var traces = document.querySelectorAll('.trace');
-    for (var i = 0; i < traces.length; i++) {
-      traces[i].classList.add('is-drawn');
-    }
-  }
-
-  /* --------------------------------------------------------------------
-     4. Calendly — exact shape from IMPLEMENTATION.md §5.
+     3. Calendly — loads the inline widget and resolves the booking URL
+        for whichever tab is selected.
      -------------------------------------------------------------------- */
   function loadCalendly(url) {
     var el = document.getElementById('calendly-inline');
     if (!el) return;
+    if (!calendlyReady()) {
+      /* widget.js never became ready — blocked request, offline, whatever.
+         Leave the "loading" placeholder in the panel rather than clearing it
+         into a blank well the visitor can't make sense of. */
+      return;
+    }
     el.innerHTML = '';
     /* Calendly's own class is added only now — carrying it from page load
        would have let widget.js auto-init the embed (see index.html). */
     el.classList.add('calendly-inline-widget');
-    if (window.Calendly && Calendly.initInlineWidget) {
-      Calendly.initInlineWidget({ url: url, parentElement: el });
-    } else {
-      el.setAttribute('data-url', url); // fallback to auto-init
-    }
+    Calendly.initInlineWidget({ url: url, parentElement: el });
   }
 
   var DEFAULT_BOOKING_URL = 'https://calendly.com/luisxaviergpa-proton/30min';
@@ -285,8 +287,9 @@
 
   /* widget.js is async, so its globals may not exist yet. Wait on the script
      element's own load event rather than polling; if it already loaded, or is
-     missing/blocked, fall through immediately (loadCalendly's data-url branch
-     then covers the auto-init case). */
+     missing/blocked, fall through immediately — loadCalendly() checks
+     calendlyReady() itself and leaves the loading placeholder in place if
+     the widget still isn't available. */
   function whenCalendlyReady(callback) {
     if (calendlyReady()) {
       callback();
@@ -377,6 +380,7 @@
     if (!tablist) return;
     var tabs = tablist.querySelectorAll('[role="tab"]');
     if (!tabs.length) return;
+    var panel = document.getElementById('calendly-inline');
 
     function selectTab(tab) {
       for (var i = 0; i < tabs.length; i++) {
@@ -386,6 +390,8 @@
         t.tabIndex = selected ? 0 : -1;
         t.classList.toggle('is-active', selected);
       }
+      /* WAI-ARIA: the panel names the tab that owns it. */
+      if (panel) panel.setAttribute('aria-labelledby', tab.id);
       /* Clicking a tab is booking intent, so it also brings the widget
          forward if the observer hasn't fired yet. requestCalendly() always
          resolves the URL from the tab that is selected at that moment. */
@@ -422,7 +428,7 @@
   }
 
   /* --------------------------------------------------------------------
-     5. Footer year.
+     4. Footer year.
      -------------------------------------------------------------------- */
   function setFooterYear() {
     var yearEl = document.getElementById('year');
@@ -432,13 +438,12 @@
   }
 
   /* --------------------------------------------------------------------
-     6. Init. Script is loaded with `defer`, so the DOM is already parsed
+     5. Init. Script is loaded with `defer`, so the DOM is already parsed
         by the time this runs.
      -------------------------------------------------------------------- */
   enableWebFonts();
   applyLanguage(currentLang, hadHashOnInit);
   initLangToggle();
-  drawTraces();
   initBookingTabs();
   initCalendlyDefer();
   setFooterYear();

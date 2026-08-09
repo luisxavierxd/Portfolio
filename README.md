@@ -16,10 +16,11 @@ Calendly). Static site: plain HTML, CSS, and vanilla JavaScript, no frameworks, 
 ## Deploy
 
 1. Public repo, e.g. `portfolio` (or reuse `luisxavierxd.github.io` to serve at root).
-2. Push files to the default branch.
-3. Settings → Pages → Deploy from a branch → `main` / root.
-4. Live at `https://luisxavierxd.github.io/portfolio/` (project) or `https://luisxavierxd.github.io/` (user repo).
-5. `.nojekyll` keeps GitHub from processing the static files.
+2. Create the repo on GitHub and add it as a remote (`git remote add origin <url>`). · Crea el repo en GitHub y agrégalo como remoto (`git remote add origin <url>`).
+3. Push files to the default branch.
+4. Settings → Pages → Deploy from a branch → `main` / root.
+5. Live at `https://luisxavierxd.github.io/portfolio/` (project) or `https://luisxavierxd.github.io/` (user repo). **Update `og:url` in `index.html` to match** — it currently holds a placeholder. · **Actualiza `og:url` en `index.html`** para que coincida — hoy tiene un valor de marcador de posición.
+6. `.nojekyll` keeps GitHub from processing the static files.
 
 ## Local preview
 
@@ -27,4 +28,6 @@ Calendly). Static site: plain HTML, CSS, and vanilla JavaScript, no frameworks, 
 python -m http.server 8000
 ```
 
-Then open `http://localhost:8000/`.
+Then open `http://localhost:8000/`. Serving over HTTP is required — opening `index.html` directly from disk (`file://`) will not work, because the page's own Content-Security-Policy blocks that origin. · Es necesario servir por HTTP — abrir `index.html` directamente desde el disco (`file://`) no funciona, porque la Content-Security-Policy de la página bloquea ese origen.
+
+The language can be deep-linked with `#es` / `#en` (e.g. `http://localhost:8000/#en`). · El idioma se puede enlazar directamente con `#es` / `#en` (p. ej. `http://localhost:8000/#en`).
