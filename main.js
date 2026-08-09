@@ -307,8 +307,29 @@
     script.addEventListener('error', fire);
   }
 
+  /* The Google Fonts stylesheet ships with media="print" so it does not block
+     first paint; the matching rel="preload" has it in flight already. Flipping
+     media to "all" applies it as soon as this script has parsed. */
+  function enableWebFonts() {
+    var link = document.getElementById('fonts-css');
+    if (link) link.media = 'all';
+  }
+
+  /* Calendly's widget.css ships with the deferred widget instead of blocking
+     first paint from <head>. Injected once, before the widget renders. */
+  var calendlyCssHref = 'https://assets.calendly.com/assets/external/widget.css';
+
+  function ensureCalendlyStylesheet() {
+    if (document.querySelector('link[href="' + calendlyCssHref + '"]')) return;
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = calendlyCssHref;
+    document.head.appendChild(link);
+  }
+
   /* Ask for the widget. Idempotent while a load is queued. */
   function requestCalendly() {
+    ensureCalendlyStylesheet();
     if (calendlyReady()) {
       loadCalendly(currentBookingUrl());
       return;
@@ -414,6 +435,7 @@
      6. Init. Script is loaded with `defer`, so the DOM is already parsed
         by the time this runs.
      -------------------------------------------------------------------- */
+  enableWebFonts();
   applyLanguage(currentLang, hadHashOnInit);
   initLangToggle();
   drawTraces();

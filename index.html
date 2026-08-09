@@ -24,9 +24,15 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+<!-- Loaded without blocking first paint: main.js flips media to "all" once parsed.
+     styles.css declares full mono/sans fallback stacks, so the page is legible
+     from the first frame and swaps when the web fonts arrive. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+<link id="fonts-css" rel="stylesheet" media="print" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
 
-<link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css">
+<!-- Calendly's widget.css is injected by main.js alongside the deferred widget
+     rather than linked here: as a render-blocking stylesheet in <head> it cost
+     ~900ms before first paint for a widget most visitors never scroll to. -->
 
 <link rel="stylesheet" href="styles.css">
 </head>
