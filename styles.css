@@ -578,6 +578,10 @@ button:focus-visible,
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--s5);
+  /* Each module is only as tall as its own content. The default `stretch`
+     looks tidier at rest, but the moment one module's panel expands its
+     row-mates stretch with it and grow a dead gap the height of the panel. */
+  align-items: start;
 }
 
 @media (min-width: 700px) {
