@@ -588,6 +588,41 @@ button:focus-visible,
   .board { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
+/* Row eyebrows — narrative labels ("Percibir/Procesar/Comunicar") above each
+   3-up row. Meaningless once the grid isn't 3 columns (the rows reflow), so
+   shown only at the 1024px breakpoint. Spans the full grid so it sits above
+   its row without disturbing the channel source order. */
+.board__row-label {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .board__row-label {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: var(--s3);
+    margin: 0;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: var(--t-sm);
+    letter-spacing: var(--track-wide);
+    text-transform: uppercase;
+    color: var(--dim-strong);
+  }
+
+  .board__row-label:not(:first-child) {
+    margin-top: var(--s2);
+  }
+
+  .board__row-label::after {
+    content: "";
+    flex: 1 1 0;
+    height: 1px;
+    background: var(--rule);
+  }
+}
+
 /* One rule set, six channels: everything below resolves through var(--ch),
    which each <article> sets inline. */
 .channel {
@@ -793,12 +828,17 @@ button:focus-visible,
 
 .hero__trace path { animation-duration: 1.6s; }
 
-/* stagger the board so it reads as channels coming online in order */
-.board .channel:nth-child(2) .trace path { animation-delay: 0.25s; }
-.board .channel:nth-child(3) .trace path { animation-delay: 0.35s; }
-.board .channel:nth-child(4) .trace path { animation-delay: 0.45s; }
-.board .channel:nth-child(5) .trace path { animation-delay: 0.55s; }
-.board .channel:nth-child(6) .trace path { animation-delay: 0.65s; }
+/* stagger the board so it reads as channels coming online in order.
+   nth-of-type (not nth-child) counts only sibling <article> channels, so the
+   row-label <p> elements interleaved between rows don't shift the count. */
+.board .channel:nth-of-type(2) .trace path { animation-delay: 0.25s; }
+.board .channel:nth-of-type(3) .trace path { animation-delay: 0.35s; }
+.board .channel:nth-of-type(4) .trace path { animation-delay: 0.45s; }
+.board .channel:nth-of-type(5) .trace path { animation-delay: 0.55s; }
+.board .channel:nth-of-type(6) .trace path { animation-delay: 0.65s; }
+.board .channel:nth-of-type(7) .trace path { animation-delay: 0.75s; }
+.board .channel:nth-of-type(8) .trace path { animation-delay: 0.85s; }
+.board .channel:nth-of-type(9) .trace path { animation-delay: 0.95s; }
 
 @keyframes trace-draw {
   to { stroke-dashoffset: 0; }
@@ -823,16 +863,22 @@ button:focus-visible,
 
 .hero__trace circle { animation-delay: 1.75s; }
 
-.board .channel:nth-child(2) .trace circle,
-.board .channel:nth-child(2) .trace rect { animation-delay: 1.35s; }
-.board .channel:nth-child(3) .trace circle,
-.board .channel:nth-child(3) .trace rect { animation-delay: 1.45s; }
-.board .channel:nth-child(4) .trace circle,
-.board .channel:nth-child(4) .trace rect { animation-delay: 1.55s; }
-.board .channel:nth-child(5) .trace circle,
-.board .channel:nth-child(5) .trace rect { animation-delay: 1.65s; }
-.board .channel:nth-child(6) .trace circle,
-.board .channel:nth-child(6) .trace rect { animation-delay: 1.75s; }
+.board .channel:nth-of-type(2) .trace circle,
+.board .channel:nth-of-type(2) .trace rect { animation-delay: 1.35s; }
+.board .channel:nth-of-type(3) .trace circle,
+.board .channel:nth-of-type(3) .trace rect { animation-delay: 1.45s; }
+.board .channel:nth-of-type(4) .trace circle,
+.board .channel:nth-of-type(4) .trace rect { animation-delay: 1.55s; }
+.board .channel:nth-of-type(5) .trace circle,
+.board .channel:nth-of-type(5) .trace rect { animation-delay: 1.65s; }
+.board .channel:nth-of-type(6) .trace circle,
+.board .channel:nth-of-type(6) .trace rect { animation-delay: 1.75s; }
+.board .channel:nth-of-type(7) .trace circle,
+.board .channel:nth-of-type(7) .trace rect { animation-delay: 1.85s; }
+.board .channel:nth-of-type(8) .trace circle,
+.board .channel:nth-of-type(8) .trace rect { animation-delay: 1.95s; }
+.board .channel:nth-of-type(9) .trace circle,
+.board .channel:nth-of-type(9) .trace rect { animation-delay: 2.05s; }
 
 /* the only hover motion on the board: a 1–2px drift */
 .channel > .trace {

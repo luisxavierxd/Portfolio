@@ -103,6 +103,8 @@
 
     <div class="board">
 
+      <p class="board__row-label" data-i18n="projects.row.perceive">Percibir</p>
+
       <article class="channel" style="--ch: var(--ch-amber)">
         <p class="channel__addr">CH.01</p>
         <h3 class="channel__name">JTCS</h3>
@@ -134,72 +136,35 @@
         </div>
       </article>
 
-      <article class="channel" style="--ch: var(--ch-green)">
+      <article class="channel" style="--ch: var(--ch-emerald)">
         <p class="channel__addr">CH.02</p>
-        <h3 class="channel__name">NeuroBeat</h3>
+        <h3 class="channel__name">AgroBot</h3>
         <p class="channel__reading">
           <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-          <span class="reading__value">250 Hz</span>
-          <span class="reading__unit" data-i18n="proj.neurobeat.unit">EEG · 8 canales</span>
+          <span class="reading__value">6 DOF</span>
+          <span class="reading__unit" data-i18n="proj.agrobot.unit">brazo + visión 3D</span>
         </p>
-        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: neurobeat -
-             continuous alpha/beta oscillation around a flat baseline, interrupted once by the
-             sharp deflection-and-undershoot of a deliberate blink. -->
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M3 19 Q6 9 9 18 Q12 30 15 20 Q18 12 21 18 Q24 27 27 20 Q30 7 33 18 Q36 29 39 19
-                   Q42 13 45 20 L48 18 L51 3 L55 32 L58 19
-                   Q61 8 64 18 Q67 30 70 20 Q73 12 76 18 Q79 28 82 20 Q85 9 88 18 Q91 29 94 20
-                   Q97 13 100 18 Q103 27 106 20 Q109 8 112 18 Q114 28 117 19"/>
-        </svg>
-        <p class="channel__tagline" data-i18n="proj.neurobeat.tagline">Un juego que controlas con la mente.</p>
-        <p class="channel__blurb" data-i18n="proj.neurobeat.blurb">Traduce señales EEG del headset Unicorn Black (8 canales) en acciones de juego: filtrado notch/bandpass/ICA, un modelo EEGNet detecta parpadeos deliberados y el giroscopio mueve el cursor, todo por UDP hacia un juego en Unity. Hackathon Brain.io.</p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: agrobot -
+             a robotic-arm reach: a smooth arc ending in a small "grasp" marker (a pick motion).
+             Task 3 authors the path. --></svg>
+        <p class="channel__tagline" data-i18n="proj.agrobot.tagline">Robot que cosecha berries maduras por visión.</p>
+        <p class="channel__blurb" data-i18n="proj.agrobot.blurb">Robot autónomo para invernaderos: un detector YOLO11 identifica frambuesas por etapa de madurez con cámara estereoscópica (3D), y un brazo de 6 grados de libertad las recolecta. Control en Raspberry Pi 4 + Arduino por serial. Equipo Silmarils, reto STEAM 2025.</p>
         <ul class="badges">
-          <li class="badge">EEG</li>
-          <li class="badge">EEGNet</li>
-          <li class="badge">Signal Processing</li>
+          <li class="badge">YOLOv11</li>
+          <li class="badge">6-DOF Arm</li>
+          <li class="badge">Stereo Vision</li>
+          <li class="badge">Raspberry Pi</li>
+          <li class="badge">Arduino</li>
           <li class="badge">Python</li>
-          <li class="badge">UDP</li>
-          <li class="badge">Unity</li>
+          <li class="badge">Serial</li>
         </ul>
         <div class="channel__links">
-          <a class="btn btn--code" href="https://github.com/luisxavierxd/NeuroBeat" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
-        </div>
-      </article>
-
-      <article class="channel" style="--ch: var(--ch-cyan)">
-        <p class="channel__addr">CH.03</p>
-        <h3 class="channel__name">TelemetryStack</h3>
-        <p class="channel__reading">
-          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-          <span class="reading__value">4200 rpm</span>
-          <span class="reading__unit" data-i18n="proj.telemetry.unit">telemetría en vivo</span>
-        </p>
-        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: telemetrystack -
-             an RPM sweep: a chirp whose frequency climbs and whose envelope swells and then
-             damps out as the engine settles on a steady line. -->
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M3 32 Q10 25.9 17 27.7 Q23.5 32.8 30 23.8 Q36 11.9 42 20.2 Q47.5 30.5 53 16.8
-                   Q58 2.3 63 13.8 Q67.5 24.4 72 11 Q77 1.5 82 8 Q85.5 14 89 8 Q92.5 4 96 8
-                   Q99.5 11 103 8 Q106.5 6 110 8 L117 8"/>
-        </svg>
-        <p class="channel__tagline" data-i18n="proj.telemetry.tagline">Telemetría en vivo para coches de competencia SAE.</p>
-        <p class="channel__blurb" data-i18n="proj.telemetry.blurb">Stack de telemetría en tiempo real: sensores en un ESP32 (RPM, temperatura, GPS, suspensión) enviados por LoRa 915 MHz o WiFi hacia InfluxDB + Grafana. Firmware FreeRTOS (dual-core, dual-SPI). Cualquier equipo lo adopta editando solo un .env.</p>
-        <ul class="badges">
-          <li class="badge">ESP32</li>
-          <li class="badge">LoRa</li>
-          <li class="badge">FreeRTOS</li>
-          <li class="badge">InfluxDB</li>
-          <li class="badge">Grafana</li>
-          <li class="badge">Docker</li>
-          <li class="badge">Python</li>
-        </ul>
-        <div class="channel__links">
-          <a class="btn btn--code" href="https://github.com/luisxavierxd/TelemetryStack" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/AgroBot" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
         </div>
       </article>
 
       <article class="channel" style="--ch: var(--ch-violet)">
-        <p class="channel__addr">CH.04</p>
+        <p class="channel__addr">CH.03</p>
         <h3 class="channel__name">Robot Interprepas Jesuitas 2025</h3>
         <p class="channel__reading">
           <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
@@ -234,8 +199,102 @@
         </div>
       </article>
 
-      <article class="channel" style="--ch: var(--ch-coral)">
+      <p class="board__row-label" data-i18n="projects.row.process">Procesar</p>
+
+      <article class="channel" style="--ch: var(--ch-green)">
+        <p class="channel__addr">CH.04</p>
+        <h3 class="channel__name">NeuroBeat</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">250 Hz</span>
+          <span class="reading__unit" data-i18n="proj.neurobeat.unit">EEG · 8 canales</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: neurobeat -
+             continuous alpha/beta oscillation around a flat baseline, interrupted once by the
+             sharp deflection-and-undershoot of a deliberate blink. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M3 19 Q6 9 9 18 Q12 30 15 20 Q18 12 21 18 Q24 27 27 20 Q30 7 33 18 Q36 29 39 19
+                   Q42 13 45 20 L48 18 L51 3 L55 32 L58 19
+                   Q61 8 64 18 Q67 30 70 20 Q73 12 76 18 Q79 28 82 20 Q85 9 88 18 Q91 29 94 20
+                   Q97 13 100 18 Q103 27 106 20 Q109 8 112 18 Q114 28 117 19"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.neurobeat.tagline">Un juego que controlas con la mente.</p>
+        <p class="channel__blurb" data-i18n="proj.neurobeat.blurb">Traduce señales EEG del headset Unicorn Black (8 canales) en acciones de juego: filtrado notch/bandpass/ICA, un modelo EEGNet detecta parpadeos deliberados y el giroscopio mueve el cursor, todo por UDP hacia un juego en Unity. Hackathon Brain.io.</p>
+        <ul class="badges">
+          <li class="badge">EEG</li>
+          <li class="badge">EEGNet</li>
+          <li class="badge">Signal Processing</li>
+          <li class="badge">Python</li>
+          <li class="badge">UDP</li>
+          <li class="badge">Unity</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/NeuroBeat" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-cyan)">
         <p class="channel__addr">CH.05</p>
+        <h3 class="channel__name">TelemetryStack</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">4200 rpm</span>
+          <span class="reading__unit" data-i18n="proj.telemetry.unit">telemetría en vivo</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: telemetrystack -
+             an RPM sweep: a chirp whose frequency climbs and whose envelope swells and then
+             damps out as the engine settles on a steady line. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M3 32 Q10 25.9 17 27.7 Q23.5 32.8 30 23.8 Q36 11.9 42 20.2 Q47.5 30.5 53 16.8
+                   Q58 2.3 63 13.8 Q67.5 24.4 72 11 Q77 1.5 82 8 Q85.5 14 89 8 Q92.5 4 96 8
+                   Q99.5 11 103 8 Q106.5 6 110 8 L117 8"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.telemetry.tagline">Telemetría en vivo para coches de competencia SAE.</p>
+        <p class="channel__blurb" data-i18n="proj.telemetry.blurb">Stack de telemetría en tiempo real: sensores en un ESP32 (RPM, temperatura, GPS, suspensión) enviados por LoRa 915 MHz o WiFi hacia InfluxDB + Grafana. Firmware FreeRTOS (dual-core, dual-SPI). Cualquier equipo lo adopta editando solo un .env.</p>
+        <ul class="badges">
+          <li class="badge">ESP32</li>
+          <li class="badge">LoRa</li>
+          <li class="badge">FreeRTOS</li>
+          <li class="badge">InfluxDB</li>
+          <li class="badge">Grafana</li>
+          <li class="badge">Docker</li>
+          <li class="badge">Python</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/TelemetryStack" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-red)">
+        <p class="channel__addr">CH.06</p>
+        <h3 class="channel__name">Malaria · Dielectroforesis</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">PCA · 4 clf</span>
+          <span class="reading__unit" data-i18n="proj.malaria.unit">simulación + ML</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: malaria -
+             two diverging trajectories: healthy vs. infected cell paths splitting under the
+             field. Task 3 authors the path. --></svg>
+        <p class="channel__tagline" data-i18n="proj.malaria.tagline">Simula separar células infectadas con campos eléctricos.</p>
+        <p class="channel__blurb" data-i18n="proj.malaria.blurb">Modela el principio de dielectroforesis: glóbulos rojos sanos vs. infectados con malaria responden distinto en un campo no uniforme. Simula las trayectorias (integración numérica) y clasifica sanas/infectadas con PCA + 4 algoritmos de ML. Física aplicada + ML — es una simulación, no detección clínica real.</p>
+        <ul class="badges">
+          <li class="badge">Python</li>
+          <li class="badge">NumPy</li>
+          <li class="badge">Matplotlib</li>
+          <li class="badge">scikit-learn</li>
+          <li class="badge">PCA</li>
+          <li class="badge">Simulation</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/DeteccionMalariaPorCamposElectricos" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <p class="board__row-label" data-i18n="projects.row.communicate">Comunicar</p>
+
+      <article class="channel" style="--ch: var(--ch-coral)">
+        <p class="channel__addr">CH.07</p>
         <h3 class="channel__name">Mapa Interactivo TEC GDL "Borrego Merodeador"</h3>
         <p class="channel__reading">
           <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
@@ -265,7 +324,7 @@
       </article>
 
       <article class="channel" style="--ch: var(--ch-lime)">
-        <p class="channel__addr">CH.06</p>
+        <p class="channel__addr">CH.08</p>
         <h3 class="channel__name">MadRams · Biblioteca de Cursos</h3>
         <p class="channel__reading">
           <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
@@ -291,6 +350,31 @@
         <div class="channel__links">
           <a class="btn btn--demo" href="https://luisxavierxd.github.io/MadRamsBibliotecaCursos/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
           <a class="btn btn--code" href="https://github.com/luisxavierxd/MadRamsBibliotecaCursos" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-magenta)">
+        <p class="channel__addr">CH.09</p>
+        <h3 class="channel__name">Loopzels</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">2×2 → 6×6</span>
+          <span class="reading__unit" data-i18n="proj.loopzels.unit">carga cognitiva</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: loopzels -
+             a rising difficulty staircase (4 to 36 pieces). Task 3 authors the path. --></svg>
+        <p class="channel__tagline" data-i18n="proj.loopzels.tagline">Rompecabezas animados para entrenar la mente.</p>
+        <p class="channel__blurb" data-i18n="proj.loopzels.blurb">Juego de escritorio en Python que fragmenta patrones GIF animados en grillas de 2×2 a 6×6 para reordenar de memoria. La dificultad escala según la Teoría de Carga Cognitiva (Sweller, 1988); motor de animación por hilos, records por tiempo en JSON. Expo Ingenierías.</p>
+        <ul class="badges">
+          <li class="badge">Python</li>
+          <li class="badge">tkinter</li>
+          <li class="badge">Pillow</li>
+          <li class="badge">pygame</li>
+          <li class="badge">JSON</li>
+          <li class="badge">Threading</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/Loopzels" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
         </div>
       </article>
 

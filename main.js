@@ -38,9 +38,17 @@
       'projects.more': 'Ver todo en GitHub',
       'channel.readingLabel': 'LECTURA',
 
+      'projects.row.perceive': 'Percibir',
+      'projects.row.process': 'Procesar',
+      'projects.row.communicate': 'Comunicar',
+
       'proj.jtcs.unit': 'conteo por carril',
       'proj.jtcs.tagline': 'Semáforos que se adaptan al tráfico en tiempo real.',
       'proj.jtcs.blurb': 'Control de intersecciones con visión en el borde: un detector YOLOv11 cuenta vehículos por carril y reparte el verde con una fórmula derivada de Webster (HCM/MUTCD). Dashboard en React con simulación de red y ondas verdes; corre en Raspberry Pi. Guadalahacks 2026.',
+
+      'proj.agrobot.unit': 'brazo + visión 3D',
+      'proj.agrobot.tagline': 'Robot que cosecha berries maduras por visión.',
+      'proj.agrobot.blurb': 'Robot autónomo para invernaderos: un detector YOLO11 identifica frambuesas por etapa de madurez con cámara estereoscópica (3D), y un brazo de 6 grados de libertad las recolecta. Control en Raspberry Pi 4 + Arduino por serial. Equipo Silmarils, reto STEAM 2025.',
 
       'proj.neurobeat.unit': 'EEG · 8 canales',
       'proj.neurobeat.tagline': 'Un juego que controlas con la mente.',
@@ -49,6 +57,10 @@
       'proj.telemetry.unit': 'telemetría en vivo',
       'proj.telemetry.tagline': 'Telemetría en vivo para coches de competencia SAE.',
       'proj.telemetry.blurb': 'Stack de telemetría en tiempo real: sensores en un ESP32 (RPM, temperatura, GPS, suspensión) enviados por LoRa 915 MHz o WiFi hacia InfluxDB + Grafana. Firmware FreeRTOS (dual-core, dual-SPI). Cualquier equipo lo adopta editando solo un .env.',
+
+      'proj.malaria.unit': 'simulación + ML',
+      'proj.malaria.tagline': 'Simula separar células infectadas con campos eléctricos.',
+      'proj.malaria.blurb': 'Modela el principio de dielectroforesis: glóbulos rojos sanos vs. infectados con malaria responden distinto en un campo no uniforme. Simula las trayectorias (integración numérica) y clasifica sanas/infectadas con PCA + 4 algoritmos de ML. Física aplicada + ML — es una simulación, no detección clínica real.',
 
       'proj.robot.unit': 'navegación autónoma',
       'proj.robot.tagline': 'Robot autónomo con ROS2 y navegación.',
@@ -61,6 +73,10 @@
       'proj.madrams.unit': 'formación de equipo',
       'proj.madrams.tagline': 'Portal de formación del equipo Baja SAE.',
       'proj.madrams.blurb': 'Biblioteca de cursos de nuevo ingreso para MadRams (Minibaja SAE, Tec GDL): cursos por categoría y nivel, con un render 3D del coche por secuencia de imágenes. HTML/CSS/JS estático.',
+
+      'proj.loopzels.unit': 'carga cognitiva',
+      'proj.loopzels.tagline': 'Rompecabezas animados para entrenar la mente.',
+      'proj.loopzels.blurb': 'Juego de escritorio en Python que fragmenta patrones GIF animados en grillas de 2×2 a 6×6 para reordenar de memoria. La dificultad escala según la Teoría de Carga Cognitiva (Sweller, 1988); motor de animación por hilos, records por tiempo en JSON. Expo Ingenierías.',
 
       'proj.btn.demo': 'Demo en vivo',
       'proj.btn.code': 'Código',
@@ -110,9 +126,17 @@
       'projects.more': 'More on GitHub',
       'channel.readingLabel': 'READING',
 
+      'projects.row.perceive': 'Perceive',
+      'projects.row.process': 'Process',
+      'projects.row.communicate': 'Communicate',
+
       'proj.jtcs.unit': 'count per lane',
       'proj.jtcs.tagline': 'Traffic signals that adapt to demand in real time.',
       'proj.jtcs.blurb': 'Edge-AI intersection control: a YOLOv11 detector counts vehicles per lane and allocates green time with a Webster-derived formula (HCM/MUTCD). React dashboard with network simulation and green waves; runs on Raspberry Pi. Guadalahacks 2026.',
+
+      'proj.agrobot.unit': 'arm + 3D vision',
+      'proj.agrobot.tagline': 'A robot that harvests ripe berries by vision.',
+      'proj.agrobot.blurb': 'Autonomous greenhouse robot: a YOLO11 detector identifies raspberries by ripeness with a stereo (3D) camera, and a 6-DOF arm picks them. Raspberry Pi 4 + Arduino over serial. Team Silmarils, STEAM Challenge 2025.',
 
       'proj.neurobeat.unit': 'EEG · 8 channels',
       'proj.neurobeat.tagline': 'A game you control with your mind.',
@@ -121,6 +145,10 @@
       'proj.telemetry.unit': 'live telemetry',
       'proj.telemetry.tagline': 'Live telemetry for SAE competition cars.',
       'proj.telemetry.blurb': 'Real-time telemetry stack: ESP32 sensors (RPM, temp, GPS, suspension) over LoRa 915 MHz or WiFi into InfluxDB + Grafana. FreeRTOS firmware (dual-core, dual-SPI). Any team adopts it by editing a single .env.',
+
+      'proj.malaria.unit': 'simulation + ML',
+      'proj.malaria.tagline': 'Simulating cell separation with electric fields.',
+      'proj.malaria.blurb': 'Models the dielectrophoresis principle: healthy vs. malaria-infected red cells respond differently in a non-uniform field. Simulates trajectories (numerical integration) and classifies healthy/infected with PCA + 4 ML algorithms. Applied physics + ML — a simulation, not real clinical detection.',
 
       'proj.robot.unit': 'autonomous navigation',
       'proj.robot.tagline': 'Autonomous robot with ROS2 and navigation.',
@@ -133,6 +161,10 @@
       'proj.madrams.unit': 'team onboarding',
       'proj.madrams.tagline': 'Baja SAE team onboarding portal.',
       'proj.madrams.blurb': 'Onboarding course library for MadRams (Minibaja SAE, Tec GDL): courses by category and level, with a 3D image-sequence render of the car. Static HTML/CSS/JS.',
+
+      'proj.loopzels.unit': 'cognitive load',
+      'proj.loopzels.tagline': 'Animated puzzles for cognitive training.',
+      'proj.loopzels.blurb': 'Python desktop game that fragments animated GIF patterns into 2×2–6×6 grids to reorder from memory. Difficulty scales per Cognitive Load Theory (Sweller, 1988); threaded animation engine, JSON time records. Expo Ingenierías.',
 
       'proj.btn.demo': 'Live demo',
       'proj.btn.code': 'Code',
