@@ -45,6 +45,11 @@
       'proj.jtcs.unit': 'conteo por carril',
       'proj.jtcs.tagline': 'Semáforos que se adaptan al tráfico en tiempo real.',
       'proj.jtcs.blurb': 'Control de intersecciones con visión en el borde: un detector YOLOv11 cuenta vehículos por carril y reparte el verde con una fórmula derivada de Webster (HCM/MUTCD). Dashboard en React con simulación de red y ondas verdes; corre en Raspberry Pi. Guadalahacks 2026.',
+      'proj.jtcs.panel.body': 'Demo interactivo en el navegador — sin backend. Fase 1: ajusta el tráfico con +/− y ve cómo cambia el tiempo de verde (fórmula derivada de Webster). Fase 2: dibuja una red de intersecciones y simula autos con onda verde.',
+      'proj.jtcs.panel.tech1': 'Detección en el borde con YOLOv11 sobre Raspberry Pi.',
+      'proj.jtcs.panel.tech2': 'Tiempos de verde según MUTCD/HCM.',
+      'proj.jtcs.panel.tech3': 'Onda verde sincronizada entre intersecciones.',
+      'proj.jtcs.panel.open': 'Abrir demo',
 
       'proj.agrobot.unit': 'brazo + visión 3D',
       'proj.agrobot.tagline': 'Robot que cosecha berries maduras por visión.',
@@ -69,10 +74,14 @@
       'proj.mapatec.unit': 'ruta peatonal',
       'proj.mapatec.tagline': 'Rutas peatonales dentro del campus.',
       'proj.mapatec.blurb': 'Mapa interactivo del campus GDL con cálculo de rutas peatonales entre edificios usando datos públicos de OpenStreetMap. La ubicación se procesa solo en tu dispositivo, con aviso de privacidad conforme a la LFPDPPP. Proyecto independiente, no oficial.',
+      'proj.mapatec.panel.body': 'Mapa interactivo del campus con rutas peatonales entre edificios (datos de OpenStreetMap). Tu ubicación se procesa solo en tu dispositivo, con aviso de privacidad conforme a la LFPDPPP.',
+      'proj.mapatec.panel.privacy': 'Tu ubicación nunca sale de tu dispositivo: no se envía ni se guarda en ningún servidor.',
+      'proj.mapatec.panel.open': 'Abrir mapa',
 
       'proj.madrams.unit': 'formación de equipo',
       'proj.madrams.tagline': 'Portal de formación del equipo Baja SAE.',
       'proj.madrams.blurb': 'Biblioteca de cursos de nuevo ingreso para MadRams (Minibaja SAE, Tec GDL): cursos por categoría y nivel, con un render 3D del coche por secuencia de imágenes. HTML/CSS/JS estático.',
+      'proj.madrams.panel.open': 'Abrir portal',
 
       'proj.loopzels.unit': 'carga cognitiva',
       'proj.loopzels.tagline': 'Rompecabezas animados para entrenar la mente.',
@@ -80,6 +89,13 @@
 
       'proj.btn.demo': 'Demo en vivo',
       'proj.btn.code': 'Código',
+
+      /* Disclosure labels. Both live in the DOM at once (CSS shows the one the
+         current aria-expanded state calls for), so state and language never
+         race to own the same text node. */
+      'disclosure.more': 'Ver más',
+      'disclosure.less': 'Ver menos',
+      'panel.eyebrow': 'Qué puedes probar',
 
       'about.heading': 'Sobre mí',
       'about.bio': 'Soy estudiante de Ingeniería en Robótica en el Tec de Monterrey, Campus Guadalajara. Me interesa el camino completo del sensor a la decisión: adquirir señales, procesarlas y convertirlas en acciones — en visión en el borde, sistemas embebidos y robótica de competencia. Formo parte del equipo Baja SAE MadRams.',
@@ -133,6 +149,11 @@
       'proj.jtcs.unit': 'count per lane',
       'proj.jtcs.tagline': 'Traffic signals that adapt to demand in real time.',
       'proj.jtcs.blurb': 'Edge-AI intersection control: a YOLOv11 detector counts vehicles per lane and allocates green time with a Webster-derived formula (HCM/MUTCD). React dashboard with network simulation and green waves; runs on Raspberry Pi. Guadalahacks 2026.',
+      'proj.jtcs.panel.body': 'Interactive in-browser demo — no backend. Phase 1: adjust traffic with +/− and watch green time adapt (Webster-derived formula). Phase 2: draw an intersection network and simulate cars with green-wave sync.',
+      'proj.jtcs.panel.tech1': 'Edge detection with YOLOv11 on a Raspberry Pi.',
+      'proj.jtcs.panel.tech2': 'Green-time allocation per MUTCD/HCM.',
+      'proj.jtcs.panel.tech3': 'Green-wave sync across intersections.',
+      'proj.jtcs.panel.open': 'Open demo',
 
       'proj.agrobot.unit': 'arm + 3D vision',
       'proj.agrobot.tagline': 'A robot that harvests ripe berries by vision.',
@@ -157,10 +178,14 @@
       'proj.mapatec.unit': 'pedestrian route',
       'proj.mapatec.tagline': 'Pedestrian routing across campus.',
       'proj.mapatec.blurb': 'Interactive GDL campus map with pedestrian routing between buildings from public OpenStreetMap data. Location is processed on-device only, with an LFPDPPP-compliant privacy notice. Independent, unofficial project.',
+      'proj.mapatec.panel.body': 'Interactive campus map with pedestrian routing between buildings (OpenStreetMap data). Your location is processed on-device only, with an LFPDPPP privacy notice.',
+      'proj.mapatec.panel.privacy': 'Your location never leaves your device: nothing is sent to or stored on a server.',
+      'proj.mapatec.panel.open': 'Open map',
 
       'proj.madrams.unit': 'team onboarding',
       'proj.madrams.tagline': 'Baja SAE team onboarding portal.',
       'proj.madrams.blurb': 'Onboarding course library for MadRams (Minibaja SAE, Tec GDL): courses by category and level, with a 3D image-sequence render of the car. Static HTML/CSS/JS.',
+      'proj.madrams.panel.open': 'Open portal',
 
       'proj.loopzels.unit': 'cognitive load',
       'proj.loopzels.tagline': 'Animated puzzles for cognitive training.',
@@ -168,6 +193,10 @@
 
       'proj.btn.demo': 'Live demo',
       'proj.btn.code': 'Code',
+
+      'disclosure.more': 'Show more',
+      'disclosure.less': 'Show less',
+      'panel.eyebrow': 'What you can try',
 
       'about.heading': 'About',
       'about.bio': "I'm a Robotics Engineering student at Tec de Monterrey, Guadalajara. I care about the whole path from sensor to decision — acquiring signals, processing them, turning them into action — across edge vision, embedded systems, and competition robotics. I'm on the MadRams Baja SAE team.",
@@ -462,7 +491,85 @@
   }
 
   /* --------------------------------------------------------------------
-     4. Footer year.
+     4. Expanding demo modules (JTCS, Mapa TEC, MadRams).
+
+     One <button> per module owns aria-expanded and aria-controls. The
+     visible label is not touched here at all: both "Ver más" and "Ver menos"
+     are in the DOM and CSS reveals the one matching aria-expanded, so the
+     language pass (which writes textContent per data-i18n key) and the state
+     change are fully independent — neither can clobber the other, in either
+     order.
+
+     The height animation is CSS (grid-template-rows 0fr -> 1fr). This code
+     owns only the `hidden` attribute, which is what actually takes the panel
+     out of the accessibility tree and the tab order: set before the grow so
+     the row can animate, cleared only after the shrink has finished.
+     -------------------------------------------------------------------- */
+  var COLLAPSE_MS = 320; /* keep in step with the .panel transition in styles.css */
+
+  function motionReduced() {
+    return !!(window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+
+  function initDisclosures() {
+    var buttons = document.querySelectorAll('.disclosure[aria-controls]');
+
+    for (var i = 0; i < buttons.length; i++) {
+      (function (button) {
+        var panel = document.getElementById(button.getAttribute('aria-controls'));
+        if (!panel) return;
+        var collapseTimer = null;
+
+        function expand() {
+          if (collapseTimer !== null) {
+            clearTimeout(collapseTimer);
+            collapseTimer = null;
+          }
+          panel.hidden = false;
+          if (motionReduced()) {
+            panel.classList.add('is-open');
+            return;
+          }
+          /* Read a layout property so the 0fr start frame is committed before
+             the class flips it to 1fr — otherwise the two style changes are
+             coalesced and the panel snaps open. */
+          void panel.offsetHeight;
+          panel.classList.add('is-open');
+        }
+
+        function collapse() {
+          /* If the visitor tabbed into the panel and then activated the
+             button (e.g. via the keyboard shortcut of a screen reader), do
+             not let focus fall off the document when the panel disappears. */
+          if (panel.contains(document.activeElement)) button.focus();
+          panel.classList.remove('is-open');
+          if (motionReduced()) {
+            panel.hidden = true;
+            return;
+          }
+          if (collapseTimer !== null) clearTimeout(collapseTimer);
+          collapseTimer = setTimeout(function () {
+            collapseTimer = null;
+            /* Guard against a re-open that landed inside the window. */
+            if (button.getAttribute('aria-expanded') !== 'true') panel.hidden = true;
+          }, COLLAPSE_MS + 40);
+        }
+
+        /* `click` alone covers mouse, touch, Enter and Space: a <button> fires
+           a click for all four. No keydown handler, so there is exactly one
+           code path and no chance of double-toggling on Enter. */
+        button.addEventListener('click', function () {
+          var open = button.getAttribute('aria-expanded') !== 'true';
+          button.setAttribute('aria-expanded', open ? 'true' : 'false');
+          if (open) expand(); else collapse();
+        });
+      })(buttons[i]);
+    }
+  }
+
+  /* --------------------------------------------------------------------
+     5. Footer year.
      -------------------------------------------------------------------- */
   function setFooterYear() {
     var yearEl = document.getElementById('year');
@@ -472,12 +579,13 @@
   }
 
   /* --------------------------------------------------------------------
-     5. Init. Script is loaded with `defer`, so the DOM is already parsed
+     6. Init. Script is loaded with `defer`, so the DOM is already parsed
         by the time this runs.
      -------------------------------------------------------------------- */
   enableWebFonts();
   applyLanguage(currentLang, hadHashOnInit);
   initLangToggle();
+  initDisclosures();
   initBookingTabs();
   initCalendlyDefer();
   setFooterYear();

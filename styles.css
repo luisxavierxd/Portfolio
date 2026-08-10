@@ -1015,6 +1015,160 @@ button:focus-visible,
 }
 
 /* --------------------------------------------------------------------------
+   12b. Expanding demo modules — disclosure button + inline panel
+
+   Only the three modules with a live demo carry these. Everything resolves
+   through var(--ch), which the <article> already sets inline, so there is not
+   a single per-channel selector here.
+   -------------------------------------------------------------------------- */
+
+/* The control is one <button> — not a clickable header — spanning the full
+   card width so the target is as large as a clickable header would have been,
+   while staying a single tab stop with a real role and state. */
+.channel > .disclosure {
+  margin-top: var(--s3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s2);
+  width: 100%;
+  min-height: 40px;
+  padding: var(--s2) var(--s3);
+  background: transparent;
+  border: 1px dashed color-mix(in srgb, var(--ch) 30%, var(--rule));
+  border-radius: var(--r-sm);
+  color: var(--dim-strong);
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.18s var(--ease), border-color 0.18s var(--ease),
+              background-color 0.18s var(--ease);
+}
+
+.disclosure:hover {
+  color: var(--ch);
+  border-color: color-mix(in srgb, var(--ch) 60%, var(--rule));
+  background: color-mix(in srgb, var(--ch) 8%, transparent);
+}
+
+.disclosure[aria-expanded="true"] {
+  color: var(--ch);
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--ch) 46%, var(--rule));
+}
+
+.disclosure__chevron {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  transition: transform 0.25s var(--ease);
+}
+
+.disclosure[aria-expanded="true"] .disclosure__chevron { transform: rotate(180deg); }
+
+/* Both labels are in the DOM so the i18n pass has a node for each key; CSS
+   picks the one the current state calls for. display:none keeps the other out
+   of the accessible name computation, so the button is named "Ver más" or
+   "Ver menos" and never both. */
+.disclosure[aria-expanded="false"] .disclosure__label--less,
+.disclosure[aria-expanded="true"] .disclosure__label--more { display: none; }
+
+/* The height transition: a grid whose single row goes 0fr -> 1fr. No measured
+   pixel heights, so the panel is free to reflow (wrapping text, mobile width)
+   without JS re-measuring. `hidden` is what actually removes it from the a11y
+   tree and the tab order — the 0fr row is only the animation. */
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.32s var(--ease);
+}
+
+/* Beats the UA `[hidden] { display: none }`, which `display: grid` above
+   would otherwise override. Without this the panel would be zero-height but
+   still focusable — the exact defect this pattern has to avoid. */
+.panel[hidden] { display: none; }
+
+.channel > .panel { margin-top: 0; }
+
+.panel.is-open { grid-template-rows: 1fr; }
+
+.panel__inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.panel__body {
+  margin-top: var(--s4);
+  padding: var(--s4);
+  border: 1px solid color-mix(in srgb, var(--ch) 24%, var(--rule));
+  border-left: 3px solid var(--ch);
+  border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--ch) 6%, transparent);
+}
+
+.panel__body > * { margin-top: var(--s3); }
+.panel__body > :first-child { margin-top: 0; }
+
+.panel__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--ch);
+}
+
+.panel__text {
+  font-size: var(--t-md);
+  line-height: 1.66;
+  color: var(--text);
+}
+
+.panel__list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  font-size: var(--t-sm);
+  line-height: 1.5;
+  color: var(--dim-strong);
+}
+
+.panel__list li {
+  padding-left: var(--s4);
+  position: relative;
+}
+
+.panel__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 2px;
+  background: var(--ch);
+}
+
+.panel__note {
+  font-size: var(--t-sm);
+  line-height: 1.5;
+  color: var(--dim-strong);
+  border-top: 1px solid color-mix(in srgb, var(--ch) 18%, var(--rule));
+  padding-top: var(--s3);
+}
+
+.panel__cta {
+  margin-top: var(--s4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
+/* --------------------------------------------------------------------------
    13. Booking — quiet, tinted by the live-telemetry channel
    -------------------------------------------------------------------------- */
 
