@@ -124,10 +124,13 @@ body::before {
   background-position: center top;
 }
 
-/* Ambient light entering from the left edge. The origin sits off-canvas so the
-   wash has no visible start, and the gradient reaches full transparency at 72%
-   of a box far taller than it needs — that is what keeps it from ending on a
-   hard edge. Cyan because that is the booking channel, not a new colour. */
+/* The single ambient wash, in the hero channel's own amber. It lives on body,
+   not on .hero, because .hero is capped at --measure: a layer inside that box
+   gets clipped at the content column and the light ends on a vertical edge
+   mid-screen. Here it spans the viewport, its origin sits off-canvas to the
+   left so there is no visible start, and it reaches full transparency at 72%
+   of a box far taller than it needs, so it never ends on an edge either.
+   One wash, not scattered glow — the board is where colour is spent. */
 body::after {
   content: "";
   position: absolute;
@@ -137,9 +140,9 @@ body::after {
   height: 1200px;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(115% 78% at -8% 20%,
-    color-mix(in srgb, var(--ch-cyan) 10%, transparent) 0,
-    color-mix(in srgb, var(--ch-cyan) 4%, transparent) 34%,
+  background: radial-gradient(115% 78% at -8% 16%,
+    color-mix(in srgb, var(--ch-amber) 7%, transparent) 0,
+    color-mix(in srgb, var(--ch-amber) 3%, transparent) 34%,
     transparent 72%);
 }
 
@@ -407,16 +410,6 @@ button:focus-visible,
   max-width: var(--measure);
   margin-inline: auto;
   padding: clamp(32px, 6vw, 56px) var(--pad-x) clamp(40px, 6vw, 72px);
-}
-
-/* single ambient wash behind the master trace — not scattered glow */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 40% 0;
-  background: radial-gradient(70% 90% at 30% 0%,
-              color-mix(in srgb, var(--ch) 7%, transparent), transparent 70%);
-  pointer-events: none;
 }
 
 .hero__content { position: relative; }
