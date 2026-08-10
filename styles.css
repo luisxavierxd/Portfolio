@@ -29,13 +29,16 @@
   --dim-strong: #8792a3;
 
   /* Channel colors — one per project, meaningful assignment.
-     All six pass AA on --bg / --panel / --panel-2. */
+     All nine pass AA on --bg / --panel / --panel-2. */
   --ch-amber:  #ffb000; /* JTCS           — count / demand      */
   --ch-green:  #46e88a; /* NeuroBeat      — bio-signal          */
   --ch-cyan:   #38bdf8; /* TelemetryStack — live telemetry      */
   --ch-violet: #b48ead; /* Robot ROS2     — navigation          */
   --ch-coral:  #ff8f6b; /* Mapa TEC       — routing             */
   --ch-lime:   #c3e88d; /* MadRams        — teaching/onboarding */
+  --ch-emerald: #14b8a6; /* AgroBot       — greenhouse harvesting */
+  --ch-magenta: #e879f9; /* Loopzels      — cognitive puzzles     */
+  --ch-red:     #ff3d6e; /* Malaria       — field / physics       */
 
   /* Default channel for anything outside a channel module (nav, hero,
      footer). Amber is the master channel. Every accent, focus ring and

@@ -72,6 +72,7 @@
       'about.skills.embedded': 'Embebidos',
       'about.skills.fullstack': 'Full-stack / Datos',
       'about.skills.languages': 'Lenguajes',
+      'about.skills.simulation': 'Simulación',
 
       'book.heading': 'Agenda',
       'book.intro': '¿Quieres platicar de un proyecto? Aparta 30 minutos: presencial en campus o por Zoom.',
@@ -143,6 +144,7 @@
       'about.skills.embedded': 'Embedded',
       'about.skills.fullstack': 'Full-stack / Data',
       'about.skills.languages': 'Languages',
+      'about.skills.simulation': 'Simulation',
 
       'book.heading': 'Book',
       'book.intro': 'Want to talk about a project? Grab 30 minutes — in person on campus or over Zoom.',
