@@ -19,7 +19,7 @@ Calendly). Static site: plain HTML, CSS, and vanilla JavaScript, no frameworks, 
 2. Create the repo on GitHub and add it as a remote (`git remote add origin <url>`). · Crea el repo en GitHub y agrégalo como remoto (`git remote add origin <url>`).
 3. Push files to the default branch.
 4. Settings → Pages → Deploy from a branch → `main` / root.
-5. Live at `https://luisxavierxd.github.io/portfolio/` (project) or `https://luisxavierxd.github.io/` (user repo). The `og:url` and `og:image` tags in `index.html` are absolute and assume the `portfolio` project path — **update both if you deploy anywhere else.** · Las etiquetas `og:url` y `og:image` en `index.html` son absolutas y asumen la ruta del proyecto `portfolio`; **actualiza ambas si despliegas en otra ruta.**
+5. Live at `https://luisxavierxd.github.io/Portfolio/`. The `og:url` and `og:image` tags in `index.html` are absolute and match the repository name, capital P included — **update both if the site is ever served from a different path.** · Las etiquetas `og:url` y `og:image` en `index.html` son absolutas y coinciden con el nombre del repositorio, con P mayúscula; **actualiza ambas si el sitio pasa a servirse desde otra ruta.**
 6. `.nojekyll` keeps GitHub from processing the static files.
 
 ## Local preview
