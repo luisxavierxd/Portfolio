@@ -98,10 +98,15 @@ html {
 
 body {
   margin: 0;
-  /* No page-wide graticule: the trace screens carry their own, denser one at
-     the right scale, and running both spent the "this is a screen" cue
-     everywhere instead of letting the readout wells own it. */
+  /* Quiet panel grid — non-text decoration, drawn with --dim at 5%. Kept
+     deliberately fainter and four times coarser than the graticule inside the
+     trace screens, so the wells still read as the denser, brighter surface. */
   background-color: var(--bg);
+  background-image:
+    linear-gradient(to right,  color-mix(in srgb, var(--dim) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--dim) 5%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center top;
   color: var(--text);
   font-family: var(--font-sans);
   font-size: var(--t-base);

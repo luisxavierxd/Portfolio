@@ -18,7 +18,6 @@
       'nav.subtitle': 'Ingeniería en Robótica · Tec GDL',
       'nav.projects': 'Proyectos',
       'nav.about': 'Sobre mí',
-      'nav.book': 'Agenda',
       'nav.bookCta': 'Agendar',
       /* WCAG 2.5.3: the accessible name has to contain the visible label,
          which is the code of the language you can switch TO. */
@@ -92,7 +91,6 @@
       'nav.subtitle': 'Robotics Engineering · Tec GDL',
       'nav.projects': 'Projects',
       'nav.about': 'About',
-      'nav.book': 'Book',
       'nav.bookCta': 'Book',
       'langToggle.ariaLabel': 'ES — switch to Spanish',
 
