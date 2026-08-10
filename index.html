@@ -145,8 +145,14 @@
           <span class="reading__unit" data-i18n="proj.agrobot.unit">brazo + visión 3D</span>
         </p>
         <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: agrobot -
-             a robotic-arm reach: a smooth arc ending in a small "grasp" marker (a pick motion).
-             Task 3 authors the path. --></svg>
+             the end-effector's reach: one smooth arc lifting off the base, carrying over, and
+             settling onto the fruit, where two jaws close on the berry. A pick, not a signal. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M5 31 C14 31 20 25 26 18 C33 10 42 6 56 6 C70 6 78 10 86 16 C91 19.8 95 22.4 98.5 22.5"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M98.5 22.5 L106 18.8 M98.5 22.5 L106 26.2"/>
+          <circle cx="110" cy="22.5" r="3"/>
+        </svg>
         <p class="channel__tagline" data-i18n="proj.agrobot.tagline">Robot que cosecha berries maduras por visión.</p>
         <p class="channel__blurb" data-i18n="proj.agrobot.blurb">Robot autónomo para invernaderos: un detector YOLO11 identifica frambuesas por etapa de madurez con cámara estereoscópica (3D), y un brazo de 6 grados de libertad las recolecta. Control en Raspberry Pi 4 + Arduino por serial. Equipo Silmarils, reto STEAM 2025.</p>
         <ul class="badges">
@@ -274,8 +280,16 @@
           <span class="reading__unit" data-i18n="proj.malaria.unit">simulación + ML</span>
         </p>
         <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: malaria -
-             two diverging trajectories: healthy vs. infected cell paths splitting under the
-             field. Task 3 authors the path. --></svg>
+             two cell trajectories entering on the same line and splitting once they reach the
+             non-uniform field: the infected cell deflects hard and early, the healthy one drifts
+             the other way. Each settles into its own lane - the separation is the measurement. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 18 H36 C48 18 55 13 63 10 C76 5.5 92 4 114 4"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 18 H36 C54 18 66 20 80 22.5 C92 24.5 102 26 114 27"/>
+          <circle cx="114" cy="4" r="2.6"/>
+          <circle cx="114" cy="27" r="2.6"/>
+        </svg>
         <p class="channel__tagline" data-i18n="proj.malaria.tagline">Simula separar células infectadas con campos eléctricos.</p>
         <p class="channel__blurb" data-i18n="proj.malaria.blurb">Modela el principio de dielectroforesis: glóbulos rojos sanos vs. infectados con malaria responden distinto en un campo no uniforme. Simula las trayectorias (integración numérica) y clasifica sanas/infectadas con PCA + 4 algoritmos de ML. Física aplicada + ML — es una simulación, no detección clínica real.</p>
         <ul class="badges">
@@ -362,7 +376,17 @@
           <span class="reading__unit" data-i18n="proj.loopzels.unit">carga cognitiva</span>
         </p>
         <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: loopzels -
-             a rising difficulty staircase (4 to 36 pieces). Task 3 authors the path. --></svg>
+             five square steps, one per grid: 2x2, 3x3, 4x4, 5x5, 6x6. Riser heights follow the
+             piece count (4, 9, 16, 25, 36), so the climb accelerates the way cognitive load does.
+             A tile marker rides each step. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 32 H24 V28 H45 V22.5 H66 V15.5 H87 V7 H116"/>
+          <rect x="12.5" y="30.5" width="3" height="3"/>
+          <rect x="33" y="26.5" width="3" height="3"/>
+          <rect x="54" y="21" width="3" height="3"/>
+          <rect x="75" y="14" width="3" height="3"/>
+          <rect x="96" y="5.5" width="3" height="3"/>
+        </svg>
         <p class="channel__tagline" data-i18n="proj.loopzels.tagline">Rompecabezas animados para entrenar la mente.</p>
         <p class="channel__blurb" data-i18n="proj.loopzels.blurb">Juego de escritorio en Python que fragmenta patrones GIF animados en grillas de 2×2 a 6×6 para reordenar de memoria. La dificultad escala según la Teoría de Carga Cognitiva (Sweller, 1988); motor de animación por hilos, records por tiempo en JSON. Expo Ingenierías.</p>
         <ul class="badges">
