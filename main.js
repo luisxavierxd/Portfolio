@@ -93,7 +93,6 @@
       'proj.jtcs.panel.tech1': 'Detección en el borde con YOLOv11 sobre Raspberry Pi.',
       'proj.jtcs.panel.tech2': 'Tiempos de verde según MUTCD/HCM.',
       'proj.jtcs.panel.tech3': 'Onda verde sincronizada entre intersecciones.',
-      'proj.jtcs.panel.open': 'Abrir demo',
 
       'proj.agrobot.unit': 'brazo + visión de madurez',
       'proj.agrobot.tagline': 'Robot que cosecha berries maduras por visión.',
@@ -122,12 +121,10 @@
       'proj.mapatec.blurb': 'Mapa interactivo del campus GDL con cálculo de rutas peatonales entre edificios usando datos públicos de OpenStreetMap. La ubicación se procesa solo en tu dispositivo, con aviso de privacidad conforme a la LFPDPPP. Proyecto independiente, no oficial.',
       'proj.mapatec.panel.body': 'Mapa interactivo del campus con rutas peatonales entre edificios (datos de OpenStreetMap). Tu ubicación se procesa solo en tu dispositivo, con aviso de privacidad conforme a la LFPDPPP.',
       'proj.mapatec.panel.privacy': 'Tu ubicación nunca sale de tu dispositivo: no se envía ni se guarda en ningún servidor.',
-      'proj.mapatec.panel.open': 'Abrir mapa',
 
       'proj.madrams.unit': 'formación de equipo',
       'proj.madrams.tagline': 'Portal de formación del equipo Baja SAE.',
       'proj.madrams.blurb': 'Biblioteca de cursos de nuevo ingreso para MadRams (Minibaja SAE, Tec GDL): cursos por categoría y nivel, con un render 3D del coche por secuencia de imágenes. HTML/CSS/JS estático.',
-      'proj.madrams.panel.open': 'Abrir portal',
 
       'proj.loopzels.unit': 'carga cognitiva',
       'proj.loopzels.tagline': 'Rompecabezas animados para entrenar la mente.',
@@ -316,7 +313,6 @@
       'proj.jtcs.panel.tech1': 'Edge detection with YOLOv11 on a Raspberry Pi.',
       'proj.jtcs.panel.tech2': 'Green-time allocation per MUTCD/HCM.',
       'proj.jtcs.panel.tech3': 'Green-wave sync across intersections.',
-      'proj.jtcs.panel.open': 'Open demo',
 
       'proj.agrobot.unit': 'arm + ripeness vision',
       'proj.agrobot.tagline': 'A robot that harvests ripe berries by vision.',
@@ -345,12 +341,10 @@
       'proj.mapatec.blurb': 'Interactive GDL campus map with pedestrian routing between buildings from public OpenStreetMap data. Location is processed on-device only, with an LFPDPPP-compliant privacy notice. Independent, unofficial project.',
       'proj.mapatec.panel.body': 'Interactive campus map with pedestrian routing between buildings (OpenStreetMap data). Your location is processed on-device only, with an LFPDPPP privacy notice.',
       'proj.mapatec.panel.privacy': 'Your location never leaves your device: nothing is sent to or stored on a server.',
-      'proj.mapatec.panel.open': 'Open map',
 
       'proj.madrams.unit': 'team onboarding',
       'proj.madrams.tagline': 'Baja SAE team onboarding portal.',
       'proj.madrams.blurb': 'Onboarding course library for MadRams (Minibaja SAE, Tec GDL): courses by category and level, with a 3D image-sequence render of the car. Static HTML/CSS/JS.',
-      'proj.madrams.panel.open': 'Open portal',
 
       'proj.loopzels.unit': 'cognitive load',
       'proj.loopzels.tagline': 'Animated puzzles for cognitive training.',
