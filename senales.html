@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.title.senales">Señales e IA — Luis Xavier García Pimentel Ascencio</title>
+<meta name="description" data-i18n-content="cat.senales.line" content="Procesar: señales crudas convertidas en decisiones — EEG, física aplicada y aprendizaje automático.">
+
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               script-src 'self';
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+               img-src 'self' data: https:;
+               font-src 'self' https://fonts.gstatic.com;
+               connect-src 'self';">
+
+<meta property="og:title" data-i18n-content="meta.title.senales" content="Señales e IA — Luis Xavier García Pimentel Ascencio">
+<meta property="og:description" data-i18n-content="cat.senales.line" content="Procesar: señales crudas convertidas en decisiones — EEG, física aplicada y aprendizaje automático.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://luisxavierxd.github.io/Portfolio/senales.html">
+<meta property="og:image" content="https://luisxavierxd.github.io/Portfolio/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" data-i18n-content="meta.ogImageAlt" content="Trazo de señal que pasa de ruido a una decisión discreta, sobre fondo azul-carbón, junto al nombre Luis Xavier García Pimentel Ascencio.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+<link id="fonts-css" rel="stylesheet" media="print" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Saltar al contenido</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Navegación principal" data-i18n-aria="nav.ariaLabel">
+    <a class="brand" href="index.html" data-page-link>
+      <span class="brand__mark">LX</span>
+      <span class="brand__name">Luis Xavier García Pimentel Ascencio</span>
+      <span class="brand__subtitle" data-i18n="nav.subtitle">Ingeniería en Robótica · Tec GDL</span>
+    </a>
+    <ul class="nav__links">
+      <li><a class="nav__link" href="index.html#projects" data-page-link data-i18n="nav.projects">Proyectos</a></li>
+      <li><a class="nav__link" href="index.html#about" data-page-link data-i18n="nav.about">Sobre mí</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="EN — cambiar a inglés" data-i18n-aria="langToggle.ariaLabel">EN</button>
+      <a class="btn btn--primary btn--small" href="index.html#book" data-page-link data-i18n="nav.bookCta">Agendar</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <section class="section section--sub" style="--ch: var(--ch-green)">
+    <a class="backlink" href="index.html" data-page-link data-i18n="nav.back">Volver al tablero</a>
+    <h1 class="subhead__title" data-i18n="cat.senales.name">Señales e IA</h1>
+    <p class="subhead__line" data-i18n="cat.senales.line">Procesar: señales crudas convertidas en decisiones — EEG, física aplicada y aprendizaje automático.</p>
+    <p class="subhead__count" data-i18n="cat.senales.count">2 canales</p>
+  </section>
+
+  <section class="section section--projects" aria-labelledby="board-heading" style="--ch: var(--ch-green)">
+    <h2 id="board-heading" class="section__eyebrow" data-i18n="projects.eyebrow">Tablero de lecturas</h2>
+
+    <div class="board">
+
+      <article class="channel" style="--ch: var(--ch-green)">
+        <p class="channel__addr">CH.2.1</p>
+        <h3 class="channel__name">NeuroBeat</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">250 Hz</span>
+          <span class="reading__unit" data-i18n="proj.neurobeat.unit">EEG · 8 canales</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: neurobeat -
+             continuous alpha/beta oscillation around a flat baseline, interrupted once by the
+             sharp deflection-and-undershoot of a deliberate blink. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M3 19 Q6 9 9 18 Q12 30 15 20 Q18 12 21 18 Q24 27 27 20 Q30 7 33 18 Q36 29 39 19
+                   Q42 13 45 20 L48 18 L51 3 L55 32 L58 19
+                   Q61 8 64 18 Q67 30 70 20 Q73 12 76 18 Q79 28 82 20 Q85 9 88 18 Q91 29 94 20
+                   Q97 13 100 18 Q103 27 106 20 Q109 8 112 18 Q114 28 117 19"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.neurobeat.tagline">Un juego que controlas con la mente.</p>
+        <p class="channel__blurb" data-i18n="proj.neurobeat.blurb">Traduce señales EEG del headset Unicorn Black (8 canales) en acciones de juego: filtrado notch/bandpass/ICA, un modelo EEGNet detecta parpadeos deliberados y el giroscopio mueve el cursor, todo por UDP hacia un juego en Unity. Hackathon Brain.io.</p>
+        <ul class="badges">
+          <li class="badge">EEG</li>
+          <li class="badge">EEGNet</li>
+          <li class="badge">Signal Processing</li>
+          <li class="badge">Python</li>
+          <li class="badge">UDP</li>
+          <li class="badge">Unity</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/NeuroBeat" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-red)">
+        <p class="channel__addr">CH.2.2</p>
+        <h3 class="channel__name">Malaria · Dielectroforesis</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">PCA · 4 clf</span>
+          <span class="reading__unit" data-i18n="proj.malaria.unit">simulación + ML</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: malaria -
+             two cell trajectories entering on the same line and splitting once they reach the
+             non-uniform field: the infected cell deflects hard and early, the healthy one drifts
+             the other way. Each settles into its own lane - the separation is the measurement. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 18 H36 C48 18 55 13 63 10 C76 5.5 92 4 114 4"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 18 H36 C54 18 66 20 80 22.5 C92 24.5 102 26 114 27"/>
+          <circle cx="114" cy="4" r="2.6"/>
+          <circle cx="114" cy="27" r="2.6"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.malaria.tagline">Simula separar células infectadas con campos eléctricos.</p>
+        <p class="channel__blurb" data-i18n="proj.malaria.blurb">Modela el principio de dielectroforesis: glóbulos rojos sanos vs. infectados con malaria responden distinto en un campo no uniforme. Simula las trayectorias (integración numérica) y clasifica sanas/infectadas con PCA + 4 algoritmos de ML. Física aplicada + ML — es una simulación, no detección clínica real.</p>
+        <ul class="badges">
+          <li class="badge">Python</li>
+          <li class="badge">NumPy</li>
+          <li class="badge">Matplotlib</li>
+          <li class="badge">scikit-learn</li>
+          <li class="badge">PCA</li>
+          <li class="badge">Simulation</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/DeteccionMalariaPorCamposElectricos" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <nav class="section siblings" aria-label="Otros bancos" data-i18n-aria="nav.siblings">
+    <span class="siblings__label" data-i18n="nav.siblings">Otros bancos</span>
+    <a class="link" style="--ch: var(--ch-amber)" href="robotica.html" data-page-link data-i18n="cat.robotica.name">Robótica</a>
+    <a class="link" style="--ch: var(--ch-coche)" href="telemetria.html" data-page-link data-i18n="cat.telemetria.name">Telemetría y potencia</a>
+    <a class="link" style="--ch: var(--ch-cyan)" href="software.html" data-page-link data-i18n="cat.software.name">Software y herramientas</a>
+    <a class="link" style="--ch: var(--ch-lime)" href="formacion.html" data-page-link data-i18n="cat.formacion.name">Formación</a>
+  </nav>
+
+</main>
+
+<footer class="site-footer">
+  <ul class="footer__links">
+    <li><a class="footer__link" href="https://github.com/luisxavierxd" target="_blank" rel="noopener noreferrer" data-i18n="social.github">GitHub</a></li>
+    <li><a class="footer__link" href="https://www.linkedin.com/in/luis-xavier-garcía-pimentel-ascencio-251508333" target="_blank" rel="noopener noreferrer" data-i18n="social.linkedin">LinkedIn</a></li>
+    <li><a class="footer__link" href="mailto:luisxaviergpa@proton.me" data-i18n="social.email">Email</a></li>
+  </ul>
+  <p class="footer__meta">© <span id="year"></span> · <span data-i18n="footer.tagline">sitio estático en GitHub Pages</span></p>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

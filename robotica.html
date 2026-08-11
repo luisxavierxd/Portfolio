@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.title.robotica">Robótica — Luis Xavier García Pimentel Ascencio</title>
+<meta name="description" data-i18n-content="cat.robotica.line" content="Percibir: visión, brazos y navegación — máquinas que leen el mundo antes de moverse.">
+
+<!-- No Calendly on the category pages: the booking well lives on the landing
+     only, so this page's policy never has to admit a third-party origin. -->
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               script-src 'self';
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+               img-src 'self' data: https:;
+               font-src 'self' https://fonts.gstatic.com;
+               connect-src 'self';">
+
+<meta property="og:title" data-i18n-content="meta.title.robotica" content="Robótica — Luis Xavier García Pimentel Ascencio">
+<meta property="og:description" data-i18n-content="cat.robotica.line" content="Percibir: visión, brazos y navegación — máquinas que leen el mundo antes de moverse.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://luisxavierxd.github.io/Portfolio/robotica.html">
+<meta property="og:image" content="https://luisxavierxd.github.io/Portfolio/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" data-i18n-content="meta.ogImageAlt" content="Trazo de señal que pasa de ruido a una decisión discreta, sobre fondo azul-carbón, junto al nombre Luis Xavier García Pimentel Ascencio.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+<link id="fonts-css" rel="stylesheet" media="print" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Saltar al contenido</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Navegación principal" data-i18n-aria="nav.ariaLabel">
+    <a class="brand" href="index.html" data-page-link>
+      <span class="brand__mark">LX</span>
+      <span class="brand__name">Luis Xavier García Pimentel Ascencio</span>
+      <span class="brand__subtitle" data-i18n="nav.subtitle">Ingeniería en Robótica · Tec GDL</span>
+    </a>
+    <ul class="nav__links">
+      <li><a class="nav__link" href="index.html#projects" data-page-link data-i18n="nav.projects">Proyectos</a></li>
+      <li><a class="nav__link" href="index.html#about" data-page-link data-i18n="nav.about">Sobre mí</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="EN — cambiar a inglés" data-i18n-aria="langToggle.ariaLabel">EN</button>
+      <a class="btn btn--primary btn--small" href="index.html#book" data-page-link data-i18n="nav.bookCta">Agendar</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <section class="section section--sub" style="--ch: var(--ch-amber)">
+    <a class="backlink" href="index.html" data-page-link data-i18n="nav.back">Volver al tablero</a>
+    <h1 class="subhead__title" data-i18n="cat.robotica.name">Robótica</h1>
+    <p class="subhead__line" data-i18n="cat.robotica.line">Percibir: visión, brazos y navegación — máquinas que leen el mundo antes de moverse.</p>
+    <p class="subhead__count" data-i18n="cat.robotica.count">3 canales</p>
+  </section>
+
+  <section class="section section--projects" aria-labelledby="board-heading" style="--ch: var(--ch-amber)">
+    <h2 id="board-heading" class="section__eyebrow" data-i18n="projects.eyebrow">Tablero de lecturas</h2>
+
+    <div class="board">
+
+      <article class="channel" style="--ch: var(--ch-amber)">
+        <p class="channel__addr">CH.1.1</p>
+        <h3 class="channel__name">JTCS</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">06</span>
+          <span class="reading__unit" data-i18n="proj.jtcs.unit">conteo por carril</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: jtcs -
+             discrete count pulses per lane, each taller than the last until the green-time
+             allocation clamps at its ceiling and holds. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 30 H10 V25 H18 V30 H24 V19 H32 V30 H38 V13 H46 V30 H52 V7 H60 V30
+                   H66 V7 H74 V30 H80 V7 H88 V30 H96 V7 H116"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.jtcs.tagline">Semáforos que se adaptan al tráfico en tiempo real.</p>
+        <p class="channel__blurb" data-i18n="proj.jtcs.blurb">Control de intersecciones con visión en el borde: un detector YOLOv11 cuenta vehículos por carril y reparte el verde con una fórmula derivada de Webster (HCM/MUTCD). Dashboard en React con simulación de red y ondas verdes; corre en Raspberry Pi. Guadalahacks 2026.</p>
+        <ul class="badges">
+          <li class="badge">YOLOv11</li>
+          <li class="badge">Computer Vision</li>
+          <li class="badge">React 19</li>
+          <li class="badge">Node.js</li>
+          <li class="badge">WebSocket</li>
+          <li class="badge">Python</li>
+          <li class="badge">Raspberry Pi</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--demo" href="https://luisxavierxd.github.io/JTCS/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/JTCS" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+        <button class="disclosure" type="button" aria-expanded="false" aria-controls="panel-jtcs">
+          <svg class="disclosure__chevron" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+            <path d="M2.75 4.5 6 7.75 9.25 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="disclosure__label disclosure__label--more" data-i18n="disclosure.more">Ver más</span>
+          <span class="disclosure__label disclosure__label--less" data-i18n="disclosure.less">Ver menos</span>
+        </button>
+        <div class="panel" id="panel-jtcs" hidden>
+          <div class="panel__inner">
+            <div class="panel__body">
+              <p class="panel__eyebrow" data-i18n="panel.eyebrow">Qué puedes probar</p>
+              <p class="panel__text" data-i18n="proj.jtcs.panel.body">Demo interactivo en el navegador — sin backend. Fase 1: ajusta el tráfico con +/− y ve cómo cambia el tiempo de verde (fórmula derivada de Webster). Fase 2: dibuja una red de intersecciones y simula autos con onda verde.</p>
+              <ul class="panel__list">
+                <li data-i18n="proj.jtcs.panel.tech1">Detección en el borde con YOLOv11 sobre Raspberry Pi.</li>
+                <li data-i18n="proj.jtcs.panel.tech2">Tiempos de verde según MUTCD/HCM.</li>
+                <li data-i18n="proj.jtcs.panel.tech3">Onda verde sincronizada entre intersecciones.</li>
+              </ul>
+              <p class="panel__cta">
+                <a class="btn btn--primary" href="https://luisxavierxd.github.io/JTCS/" target="_blank" rel="noopener noreferrer" data-i18n="proj.jtcs.panel.open">Abrir demo</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-emerald)">
+        <p class="channel__addr">CH.1.2</p>
+        <h3 class="channel__name">AgroBot</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">6 DOF</span>
+          <span class="reading__unit" data-i18n="proj.agrobot.unit">brazo + visión de madurez</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: agrobot -
+             the end-effector's reach: one smooth arc lifting off the base, carrying over, and
+             settling onto the fruit, where two jaws close on the berry. A pick, not a signal. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M5 31 C14 31 20 25 26 18 C33 10 42 6 56 6 C70 6 78 10 86 16 C91 19.8 95 22.4 98.5 22.5"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M98.5 22.5 L106 18.8 M98.5 22.5 L106 26.2"/>
+          <circle cx="110" cy="22.5" r="3"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.agrobot.tagline">Robot que cosecha berries maduras por visión.</p>
+        <p class="channel__blurb" data-i18n="proj.agrobot.blurb">Prototipo de prepa (equipo Silmarils, ITESO): una cinta transportadora guía frambuesas y una garra de brazo de 6 GDL las recolecta. Un detector YOLOv8n (TensorFlow, Pi Camera V2) identifica el fruto por madurez y su posición se pasa al brazo por cinemática inversa vía Arduino. Las piezas —visión, brazo, cinemática— se probaron por separado; la integración total quedó a nivel prototipo.</p>
+        <ul class="badges">
+          <li class="badge">YOLOv8n</li>
+          <li class="badge">TensorFlow</li>
+          <li class="badge">6-DOF Arm</li>
+          <li class="badge">Inverse Kinematics</li>
+          <li class="badge">Raspberry Pi 4</li>
+          <li class="badge">Arduino</li>
+          <li class="badge">Serial</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--demo" href="https://agrobot.devops.torroca.com/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.site">Ver proyecto</a>
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/AgroBot" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-violet)">
+        <p class="channel__addr">CH.1.3</p>
+        <h3 class="channel__name">Robot Interprepas Jesuitas 2025</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">Nav2</span>
+          <span class="reading__unit" data-i18n="proj.robot.unit">navegación autónoma</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: robot -
+             a planned Nav2 trajectory: straight legs meeting at angles, one node marker per
+             waypoint. Not a wave - a route through space. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M7 31 L21 21 L25 9 L52 13 L64 27 L92 24 L114 12"/>
+          <circle cx="7" cy="31" r="2"/>
+          <circle cx="21" cy="21" r="2"/>
+          <circle cx="25" cy="9" r="2"/>
+          <circle cx="52" cy="13" r="2"/>
+          <circle cx="64" cy="27" r="2"/>
+          <circle cx="92" cy="24" r="2"/>
+          <circle cx="114" cy="12" r="2"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.robot.tagline">Robot autónomo con ROS2 y navegación.</p>
+        <p class="channel__blurb" data-i18n="proj.robot.blurb">Robot diferencial sobre ROS2: navegación con Nav2, LiDAR LDROBOT, interfaz de hardware por Arduino y teleoperación por joystick. Robótica de competencia con el stack estándar de la industria.</p>
+        <p class="channel__note" data-i18n="proj.robot.note">El día de la competencia no funcionó: no logré integrar la ruta planificada al abrir SLAM, por inexperiencia y falta de documentación. Tenía la ruta y tenía el robot moviéndose; no los uní a tiempo.</p>
+        <ul class="badges">
+          <li class="badge">ROS2</li>
+          <li class="badge">Nav2</li>
+          <li class="badge">LiDAR</li>
+          <li class="badge">Arduino</li>
+          <li class="badge">C++</li>
+          <li class="badge">Python</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/Robot_Interprepas_Jesuitas_2025" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <nav class="section siblings" aria-label="Otros bancos" data-i18n-aria="nav.siblings">
+    <span class="siblings__label" data-i18n="nav.siblings">Otros bancos</span>
+    <a class="link" style="--ch: var(--ch-green)" href="senales.html" data-page-link data-i18n="cat.senales.name">Señales e IA</a>
+    <a class="link" style="--ch: var(--ch-coche)" href="telemetria.html" data-page-link data-i18n="cat.telemetria.name">Telemetría y potencia</a>
+    <a class="link" style="--ch: var(--ch-cyan)" href="software.html" data-page-link data-i18n="cat.software.name">Software y herramientas</a>
+    <a class="link" style="--ch: var(--ch-lime)" href="formacion.html" data-page-link data-i18n="cat.formacion.name">Formación</a>
+  </nav>
+
+</main>
+
+<footer class="site-footer">
+  <ul class="footer__links">
+    <li><a class="footer__link" href="https://github.com/luisxavierxd" target="_blank" rel="noopener noreferrer" data-i18n="social.github">GitHub</a></li>
+    <li><a class="footer__link" href="https://www.linkedin.com/in/luis-xavier-garcía-pimentel-ascencio-251508333" target="_blank" rel="noopener noreferrer" data-i18n="social.linkedin">LinkedIn</a></li>
+    <li><a class="footer__link" href="mailto:luisxaviergpa@proton.me" data-i18n="social.email">Email</a></li>
+  </ul>
+  <p class="footer__meta">© <span id="year"></span> · <span data-i18n="footer.tagline">sitio estático en GitHub Pages</span></p>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

@@ -39,6 +39,14 @@
   --ch-emerald: #14b8a6; /* AgroBot       — greenhouse harvesting */
   --ch-magenta: #e879f9; /* Loopzels      — cognitive puzzles     */
   --ch-red:     #ff3d6e; /* Malaria       — field / physics       */
+  /* Each sub-page holds one bank of channels, so distinctness only has to
+     hold *within* a page. The picks below still clear every existing hue by
+     eye on --bg, and no two colors ever share a board. */
+  --ch-coche:   #f97316; /* Coche MadRams — Baja rust-orange (vs. lime)  */
+  --ch-quantum: #a855f7; /* Quantum       — high-voltage electric purple */
+  --ch-elyos:   #3b82f6; /* Silca Elyos   — award steel-blue             */
+  --ch-teal:    #5eead4; /* LaTeX Studio  — typeset paper-mint           */
+  --ch-indigo:  #818cf8; /* Frenado Magn. — field-line periwinkle        */
 
   /* Default channel for anything outside a channel module (nav, hero,
      footer). Amber is the master channel. Every accent, focus ring and
@@ -120,9 +128,13 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  /* 22% put the lattice at 1.24:1 against the page — technically present,
+     practically invisible, and the landing's bank rows have enough open field
+     that the texture has to actually carry it. 42% lands near 1.8:1: readable
+     as a surface, still quiet enough to sit under type. */
   background-image: radial-gradient(
-    color-mix(in srgb, var(--dim) 22%, transparent) 1.1px,
-    transparent 1.2px);
+    color-mix(in srgb, var(--dim) 42%, transparent) 1.15px,
+    transparent 1.25px);
   background-size: 28px 28px;
   background-position: center top;
 }
@@ -245,6 +257,10 @@ button:focus-visible,
 
 .brand:hover .brand__mark { color: var(--ch); }
 
+/* Name and discipline read as one subtitle line, joined by the separator below.
+   They are two elements only because the subtitle's textContent belongs to the
+   i18n pass — a name folded into that span gets overwritten on load. */
+.brand__name,
 .brand__subtitle {
   display: none;
   font-family: var(--font-mono);
@@ -252,6 +268,12 @@ button:focus-visible,
   letter-spacing: 0.06em;
   color: var(--dim-strong);
   white-space: nowrap;
+}
+
+.brand__subtitle::before {
+  content: "·";
+  margin-right: var(--s3);
+  color: var(--dim);
 }
 
 .nav__links {
@@ -318,7 +340,13 @@ button:focus-visible,
   }
 }
 
-@media (min-width: 940px) {
+@media (min-width: 700px) {
+  .brand__name { display: inline; }
+}
+
+/* The subtitle only joins once the name, the nav and the CTA all fit without
+   crowding — it is the least load-bearing thing in the bar. */
+@media (min-width: 1200px) {
   .brand__subtitle { display: inline; }
 }
 
@@ -570,6 +598,95 @@ button:focus-visible,
 }
 
 /* --------------------------------------------------------------------------
+   7b. Sub-page masthead — the landing is the whole instrument board, each
+       sub-page is one channel bank zoomed in. The masthead says which bank
+       you are looking at and how to get back, and takes the bank's own --ch
+       (set on the <section>) so the route is colour-coded end to end.
+   -------------------------------------------------------------------------- */
+
+.section--sub { border-top: 0; }
+
+.backlink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 40px;
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--dim-strong);
+  transition: color 0.18s var(--ease);
+}
+
+.backlink::before {
+  content: "←";
+  display: inline-block;
+  transition: transform 0.18s var(--ease);
+}
+
+.backlink:hover { color: var(--ch); }
+.backlink:hover::before { transform: translateX(-4px); }
+
+.subhead__title {
+  margin-top: var(--s4);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  letter-spacing: var(--track-tight);
+  color: var(--text);
+}
+
+/* the channel key bar again, this time keying a whole page */
+.subhead__title::before {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 3px;
+  margin-bottom: var(--s4);
+  background: var(--ch);
+  border-radius: 2px;
+}
+
+.subhead__line {
+  margin-top: var(--s4);
+  max-width: 62ch;
+  font-size: var(--t-lg);
+  line-height: 1.65;
+  color: var(--dim-strong);
+}
+
+.subhead__count {
+  margin-top: var(--s5);
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--ch);
+}
+
+/* Foot of every sub-page: the other four banks, so a visitor can cross to a
+   sibling category without going back through the landing. Each link carries
+   its destination's own --ch, so the hover colour is the colour you land in. */
+.siblings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s3) var(--s5);
+}
+
+.siblings__label {
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* --------------------------------------------------------------------------
    8. The reading board — the loud part
    -------------------------------------------------------------------------- */
 
@@ -592,40 +709,10 @@ button:focus-visible,
   .board { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-/* Row eyebrows — narrative labels ("Percibir/Procesar/Comunicar") above each
-   3-up row. Meaningless once the grid isn't 3 columns (the rows reflow), so
-   shown only at the 1024px breakpoint. Spans the full grid so it sits above
-   its row without disturbing the channel source order. */
-.board__row-label {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .board__row-label {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    gap: var(--s3);
-    margin: 0;
-    font-family: var(--font-mono);
-    font-weight: 700;
-    font-size: var(--t-sm);
-    letter-spacing: var(--track-wide);
-    text-transform: uppercase;
-    color: var(--dim-strong);
-  }
-
-  .board__row-label:not(:first-child) {
-    margin-top: var(--s2);
-  }
-
-  .board__row-label::after {
-    content: "";
-    flex: 1 1 0;
-    height: 1px;
-    background: var(--rule);
-  }
-}
+/* The Percibir/Procesar/Comunicar row eyebrows went away with the single-grid
+   layout: the landing now shows one module per category (each tagged on its
+   own address line) and every sub-page holds exactly one category, so a label
+   spanning a row no longer has a row to speak for. */
 
 /* One rule set, six channels: everything below resolves through var(--ch),
    which each <article> sets inline. */
@@ -681,6 +768,29 @@ button:focus-visible,
   flex: 1 1 0;
   height: 1px;
   background: color-mix(in srgb, var(--ch) 22%, var(--rule));
+}
+
+/* Award ribbon — one module carries it (Silca Elyos), so it is a modifier on
+   the module rather than a channel of its own. */
+.channel__award {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: var(--s2) var(--s3);
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ch);
+  background: color-mix(in srgb, var(--ch) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ch) 34%, var(--rule));
+  border-radius: var(--r-sm);
+}
+
+.channel__award::before {
+  content: "🏆";
+  font-size: var(--t-sm);
+  line-height: 1;
 }
 
 .channel > .channel__name {
@@ -832,6 +942,13 @@ button:focus-visible,
 
 .hero__trace path { animation-duration: 1.6s; }
 
+/* Same idea on the landing, where each module is alone inside its own bank row:
+   the stagger has to count banks, not sibling modules. */
+.banks .bank:nth-of-type(2) .trace path { animation-delay: 0.25s; }
+.banks .bank:nth-of-type(3) .trace path { animation-delay: 0.35s; }
+.banks .bank:nth-of-type(4) .trace path { animation-delay: 0.45s; }
+.banks .bank:nth-of-type(5) .trace path { animation-delay: 0.55s; }
+
 /* stagger the board so it reads as channels coming online in order.
    nth-of-type (not nth-child) counts only sibling <article> channels, so the
    row-label <p> elements interleaved between rows don't shift the count. */
@@ -866,6 +983,15 @@ button:focus-visible,
 }
 
 .hero__trace circle { animation-delay: 1.75s; }
+
+.banks .bank:nth-of-type(2) .trace circle,
+.banks .bank:nth-of-type(2) .trace rect { animation-delay: 1.35s; }
+.banks .bank:nth-of-type(3) .trace circle,
+.banks .bank:nth-of-type(3) .trace rect { animation-delay: 1.45s; }
+.banks .bank:nth-of-type(4) .trace circle,
+.banks .bank:nth-of-type(4) .trace rect { animation-delay: 1.55s; }
+.banks .bank:nth-of-type(5) .trace circle,
+.banks .bank:nth-of-type(5) .trace rect { animation-delay: 1.65s; }
 
 .board .channel:nth-of-type(2) .trace circle,
 .board .channel:nth-of-type(2) .trace rect { animation-delay: 1.35s; }
@@ -918,12 +1044,151 @@ button:focus-visible,
    11. About — the calm counterweight
    -------------------------------------------------------------------------- */
 
+/* --------------------------------------------------------------------------
+   11a. The lap — Nordschleife behind the narrative
+
+   The bio is set to a 68ch measure inside a 1200px section, so on wide screens
+   there is a column of open field to its right doing nothing. A slow lap goes
+   there: the track draws itself once when the section arrives, then a single
+   car runs it for as long as you stay. It is the same idea as the course site's
+   Monaco background, rebuilt in vanilla — the portfolio ships no libraries and
+   its CSP admits no third-party script, so the technique is reused, not the code.
+
+   Below 1100px it is not shown at all: there is no open field left to fill, and
+   a 5.5KB path animating behind body copy on a phone is all cost, no benefit.
+   -------------------------------------------------------------------------- */
+
+.about__circuit { display: none; }
+
+@media (min-width: 1100px) {
+  /* Two columns for the length of the narrative: the story on the left, the lap
+     on the right. The heading and the skills legend still span the full width —
+     only the reading run is paired with the track. */
+  /* The lap column is a fixed 400px rather than a percentage: the svg's height
+     then follows from its own aspect ratio (272.7 / 220.1 → 323px), which is
+     what makes the exact centring in `top` below possible. */
+  .section--about {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 400px;
+    column-gap: var(--s7);
+  }
+
+  .section--about > .section__heading { grid-column: 1 / -1; grid-row: 1; }
+  .about__narrative { grid-column: 1; grid-row: 2; }
+  .section--about > .teams { grid-column: 1 / -1; grid-row: 3; }
+  .section--about > .skills { grid-column: 1 / -1; grid-row: 4; }
+
+  /* The wrapper is a stretched grid item spanning the whole narrative, and the
+     svg sticks inside it — so the lap rides down beside the text the entire
+     read and only leaves when the story does. Offset clears the sticky header. */
+  .about__circuit {
+    --ch: var(--ch-coche);
+    display: block;
+    grid-column: 2;
+    grid-row: 2;
+    pointer-events: none;
+  }
+
+  /* Centred in the viewport, not pinned near the top: pinned, the track sat
+     high on the way down and low on the way back up, so the two directions did
+     not read the same. 50vh less half the svg's own height puts it on the
+     centre line whichever way you scroll.
+
+     Centring via a 100vh flex box would be height-agnostic and tempting, but a
+     100vh child sets a 100vh floor on this grid row — on a tall viewport that
+     pushed the teams and skills blocks below the fold. This costs one magic
+     number and touches nothing else's layout. */
+  .about__circuit svg {
+    position: sticky;
+    top: calc(50vh - 161px); /* half of 400 / (272.7 / 220.1) */
+    display: block;
+    width: 100%;
+  }
+}
+
+.circuit__track {
+  fill: none;
+  stroke: var(--ch);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  opacity: 0.62;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--ch) 45%, transparent));
+}
+
+/* Same progressive-enhancement contract as the bank strips: undrawn only once
+   script is there to draw it. */
+.js .circuit__track {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+/* A long, deliberate draw — 20.8 km of track should not snap into place. */
+.about__circuit.is-onscreen .circuit__track {
+  animation: trace-draw 4.5s var(--ease) forwards;
+}
+
+.circuit__car {
+  fill: var(--ch);
+  filter: drop-shadow(0 0 7px var(--ch));
+}
+
+/* Names the shape, inside the loop. Sized in user units, so it scales with the
+   svg instead of drifting off the track at other widths. */
+.circuit__label,
+.circuit__sublabel {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  fill: var(--ch);
+}
+
+.circuit__label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  opacity: 0.8;
+}
+
+.circuit__sublabel {
+  font-size: 7.5px;
+  letter-spacing: 0.24em;
+  opacity: 0.5;
+}
+
 .about__bio {
   margin-top: var(--s5);
   max-width: 68ch;
   font-size: var(--t-lg);
   line-height: 1.72;
   color: var(--text);
+}
+
+/* The bio is a story now, not a paragraph. One measure for the whole run so
+   the eye keeps its line, a lede that picks the hero's sentence back up, and
+   a closer that lands it. */
+.about__narrative {
+  margin-top: var(--s5);
+  max-width: 68ch;
+}
+
+.about__narrative p {
+  font-size: var(--t-lg);
+  line-height: 1.72;
+  color: var(--text);
+}
+
+.about__narrative p + p { margin-top: var(--s5); }
+
+.about__narrative p:first-child {
+  font-size: clamp(1.15rem, 3.6vw, 1.4rem);
+  line-height: 1.5;
+  letter-spacing: var(--track-tight);
+}
+
+.about__narrative p:last-child {
+  padding-top: var(--s5);
+  border-top: 1px solid var(--rule);
+  font-weight: 500;
 }
 
 .skills {
@@ -933,6 +1198,52 @@ button:focus-visible,
   padding-top: var(--s5);
   border-top: 1px solid var(--rule);
 }
+
+/* Teams and skills share the same row grammar — dot, label, tags — which made
+   them read as one thirteen-row list. Teams gets a panel of its own so the eye
+   sees two objects: where the work happens, then what it is done with. */
+.teams {
+  margin-top: var(--s7);
+  display: grid;
+  gap: var(--s4);
+  padding: var(--s5);
+  background: color-mix(in srgb, var(--panel) 55%, transparent);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+}
+
+.teams + .skills {
+  margin-top: var(--s8);
+}
+
+.skills__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--dim-strong);
+}
+
+/* Says what the glow means, next to a tag that is actually glowing — the
+   sentence alone left people to guess, and a legend nobody reads first is
+   just decoration. Sits above the groups for that reason. */
+.tier-note {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  font-size: var(--t-sm);
+  line-height: 1.5;
+  color: var(--dim-strong);
+}
+
+.skills .tier-note {
+  margin-top: var(--s2);
+  padding-bottom: var(--s3);
+}
+
+.teams .tier-note { margin-top: var(--s2); }
 
 .skills__group {
   display: grid;
@@ -981,6 +1292,70 @@ button:focus-visible,
 
 .badge { background: var(--panel-2); }
 
+/* --------------------------------------------------------------------------
+   Expert tier — a tag that runs hot
+
+   Two tiers only: normal, and this. The glow is the group's own channel colour
+   emitted softly, not a neon outline, so it reads as a hot channel on the bench
+   rather than a highlight pen. Kept to a small set on purpose: glow everything
+   and it stops meaning anything.
+   -------------------------------------------------------------------------- */
+.pill--expert {
+  color: var(--text);
+  font-weight: 600;
+  border-color: color-mix(in srgb, var(--ch) 60%, var(--rule));
+  background: color-mix(in srgb, var(--ch) 8%, var(--panel));
+  box-shadow: 0 0 6px color-mix(in srgb, var(--ch) 45%, transparent),
+              0 0 1px color-mix(in srgb, var(--ch) 80%, transparent);
+}
+
+/* Very slow breathing so the set feels live without pulling the eye off the
+   text. The global reduced-motion block kills this and leaves the static glow. */
+@media (prefers-reduced-motion: no-preference) {
+  .pill--expert { animation: skill-pulse 4s ease-in-out infinite; }
+}
+
+@keyframes skill-pulse {
+  0%, 100% { box-shadow: 0 0 5px color-mix(in srgb, var(--ch) 38%, transparent),
+                         0 0 1px color-mix(in srgb, var(--ch) 70%, transparent); }
+  50%      { box-shadow: 0 0 9px color-mix(in srgb, var(--ch) 62%, transparent),
+                         0 0 1px color-mix(in srgb, var(--ch) 85%, transparent); }
+}
+
+/* Without this the glow is decoration nobody can read. */
+.skills__caption {
+  margin-top: var(--s5);
+  padding-top: var(--s4);
+  border-top: 1px solid var(--rule);
+  font-size: var(--t-sm);
+  line-height: 1.5;
+  color: var(--dim-strong);
+}
+
+/* A group that is a direction, not a delivery. Dashed everywhere and tagged in
+   words as well as in style, so nothing here can be read as shipped work. */
+.skills__status {
+  margin-left: var(--s2);
+  padding: 0.1rem 0.4rem;
+  font-size: var(--t-2xs);
+  letter-spacing: 0.1em;
+  color: var(--ch);
+  border: 1px dashed color-mix(in srgb, var(--ch) 45%, var(--rule));
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+}
+
+.skills__group--planned .skills__dot {
+  background: transparent;
+  border: 1px dashed var(--ch);
+  box-shadow: none;
+}
+
+.skills__group--planned .pill {
+  border-style: dashed;
+  color: var(--dim);
+}
+
 @media (min-width: 768px) {
   .skills__group {
     grid-template-columns: auto 13rem minmax(0, 1fr);
@@ -1008,6 +1383,17 @@ button:focus-visible,
   color: var(--dim-strong);
 }
 
+/* A scope caveat the module states about itself ("this part wasn't mine",
+   "this stayed a prototype"). Quieter than the blurb and rule-separated, so it
+   reads as a footnote to the claim above rather than more of the claim. */
+.channel__note {
+  padding-left: var(--s3);
+  border-left: 2px solid color-mix(in srgb, var(--ch) 26%, var(--rule));
+  font-size: var(--t-sm);
+  line-height: 1.6;
+  color: var(--dim);
+}
+
 .channel .badges { margin-top: var(--s4); }
 
 .channel > .channel__links {
@@ -1017,6 +1403,246 @@ button:focus-visible,
   flex-wrap: wrap;
   gap: var(--s2);
 }
+
+/* --------------------------------------------------------------------------
+   12a. Landing banks — one row per category
+
+   The landing is not a grid of five modules any more: it is five rows, each
+   pairing the bank's own framing (what this category is, how many channels it
+   holds, where the rest of them live) with its flagship module. The rows
+   alternate side so the eye zig-zags down the page instead of tracking one
+   column, and so neither the words nor the instrument owns the layout.
+
+   The module inside a row is the ordinary .channel, byte for byte the same one
+   the sub-pages use — the row supplies the context, not a new card format.
+   -------------------------------------------------------------------------- */
+
+.banks {
+  margin-top: var(--s6);
+  display: grid;
+  gap: var(--s8);
+}
+
+.bank {
+  display: grid;
+  gap: var(--s5);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  /* Words take the flexible column, the module a fixed one: the card keeps the
+     proportions it has everywhere else instead of stretching to fill a half. */
+  /* Top-aligned, not centred: the bank's key bar and the module's key bar then
+     start on the same line, which is what makes the row read as one label and
+     one instrument rather than two things floating near each other. Modules
+     vary a lot in height (a disclosure panel adds ~200px), so centring left the
+     heading stranded mid-row. */
+  .bank {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 400px);
+    gap: var(--s7);
+    align-items: start;
+  }
+
+  /* Every other row swaps sides. nth-of-type keeps the alternation correct on
+     its own if a bank is ever added or removed; DOM order stays intro-then-
+     module on every row, so focus order never zig-zags with the layout. */
+  .bank:nth-of-type(even) {
+    grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  }
+
+  .bank:nth-of-type(even) .bank__intro {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .bank:nth-of-type(even) > .channel {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+.bank__addr {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--t-sm);
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--ch);
+}
+
+/* the bank's key bar, same language as the one on each module's top edge */
+.bank__addr::before {
+  content: "";
+  flex: none;
+  width: 40px;
+  height: 3px;
+  background: var(--ch);
+  border-radius: 2px;
+}
+
+.bank__name {
+  margin-top: var(--s4);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: var(--track-tight);
+  color: var(--text);
+}
+
+.bank__line {
+  margin-top: var(--s4);
+  max-width: 46ch;
+  font-size: var(--t-lg);
+  line-height: 1.6;
+  color: var(--dim-strong);
+}
+
+.bank__count {
+  margin-top: var(--s4);
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* The handoff to the sub-page. It leaves the page, so it is not a .btn and not
+   the dashed .disclosure — it gets an underline that fills in and an arrow that
+   travels, and it is the only interactive thing in this column. */
+.bank__link {
+  margin-top: var(--s5);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 40px;
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1px solid color-mix(in srgb, var(--ch) 40%, var(--rule));
+  transition: color 0.18s var(--ease), border-color 0.18s var(--ease);
+}
+
+.bank__link::after {
+  content: "→";
+  display: inline-block;
+  transition: transform 0.18s var(--ease);
+}
+
+.bank__link:hover {
+  color: var(--ch);
+  border-bottom-color: var(--ch);
+}
+
+.bank__link:hover::after { transform: translateX(4px); }
+
+/* The rest of the bank. A wide row leaves a lot of open field under the intro,
+   and the honest thing to put there is the inventory the row is not showing:
+   you can see what else is in the bank before deciding to click through. Each
+   line carries that channel's own colour and a shorthand of its trace, so the
+   landing and the sub-page are visibly the same instrument. */
+.bank__rest {
+  margin-top: var(--s7);
+  /* same measure as .bank__line, so the list sits under the framing paragraph
+     instead of sprawling across the whole flexible column */
+  max-width: 46ch;
+  border-top: 1px solid var(--rule);
+}
+
+.bank__rest-label {
+  margin-top: var(--s4);
+  margin-bottom: var(--s2);
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim-strong);
+}
+
+.rest {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 132px;
+  align-items: center;
+  gap: var(--s4);
+  padding: var(--s4) 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--rule) 60%, transparent);
+}
+
+.rest__addr {
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ch);
+}
+
+.rest__name {
+  min-width: 0;
+  font-size: var(--t-lg);
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.rest__status {
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: right;
+  white-space: nowrap;
+  color: var(--dim);
+}
+
+.rest__status--live { color: color-mix(in srgb, var(--ch) 72%, var(--dim-strong)); }
+
+/* Bare strokes, no readout well: at 84×22 the graticule and border of a full
+   .trace would be all you could see. */
+/* 132×35 keeps the 84×22 viewBox ratio, so the glyphs authored for that box
+   scale up without letterboxing. */
+.rest__trace {
+  width: 132px;
+  height: 35px;
+  overflow: visible;
+}
+
+.rest__trace path {
+  fill: none;
+  stroke: var(--ch);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.8;
+}
+
+/* Undrawn only once script is present to draw them: main.js stamps .js on
+   <html> before anything else, so with JS off these render finished instead of
+   leaving nine blank strips on the page. They sit far below the fold, so the
+   deferred class arrives long before anyone scrolls this far. */
+.js .rest__trace path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+/* They draw when their bank arrives rather than on load, where the animation
+   would be over before anyone had scrolled to see it. */
+.bank.is-onscreen .rest__trace path {
+  animation: trace-draw 0.9s var(--ease) forwards;
+}
+
+.bank.is-onscreen .rest:nth-child(2) .rest__trace path { animation-delay: 0.10s; }
+.bank.is-onscreen .rest:nth-child(3) .rest__trace path { animation-delay: 0.20s; }
+.bank.is-onscreen .rest:nth-child(4) .rest__trace path { animation-delay: 0.30s; }
+.bank.is-onscreen .rest:nth-child(5) .rest__trace path { animation-delay: 0.40s; }
+
 
 /* --------------------------------------------------------------------------
    12b. Expanding demo modules — disclosure button + inline panel
@@ -1310,6 +1936,146 @@ button:focus-visible,
 }
 
 /* --------------------------------------------------------------------------
+   14b. Course program (/formacion) — a curriculum, not a ranking. Three sets
+        of equal width and equal weight; the only thing that separates them is
+        which levels are live, and that is stated per level, never by making
+        one set louder than another.
+   -------------------------------------------------------------------------- */
+
+/* Unlike .board, these stretch to a common height on purpose: three sets of
+   equal width AND equal height is what makes the curriculum read as one bar
+   rather than a ranking. Nothing here expands, so stretching costs nothing. */
+.program {
+  margin-top: var(--s6);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s5);
+}
+
+@media (min-width: 760px) {
+  .program { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .program { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.course {
+  display: flex;
+  flex-direction: column;
+  padding: var(--s5);
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+}
+
+.course > * { margin-top: var(--s4); }
+.course > :first-child { margin-top: 0; }
+
+.course__name {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--t-xl);
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+
+.course__levels {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+
+.level {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s3);
+  padding: var(--s2) 0;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  letter-spacing: 0.04em;
+}
+
+.level__state {
+  flex: none;
+  width: 1.25em;
+  text-align: center;
+}
+
+.level__name { color: var(--text); }
+
+/* A level that exists is a link; one that doesn't is plainly dimmed and says
+   so in words. No level is ever styled as available when it isn't. */
+.level--live .level__name {
+  color: var(--ch);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--ch) 35%, transparent);
+}
+
+.level--live .level__name:hover {
+  border-bottom-color: var(--ch);
+}
+
+.level--soon,
+.level--soon .level__name { color: var(--dim); }
+
+/* Availability in words, not only in the glyph — the ✅/🔜 are decorative. */
+.level__status {
+  margin-left: auto;
+  padding-left: var(--s2);
+  font-size: var(--t-2xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--dim);
+}
+
+.level--live .level__status { color: color-mix(in srgb, var(--ch) 72%, var(--dim-strong)); }
+
+/* One same-length line per set, and all three land on the same baseline —
+   the symmetry is the point, so it is enforced in layout, not just in copy. */
+.course__extra {
+  margin-top: auto;
+  padding-top: var(--s4);
+  font-size: var(--t-sm);
+  line-height: 1.6;
+  color: var(--dim-strong);
+}
+
+/* Bridge from the classroom to the actual car — the last thing on the page,
+   and the only element here that points off it. */
+.bridge {
+  margin-top: var(--s6);
+  padding: var(--s5);
+  border: 1px dashed color-mix(in srgb, var(--ch) 30%, var(--rule));
+  border-radius: var(--r-lg);
+  background: color-mix(in srgb, var(--ch) 5%, transparent);
+}
+
+.bridge__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--ch);
+}
+
+.bridge__text {
+  margin-top: var(--s3);
+  max-width: 62ch;
+  font-size: var(--t-md);
+  line-height: 1.66;
+  color: var(--text);
+}
+
+.bridge__cta { margin-top: var(--s4); }
+
+/* --------------------------------------------------------------------------
    15. Reduced motion — no motion anywhere, traces stay fully drawn
    -------------------------------------------------------------------------- */
 
@@ -1324,7 +2090,9 @@ button:focus-visible,
     scroll-behavior: auto !important;
   }
 
-  .trace path {
+  .trace path,
+  .js .rest__trace path,
+  .js .circuit__track {
     stroke-dasharray: none;
     stroke-dashoffset: 0;
   }

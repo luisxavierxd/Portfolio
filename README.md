@@ -19,8 +19,24 @@ Calendly). Static site: plain HTML, CSS, and vanilla JavaScript, no frameworks, 
 2. Create the repo on GitHub and add it as a remote (`git remote add origin <url>`). · Crea el repo en GitHub y agrégalo como remoto (`git remote add origin <url>`).
 3. Push files to the default branch.
 4. Settings → Pages → Deploy from a branch → `main` / root.
-5. Live at `https://luisxavierxd.github.io/Portfolio/`. The `og:url` and `og:image` tags in `index.html` are absolute and match the repository name, capital P included — **update both if the site is ever served from a different path.** · Las etiquetas `og:url` y `og:image` en `index.html` son absolutas y coinciden con el nombre del repositorio, con P mayúscula; **actualiza ambas si el sitio pasa a servirse desde otra ruta.**
+5. Live at `https://luisxavierxd.github.io/Portfolio/`. The `og:url` and `og:image` tags in **every page** are absolute and match the repository name, capital P included — **update them all if the site is ever served from a different path.** · Las etiquetas `og:url` y `og:image` de **cada página** son absolutas y coinciden con el nombre del repositorio, con P mayúscula; **actualízalas todas si el sitio pasa a servirse desde otra ruta.**
 6. `.nojekyll` keeps GitHub from processing the static files.
+
+## Pages
+
+`index.html` is the landing board: one featured module per category, each linking to that
+category's own page. Every page shares `styles.css` and `main.js` — there is no build step, so a
+copy change goes in the `i18n` dictionary in `main.js` **and** in the matching inline Spanish
+default in the HTML (the inline text is what a visitor without JavaScript sees).
+
+| Page | Contents |
+|---|---|
+| `index.html` | Hero, 5 featured modules, narrative About, booking |
+| `robotica.html` | JTCS, AgroBot, Robot Interprepas |
+| `senales.html` | NeuroBeat, Malaria · Dielectroforesis |
+| `telemetria.html` | Coche MadRams, Quantum Speed Racing, Silca Elyos |
+| `software.html` | TelemetryStack, LaTeX Studio, Mapa TEC GDL, Loopzels, Frenado Magnético |
+| `formacion.html` | Cursos MadRams + the three-block training program |
 
 ## Local preview
 
@@ -30,4 +46,4 @@ python -m http.server 8000
 
 Then open `http://localhost:8000/`. Serving over HTTP is required — opening `index.html` directly from disk (`file://`) will not work, because the page's own Content-Security-Policy blocks that origin. · Es necesario servir por HTTP — abrir `index.html` directamente desde el disco (`file://`) no funciona, porque la Content-Security-Policy de la página bloquea ese origen.
 
-The language can be deep-linked with `#es` / `#en` (e.g. `http://localhost:8000/#en`). · El idioma se puede enlazar directamente con `#es` / `#en` (p. ej. `http://localhost:8000/#en`).
+The language can be deep-linked with `?lang=es` / `?lang=en` (e.g. `http://localhost:8000/telemetria.html?lang=en`), and it follows the visitor across pages. The older `#es` / `#en` links still work and are upgraded to the query form on arrival. · El idioma se puede enlazar con `?lang=es` / `?lang=en` (p. ej. `http://localhost:8000/telemetria.html?lang=en`) y viaja con el visitante entre páginas. Los enlaces antiguos `#es` / `#en` siguen funcionando y se convierten al nuevo formato al entrar.

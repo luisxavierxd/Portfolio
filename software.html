@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.title.software">Software y herramientas — Luis Xavier García Pimentel Ascencio</title>
+<meta name="description" data-i18n-content="cat.software.line" content="Las herramientas: plataformas, mapas y utilidades que uso —o entrego— para que otros trabajen más rápido.">
+
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               script-src 'self';
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+               img-src 'self' data: https:;
+               font-src 'self' https://fonts.gstatic.com;
+               connect-src 'self';">
+
+<meta property="og:title" data-i18n-content="meta.title.software" content="Software y herramientas — Luis Xavier García Pimentel Ascencio">
+<meta property="og:description" data-i18n-content="cat.software.line" content="Las herramientas: plataformas, mapas y utilidades que uso —o entrego— para que otros trabajen más rápido.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://luisxavierxd.github.io/Portfolio/software.html">
+<meta property="og:image" content="https://luisxavierxd.github.io/Portfolio/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" data-i18n-content="meta.ogImageAlt" content="Trazo de señal que pasa de ruido a una decisión discreta, sobre fondo azul-carbón, junto al nombre Luis Xavier García Pimentel Ascencio.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+<link id="fonts-css" rel="stylesheet" media="print" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Saltar al contenido</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Navegación principal" data-i18n-aria="nav.ariaLabel">
+    <a class="brand" href="index.html" data-page-link>
+      <span class="brand__mark">LX</span>
+      <span class="brand__name">Luis Xavier García Pimentel Ascencio</span>
+      <span class="brand__subtitle" data-i18n="nav.subtitle">Ingeniería en Robótica · Tec GDL</span>
+    </a>
+    <ul class="nav__links">
+      <li><a class="nav__link" href="index.html#projects" data-page-link data-i18n="nav.projects">Proyectos</a></li>
+      <li><a class="nav__link" href="index.html#about" data-page-link data-i18n="nav.about">Sobre mí</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="EN — cambiar a inglés" data-i18n-aria="langToggle.ariaLabel">EN</button>
+      <a class="btn btn--primary btn--small" href="index.html#book" data-page-link data-i18n="nav.bookCta">Agendar</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <section class="section section--sub" style="--ch: var(--ch-cyan)">
+    <a class="backlink" href="index.html" data-page-link data-i18n="nav.back">Volver al tablero</a>
+    <h1 class="subhead__title" data-i18n="cat.software.name">Software y herramientas</h1>
+    <p class="subhead__line" data-i18n="cat.software.line">Las herramientas: plataformas, mapas y utilidades que uso —o entrego— para que otros trabajen más rápido.</p>
+    <p class="subhead__count" data-i18n="cat.software.count">5 canales</p>
+  </section>
+
+  <section class="section section--projects" aria-labelledby="board-heading" style="--ch: var(--ch-cyan)">
+    <h2 id="board-heading" class="section__eyebrow" data-i18n="projects.eyebrow">Tablero de lecturas</h2>
+
+    <div class="board">
+
+      <article class="channel" style="--ch: var(--ch-cyan)">
+        <p class="channel__addr">CH.4.1</p>
+        <h3 class="channel__name">TelemetryStack</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">4200 rpm</span>
+          <span class="reading__unit" data-i18n="proj.telemetry.unit">telemetría en vivo</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: telemetrystack -
+             an RPM sweep: a chirp whose frequency climbs and whose envelope swells and then
+             damps out as the engine settles on a steady line. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M3 32 Q10 25.9 17 27.7 Q23.5 32.8 30 23.8 Q36 11.9 42 20.2 Q47.5 30.5 53 16.8
+                   Q58 2.3 63 13.8 Q67.5 24.4 72 11 Q77 1.5 82 8 Q85.5 14 89 8 Q92.5 4 96 8
+                   Q99.5 11 103 8 Q106.5 6 110 8 L117 8"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.telemetry.tagline">Telemetría en vivo para coches de competencia SAE.</p>
+        <p class="channel__blurb" data-i18n="proj.telemetry.blurb">Stack de telemetría en tiempo real: sensores en un ESP32 (RPM, temperatura, GPS, suspensión) enviados por LoRa 915 MHz o WiFi hacia InfluxDB + Grafana. Firmware FreeRTOS (dual-core, dual-SPI). Base reutilizable propia: hoy en 2 equipos y planeada para 4 —Quantum, MadRams, Cefiro y Axolotl—; cualquiera lo adopta editando un .env.</p>
+        <p class="channel__note" data-i18n="proj.telemetry.note">Ignitia y Elyos quedan fuera a propósito: o ya tienen sistema propio, o usan uno lo bastante distinto como para que acoplarlo no valga la pena.</p>
+        <ul class="badges">
+          <li class="badge">ESP32</li>
+          <li class="badge">LoRa</li>
+          <li class="badge">FreeRTOS</li>
+          <li class="badge">InfluxDB</li>
+          <li class="badge">Grafana</li>
+          <li class="badge">Docker</li>
+          <li class="badge">Python</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/TelemetryStack" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-teal)">
+        <p class="channel__addr">CH.4.2</p>
+        <h3 class="channel__name">LaTeX Studio</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">PDF → .tex</span>
+          <span class="reading__unit" data-i18n="proj.latex.unit">reportes APA-7</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: latex studio -
+             a document pipeline: a raw page with a folded corner on the left, and on the right
+             what comes out - justified typeset lines, the last one short, as paragraphs end. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M9 6 H25 L31 12 V30 H9 Z M25 6 V12 H31"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M39 18 H49 M45.5 14.5 L49 18 L45.5 21.5
+                   M57 10 H114 M57 16 H114 M57 22 H108 M57 28 H88"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.latex.tagline">Convierte PDFs en reportes LaTeX con formato APA-7.</p>
+        <p class="channel__blurb" data-i18n="proj.latex.blurb">IDE local (FastAPI + editor web) que convierte PDFs en reportes LaTeX estilo APA 7ª. Extrae texto e imágenes con PyMuPDF (con heurísticos: quita logos de header, recorta bordes, filtra por tamaño), orquesta el CLI de Claude Code para generar y modificar el .tex, y compila con pdflatex. La generación de LaTeX la hace el modelo; mi trabajo es el pipeline de extracción, la orquestación y el IDE.</p>
+        <p class="channel__note" data-i18n="proj.latex.note">Sin demo en vivo: necesita el CLI de Claude Code con sesión iniciada en tu propia máquina.</p>
+        <ul class="badges">
+          <li class="badge">FastAPI</li>
+          <li class="badge">PyMuPDF</li>
+          <li class="badge">LaTeX</li>
+          <li class="badge">Monaco</li>
+          <li class="badge">pdf.js</li>
+          <li class="badge">AI orchestration</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/LaTeX-Studio" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-coral)">
+        <p class="channel__addr">CH.4.3</p>
+        <h3 class="channel__name">Mapa Interactivo TEC GDL "Borrego Merodeador"</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">A → B</span>
+          <span class="reading__unit" data-i18n="proj.mapatec.unit">ruta peatonal</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: mapatec -
+             a walking route from origin (square) to destination (pin): right-angle turns down
+             around a block and back up, the way campus paths actually run. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M9 13 H33 V26 H72 V11 H107"/>
+          <rect x="6.5" y="10.5" width="5" height="5"/>
+          <circle cx="111" cy="11" r="3.4"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.mapatec.tagline">Rutas peatonales dentro del campus.</p>
+        <p class="channel__blurb" data-i18n="proj.mapatec.blurb">Mapa interactivo del campus GDL con cálculo de rutas peatonales entre edificios usando datos públicos de OpenStreetMap. La ubicación se procesa solo en tu dispositivo, con aviso de privacidad conforme a la LFPDPPP. Proyecto independiente, no oficial.</p>
+        <ul class="badges">
+          <li class="badge">JavaScript</li>
+          <li class="badge">OpenStreetMap</li>
+          <li class="badge">Geolocation</li>
+          <li class="badge">Routing</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--demo" href="https://luisxavierxd.github.io/MapaInteractivoTEC_GDL/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/MapaInteractivoTEC_GDL" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+        <button class="disclosure" type="button" aria-expanded="false" aria-controls="panel-mapatec">
+          <svg class="disclosure__chevron" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+            <path d="M2.75 4.5 6 7.75 9.25 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="disclosure__label disclosure__label--more" data-i18n="disclosure.more">Ver más</span>
+          <span class="disclosure__label disclosure__label--less" data-i18n="disclosure.less">Ver menos</span>
+        </button>
+        <div class="panel" id="panel-mapatec" hidden>
+          <div class="panel__inner">
+            <div class="panel__body">
+              <p class="panel__eyebrow" data-i18n="panel.eyebrow">Qué puedes probar</p>
+              <p class="panel__text" data-i18n="proj.mapatec.panel.body">Mapa interactivo del campus con rutas peatonales entre edificios (datos de OpenStreetMap). Tu ubicación se procesa solo en tu dispositivo, con aviso de privacidad conforme a la LFPDPPP.</p>
+              <p class="panel__note" data-i18n="proj.mapatec.panel.privacy">Tu ubicación nunca sale de tu dispositivo: no se envía ni se guarda en ningún servidor.</p>
+              <p class="panel__cta">
+                <a class="btn btn--primary" href="https://luisxavierxd.github.io/MapaInteractivoTEC_GDL/" target="_blank" rel="noopener noreferrer" data-i18n="proj.mapatec.panel.open">Abrir mapa</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-magenta)">
+        <p class="channel__addr">CH.4.4</p>
+        <h3 class="channel__name">Loopzels</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">2×2 → 6×6</span>
+          <span class="reading__unit" data-i18n="proj.loopzels.unit">carga cognitiva</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: loopzels -
+             five square steps, one per grid: 2x2, 3x3, 4x4, 5x5, 6x6. Riser heights follow the
+             piece count (4, 9, 16, 25, 36), so the climb accelerates the way cognitive load does.
+             A tile marker rides each step. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 32 H24 V28 H45 V22.5 H66 V15.5 H87 V7 H116"/>
+          <rect x="12.5" y="30.5" width="3" height="3"/>
+          <rect x="33" y="26.5" width="3" height="3"/>
+          <rect x="54" y="21" width="3" height="3"/>
+          <rect x="75" y="14" width="3" height="3"/>
+          <rect x="96" y="5.5" width="3" height="3"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.loopzels.tagline">Rompecabezas animados para entrenar la mente.</p>
+        <p class="channel__blurb" data-i18n="proj.loopzels.blurb">Juego de escritorio en Python que fragmenta patrones GIF animados en grillas de 2×2 a 6×6 para reordenar de memoria. La dificultad escala según la Teoría de Carga Cognitiva (Sweller, 1988); motor de animación por hilos, records por tiempo en JSON. Expo Ingenierías.</p>
+        <ul class="badges">
+          <li class="badge">Python</li>
+          <li class="badge">tkinter</li>
+          <li class="badge">Pillow</li>
+          <li class="badge">pygame</li>
+          <li class="badge">JSON</li>
+          <li class="badge">Threading</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/Loopzels" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-indigo)">
+        <p class="channel__addr">CH.4.5</p>
+        <h3 class="channel__name">Frenado Magnético</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">mg/k_b</span>
+          <span class="reading__unit" data-i18n="proj.frenado.unit">velocidad terminal</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: frenado magnetico -
+             the app's own v(t) curve: free fall climbing at a constant g, the knee where the magnet
+             enters the tube, the decay onto a flat terminal-velocity plateau, and the climb resuming
+             the moment it drops out the bottom. The two markers are entry and exit. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 32 L34 12 C39 18.5 45 22 52 22 H86 L116 6"/>
+          <rect x="32.5" y="10.5" width="3" height="3"/>
+          <rect x="84.5" y="20.5" width="3" height="3"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.frenado.tagline">Un imán que cae y se frena solo, en simulación.</p>
+        <p class="channel__blurb" data-i18n="proj.frenado.blurb">App de MATLAB (App Designer) que simula el frenado magnético de un imán que cae por un tubo conductor: integra la ecuación de movimiento con ode45 aplicando un arrastre −k_b·v solo mientras el imán está dentro del tubo, y reporta la velocidad terminal (m·g/k_b), la de entrada y la de salida. Escena 3D animada con estela, gráficas de z, v y a marcando entrada y salida, y el campo B calculado por Biot-Savart sobre una espira discretizada, visualizado con flechas coloreadas por magnitud y cortes de |B|. Masa, k_b, campo, longitud del tubo y altura inicial se ajustan en vivo. La interfaz está escrita a mano: App Designer no deja editar el código que crea los componentes, así que descomprimí el .mlapp —es un paquete zip— y edité su document.xml directamente.</p>
+        <p class="channel__note" data-i18n="proj.frenado.note">k_b es un coeficiente empírico de amortiguamiento (rango típico 0.01–2 N·s/m, ref. Levin et al., AJP 74(9), 2006), no derivado de la conductividad ni de la geometría; y el campo B que se dibuja es ilustrativo — no alimenta la fuerza de frenado. Es una app de escritorio: sin demo en vivo.</p>
+        <ul class="badges">
+          <li class="badge">MATLAB</li>
+          <li class="badge">App Designer</li>
+          <li class="badge">.mlapp reverse-eng</li>
+          <li class="badge">ode45</li>
+          <li class="badge">Biot-Savart</li>
+          <li class="badge">3D Visualization</li>
+          <li class="badge">Simulation</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/MagneticBreakMatlabSim" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="board__more"><a class="link" href="https://github.com/luisxavierxd?tab=repositories" target="_blank" rel="noopener noreferrer" data-i18n="projects.more">Ver todo en GitHub</a></p>
+  </section>
+
+  <nav class="section siblings" aria-label="Otros bancos" data-i18n-aria="nav.siblings">
+    <span class="siblings__label" data-i18n="nav.siblings">Otros bancos</span>
+    <a class="link" style="--ch: var(--ch-amber)" href="robotica.html" data-page-link data-i18n="cat.robotica.name">Robótica</a>
+    <a class="link" style="--ch: var(--ch-green)" href="senales.html" data-page-link data-i18n="cat.senales.name">Señales e IA</a>
+    <a class="link" style="--ch: var(--ch-coche)" href="telemetria.html" data-page-link data-i18n="cat.telemetria.name">Telemetría y potencia</a>
+    <a class="link" style="--ch: var(--ch-lime)" href="formacion.html" data-page-link data-i18n="cat.formacion.name">Formación</a>
+  </nav>
+
+</main>
+
+<footer class="site-footer">
+  <ul class="footer__links">
+    <li><a class="footer__link" href="https://github.com/luisxavierxd" target="_blank" rel="noopener noreferrer" data-i18n="social.github">GitHub</a></li>
+    <li><a class="footer__link" href="https://www.linkedin.com/in/luis-xavier-garcía-pimentel-ascencio-251508333" target="_blank" rel="noopener noreferrer" data-i18n="social.linkedin">LinkedIn</a></li>
+    <li><a class="footer__link" href="mailto:luisxaviergpa@proton.me" data-i18n="social.email">Email</a></li>
+  </ul>
+  <p class="footer__meta">© <span id="year"></span> · <span data-i18n="footer.tagline">sitio estático en GitHub Pages</span></p>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

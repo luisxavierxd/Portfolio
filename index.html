@@ -51,6 +51,10 @@
   <nav class="nav" aria-label="Navegación principal" data-i18n-aria="nav.ariaLabel">
     <a class="brand" href="#main">
       <span class="brand__mark">LX</span>
+      <!-- The name is its own element on purpose: the subtitle's textContent is
+           owned by the i18n pass, so a name folded into it gets wiped the
+           moment the language is applied. -->
+      <span class="brand__name">Luis Xavier García Pimentel Ascencio</span>
       <span class="brand__subtitle" data-i18n="nav.subtitle">Ingeniería en Robótica · Tec GDL</span>
     </a>
     <ul class="nav__links">
@@ -99,372 +103,372 @@
     </div>
   </section>
 
+  <!-- Five bank rows, one per category. Each row states what the bank is and
+       where the rest of its channels live, then shows that bank's flagship
+       module — the same .channel the sub-pages use, unmodified. Rows alternate
+       sides on wide screens (see .bank:nth-of-type(even) in styles.css).
+       Channels are addressed bank-first, so every flagship here is a CH.n.1. -->
   <section id="projects" class="section section--projects" aria-labelledby="projects-heading">
     <h2 id="projects-heading" class="section__eyebrow" data-i18n="projects.eyebrow">Tablero de lecturas</h2>
 
-    <div class="board">
+    <div class="banks">
 
-      <p class="board__row-label" data-i18n="projects.row.perceive">Percibir</p>
-
-      <article class="channel" style="--ch: var(--ch-amber)">
-        <p class="channel__addr">CH.01</p>
-        <h3 class="channel__name">JTCS</h3>
-        <p class="channel__reading">
-          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-          <span class="reading__value">06</span>
-          <span class="reading__unit" data-i18n="proj.jtcs.unit">conteo por carril</span>
-        </p>
-        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: jtcs -
-             discrete count pulses per lane, each taller than the last until the green-time
-             allocation clamps at its ceiling and holds. -->
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M4 30 H10 V25 H18 V30 H24 V19 H32 V30 H38 V13 H46 V30 H52 V7 H60 V30
-                   H66 V7 H74 V30 H80 V7 H88 V30 H96 V7 H116"/>
-        </svg>
-        <p class="channel__tagline" data-i18n="proj.jtcs.tagline">Semáforos que se adaptan al tráfico en tiempo real.</p>
-        <p class="channel__blurb" data-i18n="proj.jtcs.blurb">Control de intersecciones con visión en el borde: un detector YOLOv11 cuenta vehículos por carril y reparte el verde con una fórmula derivada de Webster (HCM/MUTCD). Dashboard en React con simulación de red y ondas verdes; corre en Raspberry Pi. Guadalahacks 2026.</p>
-        <ul class="badges">
-          <li class="badge">YOLOv11</li>
-          <li class="badge">Computer Vision</li>
-          <li class="badge">React 19</li>
-          <li class="badge">Node.js</li>
-          <li class="badge">WebSocket</li>
-          <li class="badge">Python</li>
-          <li class="badge">Raspberry Pi</li>
-        </ul>
-        <div class="channel__links">
-          <a class="btn btn--demo" href="https://luisxavierxd.github.io/JTCS/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
-          <a class="btn btn--code" href="https://github.com/luisxavierxd/JTCS" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
-        </div>
-        <!-- Disclosure: one button, no clickable wrapper. Both labels live in the
-             DOM and CSS shows exactly one of them per aria-expanded state, so the
-             language pass (which only writes textContent per data-i18n key) and the
-             state change (pure CSS) can never overwrite each other. -->
-        <button class="disclosure" type="button" aria-expanded="false" aria-controls="panel-jtcs">
-          <svg class="disclosure__chevron" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
-            <path d="M2.75 4.5 6 7.75 9.25 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="disclosure__label disclosure__label--more" data-i18n="disclosure.more">Ver más</span>
-          <span class="disclosure__label disclosure__label--less" data-i18n="disclosure.less">Ver menos</span>
-        </button>
-        <div class="panel" id="panel-jtcs" hidden>
-          <div class="panel__inner">
-            <div class="panel__body">
-              <p class="panel__eyebrow" data-i18n="panel.eyebrow">Qué puedes probar</p>
-              <p class="panel__text" data-i18n="proj.jtcs.panel.body">Demo interactivo en el navegador — sin backend. Fase 1: ajusta el tráfico con +/− y ve cómo cambia el tiempo de verde (fórmula derivada de Webster). Fase 2: dibuja una red de intersecciones y simula autos con onda verde.</p>
-              <ul class="panel__list">
-                <li data-i18n="proj.jtcs.panel.tech1">Detección en el borde con YOLOv11 sobre Raspberry Pi.</li>
-                <li data-i18n="proj.jtcs.panel.tech2">Tiempos de verde según MUTCD/HCM.</li>
-                <li data-i18n="proj.jtcs.panel.tech3">Onda verde sincronizada entre intersecciones.</li>
-              </ul>
-              <p class="panel__cta">
-                <a class="btn btn--primary" href="https://luisxavierxd.github.io/JTCS/" target="_blank" rel="noopener noreferrer" data-i18n="proj.jtcs.panel.open">Abrir demo</a>
-              </p>
-            </div>
+      <section class="bank" style="--ch: var(--ch-amber)" aria-labelledby="bank-robotica">
+        <div class="bank__intro">
+          <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 1</p>
+          <h3 class="bank__name" id="bank-robotica" data-i18n="cat.robotica.name">Robótica</h3>
+          <p class="bank__line" data-i18n="cat.robotica.line">Percibir: visión, brazos y navegación — máquinas que leen el mundo antes de moverse.</p>
+          <p class="bank__count" data-i18n="cat.robotica.count">3 canales</p>
+          <a class="bank__link" href="robotica.html" data-page-link data-i18n="cat.robotica.more">Ver los 3 · Robótica</a>
+          <div class="bank__rest">
+            <p class="bank__rest-label" data-i18n="bank.rest">También en este banco</p>
+            <ul>
+              <li class="rest" style="--ch: var(--ch-emerald)">
+                <span class="rest__addr">CH.1.2</span>
+                <span class="rest__name">AgroBot</span>
+                <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
+                  <path pathLength="1" d="M3 19 C14 19 20 4 42 4 C62 4 70 12 81 15"/>
+                </svg>
+              </li>
+              <li class="rest" style="--ch: var(--ch-violet)">
+                <span class="rest__addr">CH.1.3</span>
+                <span class="rest__name">Robot Interprepas</span>
+                <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
+                  <path pathLength="1" d="M3 18 L16 11 L30 15 L44 6 L60 13 L81 5"/>
+                </svg>
+              </li>
+            </ul>
           </div>
         </div>
-      </article>
 
-      <article class="channel" style="--ch: var(--ch-emerald)">
-        <p class="channel__addr">CH.02</p>
-        <h3 class="channel__name">AgroBot</h3>
-        <p class="channel__reading">
-          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-          <span class="reading__value">6 DOF</span>
-          <span class="reading__unit" data-i18n="proj.agrobot.unit">brazo + visión 3D</span>
-        </p>
-        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: agrobot -
-             the end-effector's reach: one smooth arc lifting off the base, carrying over, and
-             settling onto the fruit, where two jaws close on the berry. A pick, not a signal. -->
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M5 31 C14 31 20 25 26 18 C33 10 42 6 56 6 C70 6 78 10 86 16 C91 19.8 95 22.4 98.5 22.5"/>
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M98.5 22.5 L106 18.8 M98.5 22.5 L106 26.2"/>
-          <circle cx="110" cy="22.5" r="3"/>
-        </svg>
-        <p class="channel__tagline" data-i18n="proj.agrobot.tagline">Robot que cosecha berries maduras por visión.</p>
-        <p class="channel__blurb" data-i18n="proj.agrobot.blurb">Robot autónomo para invernaderos: un detector YOLO11 identifica frambuesas por etapa de madurez con cámara estereoscópica (3D), y un brazo de 6 grados de libertad las recolecta. Control en Raspberry Pi 4 + Arduino por serial. Equipo Silmarils, reto STEAM 2025.</p>
-        <ul class="badges">
-          <li class="badge">YOLOv11</li>
-          <li class="badge">6-DOF Arm</li>
-          <li class="badge">Stereo Vision</li>
-          <li class="badge">Raspberry Pi</li>
-          <li class="badge">Arduino</li>
-          <li class="badge">Python</li>
-          <li class="badge">Serial</li>
-        </ul>
-        <div class="channel__links">
-          <a class="btn btn--code" href="https://github.com/luisxavierxd/AgroBot" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
-        </div>
-      </article>
-
-      <article class="channel" style="--ch: var(--ch-violet)">
-        <p class="channel__addr">CH.03</p>
-        <h3 class="channel__name">Robot Interprepas Jesuitas 2025</h3>
-        <p class="channel__reading">
-          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-          <span class="reading__value">Nav2</span>
-          <span class="reading__unit" data-i18n="proj.robot.unit">navegación autónoma</span>
-        </p>
-        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: robot -
-             a planned Nav2 trajectory: straight legs meeting at angles, one node marker per
-             waypoint. Not a wave - a route through space. -->
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M7 31 L21 21 L25 9 L52 13 L64 27 L92 24 L114 12"/>
-          <circle cx="7" cy="31" r="2"/>
-          <circle cx="21" cy="21" r="2"/>
-          <circle cx="25" cy="9" r="2"/>
-          <circle cx="52" cy="13" r="2"/>
-          <circle cx="64" cy="27" r="2"/>
-          <circle cx="92" cy="24" r="2"/>
-          <circle cx="114" cy="12" r="2"/>
-        </svg>
-        <p class="channel__tagline" data-i18n="proj.robot.tagline">Robot autónomo con ROS2 y navegación.</p>
-        <p class="channel__blurb" data-i18n="proj.robot.blurb">Robot diferencial sobre ROS2: navegación con Nav2, LiDAR LDROBOT, interfaz de hardware por Arduino y teleoperación por joystick. Robótica de competencia con el stack estándar de la industria.</p>
-        <ul class="badges">
-          <li class="badge">ROS2</li>
-          <li class="badge">Nav2</li>
-          <li class="badge">LiDAR</li>
-          <li class="badge">Arduino</li>
-          <li class="badge">C++</li>
-          <li class="badge">Python</li>
-        </ul>
-        <div class="channel__links">
-          <a class="btn btn--code" href="https://github.com/luisxavierxd/Robot_Interprepas_Jesuitas_2025" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
-        </div>
-      </article>
-
-      <p class="board__row-label" data-i18n="projects.row.process">Procesar</p>
-
-      <article class="channel" style="--ch: var(--ch-green)">
-        <p class="channel__addr">CH.04</p>
-        <h3 class="channel__name">NeuroBeat</h3>
-        <p class="channel__reading">
-          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-          <span class="reading__value">250 Hz</span>
-          <span class="reading__unit" data-i18n="proj.neurobeat.unit">EEG · 8 canales</span>
-        </p>
-        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: neurobeat -
-             continuous alpha/beta oscillation around a flat baseline, interrupted once by the
-             sharp deflection-and-undershoot of a deliberate blink. -->
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M3 19 Q6 9 9 18 Q12 30 15 20 Q18 12 21 18 Q24 27 27 20 Q30 7 33 18 Q36 29 39 19
-                   Q42 13 45 20 L48 18 L51 3 L55 32 L58 19
-                   Q61 8 64 18 Q67 30 70 20 Q73 12 76 18 Q79 28 82 20 Q85 9 88 18 Q91 29 94 20
-                   Q97 13 100 18 Q103 27 106 20 Q109 8 112 18 Q114 28 117 19"/>
-        </svg>
-        <p class="channel__tagline" data-i18n="proj.neurobeat.tagline">Un juego que controlas con la mente.</p>
-        <p class="channel__blurb" data-i18n="proj.neurobeat.blurb">Traduce señales EEG del headset Unicorn Black (8 canales) en acciones de juego: filtrado notch/bandpass/ICA, un modelo EEGNet detecta parpadeos deliberados y el giroscopio mueve el cursor, todo por UDP hacia un juego en Unity. Hackathon Brain.io.</p>
-        <ul class="badges">
-          <li class="badge">EEG</li>
-          <li class="badge">EEGNet</li>
-          <li class="badge">Signal Processing</li>
-          <li class="badge">Python</li>
-          <li class="badge">UDP</li>
-          <li class="badge">Unity</li>
-        </ul>
-        <div class="channel__links">
-          <a class="btn btn--code" href="https://github.com/luisxavierxd/NeuroBeat" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
-        </div>
-      </article>
-
-      <article class="channel" style="--ch: var(--ch-cyan)">
-        <p class="channel__addr">CH.05</p>
-        <h3 class="channel__name">TelemetryStack</h3>
-        <p class="channel__reading">
-          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-          <span class="reading__value">4200 rpm</span>
-          <span class="reading__unit" data-i18n="proj.telemetry.unit">telemetría en vivo</span>
-        </p>
-        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: telemetrystack -
-             an RPM sweep: a chirp whose frequency climbs and whose envelope swells and then
-             damps out as the engine settles on a steady line. -->
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M3 32 Q10 25.9 17 27.7 Q23.5 32.8 30 23.8 Q36 11.9 42 20.2 Q47.5 30.5 53 16.8
-                   Q58 2.3 63 13.8 Q67.5 24.4 72 11 Q77 1.5 82 8 Q85.5 14 89 8 Q92.5 4 96 8
-                   Q99.5 11 103 8 Q106.5 6 110 8 L117 8"/>
-        </svg>
-        <p class="channel__tagline" data-i18n="proj.telemetry.tagline">Telemetría en vivo para coches de competencia SAE.</p>
-        <p class="channel__blurb" data-i18n="proj.telemetry.blurb">Stack de telemetría en tiempo real: sensores en un ESP32 (RPM, temperatura, GPS, suspensión) enviados por LoRa 915 MHz o WiFi hacia InfluxDB + Grafana. Firmware FreeRTOS (dual-core, dual-SPI). Cualquier equipo lo adopta editando solo un .env.</p>
-        <ul class="badges">
-          <li class="badge">ESP32</li>
-          <li class="badge">LoRa</li>
-          <li class="badge">FreeRTOS</li>
-          <li class="badge">InfluxDB</li>
-          <li class="badge">Grafana</li>
-          <li class="badge">Docker</li>
-          <li class="badge">Python</li>
-        </ul>
-        <div class="channel__links">
-          <a class="btn btn--code" href="https://github.com/luisxavierxd/TelemetryStack" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
-        </div>
-      </article>
-
-      <article class="channel" style="--ch: var(--ch-red)">
-        <p class="channel__addr">CH.06</p>
-        <h3 class="channel__name">Malaria · Dielectroforesis</h3>
-        <p class="channel__reading">
-          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-          <span class="reading__value">PCA · 4 clf</span>
-          <span class="reading__unit" data-i18n="proj.malaria.unit">simulación + ML</span>
-        </p>
-        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: malaria -
-             two cell trajectories entering on the same line and splitting once they reach the
-             non-uniform field: the infected cell deflects hard and early, the healthy one drifts
-             the other way. Each settles into its own lane - the separation is the measurement. -->
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M4 18 H36 C48 18 55 13 63 10 C76 5.5 92 4 114 4"/>
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M4 18 H36 C54 18 66 20 80 22.5 C92 24.5 102 26 114 27"/>
-          <circle cx="114" cy="4" r="2.6"/>
-          <circle cx="114" cy="27" r="2.6"/>
-        </svg>
-        <p class="channel__tagline" data-i18n="proj.malaria.tagline">Simula separar células infectadas con campos eléctricos.</p>
-        <p class="channel__blurb" data-i18n="proj.malaria.blurb">Modela el principio de dielectroforesis: glóbulos rojos sanos vs. infectados con malaria responden distinto en un campo no uniforme. Simula las trayectorias (integración numérica) y clasifica sanas/infectadas con PCA + 4 algoritmos de ML. Física aplicada + ML — es una simulación, no detección clínica real.</p>
-        <ul class="badges">
-          <li class="badge">Python</li>
-          <li class="badge">NumPy</li>
-          <li class="badge">Matplotlib</li>
-          <li class="badge">scikit-learn</li>
-          <li class="badge">PCA</li>
-          <li class="badge">Simulation</li>
-        </ul>
-        <div class="channel__links">
-          <a class="btn btn--code" href="https://github.com/luisxavierxd/DeteccionMalariaPorCamposElectricos" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
-        </div>
-      </article>
-
-      <p class="board__row-label" data-i18n="projects.row.communicate">Comunicar</p>
-
-      <article class="channel" style="--ch: var(--ch-coral)">
-        <p class="channel__addr">CH.07</p>
-        <h3 class="channel__name">Mapa Interactivo TEC GDL "Borrego Merodeador"</h3>
-        <p class="channel__reading">
-          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-          <span class="reading__value">A → B</span>
-          <span class="reading__unit" data-i18n="proj.mapatec.unit">ruta peatonal</span>
-        </p>
-        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: mapatec -
-             a walking route from origin (square) to destination (pin): right-angle turns down
-             around a block and back up, the way campus paths actually run. -->
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M9 13 H33 V26 H72 V11 H107"/>
-          <rect x="6.5" y="10.5" width="5" height="5"/>
-          <circle cx="111" cy="11" r="3.4"/>
-        </svg>
-        <p class="channel__tagline" data-i18n="proj.mapatec.tagline">Rutas peatonales dentro del campus.</p>
-        <p class="channel__blurb" data-i18n="proj.mapatec.blurb">Mapa interactivo del campus GDL con cálculo de rutas peatonales entre edificios usando datos públicos de OpenStreetMap. La ubicación se procesa solo en tu dispositivo, con aviso de privacidad conforme a la LFPDPPP. Proyecto independiente, no oficial.</p>
-        <ul class="badges">
-          <li class="badge">JavaScript</li>
-          <li class="badge">OpenStreetMap</li>
-          <li class="badge">Geolocation</li>
-          <li class="badge">Routing</li>
-        </ul>
-        <div class="channel__links">
-          <a class="btn btn--demo" href="https://luisxavierxd.github.io/MapaInteractivoTEC_GDL/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
-          <a class="btn btn--code" href="https://github.com/luisxavierxd/MapaInteractivoTEC_GDL" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
-        </div>
-        <button class="disclosure" type="button" aria-expanded="false" aria-controls="panel-mapatec">
-          <svg class="disclosure__chevron" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
-            <path d="M2.75 4.5 6 7.75 9.25 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <article class="channel" style="--ch: var(--ch-amber)">
+          <p class="channel__addr">CH.1.1</p>
+          <h4 class="channel__name">JTCS</h4>
+          <p class="channel__reading">
+            <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+            <span class="reading__value">06</span>
+            <span class="reading__unit" data-i18n="proj.jtcs.unit">conteo por carril</span>
+          </p>
+          <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: jtcs -
+               discrete count pulses per lane, each taller than the last until the green-time
+               allocation clamps at its ceiling and holds. -->
+            <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M4 30 H10 V25 H18 V30 H24 V19 H32 V30 H38 V13 H46 V30 H52 V7 H60 V30
+                     H66 V7 H74 V30 H80 V7 H88 V30 H96 V7 H116"/>
           </svg>
-          <span class="disclosure__label disclosure__label--more" data-i18n="disclosure.more">Ver más</span>
-          <span class="disclosure__label disclosure__label--less" data-i18n="disclosure.less">Ver menos</span>
-        </button>
-        <div class="panel" id="panel-mapatec" hidden>
-          <div class="panel__inner">
-            <div class="panel__body">
-              <p class="panel__eyebrow" data-i18n="panel.eyebrow">Qué puedes probar</p>
-              <p class="panel__text" data-i18n="proj.mapatec.panel.body">Mapa interactivo del campus con rutas peatonales entre edificios (datos de OpenStreetMap). Tu ubicación se procesa solo en tu dispositivo, con aviso de privacidad conforme a la LFPDPPP.</p>
-              <p class="panel__note" data-i18n="proj.mapatec.panel.privacy">Tu ubicación nunca sale de tu dispositivo: no se envía ni se guarda en ningún servidor.</p>
-              <p class="panel__cta">
-                <a class="btn btn--primary" href="https://luisxavierxd.github.io/MapaInteractivoTEC_GDL/" target="_blank" rel="noopener noreferrer" data-i18n="proj.mapatec.panel.open">Abrir mapa</a>
-              </p>
+          <p class="channel__tagline" data-i18n="proj.jtcs.tagline">Semáforos que se adaptan al tráfico en tiempo real.</p>
+          <p class="channel__blurb" data-i18n="proj.jtcs.blurb">Control de intersecciones con visión en el borde: un detector YOLOv11 cuenta vehículos por carril y reparte el verde con una fórmula derivada de Webster (HCM/MUTCD). Dashboard en React con simulación de red y ondas verdes; corre en Raspberry Pi. Guadalahacks 2026.</p>
+          <ul class="badges">
+            <li class="badge">YOLOv11</li>
+            <li class="badge">Computer Vision</li>
+            <li class="badge">React 19</li>
+            <li class="badge">Node.js</li>
+            <li class="badge">WebSocket</li>
+            <li class="badge">Python</li>
+            <li class="badge">Raspberry Pi</li>
+          </ul>
+          <div class="channel__links">
+            <a class="btn btn--demo" href="https://luisxavierxd.github.io/JTCS/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
+            <a class="btn btn--code" href="https://github.com/luisxavierxd/JTCS" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+          </div>
+          <!-- Disclosure: one button, no clickable wrapper. Both labels live in the
+               DOM and CSS shows exactly one of them per aria-expanded state, so the
+               language pass (which only writes textContent per data-i18n key) and the
+               state change (pure CSS) can never overwrite each other. -->
+          <button class="disclosure" type="button" aria-expanded="false" aria-controls="panel-jtcs">
+            <svg class="disclosure__chevron" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+              <path d="M2.75 4.5 6 7.75 9.25 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="disclosure__label disclosure__label--more" data-i18n="disclosure.more">Ver más</span>
+            <span class="disclosure__label disclosure__label--less" data-i18n="disclosure.less">Ver menos</span>
+          </button>
+          <div class="panel" id="panel-jtcs" hidden>
+            <div class="panel__inner">
+              <div class="panel__body">
+                <p class="panel__eyebrow" data-i18n="panel.eyebrow">Qué puedes probar</p>
+                <p class="panel__text" data-i18n="proj.jtcs.panel.body">Demo interactivo en el navegador — sin backend. Fase 1: ajusta el tráfico con +/− y ve cómo cambia el tiempo de verde (fórmula derivada de Webster). Fase 2: dibuja una red de intersecciones y simula autos con onda verde.</p>
+                <ul class="panel__list">
+                  <li data-i18n="proj.jtcs.panel.tech1">Detección en el borde con YOLOv11 sobre Raspberry Pi.</li>
+                  <li data-i18n="proj.jtcs.panel.tech2">Tiempos de verde según MUTCD/HCM.</li>
+                  <li data-i18n="proj.jtcs.panel.tech3">Onda verde sincronizada entre intersecciones.</li>
+                </ul>
+                <p class="panel__cta">
+                  <a class="btn btn--primary" href="https://luisxavierxd.github.io/JTCS/" target="_blank" rel="noopener noreferrer" data-i18n="proj.jtcs.panel.open">Abrir demo</a>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </article>
+        </article>
+      </section>
 
-      <article class="channel" style="--ch: var(--ch-lime)">
-        <p class="channel__addr">CH.08</p>
-        <h3 class="channel__name">MadRams · Biblioteca de Cursos</h3>
-        <p class="channel__reading">
-          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-          <span class="reading__value">SAE</span>
-          <span class="reading__unit" data-i18n="proj.madrams.unit">formación de equipo</span>
-        </p>
-        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: madrams -
-             three plateaus joined by ramps (basico, intermedio, avanzado) with a level tick on
-             each: a progression, not a signal. -->
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M6 29 H28 L40 21 H66 L78 13 H114"/>
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M12 29 V33 M46 21 V25 M84 13 V17"/>
-        </svg>
-        <p class="channel__tagline" data-i18n="proj.madrams.tagline">Portal de formación del equipo Baja SAE.</p>
-        <p class="channel__blurb" data-i18n="proj.madrams.blurb">Biblioteca de cursos de nuevo ingreso para MadRams (Minibaja SAE, Tec GDL): cursos por categoría y nivel, con un render 3D del coche por secuencia de imágenes. HTML/CSS/JS estático.</p>
-        <ul class="badges">
-          <li class="badge">HTML</li>
-          <li class="badge">CSS</li>
-          <li class="badge">JavaScript</li>
-          <li class="badge">UX</li>
-        </ul>
-        <div class="channel__links">
-          <a class="btn btn--demo" href="https://luisxavierxd.github.io/MadRamsBibliotecaCursos/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
-          <a class="btn btn--code" href="https://github.com/luisxavierxd/MadRamsBibliotecaCursos" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
-        </div>
-        <button class="disclosure" type="button" aria-expanded="false" aria-controls="panel-madrams">
-          <svg class="disclosure__chevron" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
-            <path d="M2.75 4.5 6 7.75 9.25 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span class="disclosure__label disclosure__label--more" data-i18n="disclosure.more">Ver más</span>
-          <span class="disclosure__label disclosure__label--less" data-i18n="disclosure.less">Ver menos</span>
-        </button>
-        <div class="panel" id="panel-madrams" hidden>
-          <div class="panel__inner">
-            <div class="panel__body">
-              <p class="panel__cta">
-                <a class="btn btn--primary" href="https://luisxavierxd.github.io/MadRamsBibliotecaCursos/" target="_blank" rel="noopener noreferrer" data-i18n="proj.madrams.panel.open">Abrir portal</a>
-              </p>
-            </div>
+      <section class="bank" style="--ch: var(--ch-green)" aria-labelledby="bank-senales">
+        <div class="bank__intro">
+          <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 2</p>
+          <h3 class="bank__name" id="bank-senales" data-i18n="cat.senales.name">Señales e IA</h3>
+          <p class="bank__line" data-i18n="cat.senales.line">Procesar: señales crudas convertidas en decisiones — EEG, física aplicada y aprendizaje automático.</p>
+          <p class="bank__count" data-i18n="cat.senales.count">2 canales</p>
+          <a class="bank__link" href="senales.html" data-page-link data-i18n="cat.senales.more">Ver los 2 · Señales</a>
+          <div class="bank__rest">
+            <p class="bank__rest-label" data-i18n="bank.rest">También en este banco</p>
+            <ul>
+              <li class="rest" style="--ch: var(--ch-red)">
+                <span class="rest__addr">CH.2.2</span>
+                <span class="rest__name">Malaria · Dielectroforesis</span>
+                <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
+                  <path pathLength="1" d="M3 11 H30 C48 11 58 4 81 3 M30 11 C48 11 58 18 81 19"/>
+                </svg>
+              </li>
+            </ul>
           </div>
         </div>
-      </article>
 
-      <article class="channel" style="--ch: var(--ch-magenta)">
-        <p class="channel__addr">CH.09</p>
-        <h3 class="channel__name">Loopzels</h3>
-        <p class="channel__reading">
-          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-          <span class="reading__value">2×2 → 6×6</span>
-          <span class="reading__unit" data-i18n="proj.loopzels.unit">carga cognitiva</span>
-        </p>
-        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: loopzels -
-             five square steps, one per grid: 2x2, 3x3, 4x4, 5x5, 6x6. Riser heights follow the
-             piece count (4, 9, 16, 25, 36), so the climb accelerates the way cognitive load does.
-             A tile marker rides each step. -->
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M4 32 H24 V28 H45 V22.5 H66 V15.5 H87 V7 H116"/>
-          <rect x="12.5" y="30.5" width="3" height="3"/>
-          <rect x="33" y="26.5" width="3" height="3"/>
-          <rect x="54" y="21" width="3" height="3"/>
-          <rect x="75" y="14" width="3" height="3"/>
-          <rect x="96" y="5.5" width="3" height="3"/>
-        </svg>
-        <p class="channel__tagline" data-i18n="proj.loopzels.tagline">Rompecabezas animados para entrenar la mente.</p>
-        <p class="channel__blurb" data-i18n="proj.loopzels.blurb">Juego de escritorio en Python que fragmenta patrones GIF animados en grillas de 2×2 a 6×6 para reordenar de memoria. La dificultad escala según la Teoría de Carga Cognitiva (Sweller, 1988); motor de animación por hilos, records por tiempo en JSON. Expo Ingenierías.</p>
-        <ul class="badges">
-          <li class="badge">Python</li>
-          <li class="badge">tkinter</li>
-          <li class="badge">Pillow</li>
-          <li class="badge">pygame</li>
-          <li class="badge">JSON</li>
-          <li class="badge">Threading</li>
-        </ul>
-        <div class="channel__links">
-          <a class="btn btn--code" href="https://github.com/luisxavierxd/Loopzels" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        <article class="channel" style="--ch: var(--ch-green)">
+          <p class="channel__addr">CH.2.1</p>
+          <h4 class="channel__name">NeuroBeat</h4>
+          <p class="channel__reading">
+            <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+            <span class="reading__value">250 Hz</span>
+            <span class="reading__unit" data-i18n="proj.neurobeat.unit">EEG · 8 canales</span>
+          </p>
+          <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: neurobeat -
+               continuous alpha/beta oscillation around a flat baseline, interrupted once by the
+               sharp deflection-and-undershoot of a deliberate blink. -->
+            <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M3 19 Q6 9 9 18 Q12 30 15 20 Q18 12 21 18 Q24 27 27 20 Q30 7 33 18 Q36 29 39 19
+                     Q42 13 45 20 L48 18 L51 3 L55 32 L58 19
+                     Q61 8 64 18 Q67 30 70 20 Q73 12 76 18 Q79 28 82 20 Q85 9 88 18 Q91 29 94 20
+                     Q97 13 100 18 Q103 27 106 20 Q109 8 112 18 Q114 28 117 19"/>
+          </svg>
+          <p class="channel__tagline" data-i18n="proj.neurobeat.tagline">Un juego que controlas con la mente.</p>
+          <p class="channel__blurb" data-i18n="proj.neurobeat.blurb">Traduce señales EEG del headset Unicorn Black (8 canales) en acciones de juego: filtrado notch/bandpass/ICA, un modelo EEGNet detecta parpadeos deliberados y el giroscopio mueve el cursor, todo por UDP hacia un juego en Unity. Hackathon Brain.io.</p>
+          <ul class="badges">
+            <li class="badge">EEG</li>
+            <li class="badge">EEGNet</li>
+            <li class="badge">Signal Processing</li>
+            <li class="badge">Python</li>
+            <li class="badge">UDP</li>
+            <li class="badge">Unity</li>
+          </ul>
+          <div class="channel__links">
+            <a class="btn btn--code" href="https://github.com/luisxavierxd/NeuroBeat" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="bank" style="--ch: var(--ch-coche)" aria-labelledby="bank-telemetria">
+        <div class="bank__intro">
+          <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 3</p>
+          <h3 class="bank__name" id="bank-telemetria" data-i18n="cat.telemetria.name">Telemetría y potencia</h3>
+          <p class="bank__line" data-i18n="cat.telemetria.line">Coches de competencia que se explican solos: telemetría en pista y los sistemas de potencia que la alimentan.</p>
+          <p class="bank__count" data-i18n="cat.telemetria.count">3 canales</p>
+          <a class="bank__link" href="telemetria.html" data-page-link data-i18n="cat.telemetria.more">Ver los 3 · Telemetría</a>
+          <div class="bank__rest">
+            <p class="bank__rest-label" data-i18n="bank.rest">También en este banco</p>
+            <ul>
+              <li class="rest" style="--ch: var(--ch-quantum)">
+                <span class="rest__addr">CH.3.2</span>
+                <span class="rest__name">Quantum Speed Racing</span>
+                <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
+                  <path pathLength="1" d="M3 4 L11 7 L15 5 L23 9 L27 7 L35 11 L39 9 L47 13 L51 11 L59 15 L63 13 L71 17 L75 16 L81 19"/>
+                </svg>
+              </li>
+              <li class="rest" style="--ch: var(--ch-elyos)">
+                <span class="rest__addr">CH.3.3</span>
+                <span class="rest__name">Silca Elyos Racing</span>
+                <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
+                  <path pathLength="1" d="M3 17 L12 5 L28 12 L37 4 L53 11 L62 4 L78 10"/>
+                </svg>
+              </li>
+            </ul>
+          </div>
         </div>
-      </article>
+
+        <article class="channel" style="--ch: var(--ch-coche)">
+          <p class="channel__addr">CH.3.1</p>
+          <h4 class="channel__name">Coche MadRams · Baja SAE</h4>
+          <p class="channel__reading">
+            <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+            <span class="reading__value">4°</span>
+            <span class="reading__unit" data-i18n="proj.coche.unit">Endurance · Baja SAE Oregon</span>
+          </p>
+          <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: coche madrams -
+               a telemetry uplink: the car's own signal wanders along a slow baseline while packets
+               leave it in bursts, each one a vertical climb topped by the payload it carried. -->
+            <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M4 27 C13 25 21 28 30 26.5 C40 25 48 28.5 58 27 C68 25.5 76 28.5 86 27
+                     C95 25.6 105 28 116 26.6"/>
+            <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M16 26.4 V12 M38 26.8 V7 M60 26.9 V14 M82 27 V5 M104 27.3 V10"/>
+            <rect x="14.5" y="9" width="3" height="3"/>
+            <rect x="36.5" y="4" width="3" height="3"/>
+            <rect x="58.5" y="11" width="3" height="3"/>
+            <rect x="80.5" y="2" width="3" height="3"/>
+            <rect x="102.5" y="7" width="3" height="3"/>
+          </svg>
+          <p class="channel__tagline" data-i18n="proj.coche.tagline">El coche Baja real, hablando por radio en pista.</p>
+          <p class="channel__blurb" data-i18n="proj.coche.blurb">Sistema de telemetría del Minibaja SAE de MadRams: un ESP32 transmite por radio LoRa/SX1262 a pits, donde un convertidor serial escribe directo en InfluxDB —sin broker MQTT— y Grafana lo grafica: todo el stack corre en local. GPS u-blox a bordo. Dashboard con gauges por umbral, geomapa GPS coloreado por velocidad y correlación viento-temperatura. 4° lugar en Endurance, Baja SAE Oregon.</p>
+          <ul class="badges">
+            <li class="badge">ESP32</li>
+                <li class="badge">LoRa/SX1262</li>
+            <li class="badge">u-blox GPS</li>
+            <li class="badge">Serial</li>
+            <li class="badge">InfluxDB</li>
+            <li class="badge">Grafana</li>
+                </ul>
+        </article>
+      </section>
+
+      <section class="bank" style="--ch: var(--ch-cyan)" aria-labelledby="bank-software">
+        <div class="bank__intro">
+          <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 4</p>
+          <h3 class="bank__name" id="bank-software" data-i18n="cat.software.name">Software y herramientas</h3>
+          <p class="bank__line" data-i18n="cat.software.line">Las herramientas: plataformas, mapas y utilidades que uso —o entrego— para que otros trabajen más rápido.</p>
+          <p class="bank__count" data-i18n="cat.software.count">5 canales</p>
+          <a class="bank__link" href="software.html" data-page-link data-i18n="cat.software.more">Ver los 5 · Software</a>
+          <div class="bank__rest">
+            <p class="bank__rest-label" data-i18n="bank.rest">También en este banco</p>
+            <ul>
+              <li class="rest" style="--ch: var(--ch-teal)">
+                <span class="rest__addr">CH.4.2</span>
+                <span class="rest__name">LaTeX Studio</span>
+                <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
+                  <path pathLength="1" d="M4 4 H19 V18 H4 Z M28 11 H38 M34 7 L38 11 L34 15 M48 6 H81 M48 11 H81 M48 16 H68"/>
+                </svg>
+              </li>
+              <li class="rest" style="--ch: var(--ch-coral)">
+                <span class="rest__addr">CH.4.3</span>
+                <span class="rest__name">Mapa TEC GDL</span>
+                <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
+                  <path pathLength="1" d="M4 6 H24 V16 H52 V5 H80"/>
+                </svg>
+              </li>
+              <li class="rest" style="--ch: var(--ch-magenta)">
+                <span class="rest__addr">CH.4.4</span>
+                <span class="rest__name">Loopzels</span>
+                <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
+                  <path pathLength="1" d="M3 19 H18 V15 H33 V11 H48 V6 H63 V2 H81"/>
+                </svg>
+              </li>
+              <li class="rest" style="--ch: var(--ch-indigo)">
+                <span class="rest__addr">CH.4.5</span>
+                <span class="rest__name">Frenado Magnético</span>
+                <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
+                  <path pathLength="1" d="M3 19 L24 6 C28 11 32 13 37 13 H60 L81 3"/>
+                </svg>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <article class="channel" style="--ch: var(--ch-cyan)">
+          <p class="channel__addr">CH.4.1</p>
+          <h4 class="channel__name">TelemetryStack</h4>
+          <p class="channel__reading">
+            <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+            <span class="reading__value">4200 rpm</span>
+            <span class="reading__unit" data-i18n="proj.telemetry.unit">telemetría en vivo</span>
+          </p>
+          <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: telemetrystack -
+               an RPM sweep: a chirp whose frequency climbs and whose envelope swells and then
+               damps out as the engine settles on a steady line. -->
+            <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M3 32 Q10 25.9 17 27.7 Q23.5 32.8 30 23.8 Q36 11.9 42 20.2 Q47.5 30.5 53 16.8
+                     Q58 2.3 63 13.8 Q67.5 24.4 72 11 Q77 1.5 82 8 Q85.5 14 89 8 Q92.5 4 96 8
+                     Q99.5 11 103 8 Q106.5 6 110 8 L117 8"/>
+          </svg>
+          <p class="channel__tagline" data-i18n="proj.telemetry.tagline">Telemetría en vivo para coches de competencia SAE.</p>
+          <p class="channel__blurb" data-i18n="proj.telemetry.blurb">Stack de telemetría en tiempo real: sensores en un ESP32 (RPM, temperatura, GPS, suspensión) enviados por LoRa 915 MHz o WiFi hacia InfluxDB + Grafana. Firmware FreeRTOS (dual-core, dual-SPI). Base reutilizable propia: hoy en 2 equipos y planeada para 4 —Quantum, MadRams, Cefiro y Axolotl—; cualquiera lo adopta editando un .env.</p>
+          <p class="channel__note" data-i18n="proj.telemetry.note">Ignitia y Elyos quedan fuera a propósito: o ya tienen sistema propio, o usan uno lo bastante distinto como para que acoplarlo no valga la pena.</p>
+          <ul class="badges">
+            <li class="badge">ESP32</li>
+            <li class="badge">LoRa</li>
+            <li class="badge">FreeRTOS</li>
+            <li class="badge">InfluxDB</li>
+            <li class="badge">Grafana</li>
+            <li class="badge">Docker</li>
+            <li class="badge">Python</li>
+          </ul>
+          <div class="channel__links">
+            <a class="btn btn--code" href="https://github.com/luisxavierxd/TelemetryStack" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="bank" style="--ch: var(--ch-lime)" aria-labelledby="bank-formacion">
+        <div class="bank__intro">
+          <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 5</p>
+          <h3 class="bank__name" id="bank-formacion" data-i18n="cat.formacion.name">Formación</h3>
+          <p class="bank__line" data-i18n="cat.formacion.line">Enseñar lo que me enseñó el coche: cursos abiertos para que un equipo nuevo arranque sin esperar a nadie.</p>
+          <p class="bank__count" data-i18n="cat.formacion.count">programa de 3 bloques</p>
+          <a class="bank__link" href="formacion.html" data-page-link data-i18n="cat.formacion.more">Ver el programa completo</a>
+          <div class="bank__rest">
+            <p class="bank__rest-label" data-i18n="courses.eyebrow">Programa de formación</p>
+            <ul>
+              <li class="rest" style="--ch: var(--ch-lime)">
+                <span class="rest__addr" aria-hidden="true">✅</span>
+                <span class="rest__name" data-i18n="course.telemetria.name">Telemetría (Arduino)</span>
+                <span class="rest__status rest__status--live" data-i18n="course.state.live">En línea</span>
+              </li>
+              <li class="rest" style="--ch: var(--ch-lime)">
+                <span class="rest__addr" aria-hidden="true">✅</span>
+                <span class="rest__name" data-i18n="course.cad.name">CAD (SolidWorks)</span>
+                <span class="rest__status rest__status--live" data-i18n="course.state.live">En línea</span>
+              </li>
+              <li class="rest" style="--ch: var(--ch-lime)">
+                <span class="rest__addr" aria-hidden="true">🔜</span>
+                <span class="rest__name" data-i18n="course.electronica.name">Electrónica</span>
+                <span class="rest__status" data-i18n="course.state.soon">Próximamente</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <article class="channel" style="--ch: var(--ch-lime)">
+          <p class="channel__addr">CH.5.1</p>
+          <h4 class="channel__name">Cursos MadRams</h4>
+          <p class="channel__reading">
+            <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+            <span class="reading__value">SAE</span>
+            <span class="reading__unit" data-i18n="proj.madrams.unit">formación de equipo</span>
+          </p>
+          <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: madrams -
+               three plateaus joined by ramps (basico, intermedio, avanzado) with a level tick on
+               each: a progression, not a signal. -->
+            <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M6 29 H28 L40 21 H66 L78 13 H114"/>
+            <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 29 V33 M46 21 V25 M84 13 V17"/>
+          </svg>
+          <p class="channel__tagline" data-i18n="proj.madrams.tagline">Portal de formación del equipo Baja SAE.</p>
+          <p class="channel__blurb" data-i18n="proj.madrams.blurb">Biblioteca de cursos de nuevo ingreso para MadRams (Minibaja SAE, Tec GDL): cursos por categoría y nivel, con un render 3D del coche por secuencia de imágenes. HTML/CSS/JS estático.</p>
+          <ul class="badges">
+            <li class="badge">HTML</li>
+            <li class="badge">CSS</li>
+            <li class="badge">JavaScript</li>
+            <li class="badge">UX</li>
+          </ul>
+          <div class="channel__links">
+            <a class="btn btn--demo" href="https://luisxavierxd.github.io/MadRamsBibliotecaCursos/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
+            <a class="btn btn--code" href="https://github.com/luisxavierxd/MadRamsBibliotecaCursos" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+          </div>
+          <button class="disclosure" type="button" aria-expanded="false" aria-controls="panel-madrams">
+            <svg class="disclosure__chevron" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+              <path d="M2.75 4.5 6 7.75 9.25 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="disclosure__label disclosure__label--more" data-i18n="disclosure.more">Ver más</span>
+            <span class="disclosure__label disclosure__label--less" data-i18n="disclosure.less">Ver menos</span>
+          </button>
+          <div class="panel" id="panel-madrams" hidden>
+            <div class="panel__inner">
+              <div class="panel__body">
+                <p class="panel__cta">
+                  <a class="btn btn--primary" href="https://luisxavierxd.github.io/MadRamsBibliotecaCursos/" target="_blank" rel="noopener noreferrer" data-i18n="proj.madrams.panel.open">Abrir portal</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
 
     </div>
 
@@ -473,22 +477,78 @@
 
   <section id="about" class="section section--about" aria-labelledby="about-heading">
     <h2 id="about-heading" class="section__heading" data-i18n="about.heading">Sobre mí</h2>
-    <p class="about__bio" data-i18n="about.bio">Soy estudiante de Ingeniería en Robótica en el Tec de Monterrey, Campus Guadalajara. Me interesa el camino completo del sensor a la decisión: adquirir señales, procesarlas y convertirlas en acciones — en visión en el borde, sistemas embebidos y robótica de competencia. Formo parte del equipo Baja SAE MadRams.</p>
 
-    <div class="skills">
-      <div class="skills__group">
-        <span class="skills__dot" style="--ch: var(--ch-amber)" aria-hidden="true"></span>
-        <span class="skills__group-name" data-i18n="about.skills.edgeai">Edge AI / Visión</span>
+    <!-- Nordschleife, traced from the vector logo's outer stroke: one closed
+         subpath, which is what lets the car ride it with getPointAtLength.
+         Decorative — the narrative is about competition engineering, and this
+         is the open field to the right of a 68ch measure, not a claim. -->
+    <div class="about__circuit" aria-hidden="true">
+      <svg viewBox="-14 -14 272.7 220.1" preserveAspectRatio="xMidYMid meet" focusable="false">
+        <path class="circuit__track" pathLength="1" d="M92.2 150.7C88.6 151.5 85.1 152.5 81.7 153.7C78.4 154.8 75.1 156.2 72.0 158.0C64.6 162.0 56.8 164.8 49.0 167.6C46.9 168.3 44.8 169.1 42.6 169.9L35.0 172.7C31.5 174.0 31.4 173.9 29.1 173.2C28.7 173.1 28.3 172.9 27.7 172.8C25.5 172.1 24.0 174.0 21.9 176.5C21.5 176.9 21.1 177.4 20.6 178.0C20.3 178.3 20.1 178.5 19.9 178.8C19.3 179.4 19.1 179.6 19.2 180.8L19.6 184.6C19.6 184.8 19.6 185.1 19.6 185.4C19.8 186.5 19.8 187.1 19.3 187.7L19.3 187.7C18.7 188.5 18.1 188.5 16.7 188.6L16.3 188.7L16.3 188.7L13.3 188.9C12.3 189.0 11.6 189.1 11.0 189.2C10.5 189.3 9.9 189.6 9.1 189.9C6.0 191.5 3.6 192.1 2.3 192.0C1.4 191.9 0.7 191.5 0.4 190.8C0.0 190.1 0.1 189.4 0.7 188.6C1.4 187.5 3.4 186.1 7.0 184.5C8.8 183.7 9.2 183.2 10.3 181.5L10.5 181.3L13.4 177.1C13.4 177.0 13.5 177.0 13.5 176.9L13.5 176.9L18.8 171.1C18.8 171.1 18.8 171.0 18.8 171.0L19.0 170.8L19.0 170.8L19.0 170.8C19.3 170.5 19.5 170.5 19.5 170.4C19.5 170.3 19.3 170.2 19.1 169.7L19.0 169.5L18.7 168.9C18.7 168.9 18.6 168.8 18.6 168.8C17.4 166.4 16.8 165.2 17.4 163.8C18.0 162.4 19.5 161.7 22.5 160.1L22.8 159.9L28.2 157.0C29.3 156.4 30.0 156.2 30.8 156.1C31.7 156.0 32.4 156.1 33.6 156.4C33.7 156.4 34.4 156.6 35.2 156.8C39.6 157.7 43.5 158.6 47.7 157.4C49.7 156.9 50.3 157.0 51.9 157.4C52.3 157.5 52.3 157.5 52.5 157.6C54.5 158.0 55.4 158.1 55.5 157.8C55.8 157.3 55.4 155.8 54.5 153.4L54.5 153.4L54.5 153.4C54.4 153.3 54.4 153.2 54.4 153.1C54.4 153.0 54.4 152.8 54.4 152.7C54.4 152.7 54.4 152.7 54.4 152.7C54.1 152.6 54.4 152.8 54.2 152.9C53.9 152.9 53.7 153.0 53.4 153.1C50.6 153.9 48.7 154.2 46.8 153.9C45.0 153.5 43.4 152.6 41.2 150.7C40.4 150.0 39.9 149.6 39.3 149.3L39.3 149.3C38.8 149.0 38.2 148.8 37.1 148.5L33.9 147.8L33.8 147.7C32.3 147.4 31.6 147.2 31.0 146.6C30.3 146.0 30.1 145.4 29.8 144.1L29.6 143.7L29.6 143.7L27.5 137.0L22.8 135.2C22.3 135.1 21.9 134.6 21.9 134.1L21.9 134.1C21.4 128.6 20.6 127.5 17.1 123.2L17.1 123.2L17.1 123.2C17.0 123.0 16.9 122.9 16.9 122.8C14.6 117.5 12.6 112.6 12.2 108.1C11.7 103.3 12.9 99.1 17.2 95.7C20.7 92.8 22.5 90.1 23.4 87.1C24.2 84.0 24.2 80.3 23.9 75.5C23.9 74.7 23.9 73.9 23.8 73.1C23.6 67.0 23.4 62.7 21.0 57.5C19.6 54.6 20.1 53.2 21.9 52.4C22.8 52.0 24.1 51.9 25.6 51.7C26.3 51.7 27.0 51.6 27.8 51.6C32.3 51.1 35.4 50.6 38.3 49.7C41.3 48.8 44.0 47.6 47.9 45.5C49.5 44.7 50.8 43.9 51.9 43.0C52.9 42.1 53.7 41.2 54.5 40.0C55.6 38.1 56.8 37.2 58.0 36.4C58.4 36.1 58.8 35.8 59.2 35.5C60.1 34.7 60.6 34.2 60.9 33.7C61.9 32.6 62.4 32.0 65.4 31.1C66.1 30.9 66.8 30.7 67.4 30.5C68.0 30.3 68.7 30.0 69.4 29.7C70.3 29.4 71.1 29.0 72.0 28.6C72.9 28.2 73.8 27.7 74.6 27.3C84.5 22.2 83.2 19.6 79.7 12.7L79.4 12.3L79.4 12.2C78.6 10.7 78.3 10.0 78.5 9.1C78.8 8.3 79.3 7.9 80.2 7.2C80.3 7.1 80.4 7.0 80.9 6.7C81.2 6.4 81.5 6.3 81.9 6.4C85.9 6.5 86.4 6.1 88.6 4.2L88.6 4.2L88.6 4.2L88.9 4.0C90.0 3.1 91.0 2.4 92.1 1.8C93.2 1.2 94.3 0.7 95.5 0.2C95.9 0.0 96.4 0.0 96.7 0.2L96.7 0.2C99.5 1.8 101.2 3.2 102.2 5.0C103.2 6.7 103.5 8.7 103.5 11.5C103.9 11.9 104.1 12.1 104.3 12.3C104.3 12.3 104.3 12.3 104.3 12.3L104.3 12.3C105.0 12.1 105.5 11.9 106.0 11.7C106.4 11.5 106.8 11.3 107.3 11.1C108.9 10.6 110.5 10.7 112.2 11.2C113.8 11.7 115.3 12.5 116.9 13.3C116.9 13.3 117.6 13.7 118.3 14.0C121.9 16.0 122.3 16.2 125.7 12.8L125.7 12.8C128.0 10.2 129.0 10.4 131.5 11.0C132.0 11.1 132.5 11.3 133.2 11.4C136.6 12.0 139.9 12.4 143.2 12.7C146.5 13.0 149.9 13.2 153.3 13.2C153.7 13.2 154.1 13.4 154.4 13.6C155.0 14.3 155.4 15.3 155.4 16.3C155.4 17.2 155.2 18.3 154.8 19.4C154.1 21.6 153.3 22.9 152.5 24.2C151.6 25.4 150.9 26.6 150.5 28.8C149.5 35.2 153.8 39.3 158.2 43.4C158.8 43.9 159.4 44.4 159.9 44.9C164.7 46.4 168.0 47.6 170.9 49.5C173.9 51.4 176.4 54.0 179.7 58.1C179.7 58.2 179.7 58.2 179.8 58.3C181.6 60.9 182.9 62.5 184.2 63.5C185.4 64.4 186.7 64.7 188.6 64.7C191.0 64.8 193.0 64.6 194.9 64.4C198.4 64.0 201.5 63.7 206.3 64.9C206.5 64.9 206.7 65.0 206.9 65.2L206.9 65.2C208.9 66.8 210.4 68.1 210.7 69.3C211.1 71.1 209.8 72.1 205.7 72.2C202.4 72.3 200.0 72.8 198.6 73.3C198.8 73.4 199.0 73.4 199.3 73.4C201.1 73.5 203.0 73.3 205.0 73.1C207.1 72.8 209.3 72.5 211.5 72.7C212.4 72.8 213.2 72.9 213.9 73.0C215.9 73.4 217.7 73.7 219.5 71.9C220.6 70.7 221.4 69.6 222.0 68.7C223.4 66.6 224.2 65.3 227.8 65.2C230.2 65.2 232.8 67.0 235.3 69.5C237.6 71.8 239.8 74.7 241.5 77.0C243.1 79.1 244.0 80.7 244.4 82.2C244.7 83.9 244.4 85.4 243.5 87.5C243.4 87.8 243.2 88.1 243.0 88.5C242.8 88.9 242.6 89.3 242.4 89.7C242.4 89.8 242.3 89.9 242.2 89.9C239.8 93.2 240.3 93.9 241.9 96.6C242.3 97.2 242.7 97.8 243.1 98.6L243.1 98.6C243.8 99.7 243.9 100.9 243.7 102.2C243.5 103.4 242.9 104.7 242.1 106.0C241.9 106.5 241.4 106.7 240.9 106.7L236.9 106.9C236.6 106.9 236.4 106.9 236.2 106.8L236.2 106.8C233.3 105.4 231.4 104.7 229.9 104.8C228.6 104.8 227.3 105.5 225.8 106.9C223.7 108.7 222.5 111.0 221.2 113.3L221.1 113.5C220.2 115.0 219.6 116.2 218.9 117.0C218.0 118.0 217.1 118.6 215.8 118.7L215.8 118.7C214.5 118.8 213.3 118.8 212.1 118.7C209.9 118.6 207.7 118.4 206.5 119.9C205.3 121.3 203.9 122.4 202.3 123.4C200.8 124.3 199.1 125.0 197.2 125.6C193.2 126.9 189.5 127.5 186.0 127.3C182.4 127.2 179.1 126.3 175.9 124.4L175.9 124.4C174.7 123.7 173.5 123.0 172.5 122.2C169.7 120.3 167.6 118.8 165.5 121.2C164.8 122.1 164.7 123.1 165.1 124.0C165.6 125.2 166.7 126.5 167.9 127.8C170.3 130.2 171.9 131.9 172.6 133.6C173.4 135.7 172.8 137.3 170.5 139.1C167.9 141.1 164.2 142.4 160.0 143.4C155.8 144.3 151.2 144.8 146.7 145.2L146.7 145.2L146.7 145.2L146.7 145.2C142.5 145.5 138.2 145.7 133.9 146.0C119.9 146.8 105.8 147.7 92.2 150.7L92.2 150.7Z"/>
+        <text class="circuit__label" x="124" y="80" text-anchor="middle">Nürburgring</text>
+        <text class="circuit__sublabel" x="124" y="93" text-anchor="middle">Nordschleife</text>
+        <circle class="circuit__car" r="3.4"/>
+      </svg>
+    </div>
+
+    <div class="about__narrative">
+      <p data-i18n="about.n1">Convierto sensores en decisiones. Es la línea de arriba, y también es, más o menos, toda mi vida.</p>
+      <p data-i18n="about.n2">Soy hijo de un ingeniero electromecánico que nunca se quedó en su área: hacía sistemas por gusto, y llegó a correr uno de los primeros servidores grandes de Counter-Strike en México. Crecí dentro de eso. Jugué Wii con él desde los tres años; a los siete me sentó frente a una PC con Minecraft, y unos primos mayores me enseñaron a moddearlo. Aprendí a construir jugando — antes de saber que eso tenía un nombre.</p>
+      <p data-i18n="about.n3">En primaria competí en RoboMatrix Jalisco. En sexto quedé en tercer lugar y clasifiqué a Nacional; la pandemia lo canceló. En secundaria hice mis primeros mods y jueguitos — un Tron para dos jugadores en Java, entre otros. En la prepa tocaba un proyecto de ingeniería por semestre, y ahí empecé a construir cosas que medían el mundo y respondían: un baño que recircula el agua hasta alcanzar la temperatura que pides; un sistema de aeroponía apilable con riego automático y telemetría; una propuesta de generador eléctrico con CO₂ como combustible, a partir de un paper coreano; una boya autopropulsada con cámara y autocentrado por PID para buscar fugas en las tuberías viejas de la ciudad.</p>
+      <p data-i18n="about.n4">Los últimos dos años de prepa hice un robot con ROS y AgroBot, un brazo que recolecta frambuesas por visión. Aquí soy honesto sobre el alcance: a nivel prepa construí las piezas, no siempre la integración. En AgroBot armé el brazo, probé la cinemática inversa a una posición y entrené el modelo de detección — pero el sistema completo, todo junto, no llegó a integrarse. En el robot de interprepas, el día de la competencia no funcionó: no logré integrar una ruta planificada al abrir SLAM, por inexperiencia y falta de documentación. Tenía la ruta. Tenía el robot moviéndose. No los uní a tiempo. Ayudé a un segundo equipo que preprogramó todo en un EV3 — y ganamos.</p>
+      <p data-i18n="about.n5">Cuento esos tropiezos a propósito. El SLAM que no pude integrar en prepa es exactamente la razón por la que hoy me obsesiona la estimación de estado y el control. Los huecos marcan hacia dónde voy.</p>
+      <p data-i18n="about.n6">Ahora estudio Ingeniería en Robótica en el Tec de Monterrey, Campus Guadalajara. Formo parte del equipo Baja SAE MadRams y trabajo en telemetría y sistemas de potencia de varios equipos de competencia. Me interesa el camino completo del sensor a la decisión — visión en el borde, embebidos, señales — y tengo una manía útil: cuando una herramienta me limita, bajo un nivel y la controlo por debajo. He revertido protocolos, tratado formatos cerrados como lo que son, y hecho que las herramientas hagan lo que necesito, no lo que traen de fábrica.</p>
+      <p data-i18n="about.n7">Sigo en lo mismo que a los siete: construir cosas que perciben, deciden y actúan. Solo que ahora los sensores son mejores.</p>
+    </div>
+
+    <!-- Teams are stated separately from skills: one is where the work happens,
+         the other is what it uses. The upcoming three are marked planned in
+         words and in style, same contract as the Aeroespacial legend group. -->
+    <div class="teams">
+      <div class="skills__group" style="--ch: var(--ch-coche)">
+        <span class="skills__dot" aria-hidden="true"></span>
+        <span class="skills__group-name" data-i18n="about.teams">Equipos de competencia</span>
         <ul class="pills">
-          <li class="pill">YOLOv11</li>
-          <li class="pill">OpenCV</li>
-          <li class="pill">EEGNet</li>
-          <li class="pill">signal processing</li>
-          <li class="pill">stereo vision</li>
+          <li class="pill pill--expert">MadRams · Baja SAE</li>
+          <li class="pill pill--expert">Quantum Speed Racing · Electrathon</li>
+          <li class="pill" data-i18n="team.elyos">Silca Elyos · eficiencia energética</li>
         </ul>
       </div>
-      <div class="skills__group">
-        <span class="skills__dot" style="--ch: var(--ch-violet)" aria-hidden="true"></span>
+      <div class="skills__group skills__group--planned" style="--ch: var(--ch-elyos)">
+        <span class="skills__dot" aria-hidden="true"></span>
+        <span class="skills__group-name">
+          <span data-i18n="about.teams.soon">Equipos por venir</span>
+          <span class="skills__status" data-i18n="about.skills.aeroStatus">en diseño</span>
+        </span>
+        <ul class="pills">
+          <li class="pill">Cefiro Aerodesign · SAE Aero Design</li>
+          <li class="pill" data-i18n="team.ignitia">Ignitia Rocketlab · cohetería</li>
+          <li class="pill">Axolotl Motosport · MotoStudent</li>
+        </ul>
+      </div>
+      <p class="tier-note" data-i18n="about.teams.note">Los que brillan son donde pongo más horas.</p>
+    </div>
+
+    <div class="skills">
+      <p class="skills__eyebrow" data-i18n="about.skills.heading">Habilidades</p>
+      <p class="tier-note">
+        <span class="pill pill--expert" style="--ch: var(--ch-amber)" data-i18n="about.skills.glowSample">así</span>
+        <span data-i18n="about.skills.glow">Las habilidades que brillan son en las que tengo más profundidad.</span>
+      </p>
+      <div class="skills__group" style="--ch: var(--ch-amber)">
+        <span class="skills__dot" aria-hidden="true"></span>
+        <span class="skills__group-name" data-i18n="about.skills.edgeai">Edge AI / Visión</span>
+        <ul class="pills">
+          <li class="pill pill--expert">YOLOv11</li>
+          <li class="pill pill--expert">YOLOv8n</li>
+          <li class="pill pill--expert">OpenCV</li>
+          <li class="pill">TensorFlow</li>
+          <li class="pill">EEGNet</li>
+          <li class="pill">signal processing</li>
+        </ul>
+      </div>
+      <div class="skills__group" style="--ch: var(--ch-violet)">
+        <span class="skills__dot" aria-hidden="true"></span>
         <span class="skills__group-name" data-i18n="about.skills.robotics">Robótica</span>
         <ul class="pills">
           <li class="pill">ROS2</li>
@@ -496,25 +556,45 @@
           <li class="pill">LiDAR</li>
           <li class="pill">teleop</li>
           <li class="pill">6-DOF arm</li>
+          <li class="pill">inverse kinematics</li>
         </ul>
       </div>
-      <div class="skills__group">
-        <span class="skills__dot" style="--ch: var(--ch-cyan)" aria-hidden="true"></span>
+      <div class="skills__group" style="--ch: var(--ch-coche)">
+        <span class="skills__dot" aria-hidden="true"></span>
+        <span class="skills__group-name" data-i18n="about.skills.control">Control</span>
+        <ul class="pills">
+          <li class="pill pill--expert">PID</li>
+          <li class="pill">pulse-and-coast</li>
+          <li class="pill">coast-down</li>
+          <li class="pill" data-i18n="skill.gainTuning">sintonía de ganancias</li>
+          <li class="pill">FOC/BLDC</li>
+        </ul>
+      </div>
+      <div class="skills__group" style="--ch: var(--ch-cyan)">
+        <span class="skills__dot" aria-hidden="true"></span>
         <span class="skills__group-name" data-i18n="about.skills.embedded">Embebidos</span>
         <ul class="pills">
-          <li class="pill">ESP32</li>
+          <li class="pill pill--expert">ESP32</li>
+          <li class="pill pill--expert">Arduino</li>
+          <li class="pill pill--expert" data-i18n="skill.telemetry">telemetría</li>
+          <li class="pill">MQTT/Mosquitto</li>
+          <li class="pill pill--expert">LoRa/SX1262</li>
+          <li class="pill pill--expert" data-i18n="skill.sensors">sensores/I²C</li>
+          <li class="pill pill--expert" data-i18n="skill.reverseEng">ingeniería inversa</li>
           <li class="pill">FreeRTOS</li>
-          <li class="pill">LoRa 915 MHz</li>
-          <li class="pill">Arduino</li>
+          <li class="pill pill--expert">GPS NMEA</li>
+          <li class="pill">microSD logging</li>
+          <li class="pill">CAN bus/TWAI</li>
         </ul>
       </div>
-      <div class="skills__group">
-        <span class="skills__dot" style="--ch: var(--ch-green)" aria-hidden="true"></span>
+      <div class="skills__group" style="--ch: var(--ch-green)">
+        <span class="skills__dot" aria-hidden="true"></span>
         <span class="skills__group-name" data-i18n="about.skills.fullstack">Full-stack / Datos</span>
         <ul class="pills">
           <li class="pill">React</li>
           <li class="pill">Node.js</li>
           <li class="pill">WebSocket</li>
+          <li class="pill">FastAPI</li>
           <li class="pill">InfluxDB</li>
           <li class="pill">Grafana</li>
           <li class="pill">Docker</li>
@@ -522,24 +602,76 @@
           <li class="pill">PCA</li>
         </ul>
       </div>
-      <div class="skills__group">
-        <span class="skills__dot" style="--ch: var(--ch-lime)" aria-hidden="true"></span>
-        <span class="skills__group-name" data-i18n="about.skills.languages">Lenguajes</span>
+      <div class="skills__group" style="--ch: var(--ch-emerald)">
+        <span class="skills__dot" aria-hidden="true"></span>
+        <span class="skills__group-name" data-i18n="about.skills.modelling">Modelado 3D</span>
         <ul class="pills">
-          <li class="pill">Python</li>
-          <li class="pill">C++</li>
-          <li class="pill">C</li>
-          <li class="pill">JavaScript</li>
+          <li class="pill">SolidWorks</li>
+          <li class="pill" data-i18n="skill.parts">modelado de piezas</li>
+          <li class="pill" data-i18n="skill.assembly">ensamblado</li>
+          <li class="pill" data-i18n="skill.animation">animaciones</li>
+          <li class="pill pill--expert" data-i18n="skill.renders">renders</li>
+          <li class="pill">Three.js</li>
+          <li class="pill">model-viewer</li>
+          <li class="pill">glTF/Draco</li>
         </ul>
       </div>
-      <div class="skills__group">
-        <span class="skills__dot" style="--ch: var(--ch-red)" aria-hidden="true"></span>
+      <div class="skills__group" style="--ch: var(--ch-quantum)">
+        <span class="skills__dot" aria-hidden="true"></span>
+        <span class="skills__group-name" data-i18n="about.skills.genai">GenAI / IA generativa</span>
+        <ul class="pills">
+          <li class="pill pill--expert" data-i18n="skill.llmOrchestration">orquestación de LLMs por CLI</li>
+          <li class="pill">Ollama</li>
+          <li class="pill pill--expert">Stable Diffusion</li>
+          <li class="pill">GPT4All</li>
+          <li class="pill">DeepSeek</li>
+          <li class="pill pill--expert" data-i18n="skill.localLlms">LLMs locales / self-host</li>
+        </ul>
+      </div>
+      <div class="skills__group" style="--ch: var(--ch-teal)">
+        <span class="skills__dot" aria-hidden="true"></span>
+        <span class="skills__group-name" data-i18n="about.skills.teaching">Docencia y documentación</span>
+        <ul class="pills">
+          <li class="pill pill--expert" data-i18n="skill.docs">documentación técnica</li>
+          <li class="pill pill--expert" data-i18n="skill.teachingTag">docencia</li>
+        </ul>
+      </div>
+      <div class="skills__group" style="--ch: var(--ch-lime)">
+        <span class="skills__dot" aria-hidden="true"></span>
+        <span class="skills__group-name" data-i18n="about.skills.languages">Lenguajes</span>
+        <ul class="pills">
+          <li class="pill pill--expert">Python</li>
+          <li class="pill pill--expert">C++</li>
+          <li class="pill">C</li>
+          <li class="pill">JavaScript</li>
+          <li class="pill">Java</li>
+          <li class="pill">MATLAB</li>
+          <li class="pill">HTML</li>
+          <li class="pill">CSS</li>
+          <li class="pill">C#</li>
+        </ul>
+      </div>
+      <div class="skills__group" style="--ch: var(--ch-red)">
+        <span class="skills__dot" aria-hidden="true"></span>
         <span class="skills__group-name" data-i18n="about.skills.simulation">Simulación</span>
         <ul class="pills">
           <li class="pill">NumPy</li>
           <li class="pill">Matplotlib</li>
           <li class="pill">dielectrophoresis</li>
           <li class="pill">Cognitive Load Theory</li>
+        </ul>
+      </div>
+      <div class="skills__group skills__group--planned" style="--ch: var(--ch-elyos)">
+        <span class="skills__dot" aria-hidden="true"></span>
+        <span class="skills__group-name">
+          <span data-i18n="about.skills.aero">Aeroespacial</span>
+          <span class="skills__status" data-i18n="about.skills.aeroStatus">en diseño</span>
+        </span>
+        <ul class="pills">
+          <li class="pill">Pixhawk</li>
+          <li class="pill">ArduPlane</li>
+          <li class="pill">MAVLink</li>
+          <li class="pill">RFD900x</li>
         </ul>
       </div>
     </div>

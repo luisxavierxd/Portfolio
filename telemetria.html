@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.title.telemetria">Telemetría y potencia — Luis Xavier García Pimentel Ascencio</title>
+<meta name="description" data-i18n-content="cat.telemetria.line" content="Coches de competencia que se explican solos: telemetría en pista y los sistemas de potencia que la alimentan.">
+
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               script-src 'self';
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+               img-src 'self' data: https:;
+               font-src 'self' https://fonts.gstatic.com;
+               connect-src 'self';">
+
+<meta property="og:title" data-i18n-content="meta.title.telemetria" content="Telemetría y potencia — Luis Xavier García Pimentel Ascencio">
+<meta property="og:description" data-i18n-content="cat.telemetria.line" content="Coches de competencia que se explican solos: telemetría en pista y los sistemas de potencia que la alimentan.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://luisxavierxd.github.io/Portfolio/telemetria.html">
+<meta property="og:image" content="https://luisxavierxd.github.io/Portfolio/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" data-i18n-content="meta.ogImageAlt" content="Trazo de señal que pasa de ruido a una decisión discreta, sobre fondo azul-carbón, junto al nombre Luis Xavier García Pimentel Ascencio.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+<link id="fonts-css" rel="stylesheet" media="print" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Saltar al contenido</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Navegación principal" data-i18n-aria="nav.ariaLabel">
+    <a class="brand" href="index.html" data-page-link>
+      <span class="brand__mark">LX</span>
+      <span class="brand__name">Luis Xavier García Pimentel Ascencio</span>
+      <span class="brand__subtitle" data-i18n="nav.subtitle">Ingeniería en Robótica · Tec GDL</span>
+    </a>
+    <ul class="nav__links">
+      <li><a class="nav__link" href="index.html#projects" data-page-link data-i18n="nav.projects">Proyectos</a></li>
+      <li><a class="nav__link" href="index.html#about" data-page-link data-i18n="nav.about">Sobre mí</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="EN — cambiar a inglés" data-i18n-aria="langToggle.ariaLabel">EN</button>
+      <a class="btn btn--primary btn--small" href="index.html#book" data-page-link data-i18n="nav.bookCta">Agendar</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <section class="section section--sub" style="--ch: var(--ch-coche)">
+    <a class="backlink" href="index.html" data-page-link data-i18n="nav.back">Volver al tablero</a>
+    <h1 class="subhead__title" data-i18n="cat.telemetria.name">Telemetría y potencia</h1>
+    <p class="subhead__line" data-i18n="cat.telemetria.line">Coches de competencia que se explican solos: telemetría en pista y los sistemas de potencia que la alimentan.</p>
+    <p class="subhead__count" data-i18n="cat.telemetria.count">3 canales</p>
+  </section>
+
+  <section class="section section--projects" aria-labelledby="board-heading" style="--ch: var(--ch-coche)">
+    <h2 id="board-heading" class="section__eyebrow" data-i18n="projects.eyebrow">Tablero de lecturas</h2>
+
+    <div class="board">
+
+      <article class="channel" style="--ch: var(--ch-coche)">
+        <p class="channel__addr">CH.3.1</p>
+        <h3 class="channel__name">Coche MadRams · Baja SAE</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">4°</span>
+          <span class="reading__unit" data-i18n="proj.coche.unit">Endurance · Baja SAE Oregon</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: coche madrams -
+             a telemetry uplink: the car's own signal wanders along a slow baseline while packets
+             leave it in bursts, each one a vertical climb topped by the payload it carried. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 27 C13 25 21 28 30 26.5 C40 25 48 28.5 58 27 C68 25.5 76 28.5 86 27
+                   C95 25.6 105 28 116 26.6"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M16 26.4 V12 M38 26.8 V7 M60 26.9 V14 M82 27 V5 M104 27.3 V10"/>
+          <rect x="14.5" y="9" width="3" height="3"/>
+          <rect x="36.5" y="4" width="3" height="3"/>
+          <rect x="58.5" y="11" width="3" height="3"/>
+          <rect x="80.5" y="2" width="3" height="3"/>
+          <rect x="102.5" y="7" width="3" height="3"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.coche.tagline">El coche Baja real, hablando por radio en pista.</p>
+        <p class="channel__blurb" data-i18n="proj.coche.blurb">Sistema de telemetría del Minibaja SAE de MadRams: un ESP32 transmite por radio LoRa/SX1262 a pits, donde un convertidor serial escribe directo en InfluxDB —sin broker MQTT— y Grafana lo grafica: todo el stack corre en local. GPS u-blox a bordo. Dashboard con gauges por umbral, geomapa GPS coloreado por velocidad y correlación viento-temperatura. 4° lugar en Endurance, Baja SAE Oregon.</p>
+        <ul class="badges">
+          <li class="badge">ESP32</li>
+          <li class="badge">LoRa/SX1262</li>
+          <li class="badge">u-blox GPS</li>
+          <li class="badge">Serial</li>
+          <li class="badge">InfluxDB</li>
+          <li class="badge">Grafana</li>
+        </ul>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-quantum)">
+        <p class="channel__addr">CH.3.2</p>
+        <h3 class="channel__name">Quantum Speed Racing</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">48 V · 6 kWh</span>
+          <span class="reading__unit" data-i18n="proj.quantum.unit">sistema de potencia EV</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: quantum -
+             a pack discharging under load: the state-of-charge curve sagging from full to
+             cutoff, with the controller's switching ripple riding on top of it the whole way. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 6 L10 8 L13 6.5 L19 9.5 L22 8 L28 11 L31 9.5 L37 12.5 L40 11 L46 14
+                   L49 12.5 L55 15.5 L58 14 L64 17.5 L67 16 L73 19.5 L76 18 L82 22 L85 20.5
+                   L91 24.5 L94 23 L100 27 L103 26 L108 30"/>
+          <circle cx="112" cy="31.5" r="2.6"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.quantum.tagline">Potencia eléctrica de un auto de carreras, domada.</p>
+        <p class="channel__blurb" data-i18n="proj.quantum.blurb">Sistema de potencia para el auto eléctrico de Electrathon (48 V, 6 kWh): configuración y prueba del motor Motenergy ME0909 con controlador Alltrax SR48300, packs LiFePO4 16S4P en paralelo con ecualización de voltaje, y seguridad (kill-switch, fusibles 250 A). Reverticé el protocolo BLE de un BMS Daly clon para leerlo con Python (bleak) en una Raspberry Pi 4 a ~5.4 Hz. Display de piloto TFT SSD1963. La telemetría del coche corre sobre mi TelemetryStack, por WiFi en pits y enlace celular LTE/4G en pista.</p>
+        <ul class="badges">
+          <li class="badge">EV Power</li>
+          <li class="badge">LiFePO4</li>
+          <li class="badge">Motor Control</li>
+          <li class="badge">BMS</li>
+          <li class="badge">BLE reverse-eng</li>
+          <li class="badge">WiFi</li>
+          <li class="badge">LTE/4G</li>
+          <li class="badge">MQTT/Mosquitto</li>
+          <li class="badge">InfluxDB</li>
+          <li class="badge">Grafana</li>
+          <li class="badge">Raspberry Pi</li>
+          <li class="badge">Python</li>
+        </ul>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-elyos)">
+        <p class="channel__addr">CH.3.3</p>
+        <h3 class="channel__name">Silca Elyos Racing</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">kWh/km ↓</span>
+          <span class="reading__unit" data-i18n="proj.elyos.unit">optimización de consumo</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: silca elyos -
+             a pulse-and-coast lap: each burst of motor power is a steep climb, each glide a long
+             shallow decay. Same average speed, far less energy - which is the whole strategy. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 27 L14 9 L34 19 L44 8 L64 18 L74 7 L94 17 L104 6 L116 12"/>
+        </svg>
+        <!-- Award sits below the readout well, not above it: the three wells on
+             this page stay on one line, and the ribbon still reads before the copy. -->
+        <p class="channel__award" data-i18n="proj.elyos.award">Data &amp; Telemetry Award · Schmid Elektronik</p>
+        <p class="channel__tagline" data-i18n="proj.elyos.tagline">Menos energía por vuelta, en un auto de eficiencia premiado.</p>
+        <p class="channel__blurb" data-i18n="proj.elyos.blurb">Contribución de optimización sobre el sistema (ya existente) del equipo Silca Elyos, ganador del Data &amp; Telemetry Award (patrocinado por Schmid Elektronik). Mi trabajo: control de consumo del motor con estrategia pulse-and-coast por segmentos, un modelo de coast-down derivado de telemetría para predecir el deslizamiento, ajuste de ganancias FOC del driver BLDC y métricas de eficiencia (kWh/km, % coasting). Bosch como patrocinador del equipo.</p>
+        <p class="channel__note" data-i18n="proj.elyos.note">Optimicé un sistema que ya existía: el resto de la plataforma del equipo —enlace, estimación de estado, electrónica y tablero— no es trabajo mío.</p>
+        <ul class="badges">
+          <li class="badge">Energy Optimization</li>
+          <li class="badge">Pulse-and-Coast</li>
+          <li class="badge">FOC</li>
+          <li class="badge">BLDC</li>
+          <li class="badge">Race Strategy</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <nav class="section siblings" aria-label="Otros bancos" data-i18n-aria="nav.siblings">
+    <span class="siblings__label" data-i18n="nav.siblings">Otros bancos</span>
+    <a class="link" style="--ch: var(--ch-amber)" href="robotica.html" data-page-link data-i18n="cat.robotica.name">Robótica</a>
+    <a class="link" style="--ch: var(--ch-green)" href="senales.html" data-page-link data-i18n="cat.senales.name">Señales e IA</a>
+    <a class="link" style="--ch: var(--ch-cyan)" href="software.html" data-page-link data-i18n="cat.software.name">Software y herramientas</a>
+    <a class="link" style="--ch: var(--ch-lime)" href="formacion.html" data-page-link data-i18n="cat.formacion.name">Formación</a>
+  </nav>
+
+</main>
+
+<footer class="site-footer">
+  <ul class="footer__links">
+    <li><a class="footer__link" href="https://github.com/luisxavierxd" target="_blank" rel="noopener noreferrer" data-i18n="social.github">GitHub</a></li>
+    <li><a class="footer__link" href="https://www.linkedin.com/in/luis-xavier-garcía-pimentel-ascencio-251508333" target="_blank" rel="noopener noreferrer" data-i18n="social.linkedin">LinkedIn</a></li>
+    <li><a class="footer__link" href="mailto:luisxaviergpa@proton.me" data-i18n="social.email">Email</a></li>
+  </ul>
+  <p class="footer__meta">© <span id="year"></span> · <span data-i18n="footer.tagline">sitio estático en GitHub Pages</span></p>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

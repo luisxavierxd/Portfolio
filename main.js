@@ -1,6 +1,9 @@
-/* main.js — i18n toggle, Calendly tabs, footer year.
+/* main.js — i18n toggle, Calendly tabs, footer year. Shared by the landing
+   and all five category pages; every section it drives is guarded, so a page
+   without a booking well or without disclosures costs nothing.
+
    No browser storage APIs or cookies used anywhere in this file. Language
-   state lives in memory and in location.hash only. */
+   state lives in memory and in the URL's query string only. */
 
 (function () {
   'use strict';
@@ -38,9 +41,50 @@
       'projects.more': 'Ver todo en GitHub',
       'channel.readingLabel': 'LECTURA',
 
-      'projects.row.perceive': 'Percibir',
-      'projects.row.process': 'Procesar',
-      'projects.row.communicate': 'Comunicar',
+      /* Sub-page titles. Each category page owns its own <title> key, so the
+         browser tab, the history entry and the share preview all say which
+         bank you are on. */
+      'meta.title.robotica': 'Robótica — Luis Xavier García Pimentel Ascencio',
+      'meta.title.senales': 'Señales e IA — Luis Xavier García Pimentel Ascencio',
+      'meta.title.telemetria': 'Telemetría y potencia — Luis Xavier García Pimentel Ascencio',
+      'meta.title.software': 'Software y herramientas — Luis Xavier García Pimentel Ascencio',
+      'meta.title.formacion': 'Formación — Luis Xavier García Pimentel Ascencio',
+
+      'nav.back': 'Volver al tablero',
+      'nav.siblings': 'Otros bancos',
+
+      /* Channels are addressed bank-first (CH.1.1, CH.1.2 …), so the flagship
+         of every bank is always its .1 and the landing reads 1·2·3·4·5 instead
+         of a shuffled global sequence. This label names the bank above it. */
+      'bank.label': 'Banco',
+      'bank.rest': 'También en este banco',
+
+      /* One category per sub-page: the name, the one-line framing under it,
+         how many channels it holds, and the landing card's handoff link. */
+      'cat.robotica.name': 'Robótica',
+      'cat.robotica.line': 'Percibir: visión, brazos y navegación — máquinas que leen el mundo antes de moverse.',
+      'cat.robotica.count': '3 canales',
+      'cat.robotica.more': 'Ver los 3 · Robótica',
+
+      'cat.senales.name': 'Señales e IA',
+      'cat.senales.line': 'Procesar: señales crudas convertidas en decisiones — EEG, física aplicada y aprendizaje automático.',
+      'cat.senales.count': '2 canales',
+      'cat.senales.more': 'Ver los 2 · Señales',
+
+      'cat.telemetria.name': 'Telemetría y potencia',
+      'cat.telemetria.line': 'Coches de competencia que se explican solos: telemetría en pista y los sistemas de potencia que la alimentan.',
+      'cat.telemetria.count': '3 canales',
+      'cat.telemetria.more': 'Ver los 3 · Telemetría',
+
+      'cat.software.name': 'Software y herramientas',
+      'cat.software.line': 'Las herramientas: plataformas, mapas y utilidades que uso —o entrego— para que otros trabajen más rápido.',
+      'cat.software.count': '5 canales',
+      'cat.software.more': 'Ver los 5 · Software',
+
+      'cat.formacion.name': 'Formación',
+      'cat.formacion.line': 'Enseñar lo que me enseñó el coche: cursos abiertos para que un equipo nuevo arranque sin esperar a nadie.',
+      'cat.formacion.count': 'programa de 3 bloques',
+      'cat.formacion.more': 'Ver el programa completo',
 
       'proj.jtcs.unit': 'conteo por carril',
       'proj.jtcs.tagline': 'Semáforos que se adaptan al tráfico en tiempo real.',
@@ -51,9 +95,9 @@
       'proj.jtcs.panel.tech3': 'Onda verde sincronizada entre intersecciones.',
       'proj.jtcs.panel.open': 'Abrir demo',
 
-      'proj.agrobot.unit': 'brazo + visión 3D',
+      'proj.agrobot.unit': 'brazo + visión de madurez',
       'proj.agrobot.tagline': 'Robot que cosecha berries maduras por visión.',
-      'proj.agrobot.blurb': 'Robot autónomo para invernaderos: un detector YOLO11 identifica frambuesas por etapa de madurez con cámara estereoscópica (3D), y un brazo de 6 grados de libertad las recolecta. Control en Raspberry Pi 4 + Arduino por serial. Equipo Silmarils, reto STEAM 2025.',
+      'proj.agrobot.blurb': 'Prototipo de prepa (equipo Silmarils, ITESO): una cinta transportadora guía frambuesas y una garra de brazo de 6 GDL las recolecta. Un detector YOLOv8n (TensorFlow, Pi Camera V2) identifica el fruto por madurez y su posición se pasa al brazo por cinemática inversa vía Arduino. Las piezas —visión, brazo, cinemática— se probaron por separado; la integración total quedó a nivel prototipo.',
 
       'proj.neurobeat.unit': 'EEG · 8 canales',
       'proj.neurobeat.tagline': 'Un juego que controlas con la mente.',
@@ -61,7 +105,8 @@
 
       'proj.telemetry.unit': 'telemetría en vivo',
       'proj.telemetry.tagline': 'Telemetría en vivo para coches de competencia SAE.',
-      'proj.telemetry.blurb': 'Stack de telemetría en tiempo real: sensores en un ESP32 (RPM, temperatura, GPS, suspensión) enviados por LoRa 915 MHz o WiFi hacia InfluxDB + Grafana. Firmware FreeRTOS (dual-core, dual-SPI). Cualquier equipo lo adopta editando solo un .env.',
+      'proj.telemetry.note': 'Ignitia y Elyos quedan fuera a propósito: o ya tienen sistema propio, o usan uno lo bastante distinto como para que acoplarlo no valga la pena.',
+      'proj.telemetry.blurb': 'Stack de telemetría en tiempo real: sensores en un ESP32 (RPM, temperatura, GPS, suspensión) enviados por LoRa 915 MHz o WiFi hacia InfluxDB + Grafana. Firmware FreeRTOS (dual-core, dual-SPI). Base reutilizable propia: hoy en 2 equipos y planeada para 4 —Quantum, MadRams, Cefiro y Axolotl—; cualquiera lo adopta editando un .env.',
 
       'proj.malaria.unit': 'simulación + ML',
       'proj.malaria.tagline': 'Simula separar células infectadas con campos eléctricos.',
@@ -70,6 +115,7 @@
       'proj.robot.unit': 'navegación autónoma',
       'proj.robot.tagline': 'Robot autónomo con ROS2 y navegación.',
       'proj.robot.blurb': 'Robot diferencial sobre ROS2: navegación con Nav2, LiDAR LDROBOT, interfaz de hardware por Arduino y teleoperación por joystick. Robótica de competencia con el stack estándar de la industria.',
+      'proj.robot.note': 'El día de la competencia no funcionó: no logré integrar la ruta planificada al abrir SLAM, por inexperiencia y falta de documentación. Tenía la ruta y tenía el robot moviéndose; no los uní a tiempo.',
 
       'proj.mapatec.unit': 'ruta peatonal',
       'proj.mapatec.tagline': 'Rutas peatonales dentro del campus.',
@@ -87,8 +133,33 @@
       'proj.loopzels.tagline': 'Rompecabezas animados para entrenar la mente.',
       'proj.loopzels.blurb': 'Juego de escritorio en Python que fragmenta patrones GIF animados en grillas de 2×2 a 6×6 para reordenar de memoria. La dificultad escala según la Teoría de Carga Cognitiva (Sweller, 1988); motor de animación por hilos, records por tiempo en JSON. Expo Ingenierías.',
 
+      'proj.coche.unit': 'Endurance · Baja SAE Oregon',
+      'proj.coche.tagline': 'El coche Baja real, hablando por radio en pista.',
+      'proj.coche.blurb': 'Sistema de telemetría del Minibaja SAE de MadRams: un ESP32 transmite por radio LoRa/SX1262 a pits, donde un convertidor serial escribe directo en InfluxDB —sin broker MQTT— y Grafana lo grafica: todo el stack corre en local. GPS u-blox a bordo. Dashboard con gauges por umbral, geomapa GPS coloreado por velocidad y correlación viento-temperatura. 4° lugar en Endurance, Baja SAE Oregon.',
+
+      'proj.quantum.unit': 'sistema de potencia EV',
+      'proj.quantum.tagline': 'Potencia eléctrica de un auto de carreras, domada.',
+      'proj.quantum.blurb': 'Sistema de potencia para el auto eléctrico de Electrathon (48 V, 6 kWh): configuración y prueba del motor Motenergy ME0909 con controlador Alltrax SR48300, packs LiFePO4 16S4P en paralelo con ecualización de voltaje, y seguridad (kill-switch, fusibles 250 A). Reverticé el protocolo BLE de un BMS Daly clon para leerlo con Python (bleak) en una Raspberry Pi 4 a ~5.4 Hz. Display de piloto TFT SSD1963. La telemetría del coche corre sobre mi TelemetryStack, por WiFi en pits y enlace celular LTE/4G en pista.',
+
+      'proj.elyos.unit': 'optimización de consumo',
+      'proj.elyos.award': 'Data & Telemetry Award · Schmid Elektronik',
+      'proj.elyos.tagline': 'Menos energía por vuelta, en un auto de eficiencia premiado.',
+      'proj.elyos.blurb': 'Contribución de optimización sobre el sistema (ya existente) del equipo Silca Elyos, ganador del Data & Telemetry Award (patrocinado por Schmid Elektronik). Mi trabajo: control de consumo del motor con estrategia pulse-and-coast por segmentos, un modelo de coast-down derivado de telemetría para predecir el deslizamiento, ajuste de ganancias FOC del driver BLDC y métricas de eficiencia (kWh/km, % coasting). Bosch como patrocinador del equipo.',
+      'proj.elyos.note': 'Optimicé un sistema que ya existía: el resto de la plataforma del equipo —enlace, estimación de estado, electrónica y tablero— no es trabajo mío.',
+
+      'proj.latex.unit': 'reportes APA-7',
+      'proj.latex.tagline': 'Convierte PDFs en reportes LaTeX con formato APA-7.',
+      'proj.latex.blurb': 'IDE local (FastAPI + editor web) que convierte PDFs en reportes LaTeX estilo APA 7ª. Extrae texto e imágenes con PyMuPDF (con heurísticos: quita logos de header, recorta bordes, filtra por tamaño), orquesta el CLI de Claude Code para generar y modificar el .tex, y compila con pdflatex. La generación de LaTeX la hace el modelo; mi trabajo es el pipeline de extracción, la orquestación y el IDE.',
+      'proj.latex.note': 'Sin demo en vivo: necesita el CLI de Claude Code con sesión iniciada en tu propia máquina.',
+
+      'proj.frenado.unit': 'velocidad terminal',
+      'proj.frenado.tagline': 'Un imán que cae y se frena solo, en simulación.',
+      'proj.frenado.blurb': 'App de MATLAB (App Designer) que simula el frenado magnético de un imán que cae por un tubo conductor: integra la ecuación de movimiento con ode45 aplicando un arrastre −k_b·v solo mientras el imán está dentro del tubo, y reporta la velocidad terminal (m·g/k_b), la de entrada y la de salida. Escena 3D animada con estela, gráficas de z, v y a marcando entrada y salida, y el campo B calculado por Biot-Savart sobre una espira discretizada, visualizado con flechas coloreadas por magnitud y cortes de |B|. Masa, k_b, campo, longitud del tubo y altura inicial se ajustan en vivo. La interfaz está escrita a mano: App Designer no deja editar el código que crea los componentes, así que descomprimí el .mlapp —es un paquete zip— y edité su document.xml directamente.',
+      'proj.frenado.note': 'k_b es un coeficiente empírico de amortiguamiento (rango típico 0.01–2 N·s/m, ref. Levin et al., AJP 74(9), 2006), no derivado de la conductividad ni de la geometría; y el campo B que se dibuja es ilustrativo — no alimenta la fuerza de frenado. Es una app de escritorio: sin demo en vivo.',
+
       'proj.btn.demo': 'Demo en vivo',
       'proj.btn.code': 'Código',
+      'proj.btn.site': 'Ver proyecto',
 
       /* Disclosure labels. Both live in the DOM at once (CSS shows the one the
          current aria-expanded state calls for), so state and language never
@@ -98,13 +169,72 @@
       'panel.eyebrow': 'Qué puedes probar',
 
       'about.heading': 'Sobre mí',
-      'about.bio': 'Soy estudiante de Ingeniería en Robótica en el Tec de Monterrey, Campus Guadalajara. Me interesa el camino completo del sensor a la decisión: adquirir señales, procesarlas y convertirlas en acciones — en visión en el borde, sistemas embebidos y robótica de competencia. Formo parte del equipo Baja SAE MadRams.',
+      'about.n1': 'Convierto sensores en decisiones. Es la línea de arriba, y también es, más o menos, toda mi vida.',
+      'about.n2': 'Soy hijo de un ingeniero electromecánico que nunca se quedó en su área: hacía sistemas por gusto, y llegó a correr uno de los primeros servidores grandes de Counter-Strike en México. Crecí dentro de eso. Jugué Wii con él desde los tres años; a los siete me sentó frente a una PC con Minecraft, y unos primos mayores me enseñaron a moddearlo. Aprendí a construir jugando — antes de saber que eso tenía un nombre.',
+      'about.n3': 'En primaria competí en RoboMatrix Jalisco. En sexto quedé en tercer lugar y clasifiqué a Nacional; la pandemia lo canceló. En secundaria hice mis primeros mods y jueguitos — un Tron para dos jugadores en Java, entre otros. En la prepa tocaba un proyecto de ingeniería por semestre, y ahí empecé a construir cosas que medían el mundo y respondían: un baño que recircula el agua hasta alcanzar la temperatura que pides; un sistema de aeroponía apilable con riego automático y telemetría; una propuesta de generador eléctrico con CO₂ como combustible, a partir de un paper coreano; una boya autopropulsada con cámara y autocentrado por PID para buscar fugas en las tuberías viejas de la ciudad.',
+      'about.n4': 'Los últimos dos años de prepa hice un robot con ROS y AgroBot, un brazo que recolecta frambuesas por visión. Aquí soy honesto sobre el alcance: a nivel prepa construí las piezas, no siempre la integración. En AgroBot armé el brazo, probé la cinemática inversa a una posición y entrené el modelo de detección — pero el sistema completo, todo junto, no llegó a integrarse. En el robot de interprepas, el día de la competencia no funcionó: no logré integrar una ruta planificada al abrir SLAM, por inexperiencia y falta de documentación. Tenía la ruta. Tenía el robot moviéndose. No los uní a tiempo. Ayudé a un segundo equipo que preprogramó todo en un EV3 — y ganamos.',
+      'about.n5': 'Cuento esos tropiezos a propósito. El SLAM que no pude integrar en prepa es exactamente la razón por la que hoy me obsesiona la estimación de estado y el control. Los huecos marcan hacia dónde voy.',
+      'about.n6': 'Ahora estudio Ingeniería en Robótica en el Tec de Monterrey, Campus Guadalajara. Formo parte del equipo Baja SAE MadRams y trabajo en telemetría y sistemas de potencia de varios equipos de competencia. Me interesa el camino completo del sensor a la decisión — visión en el borde, embebidos, señales — y tengo una manía útil: cuando una herramienta me limita, bajo un nivel y la controlo por debajo. He revertido protocolos, tratado formatos cerrados como lo que son, y hecho que las herramientas hagan lo que necesito, no lo que traen de fábrica.',
+      'about.n7': 'Sigo en lo mismo que a los siete: construir cosas que perciben, deciden y actúan. Solo que ahora los sensores son mejores.',
+      'about.teams': 'Equipos de competencia',
+      'about.teams.soon': 'Equipos por venir',
+      'team.elyos': 'Silca Elyos · eficiencia energética',
+      'team.ignitia': 'Ignitia Rocketlab · cohetería',
       'about.skills.edgeai': 'Edge AI / Visión',
       'about.skills.robotics': 'Robótica',
       'about.skills.embedded': 'Embebidos',
       'about.skills.fullstack': 'Full-stack / Datos',
       'about.skills.languages': 'Lenguajes',
       'about.skills.simulation': 'Simulación',
+      'about.skills.heading': 'Habilidades',
+      'about.skills.glowSample': 'así',
+      'about.teams.note': 'Los que brillan son donde pongo más horas.',
+      'about.skills.control': 'Control',
+      'about.skills.teaching': 'Docencia y documentación',
+      'about.skills.glow': 'Las habilidades que brillan son en las que tengo más profundidad.',
+      'skill.telemetry': 'telemetría',
+      'skill.sensors': 'sensores/I²C',
+      'skill.reverseEng': 'ingeniería inversa',
+      'skill.gainTuning': 'sintonía de ganancias',
+      'skill.docs': 'documentación técnica',
+      'skill.teachingTag': 'docencia',
+      'skill.llmOrchestration': 'orquestación de LLMs por CLI',
+      'about.skills.modelling': 'Modelado 3D',
+      'about.skills.genai': 'GenAI / IA generativa',
+      'about.skills.aero': 'Aeroespacial',
+      'about.skills.aeroStatus': 'en diseño',
+
+      /* Most pills are proper nouns and stay put in both languages; these few
+         are descriptions, so they get keys like any other sentence. */
+      'skill.parts': 'modelado de piezas',
+      'skill.animation': 'animaciones',
+      'skill.assembly': 'ensamblado',
+      'skill.renders': 'renders',
+      'skill.localLlms': 'LLMs locales / self-host',
+      'skill.ohm': 'Ley de Ohm',
+      'skill.divider': 'Divisor de voltaje',
+      'skill.sketch2d': 'Sketch 2D',
+      'skill.extrude': 'Extrusión',
+      'skill.revolve': 'Revolución',
+      'skill.drawings': 'Planos técnicos',
+      'skill.aarm': 'A-arm/suspensión',
+      'skill.chassis': 'Chasis tubular',
+
+      'courses.eyebrow': 'Programa de formación',
+      'course.telemetria.name': 'Telemetría (Arduino)',
+      'course.telemetria.extra': 'Con simuladores interactivos y modelos 3D.',
+      'course.cad.name': 'CAD (SolidWorks)',
+      'course.cad.extra': 'Con chasis tubular 3D interactivo.',
+      'course.electronica.name': 'Electrónica',
+      'course.electronica.extra': 'Reserva el tercer bloque del programa; contenido en preparación.',
+      'course.level.basico': 'Básico',
+      'course.level.intermedio': 'Intermedio',
+      'course.level.avanzado': 'Avanzado',
+      'course.state.live': 'En línea',
+      'course.state.soon': 'Próximamente',
+      'bridge.eyebrow': 'Sesión 6+ · «Black Box»',
+      'bridge.text': 'El último bloque del curso de telemetría es el puente del salón al coche real: los mismos sensores, ya montados en el Minibaja y transmitiendo desde la pista.',
+      'bridge.cta': 'Ver el coche en pista',
 
       'book.heading': 'Agenda',
       'book.intro': '¿Quieres platicar de un proyecto? Aparta 30 minutos: presencial en campus o por Zoom.',
@@ -142,9 +272,42 @@
       'projects.more': 'More on GitHub',
       'channel.readingLabel': 'READING',
 
-      'projects.row.perceive': 'Perceive',
-      'projects.row.process': 'Process',
-      'projects.row.communicate': 'Communicate',
+      'meta.title.robotica': 'Robotics — Luis Xavier García Pimentel Ascencio',
+      'meta.title.senales': 'Signals & AI — Luis Xavier García Pimentel Ascencio',
+      'meta.title.telemetria': 'Telemetry & power — Luis Xavier García Pimentel Ascencio',
+      'meta.title.software': 'Software & tooling — Luis Xavier García Pimentel Ascencio',
+      'meta.title.formacion': 'Training — Luis Xavier García Pimentel Ascencio',
+
+      'nav.back': 'Back to the board',
+      'nav.siblings': 'Other banks',
+
+      'bank.label': 'Bank',
+      'bank.rest': 'Also in this bank',
+
+      'cat.robotica.name': 'Robotics',
+      'cat.robotica.line': 'Perceive: vision, arms and navigation — machines that read the world before they move.',
+      'cat.robotica.count': '3 channels',
+      'cat.robotica.more': 'See all 3 · Robotics',
+
+      'cat.senales.name': 'Signals & AI',
+      'cat.senales.line': 'Process: raw signals turned into decisions — EEG, applied physics and machine learning.',
+      'cat.senales.count': '2 channels',
+      'cat.senales.more': 'See both · Signals',
+
+      'cat.telemetria.name': 'Telemetry & power',
+      'cat.telemetria.line': 'Competition cars that explain themselves: trackside telemetry and the power systems feeding it.',
+      'cat.telemetria.count': '3 channels',
+      'cat.telemetria.more': 'See all 3 · Telemetry',
+
+      'cat.software.name': 'Software & tooling',
+      'cat.software.line': 'The tooling: platforms, maps and utilities I use — or hand over — so other people move faster.',
+      'cat.software.count': '5 channels',
+      'cat.software.more': 'See all 5 · Software',
+
+      'cat.formacion.name': 'Training',
+      'cat.formacion.line': 'Teaching what the car taught me: open courses so a new team can start without waiting on anyone.',
+      'cat.formacion.count': '3-block program',
+      'cat.formacion.more': 'See the full program',
 
       'proj.jtcs.unit': 'count per lane',
       'proj.jtcs.tagline': 'Traffic signals that adapt to demand in real time.',
@@ -155,9 +318,9 @@
       'proj.jtcs.panel.tech3': 'Green-wave sync across intersections.',
       'proj.jtcs.panel.open': 'Open demo',
 
-      'proj.agrobot.unit': 'arm + 3D vision',
+      'proj.agrobot.unit': 'arm + ripeness vision',
       'proj.agrobot.tagline': 'A robot that harvests ripe berries by vision.',
-      'proj.agrobot.blurb': 'Autonomous greenhouse robot: a YOLO11 detector identifies raspberries by ripeness with a stereo (3D) camera, and a 6-DOF arm picks them. Raspberry Pi 4 + Arduino over serial. Team Silmarils, STEAM Challenge 2025.',
+      'proj.agrobot.blurb': 'High-school prototype (team Silmarils, ITESO): a conveyor guides raspberries and a 6-DOF arm gripper picks them. A YOLOv8n detector (TensorFlow, Pi Camera V2) identifies ripeness and its position is passed to the arm via inverse kinematics over Arduino. The pieces —vision, arm, kinematics— were tested separately; full integration stayed at prototype level.',
 
       'proj.neurobeat.unit': 'EEG · 8 channels',
       'proj.neurobeat.tagline': 'A game you control with your mind.',
@@ -165,7 +328,8 @@
 
       'proj.telemetry.unit': 'live telemetry',
       'proj.telemetry.tagline': 'Live telemetry for SAE competition cars.',
-      'proj.telemetry.blurb': 'Real-time telemetry stack: ESP32 sensors (RPM, temp, GPS, suspension) over LoRa 915 MHz or WiFi into InfluxDB + Grafana. FreeRTOS firmware (dual-core, dual-SPI). Any team adopts it by editing a single .env.',
+      'proj.telemetry.note': 'Ignitia and Elyos are deliberately out of scope: they either already have their own system, or run one different enough that adapting it would not pay off.',
+      'proj.telemetry.blurb': 'Real-time telemetry stack: ESP32 sensors (RPM, temp, GPS, suspension) over LoRa 915 MHz or WiFi into InfluxDB + Grafana. FreeRTOS firmware (dual-core, dual-SPI). My reusable base: on 2 teams today and planned for 4 —Quantum, MadRams, Cefiro and Axolotl—; any of them adopts it by editing one .env.',
 
       'proj.malaria.unit': 'simulation + ML',
       'proj.malaria.tagline': 'Simulating cell separation with electric fields.',
@@ -174,6 +338,7 @@
       'proj.robot.unit': 'autonomous navigation',
       'proj.robot.tagline': 'Autonomous robot with ROS2 and navigation.',
       'proj.robot.blurb': 'Differential-drive robot on ROS2: Nav2 navigation, LDROBOT LiDAR, an Arduino hardware interface, and joystick teleop. Competition robotics on the industry-standard stack.',
+      'proj.robot.note': "It didn't work on competition day: I couldn't integrate the planned route once I opened SLAM, out of inexperience and a lack of documentation. I had the route and I had the robot moving; I didn't join them in time.",
 
       'proj.mapatec.unit': 'pedestrian route',
       'proj.mapatec.tagline': 'Pedestrian routing across campus.',
@@ -191,21 +356,103 @@
       'proj.loopzels.tagline': 'Animated puzzles for cognitive training.',
       'proj.loopzels.blurb': 'Python desktop game that fragments animated GIF patterns into 2×2–6×6 grids to reorder from memory. Difficulty scales per Cognitive Load Theory (Sweller, 1988); threaded animation engine, JSON time records. Expo Ingenierías.',
 
+      'proj.coche.unit': 'Endurance · Baja SAE Oregon',
+      'proj.coche.tagline': 'The real Baja car, talking over radio on track.',
+      'proj.coche.blurb': "Telemetry system for MadRams' Baja SAE Minibaja: an ESP32 transmits over a LoRa/SX1262 radio link to the pits, where a serial converter writes straight into InfluxDB —no MQTT broker— and Grafana plots it: the whole stack runs locally. u-blox GPS on board. Dashboard with threshold gauges, a GPS geomap colored by speed, and wind-vs-temperature correlation. 4th place in Endurance, Baja SAE Oregon.",
+
+      'proj.quantum.unit': 'EV power system',
+      'proj.quantum.tagline': "A racing EV's electric powertrain, tamed.",
+      'proj.quantum.blurb': 'Power system for the Electrathon electric car (48 V, 6 kWh): configured and bench-tested the Motenergy ME0909 motor with an Alltrax SR48300 controller, LiFePO4 16S4P packs in parallel with voltage equalization, and safety (kill-switch, 250 A fuses). I reverse-engineered a clone Daly BMS\'s BLE protocol to read it in Python (bleak) on a Raspberry Pi 4 at ~5.4 Hz. TFT SSD1963 pilot display. The car\'s telemetry runs on my TelemetryStack, over WiFi in the pits and an LTE/4G cellular link on track.',
+
+      'proj.elyos.unit': 'consumption optimization',
+      'proj.elyos.award': 'Data & Telemetry Award · Schmid Elektronik',
+      'proj.elyos.tagline': 'Less energy per lap, on an award-winning efficiency car.',
+      'proj.elyos.blurb': "Optimization work on team Silca Elyos's (existing) system, winner of the Data & Telemetry Award (sponsored by Schmid Elektronik). My part: motor energy-consumption control with a segment-based pulse-and-coast strategy, a coast-down model derived from telemetry to predict glide, FOC gain tuning on the BLDC driver, and efficiency metrics (kWh/km, coasting %). Bosch as team sponsor.",
+      'proj.elyos.note': "I optimized a system that already existed: the rest of the team's platform —link, state estimation, electronics and dashboard— is not my work.",
+
+      'proj.latex.unit': 'APA-7 reports',
+      'proj.latex.tagline': 'Turns PDFs into APA-7 LaTeX reports.',
+      'proj.latex.blurb': 'Local IDE (FastAPI + web editor) that turns PDFs into APA-7 LaTeX reports. Extracts text and images with PyMuPDF (heuristics: drop header logos, trim borders, size filters), orchestrates the Claude Code CLI to generate and modify the .tex, and compiles with pdflatex. The LaTeX generation is done by the model; my work is the extraction pipeline, the orchestration, and the IDE.',
+      'proj.latex.note': 'No live demo: it needs the Claude Code CLI, signed in, on your own machine.',
+
+      'proj.frenado.unit': 'terminal velocity',
+      'proj.frenado.tagline': 'A falling magnet that brakes itself, simulated.',
+      'proj.frenado.blurb': 'MATLAB (App Designer) app simulating the magnetic braking of a magnet falling through a conductive tube: it integrates the equation of motion with ode45, applying a −k_b·v drag only while the magnet is inside the tube, and reports terminal velocity (m·g/k_b) along with entry and exit speeds. Animated 3D scene with a trail, z/v/a plots marking entry and exit, and the B field computed by Biot-Savart over a discretized current loop, drawn as arrows coloured by magnitude plus |B| slices. Mass, k_b, field, tube length and drop height are all adjustable live. The interface is hand-written: App Designer will not let you edit the code that creates the components, so I unzipped the .mlapp —it is a zip package— and edited its document.xml directly.',
+      'proj.frenado.note': 'k_b is an empirical damping coefficient (typical range 0.01–2 N·s/m, ref. Levin et al., AJP 74(9), 2006), not derived from conductivity or geometry; and the B field drawn is illustrative — it does not feed the braking force. This is a desktop app: no live demo.',
+
       'proj.btn.demo': 'Live demo',
       'proj.btn.code': 'Code',
+      'proj.btn.site': 'Team site',
 
       'disclosure.more': 'Show more',
       'disclosure.less': 'Show less',
       'panel.eyebrow': 'What you can try',
 
       'about.heading': 'About',
-      'about.bio': "I'm a Robotics Engineering student at Tec de Monterrey, Guadalajara. I care about the whole path from sensor to decision — acquiring signals, processing them, turning them into action — across edge vision, embedded systems, and competition robotics. I'm on the MadRams Baja SAE team.",
+      'about.n1': "I turn sensors into decisions. That's the line up top — and it's also, more or less, my whole life.",
+      'about.n2': 'I\'m the son of an electromechanical engineer who never stayed in his lane: he built systems for fun, and once ran one of the first large Counter-Strike servers in Mexico. I grew up inside that. I played Wii with him from age three; at seven he sat me in front of a PC with Minecraft, and older cousins taught me to mod it. I learned to build by playing — before I knew it had a name.',
+      'about.n3': "In primary school I competed in RoboMatrix Jalisco. In sixth grade I placed third and qualified for Nationals; the pandemic cancelled it. In secondary school I made my first mods and small games — a two-player Tron in Java, among others. In prepa (high school) there was one engineering project per semester, and that's where I started building things that measured the world and responded: a bathroom that recirculates water until it reaches the temperature you ask for; a stackable smart aeroponics system with automatic irrigation and telemetry; a proposed electric generator using CO₂ as fuel, based on a Korean paper; a self-propelled buoy with a camera and PID self-centering to hunt for leaks in the city's aging water pipes.",
+      'about.n4': "My last two years of prepa I built a ROS robot and AgroBot, an arm that harvests raspberries by vision. Here I'll be honest about scope: at a high-school level I built the pieces, not always the integration. On AgroBot I built the arm, tested inverse kinematics to a single position, and trained the detection model — but the full system, all together, never got integrated. On the inter-school competition robot, it didn't work on the day: I couldn't integrate a planned route once I opened SLAM, out of inexperience and a lack of documentation. I had the route. I had the robot moving. I didn't join them in time. I helped a second team that pre-programmed everything on an EV3 — and we won.",
+      'about.n5': "I tell those stumbles on purpose. The SLAM I couldn't integrate in prepa is exactly why state estimation and control are what I'm chasing now. The gaps point where I'm headed.",
+      'about.n6': "Today I study Robotics Engineering at Tec de Monterrey, Guadalajara. I'm on the Baja SAE MadRams team and work on telemetry and power systems across several competition teams. I care about the full path from sensor to decision — edge vision, embedded, signals — and I have one useful habit: when a tool limits me, I drop a level and control it from underneath. I've reverse-engineered protocols, treated closed formats as what they actually are, and made tools do what I need instead of what they ship with.",
+      'about.n7': "I'm still doing what I did at seven: building things that sense, decide, and act. The sensors are just better now.",
+      'about.teams': 'Competition teams',
+      'about.teams.soon': 'Teams coming up',
+      'team.elyos': 'Silca Elyos · energy efficiency',
+      'team.ignitia': 'Ignitia Rocketlab · rocketry',
       'about.skills.edgeai': 'Edge AI / Vision',
       'about.skills.robotics': 'Robotics',
       'about.skills.embedded': 'Embedded',
       'about.skills.fullstack': 'Full-stack / Data',
       'about.skills.languages': 'Languages',
       'about.skills.simulation': 'Simulation',
+      'about.skills.heading': 'Skills',
+      'about.skills.glowSample': 'like this',
+      'about.teams.note': 'The glowing ones are where I put the most hours.',
+      'about.skills.control': 'Control',
+      'about.skills.teaching': 'Teaching & documentation',
+      'about.skills.glow': 'The glowing skills are the ones I go deepest in.',
+      'skill.telemetry': 'telemetry',
+      'skill.sensors': 'sensors/I²C',
+      'skill.reverseEng': 'reverse engineering',
+      'skill.gainTuning': 'gain tuning',
+      'skill.docs': 'technical documentation',
+      'skill.teachingTag': 'teaching',
+      'skill.llmOrchestration': 'CLI LLM orchestration',
+      'about.skills.modelling': '3D Modelling',
+      'about.skills.genai': 'GenAI',
+      'about.skills.aero': 'Aerospace',
+      'about.skills.aeroStatus': 'planned',
+
+      'skill.parts': 'part modelling',
+      'skill.animation': 'animation',
+      'skill.assembly': 'assemblies',
+      'skill.renders': 'renders',
+      'skill.localLlms': 'local LLMs / self-host',
+      'skill.ohm': "Ohm's law",
+      'skill.divider': 'Voltage divider',
+      'skill.sketch2d': '2D sketch',
+      'skill.extrude': 'Extrude',
+      'skill.revolve': 'Revolve',
+      'skill.drawings': 'Technical drawings',
+      'skill.aarm': 'A-arm/suspension',
+      'skill.chassis': 'Tubular chassis',
+
+      'courses.eyebrow': 'Training program',
+      'course.telemetria.name': 'Telemetry (Arduino)',
+      'course.telemetria.extra': 'With interactive simulators and 3D models.',
+      'course.cad.name': 'CAD (SolidWorks)',
+      'course.cad.extra': 'With an interactive 3D tubular chassis.',
+      'course.electronica.name': 'Electronics',
+      'course.electronica.extra': 'Reserves the third block of the program; content in preparation.',
+      'course.level.basico': 'Basic',
+      'course.level.intermedio': 'Intermediate',
+      'course.level.avanzado': 'Advanced',
+      'course.state.live': 'Live',
+      'course.state.soon': 'Coming soon',
+      'bridge.eyebrow': 'Session 6+ · “Black Box”',
+      'bridge.text': 'The last block of the telemetry course is the bridge from the classroom to the real car: the same sensors, mounted on the Minibaja and transmitting from the track.',
+      'bridge.cta': 'See the car on track',
 
       'book.heading': 'Book',
       'book.intro': 'Want to talk about a project? Grab 30 minutes — in person on campus or over Zoom.',
@@ -221,26 +468,79 @@
 
   /* --------------------------------------------------------------------
      2. Language init + toggle. No storage APIs — state lives in memory
-        and in location.hash only.
+        and in the URL only.
+
+        The choice used to live in the fragment (#es / #en). It moved to
+        ?lang= when the site grew sub-pages, for two reasons: a fragment
+        cannot carry a language *and* an in-page target (index.html#book),
+        and it does not survive a link to another document at all. A query
+        string does both, and GitHub Pages serves the same static file
+        regardless of it. Old #es / #en links are still honoured on the way
+        in so nothing already shared goes stale.
      -------------------------------------------------------------------- */
+  function isLang(value) {
+    return value === 'en' || value === 'es';
+  }
+
+  function langFromQuery() {
+    var match = /[?&]lang=([^&]*)/.exec(location.search);
+    var value = match ? decodeURIComponent(match[1]).toLowerCase() : null;
+    return isLang(value) ? value : null;
+  }
+
+  /* Legacy: the pre-sub-page URL shape. Read, never written. */
   function langFromHash() {
     var h = location.hash.replace('#', '').toLowerCase();
-    return h === 'en' || h === 'es' ? h : null;
+    return isLang(h) ? h : null;
+  }
+
+  function langFromUrl() {
+    return langFromQuery() || langFromHash();
   }
 
   function initialLang() {
-    var fromHash = langFromHash();
-    if (fromHash) return fromHash;
+    var fromUrl = langFromUrl();
+    if (fromUrl) return fromUrl;
     if (navigator.language && navigator.language.toLowerCase().indexOf('en') === 0) {
       return 'en';
     }
     return 'es';
   }
 
-  var hadHashOnInit = langFromHash() !== null;
+  var hadLangInUrl = langFromUrl() !== null;
   var currentLang = initialLang();
 
-  function applyLanguage(lang, writeHash) {
+  /* Rewrite ?lang= in place, leaving every other parameter and the fragment
+     exactly as they were. */
+  function urlWithLang(lang) {
+    var search = location.search.replace(/([?&])lang=[^&]*/, '$1lang=' + lang);
+    if (search.indexOf('lang=') === -1) {
+      search = (search ? search + '&' : '?') + 'lang=' + lang;
+    }
+    /* A legacy #es / #en fragment has been consumed by now; dropping it keeps
+       one language marker in the URL instead of two that can disagree. */
+    var hash = isLang(location.hash.replace('#', '').toLowerCase()) ? '' : location.hash;
+    return location.pathname + search + hash;
+  }
+
+  /* The language is in the query string, which no <a href> to another page
+     inherits. Every in-site page link is tagged data-page-link, and gets the
+     live language stamped on it here — so the choice follows the visitor from
+     the landing into a category page and back. Any fragment the author wrote
+     (index.html#book) is preserved. */
+  function decoratePageLinks(lang) {
+    var links = document.querySelectorAll('a[data-page-link]');
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i];
+      var href = link.getAttribute('href') || '';
+      var hashAt = href.indexOf('#');
+      var fragment = hashAt === -1 ? '' : href.slice(hashAt);
+      var path = (hashAt === -1 ? href : href.slice(0, hashAt)).split('?')[0];
+      link.setAttribute('href', path + '?lang=' + lang + fragment);
+    }
+  }
+
+  function applyLanguage(lang, writeUrl) {
     if (!i18n[lang]) lang = 'es';
     currentLang = lang;
     var dict = i18n[lang];
@@ -284,11 +584,13 @@
       toggle.textContent = lang === 'es' ? 'EN' : 'ES';
     }
 
+    decoratePageLinks(lang);
+
     /* Only touch the URL when the language is the result of a choice —
-       a toggle click, or a hash that was already present on load — not
-       on a plain default-language first visit. */
-    if (writeHash) {
-      history.replaceState(null, '', '#' + lang);
+       a toggle click, or a language already present on load — not on a
+       plain default-language first visit. */
+    if (writeUrl) {
+      history.replaceState(null, '', urlWithLang(lang));
     }
   }
 
@@ -299,15 +601,15 @@
       applyLanguage(currentLang === 'es' ? 'en' : 'es', true);
     });
 
-    /* Browser back/forward across #es/#en, or a hand-edited fragment, is a
-       same-document transition: nothing reloads, so re-apply the language
-       here. history.replaceState (used by the toggle) does not fire this,
-       so there is no feedback loop. A non-language fragment (#book) is
-       ignored — it must not reset the visitor's choice. */
+    /* A hand-edited or bookmarked legacy #es / #en fragment is a same-document
+       transition: nothing reloads, so re-apply the language here.
+       history.replaceState (used by the toggle) does not fire this, so there
+       is no feedback loop. A real in-page fragment (#book) is ignored — it
+       must not reset the visitor's choice. */
     window.addEventListener('hashchange', function () {
       var fromHash = langFromHash();
       if (fromHash && fromHash !== currentLang) {
-        applyLanguage(fromHash, false);
+        applyLanguage(fromHash, true);
       }
     });
   }
@@ -569,6 +871,119 @@
   }
 
   /* --------------------------------------------------------------------
+     4b. Landing bank rows — draw each bank's channel list when it arrives.
+
+     The strips live far below the fold, so the load-time draw the card traces
+     use would be finished before anyone scrolled to them. CSS owns the
+     animation; this only decides when, by adding .is-onscreen once per row and
+     then forgetting about it — the draw is a one-shot, not a scroll effect.
+     -------------------------------------------------------------------- */
+  function initBankReveal() {
+    var banks = document.querySelectorAll('.bank');
+    if (!banks.length) return;
+
+    /* No IntersectionObserver: show every row drawn rather than leave the
+       strips blank forever. */
+    if (typeof window.IntersectionObserver !== 'function') {
+      for (var i = 0; i < banks.length; i++) banks[i].classList.add('is-onscreen');
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      for (var j = 0; j < entries.length; j++) {
+        if (entries[j].isIntersecting) {
+          entries[j].target.classList.add('is-onscreen');
+          observer.unobserve(entries[j].target);
+        }
+      }
+    }, { rootMargin: '0px 0px -12% 0px' });
+
+    for (var k = 0; k < banks.length; k++) observer.observe(banks[k]);
+  }
+
+  /* --------------------------------------------------------------------
+     4c. The lap — one car around the Nordschleife behind the narrative.
+
+     getPointAtLength on a single closed subpath is the whole trick: no
+     library, no keyframes to author, and the car sits exactly on the line at
+     any viewport size because it is placed in SVG user units, not CSS pixels.
+
+     The loop only runs while the circuit is actually on screen. A rAF that
+     never stops is a battery drain on a page people leave open, and nobody is
+     watching a lap they have scrolled past.
+     -------------------------------------------------------------------- */
+  var LAP_MS = 80000; /* 20.8 km at an ambient pace — slow enough to read past */
+
+  function initCircuit() {
+    var circuit = document.querySelector('.about__circuit');
+    if (!circuit) return;
+
+    var track = circuit.querySelector('.circuit__track');
+    var car = circuit.querySelector('.circuit__car');
+    if (!track || !car || typeof track.getPointAtLength !== 'function') return;
+
+    var total = track.getTotalLength();
+    if (!total) return;
+
+    function place(frac) {
+      var p = track.getPointAtLength(frac * total);
+      car.setAttribute('cx', p.x);
+      car.setAttribute('cy', p.y);
+    }
+
+    place(0);
+
+    /* Reduced motion: the track is already drawn by the media query, and the
+       car stays parked on the start line rather than circulating. */
+    if (motionReduced()) {
+      circuit.classList.add('is-onscreen');
+      return;
+    }
+
+    var running = false;
+    var startedAt = 0;
+    var elapsed = 0; /* lap progress kept across pauses, so it resumes in place */
+
+    function frame(now) {
+      if (!running) return;
+      place((((now - startedAt) + elapsed) % LAP_MS) / LAP_MS);
+      requestAnimationFrame(frame);
+    }
+
+    function start(now) {
+      if (running) return;
+      running = true;
+      startedAt = now;
+      requestAnimationFrame(frame);
+    }
+
+    function stop(now) {
+      if (!running) return;
+      running = false;
+      elapsed = (elapsed + (now - startedAt)) % LAP_MS;
+    }
+
+    if (typeof window.IntersectionObserver !== 'function') {
+      circuit.classList.add('is-onscreen');
+      start(performance.now());
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) {
+          circuit.classList.add('is-onscreen');
+          start(performance.now());
+        } else {
+          stop(performance.now());
+        }
+      }
+    }, { rootMargin: '80px 0px' });
+
+    observer.observe(circuit);
+  }
+
+  /* --------------------------------------------------------------------
      5. Footer year.
      -------------------------------------------------------------------- */
   function setFooterYear() {
@@ -582,10 +997,16 @@
      6. Init. Script is loaded with `defer`, so the DOM is already parsed
         by the time this runs.
      -------------------------------------------------------------------- */
+  /* Stamped before anything else: CSS keys the undrawn state of the bank
+     strips off it, so with scripting off they render finished. */
+  document.documentElement.classList.add('js');
+
   enableWebFonts();
-  applyLanguage(currentLang, hadHashOnInit);
+  applyLanguage(currentLang, hadLangInUrl);
   initLangToggle();
   initDisclosures();
+  initBankReveal();
+  initCircuit();
   initBookingTabs();
   initCalendlyDefer();
   setFooterYear();
