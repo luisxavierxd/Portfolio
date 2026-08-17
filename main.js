@@ -187,6 +187,7 @@
       'proj.btn.demo': 'Demo en vivo',
       'proj.btn.code': 'Código',
       'proj.btn.site': 'Ver proyecto',
+      'proj.btn.itch': 'itch.io',
 
       /* Disclosure labels. Both live in the DOM at once (CSS shows the one the
          current aria-expanded state calls for), so state and language never
@@ -434,6 +435,7 @@
       'proj.btn.demo': 'Live demo',
       'proj.btn.code': 'Code',
       'proj.btn.site': 'Team site',
+      'proj.btn.itch': 'itch.io',
 
       'disclosure.more': 'Show more',
       'disclosure.less': 'Show less',
