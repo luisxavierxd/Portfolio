@@ -320,34 +320,27 @@
           <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 4</p>
           <h3 class="bank__name" id="bank-software" data-i18n="cat.software.name">Software y herramientas</h3>
           <p class="bank__line" data-i18n="cat.software.line">Las herramientas: plataformas, mapas y utilidades que uso —o entrego— para que otros trabajen más rápido.</p>
-          <p class="bank__count" data-i18n="cat.software.count">5 canales</p>
-          <a class="bank__link" href="software.html" data-page-link data-i18n="cat.software.more">Ver los 5 · Software</a>
+          <p class="bank__count" data-i18n="cat.software.count">4 canales</p>
+          <a class="bank__link" href="software.html" data-page-link data-i18n="cat.software.more">Ver los 4 · Software</a>
           <div class="bank__rest">
             <p class="bank__rest-label" data-i18n="bank.rest">También en este banco</p>
             <ul>
-              <li class="rest" style="--ch: var(--ch-teal)">
-                <span class="rest__addr">CH.4.2</span>
-                <span class="rest__name">LaTeX Studio</span>
-                <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
-                  <path pathLength="1" d="M4 4 H19 V18 H4 Z M28 11 H38 M34 7 L38 11 L34 15 M48 6 H81 M48 11 H81 M48 16 H68"/>
-                </svg>
-              </li>
               <li class="rest" style="--ch: var(--ch-coral)">
-                <span class="rest__addr">CH.4.3</span>
+                <span class="rest__addr">CH.4.2</span>
                 <span class="rest__name">Mapa TEC GDL</span>
                 <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
                   <path pathLength="1" d="M4 6 H24 V16 H52 V5 H80"/>
                 </svg>
               </li>
               <li class="rest" style="--ch: var(--ch-magenta)">
-                <span class="rest__addr">CH.4.4</span>
+                <span class="rest__addr">CH.4.3</span>
                 <span class="rest__name">Loopzels</span>
                 <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
                   <path pathLength="1" d="M3 19 H18 V15 H33 V11 H48 V6 H63 V2 H81"/>
                 </svg>
               </li>
               <li class="rest" style="--ch: var(--ch-indigo)">
-                <span class="rest__addr">CH.4.5</span>
+                <span class="rest__addr">CH.4.4</span>
                 <span class="rest__name">Frenado Magnético</span>
                 <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
                   <path pathLength="1" d="M3 19 L24 6 C28 11 32 13 37 13 H60 L81 3"/>
@@ -391,9 +384,70 @@
         </article>
       </section>
 
-      <section class="bank" style="--ch: var(--ch-lime)" aria-labelledby="bank-formacion">
+      <section class="bank" style="--ch: var(--ch-orchid)" aria-labelledby="bank-ia">
         <div class="bank__intro">
           <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 5</p>
+          <h3 class="bank__name" id="bank-ia" data-i18n="cat.ia.name">LLM / Orquestación</h3>
+          <p class="bank__line" data-i18n="cat.ia.line">Orquestar el modelo, no reemplazarlo: agentes con fallback por rol y skills que le dan manos y ojos a Claude Code.</p>
+          <p class="bank__count" data-i18n="cat.ia.count">5 canales</p>
+          <a class="bank__link" href="ia.html" data-page-link data-i18n="cat.ia.more">Ver los 5 · LLM / Orquestación</a>
+          <!-- Five channels graduate this bank to sub-groups: the teaser names the
+               two groups and their members instead of listing five loose channels,
+               the same threshold Software crossed. -->
+          <div class="bank__rest">
+            <p class="bank__rest-label" data-i18n="bank.rest">También en este banco</p>
+            <ul>
+              <li class="rest rest--group" style="--ch: var(--ch-orchid)">
+                <span class="rest__group-name" data-i18n="group.orquestacion">Orquestación propia</span>
+                <span class="rest__members">claude-unlimited · LaTeX Studio</span>
+              </li>
+              <li class="rest rest--group" style="--ch: var(--ch-orchid)">
+                <span class="rest__group-name" data-i18n="group.capacidades">Capacidades / skills para Claude Code</span>
+                <span class="rest__members">websight · exploded-view · watermarks-remover</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <article class="channel" style="--ch: var(--ch-orchid)">
+          <p class="channel__addr">CH.5.1</p>
+          <h4 class="channel__name">claude-unlimited</h4>
+          <p class="channel__reading">
+            <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+            <span class="reading__value">rol → rol</span>
+            <span class="reading__unit" data-i18n="proj.claudeunlimited.unit">multi-agente · fallback por rol</span>
+          </p>
+          <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: claude-unlimited -
+               a per-role quality floor drawn flat, and a route that runs high until one role
+               drops to the floor; a fallback picks it up and climbs back to a steady line that
+               latches at the marker. orchestration that never lets the task fall through. -->
+            <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M4 27 H116"/>
+            <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M4 13 H26 L36 27 H48 L58 13 H100 L116 13"/>
+            <rect x="34.5" y="25.5" width="3" height="3"/>
+            <rect x="46.5" y="25.5" width="3" height="3"/>
+            <circle cx="116" cy="13" r="3.4"/>
+          </svg>
+          <p class="channel__tagline" data-i18n="proj.claudeunlimited.tagline">Orquestador multi-agente resiliente sobre un gateway LLM propio.</p>
+          <p class="channel__blurb" data-i18n="proj.claudeunlimited.blurb">Orquestador multi-agente resiliente: reparte el trabajo por roles y, cuando un modelo falla o cae por debajo del piso de calidad de su rol, hace fallback a otro sin perder la tarea. Corre sobre OmniRoute —un gateway LLM self-hosted— con política de quality-floor por rol. Es el trabajo de orquestación propio más sustancial del banco.</p>
+          <p class="channel__note" data-i18n="proj.claudeunlimited.note">Sin demo en vivo: es infraestructura de orquestación que corre contra tu propio gateway y tus modelos.</p>
+          <ul class="badges">
+            <li class="badge">Multi-agent</li>
+            <li class="badge">Role fallback</li>
+            <li class="badge">Quality-floor</li>
+            <li class="badge">OmniRoute</li>
+            <li class="badge">Self-hosted LLM</li>
+          </ul>
+          <div class="channel__links">
+            <a class="btn btn--code" href="https://github.com/luisxavierxd/claude-unlimited" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="bank" style="--ch: var(--ch-lime)" aria-labelledby="bank-formacion">
+        <div class="bank__intro">
+          <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 6</p>
           <h3 class="bank__name" id="bank-formacion" data-i18n="cat.formacion.name">Formación</h3>
           <p class="bank__line" data-i18n="cat.formacion.line">Enseñar lo que me enseñó el coche: cursos abiertos para que un equipo nuevo arranque sin esperar a nadie.</p>
           <p class="bank__count" data-i18n="cat.formacion.count">programa de 3 bloques</p>
@@ -421,7 +475,7 @@
         </div>
 
         <article class="channel" style="--ch: var(--ch-lime)">
-          <p class="channel__addr">CH.5.1</p>
+          <p class="channel__addr">CH.6.1</p>
           <h4 class="channel__name">Cursos MadRams</h4>
           <p class="channel__reading">
             <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>

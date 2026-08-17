@@ -48,6 +48,7 @@
       'meta.title.senales': 'Señales e IA — Luis Xavier García Pimentel Ascencio',
       'meta.title.telemetria': 'Telemetría y potencia — Luis Xavier García Pimentel Ascencio',
       'meta.title.software': 'Software y herramientas — Luis Xavier García Pimentel Ascencio',
+      'meta.title.ia': 'LLM / Orquestación — Luis Xavier García Pimentel Ascencio',
       'meta.title.formacion': 'Formación — Luis Xavier García Pimentel Ascencio',
 
       'nav.back': 'Volver al tablero',
@@ -58,6 +59,12 @@
          of a shuffled global sequence. This label names the bank above it. */
       'bank.label': 'Banco',
       'bank.rest': 'También en este banco',
+
+      /* Sub-group labels. A bank large enough to split its board names the
+         groups (LLM/Orquestación), and the same keys caption the landing
+         teaser and the sub-page board headings. */
+      'group.orquestacion': 'Orquestación propia',
+      'group.capacidades': 'Capacidades / skills para Claude Code',
 
       /* One category per sub-page: the name, the one-line framing under it,
          how many channels it holds, and the landing card's handoff link. */
@@ -78,8 +85,13 @@
 
       'cat.software.name': 'Software y herramientas',
       'cat.software.line': 'Las herramientas: plataformas, mapas y utilidades que uso —o entrego— para que otros trabajen más rápido.',
-      'cat.software.count': '5 canales',
-      'cat.software.more': 'Ver los 5 · Software',
+      'cat.software.count': '4 canales',
+      'cat.software.more': 'Ver los 4 · Software',
+
+      'cat.ia.name': 'LLM / Orquestación',
+      'cat.ia.line': 'Orquestar el modelo, no reemplazarlo: agentes con fallback por rol y skills que le dan manos y ojos a Claude Code.',
+      'cat.ia.count': '5 canales',
+      'cat.ia.more': 'Ver los 5 · LLM / Orquestación',
 
       'cat.formacion.name': 'Formación',
       'cat.formacion.line': 'Enseñar lo que me enseñó el coche: cursos abiertos para que un equipo nuevo arranque sin esperar a nadie.',
@@ -148,6 +160,24 @@
       'proj.latex.tagline': 'Convierte PDFs en reportes LaTeX con formato APA-7.',
       'proj.latex.blurb': 'IDE local (FastAPI + editor web) que convierte PDFs en reportes LaTeX estilo APA 7ª. Extrae texto e imágenes con PyMuPDF (con heurísticos: quita logos de header, recorta bordes, filtra por tamaño), orquesta el CLI de Claude Code para generar y modificar el .tex, y compila con pdflatex. La generación de LaTeX la hace el modelo; mi trabajo es el pipeline de extracción, la orquestación y el IDE.',
       'proj.latex.note': 'Sin demo en vivo: necesita el CLI de Claude Code con sesión iniciada en tu propia máquina.',
+
+      'proj.claudeunlimited.unit': 'multi-agente · fallback por rol',
+      'proj.claudeunlimited.tagline': 'Orquestador multi-agente resiliente sobre un gateway LLM propio.',
+      'proj.claudeunlimited.blurb': 'Orquestador multi-agente resiliente: reparte el trabajo por roles y, cuando un modelo falla o cae por debajo del piso de calidad de su rol, hace fallback a otro sin perder la tarea. Corre sobre OmniRoute —un gateway LLM self-hosted— con política de quality-floor por rol. Es el trabajo de orquestación propio más sustancial del banco.',
+      'proj.claudeunlimited.note': 'Sin demo en vivo: es infraestructura de orquestación que corre contra tu propio gateway y tus modelos.',
+
+      'proj.websight.unit': 'screenshot para el agente',
+      'proj.websight.tagline': 'Le da ojos a Claude Code: renderiza y captura su propio frontend.',
+      'proj.websight.blurb': 'Skill + CLI + microservicio HTTP (Playwright/Chromium headless) que renderiza una URL o ruta local y devuelve un screenshot optimizado como image_url (máx 1080 px, JPEG q80), para que el agente pueda «ver» el frontend que acaba de escribir. Se instala como plugin de Claude Code (/plugin install websight@websight).',
+
+      'proj.explodedview.unit': 'presentación 3D web',
+      'proj.explodedview.tagline': 'Visores 3D orbitables, vistas explosionadas y turntables, para la web.',
+      'proj.explodedview.blurb': 'Skill de conocimiento (SKILL.md + references + examples) para presentación 3D web-nativa: visores orbitables con HDR (<model-viewer>), vistas explosionadas y shaders custom con Three.js, turntables por secuencia de render y trayectorias en SVG. Trae dos tracks —Vanilla + CDN y React Three Fiber— para que el agente elija según el proyecto.',
+
+      'proj.watermarks.unit': 'fork · plugin de Claude Code',
+      'proj.watermarks.tagline': 'Fork: le añadí la integración como plugin de Claude Code.',
+      'proj.watermarks.blurb': 'Fork de guillaumemeyer/watermarks-remover. La contribución propia es la integración como plugin/marketplace de Claude Code (carpeta .claude-plugin, /plugin install remove-ai-marks@watermarks-remover). El motor de limpieza es del proyecto original.',
+      'proj.watermarks.note': 'El motor de limpieza —capa Unicode, reescritura y strip de C2PA y metadatos en PNG/JPEG/SVG/PDF/DOCX/HTML/MD— es trabajo del upstream. Lo propio aquí es solo el empaquetado como plugin de Claude Code.',
 
       'proj.frenado.unit': 'velocidad terminal',
       'proj.frenado.tagline': 'Un imán que cae y se frena solo, en simulación.',
@@ -273,6 +303,7 @@
       'meta.title.senales': 'Signals & AI — Luis Xavier García Pimentel Ascencio',
       'meta.title.telemetria': 'Telemetry & power — Luis Xavier García Pimentel Ascencio',
       'meta.title.software': 'Software & tooling — Luis Xavier García Pimentel Ascencio',
+      'meta.title.ia': 'LLM / Orchestration — Luis Xavier García Pimentel Ascencio',
       'meta.title.formacion': 'Training — Luis Xavier García Pimentel Ascencio',
 
       'nav.back': 'Back to the board',
@@ -280,6 +311,9 @@
 
       'bank.label': 'Bank',
       'bank.rest': 'Also in this bank',
+
+      'group.orquestacion': 'In-house orchestration',
+      'group.capacidades': 'Capabilities / skills for Claude Code',
 
       'cat.robotica.name': 'Robotics',
       'cat.robotica.line': 'Perceive: vision, arms and navigation — machines that read the world before they move.',
@@ -298,8 +332,13 @@
 
       'cat.software.name': 'Software & tooling',
       'cat.software.line': 'The tooling: platforms, maps and utilities I use — or hand over — so other people move faster.',
-      'cat.software.count': '5 channels',
-      'cat.software.more': 'See all 5 · Software',
+      'cat.software.count': '4 channels',
+      'cat.software.more': 'See all 4 · Software',
+
+      'cat.ia.name': 'LLM / Orchestration',
+      'cat.ia.line': 'Orchestrate the model, don’t replace it: agents with per-role fallback, and skills that give Claude Code hands and eyes.',
+      'cat.ia.count': '5 channels',
+      'cat.ia.more': 'See all 5 · LLM / Orchestration',
 
       'cat.formacion.name': 'Training',
       'cat.formacion.line': 'Teaching what the car taught me: open courses so a new team can start without waiting on anyone.',
@@ -368,6 +407,24 @@
       'proj.latex.tagline': 'Turns PDFs into APA-7 LaTeX reports.',
       'proj.latex.blurb': 'Local IDE (FastAPI + web editor) that turns PDFs into APA-7 LaTeX reports. Extracts text and images with PyMuPDF (heuristics: drop header logos, trim borders, size filters), orchestrates the Claude Code CLI to generate and modify the .tex, and compiles with pdflatex. The LaTeX generation is done by the model; my work is the extraction pipeline, the orchestration, and the IDE.',
       'proj.latex.note': 'No live demo: it needs the Claude Code CLI, signed in, on your own machine.',
+
+      'proj.claudeunlimited.unit': 'multi-agent · per-role fallback',
+      'proj.claudeunlimited.tagline': 'A resilient multi-agent orchestrator over a self-hosted LLM gateway.',
+      'proj.claudeunlimited.blurb': 'A resilient multi-agent orchestrator: it splits work across roles and, when a model fails or falls below its role’s quality floor, fails over to another without dropping the task. It runs on OmniRoute —a self-hosted LLM gateway— with a per-role quality-floor policy. It’s the most substantial in-house orchestration work in this bank.',
+      'proj.claudeunlimited.note': 'No live demo: it’s orchestration infrastructure that runs against your own gateway and models.',
+
+      'proj.websight.unit': 'a screenshot for the agent',
+      'proj.websight.tagline': 'Gives Claude Code eyes: renders and captures its own frontend.',
+      'proj.websight.blurb': 'A skill + CLI + HTTP microservice (Playwright/Chromium headless) that renders a URL or local path and returns an optimized screenshot as an image_url (max 1080 px, JPEG q80), so the agent can “see” the frontend it just wrote. It installs as a Claude Code plugin (/plugin install websight@websight).',
+
+      'proj.explodedview.unit': 'web 3D presentation',
+      'proj.explodedview.tagline': 'Orbitable 3D viewers, exploded views and turntables, for the web.',
+      'proj.explodedview.blurb': 'A knowledge skill (SKILL.md + references + examples) for web-native 3D presentation: orbitable HDR viewers (<model-viewer>), exploded views and custom Three.js shaders, render-sequence turntables and SVG trajectories. It ships two tracks —Vanilla + CDN and React Three Fiber— so the agent can pick one to fit the project.',
+
+      'proj.watermarks.unit': 'fork · Claude Code plugin',
+      'proj.watermarks.tagline': 'A fork: I added the Claude Code plugin integration.',
+      'proj.watermarks.blurb': 'A fork of guillaumemeyer/watermarks-remover. My own contribution is the Claude Code plugin/marketplace integration (a .claude-plugin folder, /plugin install remove-ai-marks@watermarks-remover). The cleaning engine belongs to the original project.',
+      'proj.watermarks.note': 'The cleaning engine —Unicode layer, rewrite, and C2PA/metadata stripping across PNG/JPEG/SVG/PDF/DOCX/HTML/MD— is upstream work. What’s mine here is only the packaging as a Claude Code plugin.',
 
       'proj.frenado.unit': 'terminal velocity',
       'proj.frenado.tagline': 'A falling magnet that brakes itself, simulated.',

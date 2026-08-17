@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="meta.title.ia">LLM / Orquestación — Luis Xavier García Pimentel Ascencio</title>
+<meta name="description" data-i18n-content="cat.ia.line" content="Orquestar el modelo, no reemplazarlo: agentes con fallback por rol y skills que le dan manos y ojos a Claude Code.">
+
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               script-src 'self';
+               style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+               img-src 'self' data: https:;
+               font-src 'self' https://fonts.gstatic.com;
+               connect-src 'self';">
+
+<meta property="og:title" data-i18n-content="meta.title.ia" content="LLM / Orquestación — Luis Xavier García Pimentel Ascencio">
+<meta property="og:description" data-i18n-content="cat.ia.line" content="Orquestar el modelo, no reemplazarlo: agentes con fallback por rol y skills que le dan manos y ojos a Claude Code.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://luisxavierxd.github.io/Portfolio/ia.html">
+<meta property="og:image" content="https://luisxavierxd.github.io/Portfolio/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" data-i18n-content="meta.ogImageAlt" content="Trazo de señal que pasa de ruido a una decisión discreta, sobre fondo azul-carbón, junto al nombre Luis Xavier García Pimentel Ascencio.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+<link id="fonts-css" rel="stylesheet" media="print" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">Saltar al contenido</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Navegación principal" data-i18n-aria="nav.ariaLabel">
+    <a class="brand" href="index.html" data-page-link>
+      <span class="brand__mark">LX</span>
+      <span class="brand__name">Luis Xavier García Pimentel Ascencio</span>
+      <span class="brand__subtitle" data-i18n="nav.subtitle">Ingeniería en Robótica · Tec GDL</span>
+    </a>
+    <ul class="nav__links">
+      <li><a class="nav__link" href="index.html#projects" data-page-link data-i18n="nav.projects">Proyectos</a></li>
+      <li><a class="nav__link" href="index.html#about" data-page-link data-i18n="nav.about">Sobre mí</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="EN — cambiar a inglés" data-i18n-aria="langToggle.ariaLabel">EN</button>
+      <a class="btn btn--primary btn--small" href="index.html#book" data-page-link data-i18n="nav.bookCta">Agendar</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <section class="section section--sub" style="--ch: var(--ch-orchid)">
+    <a class="backlink" href="index.html" data-page-link data-i18n="nav.back">Volver al tablero</a>
+    <h1 class="subhead__title" data-i18n="cat.ia.name">LLM / Orquestación</h1>
+    <p class="subhead__line" data-i18n="cat.ia.line">Orquestar el modelo, no reemplazarlo: agentes con fallback por rol y skills que le dan manos y ojos a Claude Code.</p>
+    <p class="subhead__count" data-i18n="cat.ia.count">5 canales</p>
+  </section>
+
+  <section class="section section--projects" aria-labelledby="board-heading" style="--ch: var(--ch-orchid)">
+    <h2 id="board-heading" class="section__eyebrow" data-i18n="projects.eyebrow">Tablero de lecturas</h2>
+
+    <!-- Two sub-groups, one continuous numbering: CH.5.1–5.2 are the in-house
+         orchestrators, CH.5.3–5.5 the capabilities I gave Claude Code. The
+         heading breaks the grid; the addresses read straight through. -->
+    <h3 class="board__group" data-i18n="group.orquestacion">Orquestación propia</h3>
+
+    <div class="board">
+
+      <article class="channel" style="--ch: var(--ch-orchid)">
+        <p class="channel__addr">CH.5.1</p>
+        <h3 class="channel__name">claude-unlimited</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">rol → rol</span>
+          <span class="reading__unit" data-i18n="proj.claudeunlimited.unit">multi-agente · fallback por rol</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: claude-unlimited -
+             a per-role quality floor drawn flat, and a route that runs high until one role
+             drops to the floor; a fallback picks it up and climbs back to a steady line that
+             latches at the marker. orchestration that never lets the task fall through. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 27 H116"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 13 H26 L36 27 H48 L58 13 H100 L116 13"/>
+          <rect x="34.5" y="25.5" width="3" height="3"/>
+          <rect x="46.5" y="25.5" width="3" height="3"/>
+          <circle cx="116" cy="13" r="3.4"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.claudeunlimited.tagline">Orquestador multi-agente resiliente sobre un gateway LLM propio.</p>
+        <p class="channel__blurb" data-i18n="proj.claudeunlimited.blurb">Orquestador multi-agente resiliente: reparte el trabajo por roles y, cuando un modelo falla o cae por debajo del piso de calidad de su rol, hace fallback a otro sin perder la tarea. Corre sobre OmniRoute —un gateway LLM self-hosted— con política de quality-floor por rol. Es el trabajo de orquestación propio más sustancial del banco.</p>
+        <p class="channel__note" data-i18n="proj.claudeunlimited.note">Sin demo en vivo: es infraestructura de orquestación que corre contra tu propio gateway y tus modelos.</p>
+        <ul class="badges">
+          <li class="badge">Multi-agent</li>
+          <li class="badge">Role fallback</li>
+          <li class="badge">Quality-floor</li>
+          <li class="badge">OmniRoute</li>
+          <li class="badge">Self-hosted LLM</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/claude-unlimited" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-teal)">
+        <p class="channel__addr">CH.5.2</p>
+        <h3 class="channel__name">LaTeX Studio</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">PDF → .tex</span>
+          <span class="reading__unit" data-i18n="proj.latex.unit">reportes APA-7</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: latex studio -
+             a document pipeline: a raw page with a folded corner on the left, and on the right
+             what comes out - justified typeset lines, the last one short, as paragraphs end. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M9 6 H25 L31 12 V30 H9 Z M25 6 V12 H31"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M39 18 H49 M45.5 14.5 L49 18 L45.5 21.5
+                   M57 10 H114 M57 16 H114 M57 22 H108 M57 28 H88"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.latex.tagline">Convierte PDFs en reportes LaTeX con formato APA-7.</p>
+        <p class="channel__blurb" data-i18n="proj.latex.blurb">IDE local (FastAPI + editor web) que convierte PDFs en reportes LaTeX estilo APA 7ª. Extrae texto e imágenes con PyMuPDF (con heurísticos: quita logos de header, recorta bordes, filtra por tamaño), orquesta el CLI de Claude Code para generar y modificar el .tex, y compila con pdflatex. La generación de LaTeX la hace el modelo; mi trabajo es el pipeline de extracción, la orquestación y el IDE.</p>
+        <p class="channel__note" data-i18n="proj.latex.note">Sin demo en vivo: necesita el CLI de Claude Code con sesión iniciada en tu propia máquina.</p>
+        <ul class="badges">
+          <li class="badge">FastAPI</li>
+          <li class="badge">PyMuPDF</li>
+          <li class="badge">LaTeX</li>
+          <li class="badge">Monaco</li>
+          <li class="badge">pdf.js</li>
+          <li class="badge">AI orchestration</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/LaTeX-Studio" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+    </div>
+
+    <h3 class="board__group" data-i18n="group.capacidades">Capacidades / skills para Claude Code</h3>
+
+    <div class="board">
+
+      <article class="channel" style="--ch: var(--ch-cyan)">
+        <p class="channel__addr">CH.5.3</p>
+        <h3 class="channel__name">websight</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">URL → JPEG</span>
+          <span class="reading__unit" data-i18n="proj.websight.unit">screenshot para el agente</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: websight -
+             a browser frame with its address bar, the page it renders drawn as a line inside,
+             and a lens over it: the agent looking at the frontend it just wrote. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M6 7 H114 V29 H6 Z M6 13 H114"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M18 24 L30 19 L42 24 L54 18 L66 23 L78 19"/>
+          <circle cx="11" cy="10" r="1"/>
+          <circle cx="98" cy="21" r="4"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.websight.tagline">Le da ojos a Claude Code: renderiza y captura su propio frontend.</p>
+        <p class="channel__blurb" data-i18n="proj.websight.blurb">Skill + CLI + microservicio HTTP (Playwright/Chromium headless) que renderiza una URL o ruta local y devuelve un screenshot optimizado como image_url (máx 1080 px, JPEG q80), para que el agente pueda «ver» el frontend que acaba de escribir. Se instala como plugin de Claude Code (/plugin install websight@websight).</p>
+        <ul class="badges">
+          <li class="badge">Skill</li>
+          <li class="badge">CLI</li>
+          <li class="badge">HTTP microservice</li>
+          <li class="badge">Playwright</li>
+          <li class="badge">Chromium</li>
+          <li class="badge">Claude Code plugin</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/websight" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-emerald)">
+        <p class="channel__addr">CH.5.4</p>
+        <h3 class="channel__name">exploded-view</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">3D · orbit</span>
+          <span class="reading__unit" data-i18n="proj.explodedview.unit">presentación 3D web</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: exploded-view -
+             three plates fanned apart along an assembly axis: an exploded view, the layers
+             lifted off each other the way the skill teaches you to present a part. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M12 30 L108 6"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M22 26 L30 22 L38 26 L30 30 Z"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M52 18 L60 14 L68 18 L60 22 Z"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M82 10 L90 6 L98 10 L90 14 Z"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.explodedview.tagline">Visores 3D orbitables, vistas explosionadas y turntables, para la web.</p>
+        <p class="channel__blurb" data-i18n="proj.explodedview.blurb">Skill de conocimiento (SKILL.md + references + examples) para presentación 3D web-nativa: visores orbitables con HDR (&lt;model-viewer&gt;), vistas explosionadas y shaders custom con Three.js, turntables por secuencia de render y trayectorias en SVG. Trae dos tracks —Vanilla + CDN y React Three Fiber— para que el agente elija según el proyecto.</p>
+        <ul class="badges">
+          <li class="badge">Skill</li>
+          <li class="badge">model-viewer</li>
+          <li class="badge">Three.js</li>
+          <li class="badge">React Three Fiber</li>
+          <li class="badge">glTF/HDR</li>
+          <li class="badge">WebGL</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/exploded-view" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" style="--ch: var(--ch-magenta)">
+        <p class="channel__addr">CH.5.5</p>
+        <h3 class="channel__name">watermarks-remover</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">marcas → 0</span>
+          <span class="reading__unit" data-i18n="proj.watermarks.unit">fork · plugin de Claude Code</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: watermarks-remover -
+             a line of text carrying hidden marks on the left, an eraser stroke passing through,
+             and a clean line latching at the marker on the right. A fork: the trace stands for
+             the integration, not the cleaning engine, which is upstream work. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 24 H116"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M12 24 V16 M20 24 V19 M28 24 V14 M36 24 V18"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M46 9 L60 29"/>
+          <circle cx="108" cy="24" r="2.4"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.watermarks.tagline">Fork: le añadí la integración como plugin de Claude Code.</p>
+        <p class="channel__blurb" data-i18n="proj.watermarks.blurb">Fork de guillaumemeyer/watermarks-remover. La contribución propia es la integración como plugin/marketplace de Claude Code (carpeta .claude-plugin, /plugin install remove-ai-marks@watermarks-remover). El motor de limpieza es del proyecto original.</p>
+        <p class="channel__note" data-i18n="proj.watermarks.note">El motor de limpieza —capa Unicode, reescritura y strip de C2PA y metadatos en PNG/JPEG/SVG/PDF/DOCX/HTML/MD— es trabajo del upstream. Lo propio aquí es solo el empaquetado como plugin de Claude Code.</p>
+        <ul class="badges">
+          <li class="badge">Fork</li>
+          <li class="badge">Claude Code plugin</li>
+          <li class="badge">Marketplace</li>
+          <li class="badge">.claude-plugin</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/watermarks-remover" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="board__more"><a class="link" href="https://github.com/luisxavierxd?tab=repositories" target="_blank" rel="noopener noreferrer" data-i18n="projects.more">Ver todo en GitHub</a></p>
+  </section>
+
+  <nav class="section siblings" aria-label="Otros bancos" data-i18n-aria="nav.siblings">
+    <span class="siblings__label" data-i18n="nav.siblings">Otros bancos</span>
+    <a class="link" style="--ch: var(--ch-amber)" href="robotica.html" data-page-link data-i18n="cat.robotica.name">Robótica</a>
+    <a class="link" style="--ch: var(--ch-green)" href="senales.html" data-page-link data-i18n="cat.senales.name">Señales e IA</a>
+    <a class="link" style="--ch: var(--ch-coche)" href="telemetria.html" data-page-link data-i18n="cat.telemetria.name">Telemetría y potencia</a>
+    <a class="link" style="--ch: var(--ch-cyan)" href="software.html" data-page-link data-i18n="cat.software.name">Software y herramientas</a>
+    <a class="link" style="--ch: var(--ch-lime)" href="formacion.html" data-page-link data-i18n="cat.formacion.name">Formación</a>
+  </nav>
+
+</main>
+
+<footer class="site-footer">
+  <ul class="footer__links">
+    <li><a class="footer__link" href="https://github.com/luisxavierxd" target="_blank" rel="noopener noreferrer" data-i18n="social.github">GitHub</a></li>
+    <li><a class="footer__link" href="https://www.linkedin.com/in/luis-xavier-garcía-pimentel-ascencio-251508333" target="_blank" rel="noopener noreferrer" data-i18n="social.linkedin">LinkedIn</a></li>
+    <li><a class="footer__link" href="mailto:luisxaviergpa@proton.me" data-i18n="social.email">Email</a></li>
+  </ul>
+  <p class="footer__meta">© <span id="year"></span> · <span data-i18n="footer.tagline">sitio estático en GitHub Pages</span></p>
+</footer>
+
+<script src="main.js" defer></script>
+</body>
+</html>

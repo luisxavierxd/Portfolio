@@ -47,6 +47,7 @@
   --ch-elyos:   #3b82f6; /* Silca Elyos   — award steel-blue             */
   --ch-teal:    #5eead4; /* LaTeX Studio  — typeset paper-mint           */
   --ch-indigo:  #818cf8; /* Frenado Magn. — field-line periwinkle        */
+  --ch-orchid:  #c084fc; /* LLM / Orquest.— agent-orchestration violet   */
 
   /* Default channel for anything outside a channel module (nav, hero,
      footer). Amber is the master channel. Every accent, focus ring and
@@ -708,6 +709,35 @@ button:focus-visible,
 @media (min-width: 1024px) {
   .board { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+
+/* Group headings split a bank's board into named sub-groups (LLM/Orquestación
+   runs "Orquestación propia" then "Capacidades / skills"). Numbering runs
+   continuously across groups, so the addresses read in one sequence even as the
+   heading breaks the grid. Only pages that carry sub-groups emit these; a
+   single-group bank draws one .board with no heading, exactly as before. */
+.board__group {
+  margin-top: var(--s7);
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--dim-strong);
+}
+
+.board__group::before {
+  content: "";
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--ch);
+}
+
+.section__eyebrow + .board__group { margin-top: var(--s6); }
+.board__group + .board { margin-top: var(--s4); }
 
 /* The Percibir/Procesar/Comunicar row eyebrows went away with the single-grid
    layout: the landing now shows one module per category (each tagged on its
@@ -1603,6 +1633,32 @@ button:focus-visible,
 }
 
 .rest__status--live { color: color-mix(in srgb, var(--ch) 72%, var(--dim-strong)); }
+
+/* Sub-group teaser row: when a bank has enough channels to graduate to
+   sub-groups (LLM/Orquestación), the landing teaser names the groups instead of
+   listing every channel loose. Two stacked lines — the group name and its
+   members — in place of the addr/name/trace grid. */
+.rest--group {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s1);
+  align-items: start;
+}
+
+.rest__group-name {
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ch);
+}
+
+.rest__members {
+  min-width: 0;
+  font-size: var(--t-lg);
+  line-height: 1.35;
+  color: var(--dim-strong);
+}
 
 /* Bare strokes, no readout well: at 84×22 the graticule and border of a full
    .trace would be all you could see. */
