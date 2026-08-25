@@ -12,15 +12,9 @@ CLAUDE.md
 *.agent.md
 AGENTS.md
 .ai/
+
 # this spec is a working doc, not part of the site
-IMPLEMENTATION.md
-IMPLEMENTATION-ADDENDUM.md
-IMPLEMENTATION-ADDENDUM-02.md
-IMPLEMENTATION-V2.md
-FIX-skills-glow.md
-FEATURES.md
-addendum-banco-ia-orquestacion.md
-portfolio-cursos-telemetria-update*.md
+docs/
 
 # Source art for the Nordschleife: a third-party logo EPS (1.1 MB) plus its
 # preview. The track outline is already traced into index.html as a path, so

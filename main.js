@@ -51,8 +51,35 @@
       'meta.title.ia': 'LLM / Orquestación — Luis Xavier García Pimentel Ascencio',
       'meta.title.formacion': 'Formación — Luis Xavier García Pimentel Ascencio',
 
+      /* Vehicle pages sit a level below the Telemetría bank; each owns its
+         browser-tab / share title the same way a bank page does. */
+      'meta.title.vehiculo.madrams': 'Coche MadRams — Luis Xavier García Pimentel Ascencio',
+      'meta.title.vehiculo.quantum': 'Quantum Speed Racing — Luis Xavier García Pimentel Ascencio',
+      'meta.title.vehiculo.elyos': 'Silca Elyos Racing — Luis Xavier García Pimentel Ascencio',
+
       'nav.back': 'Volver al tablero',
       'nav.siblings': 'Otros bancos',
+
+      /* Vehicle-page furniture — labels the data-rendered build sheets share. */
+      'vehicle.back': 'Volver a Telemetría y potencia',
+      'vehicle.siblings': 'Otros vehículos',
+      'vehicle.modulesWord': 'módulos',
+      'vehicle.modulesHeading': 'Módulos',
+      'vehicle.state': 'Estado honesto',
+      'vehicle.base': 'Base',
+      'vehicle.cta': 'Ver el vehículo',
+
+      /* Maturity ladder shown on each module, dim → hot. */
+      'status.explore': 'exploratorio',
+      'status.design': 'en diseño',
+      'status.integration': 'en integración',
+      'status.bench': 'validado en banco',
+      'status.track': 'validado en pista',
+
+      /* Documentation button. Elyos points at the team's workspace, so it is
+         labelled as such rather than as the author's own docs. */
+      'doc.default': 'Documentación técnica',
+      'doc.team': 'Documentación del equipo',
 
       /* Channels are addressed bank-first (CH.1.1, CH.1.2 …), so the flagship
          of every bank is always its .1 and the landing reads 1·2·3·4·5 instead
@@ -246,6 +273,7 @@
       'skill.linkbudget': 'Presupuesto de enlace RF',
       'skill.logicAnalyzer': 'analizador lógico',
       'skill.tsSchema': 'esquema de series de tiempo',
+      'skill.kalman': 'filtro de Kalman',
       'skill.curriculum': 'diseño curricular',
       'skill.rubrics': 'rúbricas de evaluación',
       'skill.sketch2d': 'Sketch 2D',
@@ -314,8 +342,29 @@
       'meta.title.ia': 'LLM / Orchestration — Luis Xavier García Pimentel Ascencio',
       'meta.title.formacion': 'Training — Luis Xavier García Pimentel Ascencio',
 
+      'meta.title.vehiculo.madrams': 'Coche MadRams — Luis Xavier García Pimentel Ascencio',
+      'meta.title.vehiculo.quantum': 'Quantum Speed Racing — Luis Xavier García Pimentel Ascencio',
+      'meta.title.vehiculo.elyos': 'Silca Elyos Racing — Luis Xavier García Pimentel Ascencio',
+
       'nav.back': 'Back to the board',
       'nav.siblings': 'Other banks',
+
+      'vehicle.back': 'Back to Telemetry & power',
+      'vehicle.siblings': 'Other vehicles',
+      'vehicle.modulesWord': 'modules',
+      'vehicle.modulesHeading': 'Modules',
+      'vehicle.state': 'Honest status',
+      'vehicle.base': 'Basis',
+      'vehicle.cta': 'View the vehicle',
+
+      'status.explore': 'exploratory',
+      'status.design': 'in design',
+      'status.integration': 'in integration',
+      'status.bench': 'bench-validated',
+      'status.track': 'track-validated',
+
+      'doc.default': 'Technical documentation',
+      'doc.team': 'Team documentation',
 
       'bank.label': 'Bank',
       'bank.rest': 'Also in this bank',
@@ -496,6 +545,7 @@
       'skill.linkbudget': 'RF link budget',
       'skill.logicAnalyzer': 'logic analyzer',
       'skill.tsSchema': 'time-series schema design',
+      'skill.kalman': 'Kalman filter',
       'skill.curriculum': 'curriculum design',
       'skill.rubrics': 'assessment rubrics',
       'skill.sketch2d': '2D sketch',
@@ -650,6 +700,11 @@
       /* the toggle's label shows the language you can switch TO */
       toggle.textContent = lang === 'es' ? 'EN' : 'ES';
     }
+
+    /* Vehicle pages render their whole main from data in the active language;
+       do it before decoratePageLinks so the links this build emits (backlink,
+       sibling vehicles) get the ?lang stamp along with the static ones. */
+    renderVehiclePage(lang);
 
     decoratePageLinks(lang);
 
@@ -1058,6 +1113,370 @@
     if (yearEl) {
       yearEl.textContent = new Date().getFullYear();
     }
+  }
+
+  /* --------------------------------------------------------------------
+     5b. Vehicle pages — data-driven build sheets
+
+     A vehicle page (coche-madrams.html, quantum.html, elyos.html) is a thin
+     shell: <div id="vehicle-root" data-vehicle="…"> and nothing else in the
+     main. Everything visible is rendered here from the table below, in the
+     current language, and re-rendered on every toggle. The rule the spec
+     asks for holds by construction: adding a subsystem is one entry in a
+     `modules` array — no HTML is ever touched to add one.
+
+     Content lives in {es, en} pairs so a string is added in both languages
+     in one place, next to the module it belongs to.
+     -------------------------------------------------------------------- */
+  var VEHICLES = {
+    madrams: {
+      ch: 'coche',
+      name: 'Coche MadRams',
+      category: { es: 'Baja SAE · Minibaja', en: 'Baja SAE · Minibaja' },
+      tagline: {
+        es: 'El coche Baja real, hablando por radio en pista.',
+        en: 'The real Baja car, talking over radio on track.'
+      },
+      hero: {
+        title: { es: 'GPS y ruta óptima', en: 'GPS and the optimal line' },
+        lede: {
+          es: 'De la traza GPS sale la vuelta ideal: la vuelta 1 se graba como spline de referencia, cada punto posterior se proyecta al marco de Frenet (s, d), y de todas las vueltas se extrae el tiempo mínimo por bin de 2 m. La vuelta ideal es una que nadie corrió completa. Delta en vivo contra la mejor vuelta en Grafana, para darle al piloto la línea a seguir desde pits.',
+          en: 'The ideal lap comes out of the GPS trace: lap 1 is recorded as a reference spline, every later point is projected into the Frenet frame (s, d), and the minimum time per 2 m bin is pulled from every lap. The ideal lap is one nobody drove in full. Live delta against the best lap in Grafana, to hand the driver a line to follow from the pits.'
+        },
+        cite: {
+          es: 'Werling et al., Optimal Trajectory Generation in a Frenet Frame, IEEE ICRA 2010.',
+          en: 'Werling et al., Optimal Trajectory Generation in a Frenet Frame, IEEE ICRA 2010.'
+        },
+        detail: {
+          es: 'measRate=100ms + navRate=2 — el chip mide a 10 Hz y entrega a 5 Hz, y el carrier smoothing sobre dos épocas baja el CEP de ~1.5 m a ~1.0 m sin tocar el protocolo LoRa ni los structs.',
+          en: 'measRate=100ms + navRate=2 — the chip samples at 10 Hz and delivers at 5 Hz, and carrier smoothing over two epochs drops the CEP from ~1.5 m to ~1.0 m without touching the LoRa protocol or the structs.'
+        }
+      },
+      result: { es: '4.º · Endurance · Baja SAE Oregon', en: '4th · Endurance · Baja SAE Oregon' },
+      modules: [
+        {
+          name: { es: 'Radio y protocolo', en: 'Radio & protocol' },
+          solves: { es: 'El enlace de datos del coche a pits.', en: 'The data link from car to pits.' },
+          decision: {
+            es: 'Binario TDM: Route 0x55 @5 Hz (19 B) + Status 0xAA @1 Hz (39 B). ToA extrapolado y validado contra el slot; cumplimiento IFT-008-2015 y FCC §15.247. El pico de ~1 A en TX se diagnosticó como riesgo de sag y se mitigó con un capacitor, no con un buck más grande.',
+            en: 'Binary TDM: Route 0x55 @5 Hz (19 B) + Status 0xAA @1 Hz (39 B). ToA extrapolated and validated against the slot; IFT-008-2015 and FCC §15.247 compliant. The ~1 A TX spike was diagnosed as a sag risk and mitigated with a capacitor, not a bigger buck.'
+          },
+          chips: ['TDM', 'LoRa/SX1262', 'IFT-008-2015', 'FCC §15.247'],
+          status: 'design'
+        },
+        {
+          name: { es: 'Suspensión', en: 'Suspension' },
+          solves: { es: 'Recorrido de suspensión para data logging.', en: 'Suspension travel for data logging.' },
+          decision: {
+            es: 'Se difirió el AS5600 y se tomaron potenciómetros OEM GM, aceptando ±2–3 % de linealidad (~±3–4 mm en 150 mm) porque la necesidad de hoy es data logging, no control cerrado.',
+            en: 'The AS5600 was deferred for OEM GM potentiometers, accepting ±2–3 % linearity (~±3–4 mm over 150 mm) because today’s need is data logging, not closed-loop control.'
+          },
+          chips: ['potenciómetro OEM', 'data logging'],
+          status: 'design'
+        },
+        {
+          name: { es: 'RPM y CVT', en: 'RPM & CVT' },
+          solves: { es: 'Relación de CVT en tiempo real.', en: 'CVT ratio in real time.' },
+          decision: {
+            es: 'Dos AS5600 con la misma dirección fija (0x36), aislados por un mux TCA9548A, para calcular cvt_ratio en vivo — una métrica derivada que ningún sensor mide.',
+            en: 'Two AS5600s sharing the same fixed address (0x36), isolated by a TCA9548A mux, to compute cvt_ratio live — a derived metric no single sensor measures.'
+          },
+          chips: ['AS5600', 'TCA9548A', 'I²C'],
+          status: 'design'
+        },
+        {
+          name: { es: 'Frenos', en: 'Brakes' },
+          solves: { es: 'Evento y presión de frenado, sin falsos datos.', en: 'Brake events and pressure, without false data.' },
+          decision: {
+            es: 'Nivel: switch sellado de motorsport en vez de una modificación casera, porque una falla ahí no es sólo un mal dato. Presión: transductor analógico en vez de switch, para ver la rampa del frenado y detectar caída gradual.',
+            en: 'Level: a sealed motorsport switch instead of a home-made mod, because a failure there isn’t just bad data. Pressure: an analog transducer instead of a switch, to see the braking ramp and catch gradual fade.'
+          },
+          chips: ['motorsport switch', 'transductor analógico'],
+          status: 'design'
+        }
+      ],
+      state: {
+        es: 'Casi todo está diseñado y documentado, con hardware pendiente de comprar y validar. Lo único citable como resultado es el 4.º lugar en Endurance, Baja SAE Oregon.',
+        en: 'Almost everything is designed and documented, with hardware still to buy and validate. The only citable result is 4th place in Endurance, Baja SAE Oregon.'
+      },
+      doc: { url: 'https://balsam-ringer-081.notion.site/797b2fdbb6b982669b6981bc59cf0b23', label: 'default' }
+    },
+
+    quantum: {
+      ch: 'quantum',
+      name: 'Quantum Speed Racing',
+      category: { es: 'Electrathon MX · RACER (48 V, máx 6 kWh)', en: 'Electrathon MX · RACER (48 V, max 6 kWh)' },
+      tagline: {
+        es: 'Potencia eléctrica de un auto de carreras, domada.',
+        en: 'A race car’s electric power, tamed.'
+      },
+      hero: {
+        title: { es: 'Cadena de tracción de 48 V', en: '48 V traction chain' },
+        chain: { es: 'pack → BMS → controlador → motor', en: 'pack → BMS → controller → motor' },
+        lede: {
+          es: '2× Tronix 16S4P LiFePO4 en paralelo (6 kWh) → fusible 250 A → Alltrax SR48300 → Motenergy ME0909 PM DC. La decisión que define el sistema: Max Motor Amps a 98 A, que es el límite del motor, no del controlador — el SR48300 entregaría 300 A sin quejarse y quemaría el ME0909. Peak Amp Mode desactivado por lo mismo. Y Under Voltage a 40 V, deliberadamente bajo: el sag de arranque de un 16S bajo carga hunde el voltaje un instante, y un umbral más alto cortaría en cada acelerada.',
+          en: '2× Tronix 16S4P LiFePO4 in parallel (6 kWh) → 250 A fuse → Alltrax SR48300 → Motenergy ME0909 PM DC. The decision that defines the system: Max Motor Amps at 98 A, which is the motor’s limit, not the controller’s — the SR48300 would hand over 300 A without complaint and burn the ME0909. Peak Amp Mode disabled for the same reason. And Under Voltage at 40 V, deliberately low: a 16S pack’s startup sag under load dips the voltage for an instant, and a higher threshold would cut on every throttle stab.'
+        }
+      },
+      modules: [
+        {
+          name: { es: 'Energía y BMS', en: 'Energy & BMS' },
+          solves: { es: 'Estado de los packs, leído en vivo.', en: 'Pack state, read live.' },
+          decision: {
+            es: 'Lectura del Daly por BLE con bleak desde una Raspberry Pi 4 a ~5.4 Hz — el camino UART se descartó porque el clon usa un protocolo propietario no decodificable. Regla de paralelo: ΔV < 0.1 V antes de conectar, o los packs se ecualizan solos a través del cable sin nada que limite la corriente.',
+            en: 'Reading the Daly over BLE with bleak from a Raspberry Pi 4 at ~5.4 Hz — the UART path was dropped because the clone speaks an undecodable proprietary protocol. Parallel rule: ΔV < 0.1 V before connecting, or the packs equalize themselves through the cable with nothing to limit the current.'
+          },
+          chips: ['Daly BMS', 'BLE', 'bleak', 'Raspberry Pi 4'],
+          status: 'bench'
+        },
+        {
+          name: { es: 'Telemetría', en: 'Telemetry' },
+          solves: { es: 'Tres nodos, un solo punto de subida.', en: 'Three nodes, one uplink.' },
+          decision: {
+            es: 'Tres nodos y un solo punto de subida: la Pi 4. Los ESP32 no hablan con la nube — uno adquiere, otro presenta. Concentrar la salida evita credenciales repartidas, relojes divergentes y tres caminos que depurar.',
+            en: 'Three nodes and a single uplink: the Pi 4. The ESP32s don’t talk to the cloud — one acquires, one displays. Concentrating the output avoids scattered credentials, diverging clocks and three paths to debug.'
+          },
+          chips: ['ESP32', 'Raspberry Pi 4', 'InfluxDB', 'Grafana'],
+          status: 'bench'
+        },
+        {
+          name: { es: 'Respaldo de datos', en: 'Data backup' },
+          solves: { es: 'Una fuente de verdad que no depende del WiFi.', en: 'A source of truth that doesn’t depend on WiFi.' },
+          decision: {
+            es: 'El nodo de display graba a SD a 10 Hz en paralelo. El WiFi es conveniencia; la SD es la fuente de verdad.',
+            en: 'The display node logs to SD at 10 Hz in parallel. WiFi is convenience; the SD card is the source of truth.'
+          },
+          chips: ['microSD', '10 Hz'],
+          status: 'bench'
+        },
+        {
+          name: { es: 'Display del piloto', en: 'Driver display' },
+          solves: { es: 'Lo que el piloto ve.', en: 'What the driver sees.' },
+          decision: {
+            es: 'TFT SSD1963 con gauges.',
+            en: 'TFT SSD1963 with gauges.'
+          },
+          chips: ['TFT SSD1963'],
+          status: 'bench'
+        }
+      ],
+      state: {
+        es: 'La cadena de telemetría está validada en banco (InfluxDB + SD 10 Hz + Grafana). Pendiente en vehículo: fusible de 250 A, kill-switches interior y exterior, baterías aseguradas al chasis, sensor de temperatura de motor. El coche no se presenta como operativo.',
+        en: 'The telemetry chain is bench-validated (InfluxDB + SD 10 Hz + Grafana). Pending in the vehicle: 250 A fuse, interior and exterior kill-switches, batteries secured to the chassis, motor temperature sensor. The car is not presented as operational.'
+      },
+      doc: { url: 'https://balsam-ringer-081.notion.site/1aab2fdbb6b982959ef201dbf93ec2cf', label: 'default' }
+    },
+
+    elyos: {
+      ch: 'elyos',
+      name: 'Silca Elyos Racing',
+      category: { es: 'Shell Eco-marathon US 2026 · Indianapolis · Prototype Battery Electric', en: 'Shell Eco-marathon US 2026 · Indianapolis · Prototype Battery Electric' },
+      tagline: {
+        es: 'Menos energía por vuelta, escrita en el firmware.',
+        en: 'Less energy per lap, written into the firmware.'
+      },
+      hero: {
+        title: { es: 'Eficiencia energética escrita en el firmware', en: 'Energy efficiency written into the firmware' },
+        lede: {
+          es: 'Dos ECUs: un Teensy 4.1 que convierte pedal en corriente con FOC, y un ESP32 que adquiere, fusiona y transmite. La optimización de consumo vive en el pipeline del pedal: limitación de slew asimétrica — la subida de corriente se limita al doble de lento que la bajada (100 vs 200 A/s), porque en Eco-marathon los picos de corriente son pérdida pura por I²R, mientras que la bajada rápida se conserva por seguridad. Más un techo de corriente dependiente de la velocidad: bajo 5 rad/s el motor está casi en corto y la corriente no produce trabajo útil, así que se capa el arranque.',
+          en: 'Two ECUs: a Teensy 4.1 that turns pedal into current with FOC, and an ESP32 that acquires, fuses and transmits. The consumption optimization lives in the pedal pipeline: asymmetric slew limiting — current rise is limited twice as slowly as its fall (100 vs 200 A/s), because in Eco-marathon current spikes are pure I²R loss, while a fast fall is kept for safety. Plus a speed-dependent current ceiling: below 5 rad/s the motor is nearly shorted and current does no useful work, so the launch is capped.'
+        }
+      },
+      result: { es: '6.º · ~310 km/kWh', en: '6th · ~310 km/kWh' },
+      modules: [
+        {
+          name: { es: 'Fusión de sensores', en: 'Sensor fusion' },
+          solves: { es: 'Estado del vehículo desde tres sensores dispares.', en: 'Vehicle state from three mismatched sensors.' },
+          decision: {
+            es: 'Kalman 2D de 6 estados que fusiona acelerómetro, GPS y velocidad. Las mediciones llegan por cola con tipo etiquetado, lo que permite que cada sensor corra a su propia frecuencia sin sincronizar tres tareas contra el filtro. Filtro fijado al core 0, adquisición al core 1.',
+            en: 'A 6-state 2D Kalman filter fusing accelerometer, GPS and speed. Measurements arrive on a queue with a tagged type, letting each sensor run at its own rate without synchronizing three tasks against the filter. Filter pinned to core 0, acquisition to core 1.'
+          },
+          chips: ['Kalman 2D', 'ESP32', 'dual-core'],
+          status: 'track'
+        },
+        {
+          name: { es: 'Protocolo entre ECUs', en: 'Inter-ECU protocol' },
+          solves: { es: 'El enlace entre las dos ECUs.', en: 'The link between the two ECUs.' },
+          decision: {
+            es: 'Binario propio sobre UART: SOF 0xAA, CRC-8 ATM, máquina de estados de 4 estados. Un comando agregado (GET_ALL_FAST, 14 B) en vez de cinco round-trips; struct packed en ambos lados porque ARM y Xtensa alinean distinto.',
+            en: 'A custom binary over UART: SOF 0xAA, CRC-8 ATM, a 4-state machine. One aggregated command (GET_ALL_FAST, 14 B) instead of five round-trips; a packed struct on both sides because ARM and Xtensa align differently.'
+          },
+          chips: ['UART', 'CRC-8 ATM', 'Teensy 4.1', 'ESP32'],
+          status: 'track'
+        },
+        {
+          name: { es: 'Adquisición', en: 'Acquisition' },
+          solves: { es: 'Sensores de a bordo a 5–10 Hz sin saturar el UART.', en: 'Onboard sensors at 5–10 Hz without saturating the UART.' },
+          decision: {
+            es: 'GPS MT3333 multiconstelación con control PMTK por sentencia — apagar sentencias NMEA individuales es lo que hace viable subir a 5–10 Hz sin saturar el UART. Pitot MS4525DO con calibración de cero en reposo.',
+            en: 'A multi-constellation MT3333 GPS with per-sentence PMTK control — turning off individual NMEA sentences is what makes 5–10 Hz viable without saturating the UART. An MS4525DO pitot with a zero calibration at rest.'
+          },
+          chips: ['MT3333', 'PMTK', 'MS4525DO pitot'],
+          status: 'track'
+        },
+        {
+          name: { es: 'Arquitectura RTOS', en: 'RTOS architecture' },
+          solves: { es: 'Ocho tareas priorizadas por lo que cuesta perder el dato.', en: 'Eight tasks prioritized by the cost of losing the data.' },
+          decision: {
+            es: '8 tareas con prioridad y núcleo explícitos, asignadas por la consecuencia de perder el dato: display del piloto (15) sobre parseo de GPS (5), consola de depuración al fondo (1).',
+            en: '8 tasks with explicit priority and core, assigned by the consequence of losing the data: driver display (15) over GPS parsing (5), debug console at the bottom (1).'
+          },
+          chips: ['FreeRTOS', '8 tasks', 'dual-core'],
+          status: 'track'
+        },
+        {
+          name: { es: 'Autónomo', en: 'Autonomous' },
+          solves: { es: 'Dirección exploratoria, nada implementado.', en: 'An exploratory direction, nothing implemented.' },
+          decision: {
+            es: 'Exploratorio. Nada implementado todavía; si la categoría entra, la página crece de 4 a más módulos sin reescribirse — sólo se agregan entradas.',
+            en: 'Exploratory. Nothing implemented yet; if the category lands, the page grows from 4 modules to more without a rewrite — entries are just added.'
+          },
+          chips: [],
+          status: 'explore'
+        }
+      ],
+      state: {
+        es: 'Firmware implementado y documentado. La sección autónoma es exploración. La contribución fue de optimización sobre un sistema existente, no autoría del sistema — el repositorio del driver es un fork.',
+        en: 'Firmware implemented and documented. The autonomous section is exploration. The contribution was optimization over an existing system, not authorship of it — the driver repository is a fork.'
+      },
+      doc: { url: 'https://balsam-ringer-081.notion.site/d1fb2fdbb6b98201b694810bf2f59373', label: 'team' }
+    }
+  };
+
+  var VEHICLE_ORDER = ['madrams', 'quantum', 'elyos'];
+  var VEHICLE_PAGE = { madrams: 'coche-madrams.html', quantum: 'quantum.html', elyos: 'elyos.html' };
+
+  /* Pick the current-language string from an {es, en} pair, falling back to ES
+     (the authored language) if a translation is ever missing. */
+  function vt(pair, lang) {
+    if (!pair) return '';
+    return pair[lang] || pair.es || '';
+  }
+
+  function make(tag, cls, text) {
+    var node = document.createElement(tag);
+    if (cls) node.className = cls;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  function setMetaContent(selector, value) {
+    var node = document.querySelector(selector);
+    if (node) node.setAttribute('content', value);
+  }
+
+  /* Rendered on load and on every language toggle. Guarded: on any page that
+     is not a vehicle page there is no #vehicle-root, so this returns at once. */
+  function renderVehiclePage(lang) {
+    var root = document.getElementById('vehicle-root');
+    if (!root) return;
+    var v = VEHICLES[root.getAttribute('data-vehicle')];
+    if (!v) return;
+
+    var dict = i18n[lang] || i18n.es;
+    root.textContent = '';
+    root.style.setProperty('--ch', 'var(--ch-' + v.ch + ')');
+
+    /* Meta description tracks the toggle too, from the same tagline the page
+       shows — the shell ships an ES default for no-JS crawlers, this keeps the
+       description in sync once the language is chosen. (og:title is handled by
+       the standard data-i18n-content pass.) */
+    var desc = vt(v.tagline, lang);
+    setMetaContent('meta[name="description"]', desc);
+    setMetaContent('meta[property="og:description"]', desc);
+
+    /* ---- Subhead: backlink to the parent bank, name, framing, count ---- */
+    var head = make('section', 'section section--sub');
+    var back = make('a', 'backlink', dict['vehicle.back'] || 'Volver a Telemetría y potencia');
+    back.setAttribute('href', 'telemetria.html');
+    back.setAttribute('data-page-link', '');
+    head.appendChild(back);
+    head.appendChild(make('h1', 'subhead__title', v.name));
+    head.appendChild(make('p', 'subhead__line', vt(v.category, lang)));
+    var count = v.modules.length + ' ' + (dict['vehicle.modulesWord'] || 'módulos');
+    head.appendChild(make('p', 'subhead__count', count));
+    root.appendChild(head);
+
+    /* ---- Hero: the one idea the build is organised around ---- */
+    var hero = make('section', 'section vhero');
+    hero.appendChild(make('h2', 'vhero__title', vt(v.hero.title, lang)));
+    if (v.hero.chain) hero.appendChild(make('p', 'vhero__chain', vt(v.hero.chain, lang)));
+    hero.appendChild(make('p', 'vhero__lede', vt(v.hero.lede, lang)));
+    if (v.hero.cite) {
+      hero.appendChild(make('p', 'vhero__cite', (dict['vehicle.base'] || 'Base') + ' · ' + vt(v.hero.cite, lang)));
+    }
+    if (v.hero.detail) hero.appendChild(make('p', 'vhero__detail', vt(v.hero.detail, lang)));
+
+    var actions = make('div', 'vhero__actions');
+    if (v.result) actions.appendChild(make('span', 'vresult', vt(v.result, lang)));
+    var docLabelKey = v.doc.label === 'team' ? 'doc.team' : 'doc.default';
+    var docBtn = make('a', 'btn btn--demo', dict[docLabelKey] || 'Documentación técnica');
+    docBtn.setAttribute('href', v.doc.url);
+    docBtn.setAttribute('target', '_blank');
+    docBtn.setAttribute('rel', 'noopener noreferrer');
+    actions.appendChild(docBtn);
+    hero.appendChild(actions);
+    root.appendChild(hero);
+
+    /* ---- Board: one module per subsystem ---- */
+    var board = make('section', 'section');
+    board.setAttribute('aria-label', dict['vehicle.modulesHeading'] || 'Módulos');
+    var grid = make('div', 'board');
+    for (var i = 0; i < v.modules.length; i++) {
+      grid.appendChild(buildModule(v.modules[i], lang, dict));
+    }
+    board.appendChild(grid);
+
+    /* ---- Honest-status callout ---- */
+    var state = make('div', 'vstate');
+    state.appendChild(make('p', 'vstate__label', dict['vehicle.state'] || 'Estado honesto'));
+    state.appendChild(make('p', 'vstate__body', vt(v.state, lang)));
+    board.appendChild(state);
+    root.appendChild(board);
+
+    /* ---- Foot: the other vehicles in this bank ---- */
+    root.appendChild(buildSiblings(root.getAttribute('data-vehicle'), lang, dict));
+  }
+
+  function buildModule(m, lang, dict) {
+    var card = make('article', 'module');
+
+    var headRow = make('div', 'module__head');
+    headRow.appendChild(make('h3', 'module__name', vt(m.name, lang)));
+    var statusKey = 'status.' + m.status;
+    var status = make('span', 'status status--' + m.status);
+    status.appendChild(make('span', 'status__dot'));
+    status.appendChild(document.createTextNode(dict[statusKey] || m.status));
+    headRow.appendChild(status);
+    card.appendChild(headRow);
+
+    if (m.solves) card.appendChild(make('p', 'module__solves', vt(m.solves, lang)));
+    card.appendChild(make('p', 'module__decision', vt(m.decision, lang)));
+
+    if (m.chips && m.chips.length) {
+      var badges = make('ul', 'badges');
+      for (var i = 0; i < m.chips.length; i++) {
+        badges.appendChild(make('li', 'badge', m.chips[i]));
+      }
+      card.appendChild(badges);
+    }
+    return card;
+  }
+
+  function buildSiblings(currentId, lang, dict) {
+    var nav = make('nav', 'section siblings');
+    nav.setAttribute('aria-label', dict['vehicle.siblings'] || 'Otros vehículos');
+    nav.appendChild(make('span', 'siblings__label', dict['vehicle.siblings'] || 'Otros vehículos'));
+    for (var i = 0; i < VEHICLE_ORDER.length; i++) {
+      var id = VEHICLE_ORDER[i];
+      if (id === currentId) continue;
+      var link = make('a', 'link', VEHICLES[id].name);
+      link.setAttribute('style', '--ch: var(--ch-' + VEHICLES[id].ch + ')');
+      link.setAttribute('href', VEHICLE_PAGE[id]);
+      link.setAttribute('data-page-link', '');
+      nav.appendChild(link);
+    }
+    return nav;
   }
 
   /* --------------------------------------------------------------------
