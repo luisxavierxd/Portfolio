@@ -1344,7 +1344,7 @@
   };
 
   var VEHICLE_ORDER = ['madrams', 'quantum', 'elyos'];
-  var VEHICLE_PAGE = { madrams: 'coche-madrams.html', quantum: 'quantum.html', elyos: 'elyos.html' };
+  var VEHICLE_PAGE = { madrams: 'coche-madrams', quantum: 'quantum', elyos: 'elyos' };
 
   /* Pick the current-language string from an {es, en} pair, falling back to ES
      (the authored language) if a translation is ever missing. */
@@ -1388,7 +1388,7 @@
     /* ---- Subhead: backlink to the parent bank, name, framing, count ---- */
     var head = make('section', 'section section--sub');
     var back = make('a', 'backlink', dict['vehicle.back'] || 'Volver a Telemetría y potencia');
-    back.setAttribute('href', 'telemetria.html');
+    back.setAttribute('href', 'telemetria');
     back.setAttribute('data-page-link', '');
     head.appendChild(back);
     head.appendChild(make('h1', 'subhead__title', v.name));

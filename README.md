@@ -25,7 +25,11 @@ Calendly). Static site: plain HTML, CSS, and vanilla JavaScript, no frameworks, 
 ## Pages
 
 `index.html` is the landing board: one featured module per category, each linking to that
-category's own page. Every page shares `styles.css` and `main.js` — there is no build step, so a
+category's own page. Internal links are **extensionless** (`/robotica`, home is `/Portfolio/`) —
+GitHub Pages serves each `X.html` file at `/X`, so the source files keep their `.html` names while
+the URLs stay clean. · Los enlaces internos son **sin extensión** (`/robotica`, el inicio es
+`/Portfolio/`): GitHub Pages sirve cada archivo `X.html` en `/X`, así que los archivos fuente
+conservan su nombre `.html` mientras las URLs quedan limpias. Every page shares `styles.css` and `main.js` — there is no build step, so a
 copy change goes in the `i18n` dictionary in `main.js` **and** in the matching inline Spanish
 default in the HTML (the inline text is what a visitor without JavaScript sees).
 
@@ -42,9 +46,11 @@ default in the HTML (the inline text is what a visitor without JavaScript sees).
 ## Local preview
 
 ```
-python -m http.server 8000
+python serve.py
 ```
 
-Then open `http://localhost:8000/`. Serving over HTTP is required — opening `index.html` directly from disk (`file://`) will not work, because the page's own Content-Security-Policy blocks that origin. · Es necesario servir por HTTP — abrir `index.html` directamente desde el disco (`file://`) no funciona, porque la Content-Security-Policy de la página bloquea ese origen.
+Then open `http://localhost:8000/`. Use `serve.py` (not `python -m http.server`) so the local server resolves clean URLs the way GitHub Pages does — `/robotica` is served from `robotica.html` — and in-site navigation behaves exactly like production. · Usa `serve.py` (no `python -m http.server`) para que el servidor local resuelva las URLs limpias igual que GitHub Pages — `/robotica` se sirve desde `robotica.html` — y la navegación interna se comporte igual que en producción.
 
-The language can be deep-linked with `?lang=es` / `?lang=en` (e.g. `http://localhost:8000/telemetria.html?lang=en`), and it follows the visitor across pages. The older `#es` / `#en` links still work and are upgraded to the query form on arrival. · El idioma se puede enlazar con `?lang=es` / `?lang=en` (p. ej. `http://localhost:8000/telemetria.html?lang=en`) y viaja con el visitante entre páginas. Los enlaces antiguos `#es` / `#en` siguen funcionando y se convierten al nuevo formato al entrar.
+Serving over HTTP is required — opening `index.html` directly from disk (`file://`) will not work, because the page's own Content-Security-Policy blocks that origin. · Es necesario servir por HTTP — abrir `index.html` directamente desde el disco (`file://`) no funciona, porque la Content-Security-Policy de la página bloquea ese origen.
+
+The language can be deep-linked with `?lang=es` / `?lang=en` (e.g. `http://localhost:8000/telemetria?lang=en`), and it follows the visitor across pages. The older `#es` / `#en` links still work and are upgraded to the query form on arrival. · El idioma se puede enlazar con `?lang=es` / `?lang=en` (p. ej. `http://localhost:8000/telemetria.html?lang=en`) y viaja con el visitante entre páginas. Los enlaces antiguos `#es` / `#en` siguen funcionando y se convierten al nuevo formato al entrar.
