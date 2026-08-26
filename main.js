@@ -53,7 +53,7 @@
 
       /* Vehicle pages sit a level below the Telemetría bank; each owns its
          browser-tab / share title the same way a bank page does. */
-      'meta.title.vehiculo.madrams': 'Coche MadRams — Luis Xavier García Pimentel Ascencio',
+      'meta.title.vehiculo.madrams': 'MadRams — Luis Xavier García Pimentel Ascencio',
       'meta.title.vehiculo.quantum': 'Quantum Speed Racing — Luis Xavier García Pimentel Ascencio',
       'meta.title.vehiculo.elyos': 'Silca Elyos Racing — Luis Xavier García Pimentel Ascencio',
 
@@ -233,7 +233,7 @@
       'about.n7': 'Sigo en lo mismo que a los siete: construir cosas que perciben, deciden y actúan. Solo que ahora los sensores son mejores.',
       'about.teams': 'Equipos de competencia',
       'about.teams.soon': 'Equipos por venir',
-      'team.elyos': 'Silca Elyos · eficiencia energética',
+      'team.elyos': 'Silca Elyos · Shell Eco Marathon',
       'team.ignitia': 'Ignitia Rocketlab · cohetería',
       'about.skills.edgeai': 'Edge AI / Visión',
       'about.skills.robotics': 'Robótica',
@@ -342,7 +342,7 @@
       'meta.title.ia': 'LLM / Orchestration — Luis Xavier García Pimentel Ascencio',
       'meta.title.formacion': 'Training — Luis Xavier García Pimentel Ascencio',
 
-      'meta.title.vehiculo.madrams': 'Coche MadRams — Luis Xavier García Pimentel Ascencio',
+      'meta.title.vehiculo.madrams': 'MadRams — Luis Xavier García Pimentel Ascencio',
       'meta.title.vehiculo.quantum': 'Quantum Speed Racing — Luis Xavier García Pimentel Ascencio',
       'meta.title.vehiculo.elyos': 'Silca Elyos Racing — Luis Xavier García Pimentel Ascencio',
 
@@ -507,7 +507,7 @@
       'about.n7': "I'm still doing what I did at seven: building things that sense, decide, and act. The sensors are just better now.",
       'about.teams': 'Competition teams',
       'about.teams.soon': 'Teams coming up',
-      'team.elyos': 'Silca Elyos · energy efficiency',
+      'team.elyos': 'Silca Elyos · Shell Eco Marathon',
       'team.ignitia': 'Ignitia Rocketlab · rocketry',
       'about.skills.edgeai': 'Edge AI / Vision',
       'about.skills.robotics': 'Robotics',
@@ -1131,7 +1131,7 @@
   var VEHICLES = {
     madrams: {
       ch: 'coche',
-      name: 'Coche MadRams',
+      name: 'MadRams',
       category: { es: 'Baja SAE · Minibaja', en: 'Baja SAE · Minibaja' },
       tagline: {
         es: 'El coche Baja real, hablando por radio en pista.',
