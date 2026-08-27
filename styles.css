@@ -1920,6 +1920,17 @@ button:focus-visible,
   overflow: hidden;
 }
 
+/* Calendly's embed colour params (background_color/text_color/primary_color on
+   the tab data-url) are a paid-plan feature; on the free plan Calendly ignores
+   them and renders the booking iframe on its default white, which clashes with
+   the dark panel. We can't reach inside a cross-origin iframe to theme it, so we
+   invert it from the outside to fake a dark theme. hue-rotate(180deg) flips the
+   inverted hues back so the blue accent (selected dates) stays blue. Drop this
+   rule if the account moves back to a paid plan and the params apply again. */
+#calendly-inline iframe {
+  filter: invert(0.92) hue-rotate(180deg);
+}
+
 /* Placeholder shown until the Calendly widget replaces it (also covers a
    blocked third-party frame, where it never arrives). Absolutely positioned
    within the already-reserved .book__panel box, so it adds no height and
