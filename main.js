@@ -300,10 +300,9 @@
       'bridge.cta': 'Ver el coche en pista',
 
       'book.heading': 'Agenda',
-      'book.intro': '¿Quieres platicar de un proyecto? Aparta 30 minutos: presencial en campus o por Zoom.',
+      'book.intro': '¿Quieres platicar de un proyecto? Aparta 30 minutos, presencial en campus.',
       'book.tabsAriaLabel': 'Tipo de reunión',
       'book.tab.inperson': 'Presencial',
-      'book.tab.zoom': 'Zoom',
       'book.footnote': 'La reservación se gestiona a través de Calendly.',
       'book.loading': 'CARGANDO CALENDARIO…',
 
@@ -572,10 +571,9 @@
       'bridge.cta': 'See the car on track',
 
       'book.heading': 'Book',
-      'book.intro': 'Want to talk about a project? Grab 30 minutes — in person on campus or over Zoom.',
+      'book.intro': 'Want to talk about a project? Grab 30 minutes, in person on campus.',
       'book.tabsAriaLabel': 'Meeting type',
       'book.tab.inperson': 'In-person',
-      'book.tab.zoom': 'Zoom',
       'book.footnote': 'Booking is handled by Calendly.',
       'book.loading': 'LOADING CALENDAR…',
 
