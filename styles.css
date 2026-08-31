@@ -1395,6 +1395,179 @@ button:focus-visible,
 }
 
 /* --------------------------------------------------------------------------
+   Skill legend cross-links — a pill that maps to shipped work is clickable,
+   opening a popover of the project(s) that use it. The affordance is quiet:
+   the group's channel colour on hover plus a small chevron, so a linked pill
+   reads as "there's more here" without shouting over the inert ones.
+   -------------------------------------------------------------------------- */
+.pill--linked {
+  cursor: pointer;
+  position: relative;
+  padding-right: 1.2rem;
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.pill--linked::after {
+  content: "\203A"; /* › */
+  position: absolute;
+  right: 0.45rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 700;
+  color: color-mix(in srgb, var(--ch) 70%, var(--dim-strong));
+  opacity: 0.75;
+}
+
+.pill--linked:hover,
+.pill--linked:focus-visible,
+.pill--linked[aria-expanded="true"] {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--ch) 55%, var(--rule));
+  background: color-mix(in srgb, var(--ch) 12%, var(--panel));
+}
+
+.pill--linked:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--ch) 60%, transparent);
+  outline-offset: 2px;
+}
+
+/* The popover reads as a patch-panel readout, not a Material menu: sharp-ish
+   instrument panel, a channel-coloured top rail, a header bar identical to the
+   board's own (.section__eyebrow — tick, mono label, hairline to the edge), and
+   a probe caret pointing back up at the pill it belongs to. Separation comes
+   from a hairline plus a faint channel halo — no soft grey drop shadow. */
+.skill-pop {
+  position: fixed;
+  z-index: 60;
+  min-width: 13rem;
+  max-width: min(20rem, calc(100vw - 2rem));
+  padding: var(--s3);
+  background: var(--panel);
+  border: 1px solid color-mix(in srgb, var(--ch) 30%, var(--rule));
+  border-top: 2px solid var(--ch);
+  border-radius: var(--r-sm);
+  box-shadow: 0 8px 22px -14px rgba(0, 0, 0, 0.85),
+              0 0 18px -8px color-mix(in srgb, var(--ch) 40%, transparent);
+}
+
+/* Probe caret: a channel-coloured tick at the top edge, aligned by JS to the
+   centre of the pill (--caret-x), so the readout visibly patches to its tag. */
+.skill-pop::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: var(--caret-x, 18px);
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid var(--ch);
+}
+
+.skill-pop__label {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  margin: 0 0 var(--s2);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--t-2xs);
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--dim-strong);
+}
+
+.skill-pop__label::before { /* channel tick, as on .section__eyebrow */
+  content: "";
+  flex: 0 0 auto;
+  width: 3px;
+  height: 11px;
+  background: var(--ch);
+  border-radius: 1px;
+}
+
+.skill-pop__label::after { /* hairline running to the panel edge */
+  content: "";
+  flex: 1 1 0;
+  height: 1px;
+  background: color-mix(in srgb, var(--ch) 22%, var(--rule));
+}
+
+.skill-pop__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.skill-pop__link {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  font-size: var(--t-sm);
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: inset 2px 0 0 transparent; /* the rail the hover fills in */
+  transition: color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+}
+
+.skill-pop__link::before { /* a mono probe marker, not a decorative arrow */
+  content: "\203A"; /* › */
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: color-mix(in srgb, var(--ch) 65%, var(--dim-strong));
+}
+
+.skill-pop__link:hover,
+.skill-pop__link:focus-visible {
+  outline: none;
+  color: var(--text);
+  background: color-mix(in srgb, var(--ch) 12%, transparent);
+  box-shadow: inset 2px 0 0 var(--ch); /* patched: the channel rail lights up */
+}
+
+.skill-pop__link:hover::before,
+.skill-pop__link:focus-visible::before {
+  color: var(--ch);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skill-pop { animation: pop-in 130ms ease-out both; }
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Deep-link landing: the card arrived at by #id flashes its channel colour,
+   then settles to a faint ring so it stays identifiable. scroll-margin clears
+   the sticky header. */
+.channel { scroll-margin-top: 96px; }
+
+.channel:target {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ch) 45%, transparent);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .channel:target { animation: card-flash 2.4s ease-out 1; }
+}
+
+@keyframes card-flash {
+  0% {
+    box-shadow: 0 0 0 2px var(--ch),
+                0 0 24px 3px color-mix(in srgb, var(--ch) 35%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--ch) 45%, transparent);
+  }
+}
+
+/* --------------------------------------------------------------------------
    12. Channel module prose + links (kept after .pills/.badges so the
        flex gap above applies, and module spacing wins on .channel__links)
    -------------------------------------------------------------------------- */

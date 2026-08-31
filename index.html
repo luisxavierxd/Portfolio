@@ -118,8 +118,8 @@
           <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 1</p>
           <h3 class="bank__name" id="bank-robotica" data-i18n="cat.robotica.name">Robótica</h3>
           <p class="bank__line" data-i18n="cat.robotica.line">Percibir: visión, brazos y navegación — máquinas que leen el mundo antes de moverse.</p>
-          <p class="bank__count" data-i18n="cat.robotica.count">3 canales</p>
-          <a class="bank__link" href="robotica" data-page-link data-i18n="cat.robotica.more">Ver los 3 · Robótica</a>
+          <p class="bank__count" data-i18n="cat.robotica.count">4 canales</p>
+          <a class="bank__link" href="robotica" data-page-link data-i18n="cat.robotica.more">Ver los 4 · Robótica</a>
           <div class="bank__rest">
             <p class="bank__rest-label" data-i18n="bank.rest">También en este banco</p>
             <ul>
@@ -135,6 +135,14 @@
                 <span class="rest__name">Robot Interprepas</span>
                 <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
                   <path pathLength="1" d="M3 18 L16 11 L30 15 L44 6 L60 13 L81 5"/>
+                </svg>
+              </li>
+              <li class="rest" style="--ch: var(--ch-teal)">
+                <span class="rest__addr">CH.1.4</span>
+                <span class="rest__name">OmniSim</span>
+                <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false"><!-- a branch merging back into the mainline -->
+                  <path pathLength="1" d="M3 16 H81"/>
+                  <path pathLength="1" d="M22 16 C30 16 32 6 40 6 H52 C60 6 62 16 70 16"/>
                 </svg>
               </li>
             </ul>
@@ -577,24 +585,24 @@
         <span class="skills__dot" aria-hidden="true"></span>
         <span class="skills__group-name" data-i18n="about.skills.edgeai">Edge AI / Visión</span>
         <ul class="pills">
-          <li class="pill pill--expert">YOLOv11</li>
-          <li class="pill pill--expert">YOLOv8n</li>
+          <li class="pill pill--expert" data-skill="YOLOv11">YOLOv11</li>
+          <li class="pill pill--expert" data-skill="YOLOv8n">YOLOv8n</li>
           <li class="pill pill--expert">OpenCV</li>
-          <li class="pill">TensorFlow</li>
-          <li class="pill">EEGNet</li>
-          <li class="pill">signal processing</li>
+          <li class="pill" data-skill="TensorFlow">TensorFlow</li>
+          <li class="pill" data-skill="EEGNet">EEGNet</li>
+          <li class="pill" data-skill="signal processing">signal processing</li>
         </ul>
       </div>
       <div class="skills__group" style="--ch: var(--ch-violet)">
         <span class="skills__dot" aria-hidden="true"></span>
         <span class="skills__group-name" data-i18n="about.skills.robotics">Robótica</span>
         <ul class="pills">
-          <li class="pill">ROS2</li>
-          <li class="pill">Nav2</li>
-          <li class="pill">LiDAR</li>
-          <li class="pill">teleop</li>
-          <li class="pill">6-DOF arm</li>
-          <li class="pill">inverse kinematics</li>
+          <li class="pill pill--expert" data-skill="ROS2">ROS2</li>
+          <li class="pill pill--expert" data-skill="Nav2">Nav2</li>
+          <li class="pill pill--expert" data-skill="LiDAR">LiDAR</li>
+          <li class="pill pill--expert" data-skill="teleop">teleop</li>
+          <li class="pill" data-skill="6-DOF arm">6-DOF arm</li>
+          <li class="pill" data-skill="inverse kinematics">inverse kinematics</li>
         </ul>
       </div>
       <div class="skills__group" style="--ch: var(--ch-coche)">
@@ -612,14 +620,14 @@
         <span class="skills__dot" aria-hidden="true"></span>
         <span class="skills__group-name" data-i18n="about.skills.embedded">Embebidos</span>
         <ul class="pills">
-          <li class="pill pill--expert">ESP32</li>
-          <li class="pill pill--expert">Arduino</li>
+          <li class="pill pill--expert" data-skill="ESP32">ESP32</li>
+          <li class="pill pill--expert" data-skill="Arduino">Arduino</li>
           <li class="pill pill--expert" data-i18n="skill.telemetry">telemetría</li>
           <li class="pill">MQTT/Mosquitto</li>
-          <li class="pill pill--expert">LoRa/SX1262</li>
+          <li class="pill pill--expert" data-skill="LoRa/SX1262">LoRa/SX1262</li>
           <li class="pill pill--expert" data-i18n="skill.sensors">sensores/I²C</li>
           <li class="pill pill--expert" data-i18n="skill.reverseEng">ingeniería inversa</li>
-          <li class="pill">FreeRTOS</li>
+          <li class="pill" data-skill="FreeRTOS">FreeRTOS</li>
           <li class="pill pill--expert">GPS NMEA</li>
           <li class="pill">microSD logging</li>
           <li class="pill">CAN bus/TWAI</li>
@@ -633,15 +641,15 @@
         <span class="skills__dot" aria-hidden="true"></span>
         <span class="skills__group-name" data-i18n="about.skills.fullstack">Full-stack / Datos</span>
         <ul class="pills">
-          <li class="pill">React</li>
-          <li class="pill">Node.js</li>
-          <li class="pill">WebSocket</li>
+          <li class="pill" data-skill="React">React</li>
+          <li class="pill" data-skill="Node.js">Node.js</li>
+          <li class="pill" data-skill="WebSocket">WebSocket</li>
           <li class="pill">FastAPI</li>
-          <li class="pill">InfluxDB</li>
-          <li class="pill">Grafana</li>
+          <li class="pill" data-skill="InfluxDB">InfluxDB</li>
+          <li class="pill" data-skill="Grafana">Grafana</li>
           <li class="pill">Docker</li>
-          <li class="pill">scikit-learn</li>
-          <li class="pill">PCA</li>
+          <li class="pill" data-skill="scikit-learn">scikit-learn</li>
+          <li class="pill" data-skill="PCA">PCA</li>
           <li class="pill">MQTT/TLS</li>
           <li class="pill" data-i18n="skill.tsSchema">esquema de series de tiempo</li>
           <li class="pill" data-i18n="skill.kalman">filtro de Kalman</li>
@@ -665,7 +673,7 @@
         <span class="skills__dot" aria-hidden="true"></span>
         <span class="skills__group-name" data-i18n="about.skills.genai">GenAI / IA generativa</span>
         <ul class="pills">
-          <li class="pill pill--expert" data-i18n="skill.llmOrchestration">orquestación de LLMs por CLI</li>
+          <li class="pill pill--expert" data-skill="llm-orchestration" data-i18n="skill.llmOrchestration">orquestación de LLMs por CLI</li>
           <li class="pill">Ollama</li>
           <li class="pill pill--expert">Stable Diffusion</li>
           <li class="pill">GPT4All</li>

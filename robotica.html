@@ -62,7 +62,7 @@
     <a class="backlink" href="./" data-page-link data-i18n="nav.back">Volver al tablero</a>
     <h1 class="subhead__title" data-i18n="cat.robotica.name">Robótica</h1>
     <p class="subhead__line" data-i18n="cat.robotica.line">Percibir: visión, brazos y navegación — máquinas que leen el mundo antes de moverse.</p>
-    <p class="subhead__count" data-i18n="cat.robotica.count">3 canales</p>
+    <p class="subhead__count" data-i18n="cat.robotica.count">4 canales</p>
   </section>
 
   <section class="section section--projects" aria-labelledby="board-heading" style="--ch: var(--ch-amber)">
@@ -70,7 +70,7 @@
 
     <div class="board">
 
-      <article class="channel" style="--ch: var(--ch-amber)">
+      <article class="channel" id="jtcs" style="--ch: var(--ch-amber)">
         <p class="channel__addr">CH.1.1</p>
         <h3 class="channel__name">JTCS</h3>
         <p class="channel__reading">
@@ -122,7 +122,7 @@
         </div>
       </article>
 
-      <article class="channel" style="--ch: var(--ch-emerald)">
+      <article class="channel" id="agrobot" style="--ch: var(--ch-emerald)">
         <p class="channel__addr">CH.1.2</p>
         <h3 class="channel__name">AgroBot</h3>
         <p class="channel__reading">
@@ -155,7 +155,7 @@
         </div>
       </article>
 
-      <article class="channel" style="--ch: var(--ch-violet)">
+      <article class="channel" id="robot-interprepas" style="--ch: var(--ch-violet)">
         <p class="channel__addr">CH.1.3</p>
         <h3 class="channel__name">Robot Interprepas Jesuitas 2025</h3>
         <p class="channel__reading">
@@ -189,6 +189,42 @@
         </ul>
         <div class="channel__links">
           <a class="btn btn--code" href="https://github.com/luisxavierxd/Robot_Interprepas_Jesuitas_2025" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <article class="channel" id="omnisim" style="--ch: var(--ch-teal)">
+        <p class="channel__addr">CH.1.4</p>
+        <h3 class="channel__name">OmniSim — Nav2/ROS2 Contribution</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">Merged</span>
+          <span class="reading__unit" data-i18n="proj.omnisim.unit">PR destacado en release v8.1.17</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: omnisim -
+             a git merge: a feature branch lifts off the mainline, carries the Nav2 bring-up,
+             and rejoins at the release commit (the larger node). A contribution, not a signal. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 26 H116"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M30 26 C40 26 42 11 54 11 H70 C82 11 84 26 94 26"/>
+          <circle cx="30" cy="26" r="2"/>
+          <circle cx="62" cy="11" r="2"/>
+          <circle cx="94" cy="26" r="2.8"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.omnisim.tagline">Contribución open-source mergeada al simulador de OmniLink.</p>
+        <p class="channel__blurb" data-i18n="proj.omnisim.blurb">Contribución open-source mergeada al simulador de robótica de OmniLink — destacada como headline en su release v8.1.17. Primer bring-up de Nav2 (ROS 2 Jazzy) contra OmniSim: stack completo llevando al robot Husky a un goal NavigateToPose de forma autónoma, empaquetado como paquete colcon reusable. Es una extensión de un sistema existente, no autoría del simulador.</p>
+        <p class="channel__note" data-i18n="proj.omnisim.note">Alcance por diseño: planning + ejecución de goal. No es un benchmark de localización ni de evasión de obstáculos.</p>
+        <ul class="badges">
+          <li class="badge">ROS 2 Jazzy</li>
+          <li class="badge">Nav2</li>
+          <li class="badge">SLAM Toolbox</li>
+          <li class="badge">Colcon</li>
+          <li class="badge">WSL/Ubuntu 24.04</li>
+          <li class="badge">CycloneDDS</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--demo" href="https://github.com/omnilink-tech/omnisim/releases/tag/v8.1.17" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.release">Release</a>
+          <a class="btn btn--code" href="https://github.com/omnilink-tech/omnisim/pull/12" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.pr">Ver PR</a>
         </div>
       </article>
 

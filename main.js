@@ -97,8 +97,8 @@
          how many channels it holds, and the landing card's handoff link. */
       'cat.robotica.name': 'Robótica',
       'cat.robotica.line': 'Percibir: visión, brazos y navegación — máquinas que leen el mundo antes de moverse.',
-      'cat.robotica.count': '3 canales',
-      'cat.robotica.more': 'Ver los 3 · Robótica',
+      'cat.robotica.count': '4 canales',
+      'cat.robotica.more': 'Ver los 4 · Robótica',
 
       'cat.senales.name': 'Señales e IA',
       'cat.senales.line': 'Procesar: señales crudas convertidas en decisiones — EEG, física aplicada y aprendizaje automático.',
@@ -154,6 +154,11 @@
       'proj.robot.tagline': 'Robot autónomo con ROS2 y navegación.',
       'proj.robot.blurb': 'Robot diferencial sobre ROS2: navegación con Nav2, LiDAR LDROBOT, interfaz de hardware por Arduino y teleoperación por joystick. Robótica de competencia con el stack estándar de la industria.',
       'proj.robot.note': 'El día de la competencia no funcionó: no logré integrar la ruta planificada al abrir SLAM, por inexperiencia y falta de documentación. Tenía la ruta y tenía el robot moviéndose; no los uní a tiempo.',
+
+      'proj.omnisim.unit': 'PR destacado en release v8.1.17',
+      'proj.omnisim.tagline': 'Contribución open-source mergeada al simulador de OmniLink.',
+      'proj.omnisim.blurb': 'Contribución open-source mergeada al simulador de robótica de OmniLink — destacada como headline en su release v8.1.17. Primer bring-up de Nav2 (ROS 2 Jazzy) contra OmniSim: stack completo llevando al robot Husky a un goal NavigateToPose de forma autónoma, empaquetado como paquete colcon reusable. Es una extensión de un sistema existente, no autoría del simulador.',
+      'proj.omnisim.note': 'Alcance por diseño: planning + ejecución de goal. No es un benchmark de localización ni de evasión de obstáculos.',
 
       'proj.mapatec.unit': 'ruta peatonal',
       'proj.mapatec.tagline': 'Rutas peatonales dentro del campus.',
@@ -215,6 +220,8 @@
       'proj.btn.code': 'Código',
       'proj.btn.site': 'Ver proyecto',
       'proj.btn.itch': 'itch.io',
+      'proj.btn.pr': 'Ver PR',
+      'proj.btn.release': 'Release',
 
       /* Disclosure labels. Both live in the DOM at once (CSS shows the one the
          current aria-expanded state calls for), so state and language never
@@ -242,6 +249,7 @@
       'about.skills.languages': 'Lenguajes',
       'about.skills.simulation': 'Simulación',
       'about.skills.heading': 'Habilidades',
+      'about.skills.usedIn': 'Usado en',
       'about.skills.glowSample': 'así',
       'about.teams.note': 'Los que brillan son donde pongo más horas.',
       'about.skills.control': 'Control',
@@ -373,8 +381,8 @@
 
       'cat.robotica.name': 'Robotics',
       'cat.robotica.line': 'Perceive: vision, arms and navigation — machines that read the world before they move.',
-      'cat.robotica.count': '3 channels',
-      'cat.robotica.more': 'See all 3 · Robotics',
+      'cat.robotica.count': '4 channels',
+      'cat.robotica.more': 'See all 4 · Robotics',
 
       'cat.senales.name': 'Signals & AI',
       'cat.senales.line': 'Process: raw signals turned into decisions — EEG, applied physics and machine learning.',
@@ -430,6 +438,11 @@
       'proj.robot.tagline': 'Autonomous robot with ROS2 and navigation.',
       'proj.robot.blurb': 'Differential-drive robot on ROS2: Nav2 navigation, LDROBOT LiDAR, an Arduino hardware interface, and joystick teleop. Competition robotics on the industry-standard stack.',
       'proj.robot.note': "It didn't work on competition day: I couldn't integrate the planned route once I opened SLAM, out of inexperience and a lack of documentation. I had the route and I had the robot moving; I didn't join them in time.",
+
+      'proj.omnisim.unit': 'PR headlined in release v8.1.17',
+      'proj.omnisim.tagline': "Open-source contribution merged into OmniLink's simulator.",
+      'proj.omnisim.blurb': "Open-source contribution merged into OmniLink's robotics simulator — headlined in their v8.1.17 release. First-ever Nav2 (ROS 2 Jazzy) bring-up against OmniSim: a full stack driving the Husky robot autonomously to a NavigateToPose goal, packaged as a reusable colcon package. It's an extension of an existing system, not authorship of the simulator.",
+      'proj.omnisim.note': 'Scope by design: planning + goal execution. Not a localization or obstacle-avoidance benchmark.',
 
       'proj.mapatec.unit': 'pedestrian route',
       'proj.mapatec.tagline': 'Pedestrian routing across campus.',
@@ -491,6 +504,8 @@
       'proj.btn.code': 'Code',
       'proj.btn.site': 'Team site',
       'proj.btn.itch': 'itch.io',
+      'proj.btn.pr': 'View PR',
+      'proj.btn.release': 'Release',
 
       'disclosure.more': 'Show more',
       'disclosure.less': 'Show less',
@@ -515,6 +530,7 @@
       'about.skills.languages': 'Languages',
       'about.skills.simulation': 'Simulation',
       'about.skills.heading': 'Skills',
+      'about.skills.usedIn': 'Used in',
       'about.skills.glowSample': 'like this',
       'about.teams.note': 'The glowing ones are where I put the most hours.',
       'about.skills.control': 'Control',
@@ -1478,6 +1494,164 @@
   }
 
   /* --------------------------------------------------------------------
+     5c. Skill legend cross-links.
+
+     A skill pill tagged data-skill that maps to shipped work becomes a
+     button: activating it opens a small popover listing the project(s)
+     that use that skill, each a deep link to that project's card on its
+     category page. One popover open at a time; the card it lands on
+     flashes (.channel:target) so the eye finds it after the jump.
+
+     Only pills whose skill is a key in SKILL_PROJECTS are upgraded — the
+     rest stay inert text. Project names are proper nouns, identical in
+     both languages, so they live here as literals; the hrefs carry the
+     live ?lang, and the popover is rebuilt on each open so its label and
+     links always match the current language.
+     -------------------------------------------------------------------- */
+  var SKILL_TARGETS = {
+    jtcs:        { page: 'robotica', id: 'jtcs',              name: 'JTCS' },
+    agrobot:     { page: 'robotica', id: 'agrobot',           name: 'AgroBot' },
+    interprepas: { page: 'robotica', id: 'robot-interprepas', name: 'Robot Interprepas 2025' },
+    omnisim:     { page: 'robotica', id: 'omnisim',           name: 'OmniSim' },
+    neurobeat:   { page: 'senales',  id: 'neurobeat',         name: 'NeuroBeat' },
+    malaria:     { page: 'senales',  id: 'malaria',           name: 'Malaria · Dielectroforesis' },
+    telemetry:   { page: 'software', id: 'telemetrystack',    name: 'TelemetryStack' },
+    claude:      { page: 'ia',       id: 'claude-unlimited',  name: 'claude-unlimited' }
+  };
+
+  var SKILL_PROJECTS = {
+    'ROS2':               ['interprepas', 'omnisim'],
+    'Nav2':               ['interprepas', 'omnisim'],
+    'LiDAR':              ['interprepas', 'omnisim'],
+    'teleop':             ['interprepas', 'omnisim'],
+    '6-DOF arm':          ['agrobot'],
+    'inverse kinematics': ['agrobot'],
+    'Arduino':            ['agrobot', 'interprepas'],
+    'YOLOv11':            ['jtcs'],
+    'YOLOv8n':            ['agrobot'],
+    'TensorFlow':         ['agrobot'],
+    'EEGNet':             ['neurobeat'],
+    'signal processing':  ['neurobeat'],
+    'scikit-learn':       ['malaria'],
+    'PCA':                ['malaria'],
+    'ESP32':              ['telemetry'],
+    'LoRa/SX1262':        ['telemetry'],
+    'FreeRTOS':           ['telemetry'],
+    'InfluxDB':           ['telemetry'],
+    'Grafana':            ['telemetry'],
+    'React':              ['jtcs'],
+    'Node.js':            ['jtcs'],
+    'WebSocket':          ['jtcs'],
+    'llm-orchestration':  ['claude']
+  };
+
+  function initSkillLinks() {
+    var pills = document.querySelectorAll('.pill[data-skill]');
+    if (!pills.length) return;
+
+    /* One shared popover, kept out of the pills' DOM so the language pass
+       (which rewrites data-i18n pills' textContent) can never wipe it. */
+    var pop = document.createElement('div');
+    pop.className = 'skill-pop';
+    pop.setAttribute('role', 'menu');
+    pop.hidden = true;
+    document.body.appendChild(pop);
+
+    var openPill = null;
+
+    function closePop(returnFocus) {
+      if (!openPill) return;
+      var wasOpen = openPill;
+      openPill.setAttribute('aria-expanded', 'false');
+      openPill = null;
+      pop.hidden = true;
+      if (returnFocus) wasOpen.focus();
+    }
+
+    function buildList(skill) {
+      var ids = SKILL_PROJECTS[skill] || [];
+      var dict = i18n[currentLang] || {};
+      var label = dict['about.skills.usedIn'] || 'Usado en';
+      var html = '<p class="skill-pop__label">' + label + '</p><ul class="skill-pop__list">';
+      for (var i = 0; i < ids.length; i++) {
+        var t = SKILL_TARGETS[ids[i]];
+        if (!t) continue;
+        var href = t.page + '?lang=' + currentLang + '#' + t.id;
+        html += '<li><a class="skill-pop__link" role="menuitem" href="' + href + '">' + t.name + '</a></li>';
+      }
+      return html + '</ul>';
+    }
+
+    function positionPop(pill) {
+      /* Fixed positioning: viewport-relative rect maps straight to top/left. */
+      var r = pill.getBoundingClientRect();
+      pop.style.top = (r.bottom + 7) + 'px';
+      var maxLeft = window.innerWidth - pop.offsetWidth - 12;
+      var left = Math.max(12, Math.min(r.left, maxLeft));
+      pop.style.left = left + 'px';
+      /* Point the probe caret at the pill's centre, clamped inside the panel. */
+      var caret = Math.max(12, Math.min(r.left + r.width / 2 - left, pop.offsetWidth - 12));
+      pop.style.setProperty('--caret-x', caret + 'px');
+    }
+
+    function openFor(pill) {
+      var group = pill.closest('.skills__group');
+      var ch = group ? group.style.getPropertyValue('--ch') : '';
+      if (ch) pop.style.setProperty('--ch', ch);
+      pop.innerHTML = buildList(pill.getAttribute('data-skill'));
+      pop.hidden = false;
+      positionPop(pill); /* after unhide: needs offsetWidth */
+      /* Retrigger the CSS entrance animation on every open (the element is
+         reused, so the animation would otherwise only run the first time). */
+      pop.style.animation = 'none';
+      void pop.offsetHeight;
+      pop.style.animation = '';
+      pill.setAttribute('aria-expanded', 'true');
+      openPill = pill;
+      var first = pop.querySelector('.skill-pop__link');
+      if (first) first.focus();
+    }
+
+    for (var i = 0; i < pills.length; i++) {
+      (function (pill) {
+        var skill = pill.getAttribute('data-skill');
+        if (!SKILL_PROJECTS[skill]) return; /* unmapped tag stays inert text */
+        pill.classList.add('pill--linked');
+        pill.setAttribute('role', 'button');
+        pill.setAttribute('tabindex', '0');
+        pill.setAttribute('aria-haspopup', 'true');
+        pill.setAttribute('aria-expanded', 'false');
+
+        function toggle() {
+          if (openPill === pill) { closePop(true); return; }
+          closePop(false);
+          openFor(pill);
+        }
+        pill.addEventListener('click', toggle);
+        pill.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      })(pills[i]);
+    }
+
+    /* Dismissers: Escape (return focus), any click outside, and any scroll
+       or resize (the anchored position would otherwise drift). */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closePop(true);
+    });
+    document.addEventListener('click', function (e) {
+      if (!openPill) return;
+      if (openPill.contains(e.target) || pop.contains(e.target)) return;
+      closePop(false);
+    });
+    window.addEventListener('resize', function () { closePop(false); });
+    window.addEventListener('scroll', function () { closePop(false); }, true);
+  }
+
+  /* --------------------------------------------------------------------
      6. Init. Script is loaded with `defer`, so the DOM is already parsed
         by the time this runs.
      -------------------------------------------------------------------- */
@@ -1493,5 +1667,6 @@
   initCircuit();
   initBookingTabs();
   initCalendlyDefer();
+  initSkillLinks();
   setFooterYear();
 })();
