@@ -116,9 +116,9 @@
       'cat.software.more': 'Ver los 4 · Software',
 
       'cat.ia.name': 'LLM / Orquestación',
-      'cat.ia.line': 'Orquestar el modelo, no reemplazarlo: agentes con fallback por rol y skills que le dan manos y ojos a Claude Code.',
-      'cat.ia.count': '5 canales',
-      'cat.ia.more': 'Ver los 5 · LLM / Orquestación',
+      'cat.ia.line': 'Orquestar el modelo, no reemplazarlo: agentes que componen la interfaz, fallback por rol y skills que le dan manos y ojos a Claude Code.',
+      'cat.ia.count': '6 canales',
+      'cat.ia.more': 'Ver los 6 · LLM / Orquestación',
 
       'cat.formacion.name': 'Formación',
       'cat.formacion.line': 'Enseñar lo que me enseñó el coche: cursos abiertos para que un equipo nuevo arranque sin esperar a nadie.',
@@ -193,6 +193,21 @@
       'proj.latex.blurb': 'IDE local (FastAPI + editor web) que convierte PDFs en reportes LaTeX estilo APA 7ª. Extrae texto e imágenes con PyMuPDF (con heurísticos: quita logos de header, recorta bordes, filtra por tamaño), orquesta el CLI de Claude Code para generar y modificar el .tex, y compila con pdflatex. La generación de LaTeX la hace el modelo; mi trabajo es el pipeline de extracción, la orquestación y el IDE.',
       'proj.latex.note': 'Sin demo en vivo: necesita el CLI de Claude Code con sesión iniciada en tu propia máquina.',
 
+      /* Banky — authorship is load-bearing here: the architecture and backend
+         (hackathon) and the whole no-backend port are mine; the Figma design and
+         the original front end are the team's. "Finalista" is the whole placing:
+         no number was announced. The web demo does not run MCP — in web/ the
+         six tools are ported to TS; MCP only runs in legacy/. */
+      'proj.banky.unit': '19 componentes · 8 perfiles · 107 tests',
+      'proj.banky.result': 'Finalista · reto Banorte, HackMTY 2026',
+      'proj.banky.tagline': 'Un asistente financiero donde el agente construye la interfaz, no la respuesta.',
+      'proj.banky.blurb': 'El LLM no contesta texto: compone la pantalla con un catálogo A2UI de 19 componentes que un validador acepta o rechaza, y nunca se renderiza HTML del modelo. Arquitectura y backend completos míos: ciclo agnóstico de proveedor —APIs y CLIs headless como pares—, MCP multi-servidor y herramientas que ejecuta el harness, no el modelo. Después lo porté a una demo que corre entera en el navegador, con paridad numérica contra el Python verificada en CI. Diseño y front original por el equipo.',
+      'proj.banky.note': 'Demo sin backend: una sesión grabada sin credenciales, o tu propia key de Anthropic o Gemini (se queda en tu pestaña).',
+      'proj.banky.panel.body': 'Entra sin key y abre la sesión grabada: respuestas del harness real convertidas en pantallas. Con una key de Anthropic o Gemini corre el ciclo completo en tu navegador. Si clonas el repo, puedes conectar la página a un CLI local (Claude Code, Codex, Cursor o Antigravity).',
+      'proj.banky.panel.tech1': 'Dos fases por turno: razonar con herramientas, luego componer la UI.',
+      'proj.banky.panel.tech2': 'Los componentes apuntan a los datos con JSON Pointer; el modelo no copia números.',
+      'proj.banky.panel.tech3': 'Contrato generado desde Python y anti-drift en CI entre los dos targets.',
+
       'proj.claudeunlimited.unit': 'multi-agente · fallback por rol',
       'proj.claudeunlimited.tagline': 'Orquestador multi-agente resiliente sobre un gateway LLM propio.',
       'proj.claudeunlimited.blurb': 'Orquestador multi-agente resiliente: reparte el trabajo por roles y, cuando un modelo falla o cae por debajo del piso de calidad de su rol, hace fallback a otro sin perder la tarea. Corre sobre OmniRoute —un gateway LLM self-hosted— con política de quality-floor por rol. Es el trabajo de orquestación propio más sustancial del banco.',
@@ -218,6 +233,7 @@
 
       'proj.btn.demo': 'Demo en vivo',
       'proj.btn.code': 'Código',
+      'proj.btn.devpost': 'Devpost',
       'proj.btn.site': 'Ver proyecto',
       'proj.btn.itch': 'itch.io',
       'proj.btn.pr': 'Ver PR',
@@ -262,6 +278,7 @@
       'skill.docs': 'documentación técnica',
       'skill.teachingTag': 'docencia',
       'skill.llmOrchestration': 'orquestación de LLMs por CLI',
+      'skill.agnosticTools': 'tool-calling agnóstico de proveedor',
       'about.skills.modelling': 'Modelado 3D',
       'about.skills.genai': 'GenAI / IA generativa',
       'about.skills.aero': 'Aeroespacial',
@@ -400,9 +417,9 @@
       'cat.software.more': 'See all 4 · Software',
 
       'cat.ia.name': 'LLM / Orchestration',
-      'cat.ia.line': 'Orchestrate the model, don’t replace it: agents with per-role fallback, and skills that give Claude Code hands and eyes.',
-      'cat.ia.count': '5 channels',
-      'cat.ia.more': 'See all 5 · LLM / Orchestration',
+      'cat.ia.line': 'Orchestrate the model, don’t replace it: agents that compose the interface, per-role fallback, and skills that give Claude Code hands and eyes.',
+      'cat.ia.count': '6 channels',
+      'cat.ia.more': 'See all 6 · LLM / Orchestration',
 
       'cat.formacion.name': 'Training',
       'cat.formacion.line': 'Teaching what the car taught me: open courses so a new team can start without waiting on anyone.',
@@ -477,6 +494,16 @@
       'proj.latex.blurb': 'Local IDE (FastAPI + web editor) that turns PDFs into APA-7 LaTeX reports. Extracts text and images with PyMuPDF (heuristics: drop header logos, trim borders, size filters), orchestrates the Claude Code CLI to generate and modify the .tex, and compiles with pdflatex. The LaTeX generation is done by the model; my work is the extraction pipeline, the orchestration, and the IDE.',
       'proj.latex.note': 'No live demo: it needs the Claude Code CLI, signed in, on your own machine.',
 
+      'proj.banky.unit': '19 components · 8 profiles · 107 tests',
+      'proj.banky.result': 'Finalist · Banorte challenge, HackMTY 2026',
+      'proj.banky.tagline': 'A finance assistant where the agent builds the interface, not the answer.',
+      'proj.banky.blurb': 'The LLM doesn’t answer in text: it composes the screen from a 19-component A2UI catalog that a validator accepts or rejects, and model HTML is never rendered. I built the full architecture and backend: a provider-agnostic loop —APIs and headless CLIs as peers—, multi-server MCP, and tools executed by the harness, not the model. I then ported it to a demo that runs entirely in the browser, with numeric parity against the Python checked in CI. Design and original front end by the team.',
+      'proj.banky.note': 'No-backend demo: a recorded session with no credentials, or your own Anthropic or Gemini key (it stays in your tab).',
+      'proj.banky.panel.body': 'Come in without a key and open the recorded session: real harness responses turned into screens. With an Anthropic or Gemini key the full loop runs in your browser. Clone the repo and you can hook the page to a local CLI (Claude Code, Codex, Cursor or Antigravity).',
+      'proj.banky.panel.tech1': 'Two phases per turn: reason with tools, then compose the UI.',
+      'proj.banky.panel.tech2': 'Components bind to data via JSON Pointer; the model never copies numbers.',
+      'proj.banky.panel.tech3': 'Contract generated from Python, with CI anti-drift between both targets.',
+
       'proj.claudeunlimited.unit': 'multi-agent · per-role fallback',
       'proj.claudeunlimited.tagline': 'A resilient multi-agent orchestrator over a self-hosted LLM gateway.',
       'proj.claudeunlimited.blurb': 'A resilient multi-agent orchestrator: it splits work across roles and, when a model fails or falls below its role’s quality floor, fails over to another without dropping the task. It runs on OmniRoute —a self-hosted LLM gateway— with a per-role quality-floor policy. It’s the most substantial in-house orchestration work in this bank.',
@@ -502,6 +529,7 @@
 
       'proj.btn.demo': 'Live demo',
       'proj.btn.code': 'Code',
+      'proj.btn.devpost': 'Devpost',
       'proj.btn.site': 'Team site',
       'proj.btn.itch': 'itch.io',
       'proj.btn.pr': 'View PR',
@@ -543,6 +571,7 @@
       'skill.docs': 'technical documentation',
       'skill.teachingTag': 'teaching',
       'skill.llmOrchestration': 'CLI LLM orchestration',
+      'skill.agnosticTools': 'provider-agnostic tool calling',
       'about.skills.modelling': '3D Modelling',
       'about.skills.genai': 'GenAI',
       'about.skills.aero': 'Aerospace',
@@ -1516,7 +1545,8 @@
     neurobeat:   { page: 'senales',  id: 'neurobeat',         name: 'NeuroBeat' },
     malaria:     { page: 'senales',  id: 'malaria',           name: 'Malaria · Dielectroforesis' },
     telemetry:   { page: 'software', id: 'telemetrystack',    name: 'TelemetryStack' },
-    claude:      { page: 'ia',       id: 'claude-unlimited',  name: 'claude-unlimited' }
+    claude:      { page: 'ia',       id: 'claude-unlimited',  name: 'claude-unlimited' },
+    banky:       { page: 'ia',       id: 'banky',             name: 'Banky' }
   };
 
   var SKILL_PROJECTS = {
@@ -1541,8 +1571,15 @@
     'Grafana':            ['telemetry'],
     'React':              ['jtcs'],
     'Node.js':            ['jtcs'],
-    'WebSocket':          ['jtcs'],
-    'llm-orchestration':  ['claude']
+    'WebSocket':          ['jtcs', 'banky'],
+    'FastAPI':            ['banky'],
+    'golden tests':       ['banky'],
+    'llm-orchestration':  ['claude', 'banky'],
+    /* Banky's front end was the team's, so React and ECharts stay unmapped
+       here: a pill that lands on that card would be claiming their work. */
+    'MCP':                ['banky'],
+    'A2UI':               ['banky'],
+    'provider-agnostic tool calling': ['banky']
   };
 
   function initSkillLinks() {

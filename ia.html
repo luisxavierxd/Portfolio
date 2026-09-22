@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n="meta.title.ia">LLM / Orquestación — Luis Xavier García Pimentel Ascencio</title>
-<meta name="description" data-i18n-content="cat.ia.line" content="Orquestar el modelo, no reemplazarlo: agentes con fallback por rol y skills que le dan manos y ojos a Claude Code.">
+<meta name="description" data-i18n-content="cat.ia.line" content="Orquestar el modelo, no reemplazarlo: agentes que componen la interfaz, fallback por rol y skills que le dan manos y ojos a Claude Code.">
 
 <meta http-equiv="Content-Security-Policy"
       content="default-src 'self';
@@ -15,7 +15,7 @@
                connect-src 'self';">
 
 <meta property="og:title" data-i18n-content="meta.title.ia" content="LLM / Orquestación — Luis Xavier García Pimentel Ascencio">
-<meta property="og:description" data-i18n-content="cat.ia.line" content="Orquestar el modelo, no reemplazarlo: agentes con fallback por rol y skills que le dan manos y ojos a Claude Code.">
+<meta property="og:description" data-i18n-content="cat.ia.line" content="Orquestar el modelo, no reemplazarlo: agentes que componen la interfaz, fallback por rol y skills que le dan manos y ojos a Claude Code.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://luisxavierxd.github.io/Portfolio/ia">
 <meta property="og:image" content="https://luisxavierxd.github.io/Portfolio/assets/og-cover.png">
@@ -59,22 +59,90 @@
   <section class="section section--sub" style="--ch: var(--ch-orchid)">
     <a class="backlink" href="./" data-page-link data-i18n="nav.back">Volver al tablero</a>
     <h1 class="subhead__title" data-i18n="cat.ia.name">LLM / Orquestación</h1>
-    <p class="subhead__line" data-i18n="cat.ia.line">Orquestar el modelo, no reemplazarlo: agentes con fallback por rol y skills que le dan manos y ojos a Claude Code.</p>
-    <p class="subhead__count" data-i18n="cat.ia.count">5 canales</p>
+    <p class="subhead__line" data-i18n="cat.ia.line">Orquestar el modelo, no reemplazarlo: agentes que componen la interfaz, fallback por rol y skills que le dan manos y ojos a Claude Code.</p>
+    <p class="subhead__count" data-i18n="cat.ia.count">6 canales</p>
   </section>
 
   <section class="section section--projects" aria-labelledby="board-heading" style="--ch: var(--ch-orchid)">
     <h2 id="board-heading" class="section__eyebrow" data-i18n="projects.eyebrow">Tablero de lecturas</h2>
 
-    <!-- Two sub-groups, one continuous numbering: CH.5.1–5.2 are the in-house
-         orchestrators, CH.5.3–5.5 the capabilities I gave Claude Code. The
+    <!-- Two sub-groups, one continuous numbering: CH.5.1–5.3 are the in-house
+         orchestrators, CH.5.4–5.6 the capabilities I gave Claude Code. The
          heading breaks the grid; the addresses read straight through. -->
     <h3 class="board__group" data-i18n="group.orquestacion">Orquestación propia</h3>
 
-    <div class="board">
+    <div class="board board--unit-2l">
+
+      <!-- Banky leads the group: it is the only orchestrator here you can open and
+           use. --ch-banky, not the bank's orchid — the Banorte reto is the premise. -->
+      <article class="channel" id="banky" style="--ch: var(--ch-banky)">
+        <p class="channel__addr">CH.5.1</p>
+        <h3 class="channel__name">Banky</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">LLM → UI</span>
+          <span class="reading__unit" data-i18n="proj.banky.unit">19 componentes · 8 perfiles · 107 tests</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: banky -
+             two phases of a turn. First the short pulses on the left: tool calls the harness
+             runs, one per beat, none of them the answer. Then the climb to a plateau - the
+             composed interface - which passes through a gate (the validator) and takes one
+             notch of repair before it latches at the marker. The model never draws the screen
+             itself; it proposes, the gate decides. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 28 H12 L15 19 L18 28 H23 L26 19 L29 28 H34 L37 19 L40 28
+                   H46 L56 11 H64 L67 16 L70 11 H116"/>
+          <rect x="62.5" y="9.5" width="3" height="3"/>
+          <circle cx="116" cy="11" r="3.4"/>
+        </svg>
+        <!-- Finalist is a classification, not a prize: .channel__result, not
+             .channel__award. Same well as Elyos's ribbon, below the readout. -->
+        <p class="channel__result" data-i18n="proj.banky.result">Finalista · reto Banorte, HackMTY 2026</p>
+        <p class="channel__tagline" data-i18n="proj.banky.tagline">Un asistente financiero donde el agente construye la interfaz, no la respuesta.</p>
+        <p class="channel__blurb" data-i18n="proj.banky.blurb">El LLM no contesta texto: compone la pantalla con un catálogo A2UI de 19 componentes que un validador acepta o rechaza, y nunca se renderiza HTML del modelo. Arquitectura y backend completos míos: ciclo agnóstico de proveedor —APIs y CLIs headless como pares—, MCP multi-servidor y herramientas que ejecuta el harness, no el modelo. Después lo porté a una demo que corre entera en el navegador, con paridad numérica contra el Python verificada en CI. Diseño y front original por el equipo.</p>
+        <p class="channel__note" data-i18n="proj.banky.note">Demo sin backend: una sesión grabada sin credenciales, o tu propia key de Anthropic o Gemini (se queda en tu pestaña).</p>
+        <ul class="badges">
+          <li class="badge">A2UI</li>
+          <li class="badge">MCP</li>
+          <li class="badge">Provider-agnostic</li>
+          <li class="badge">Headless CLIs</li>
+          <li class="badge">Golden tests</li>
+          <li class="badge">GitHub Pages</li>
+        </ul>
+        <div class="channel__links">
+          <!-- banky.mx vence 12-sep-2027: cambiar a https://luisxavierxd.github.io/HackMTY-2026_Banorte/ tras quitar el CNAME -->
+          <a class="btn btn--demo" href="https://www.banky.mx" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
+          <a class="btn btn--code" href="https://devpost.com/software/banky-ipv7mz" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.devpost">Devpost</a>
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/HackMTY-2026_Banorte" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+        <!-- Disclosure: one button, no clickable wrapper. Both labels live in the
+             DOM and CSS shows exactly one of them per aria-expanded state, so the
+             language pass (which only writes textContent per data-i18n key) and the
+             state change (pure CSS) can never overwrite each other. -->
+        <button class="disclosure" type="button" aria-expanded="false" aria-controls="panel-banky">
+          <svg class="disclosure__chevron" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+            <path d="M2.75 4.5 6 7.75 9.25 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="disclosure__label disclosure__label--more" data-i18n="disclosure.more">Ver más</span>
+          <span class="disclosure__label disclosure__label--less" data-i18n="disclosure.less">Ver menos</span>
+        </button>
+        <div class="panel" id="panel-banky" hidden>
+          <div class="panel__inner">
+            <div class="panel__body">
+              <p class="panel__eyebrow" data-i18n="panel.eyebrow">Qué puedes probar</p>
+              <p class="panel__text" data-i18n="proj.banky.panel.body">Entra sin key y abre la sesión grabada: respuestas del harness real convertidas en pantallas. Con una key de Anthropic o Gemini corre el ciclo completo en tu navegador. Si clonas el repo, puedes conectar la página a un CLI local (Claude Code, Codex, Cursor o Antigravity).</p>
+              <ul class="panel__list">
+                <li data-i18n="proj.banky.panel.tech1">Dos fases por turno: razonar con herramientas, luego componer la UI.</li>
+                <li data-i18n="proj.banky.panel.tech2">Los componentes apuntan a los datos con JSON Pointer; el modelo no copia números.</li>
+                <li data-i18n="proj.banky.panel.tech3">Contrato generado desde Python y anti-drift en CI entre los dos targets.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
 
       <article class="channel" id="claude-unlimited" style="--ch: var(--ch-orchid)">
-        <p class="channel__addr">CH.5.1</p>
+        <p class="channel__addr">CH.5.2</p>
         <h3 class="channel__name">claude-unlimited</h3>
         <p class="channel__reading">
           <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
@@ -109,7 +177,7 @@
       </article>
 
       <article class="channel" style="--ch: var(--ch-teal)">
-        <p class="channel__addr">CH.5.2</p>
+        <p class="channel__addr">CH.5.3</p>
         <h3 class="channel__name">LaTeX Studio</h3>
         <p class="channel__reading">
           <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
@@ -148,7 +216,7 @@
     <div class="board">
 
       <article class="channel" style="--ch: var(--ch-cyan)">
-        <p class="channel__addr">CH.5.3</p>
+        <p class="channel__addr">CH.5.4</p>
         <h3 class="channel__name">websight</h3>
         <p class="channel__reading">
           <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
@@ -181,7 +249,7 @@
       </article>
 
       <article class="channel" style="--ch: var(--ch-emerald)">
-        <p class="channel__addr">CH.5.4</p>
+        <p class="channel__addr">CH.5.5</p>
         <h3 class="channel__name">exploded-view</h3>
         <p class="channel__reading">
           <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
@@ -216,7 +284,7 @@
       </article>
 
       <article class="channel" style="--ch: var(--ch-magenta)">
-        <p class="channel__addr">CH.5.5</p>
+        <p class="channel__addr">CH.5.6</p>
         <h3 class="channel__name">watermarks-remover</h3>
         <p class="channel__reading">
           <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>

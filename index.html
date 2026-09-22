@@ -399,12 +399,13 @@
         <div class="bank__intro">
           <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 5</p>
           <h3 class="bank__name" id="bank-ia" data-i18n="cat.ia.name">LLM / Orquestación</h3>
-          <p class="bank__line" data-i18n="cat.ia.line">Orquestar el modelo, no reemplazarlo: agentes con fallback por rol y skills que le dan manos y ojos a Claude Code.</p>
-          <p class="bank__count" data-i18n="cat.ia.count">5 canales</p>
-          <a class="bank__link" href="ia" data-page-link data-i18n="cat.ia.more">Ver los 5 · LLM / Orquestación</a>
-          <!-- Five channels graduate this bank to sub-groups: the teaser names the
-               two groups and their members instead of listing five loose channels,
-               the same threshold Software crossed. -->
+          <p class="bank__line" data-i18n="cat.ia.line">Orquestar el modelo, no reemplazarlo: agentes que componen la interfaz, fallback por rol y skills que le dan manos y ojos a Claude Code.</p>
+          <p class="bank__count" data-i18n="cat.ia.count">6 canales</p>
+          <a class="bank__link" href="ia" data-page-link data-i18n="cat.ia.more">Ver los 6 · LLM / Orquestación</a>
+          <!-- Six channels graduate this bank to sub-groups: the teaser names the
+               two groups and their members instead of listing six loose channels,
+               the same threshold Software crossed. Banky is not listed here: it is
+               the hero above, and the two groups still cover the other five. -->
           <div class="bank__rest">
             <p class="bank__rest-label" data-i18n="bank.rest">También en este banco</p>
             <ul>
@@ -420,38 +421,49 @@
           </div>
         </div>
 
-        <article class="channel" style="--ch: var(--ch-orchid)">
+        <!-- Banky carries this bank instead of claude-unlimited: it is the one
+             channel here where the orchestration ships as a product you can open.
+             It is the only card on the landing that does not take the bank color —
+             --ch-banky is Banorte's, and the reto is the whole premise. -->
+        <article class="channel" style="--ch: var(--ch-banky)">
           <p class="channel__addr">CH.5.1</p>
-          <h4 class="channel__name">claude-unlimited</h4>
-          <p class="channel__reading">
+          <h4 class="channel__name">Banky</h4>
+          <p class="channel__reading channel__reading--2l">
             <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-            <span class="reading__value">rol → rol</span>
-            <span class="reading__unit" data-i18n="proj.claudeunlimited.unit">multi-agente · fallback por rol</span>
+            <span class="reading__value">LLM → UI</span>
+            <span class="reading__unit" data-i18n="proj.banky.unit">19 componentes · 8 perfiles · 107 tests</span>
           </p>
-          <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: claude-unlimited -
-               a per-role quality floor drawn flat, and a route that runs high until one role
-               drops to the floor; a fallback picks it up and climbs back to a steady line that
-               latches at the marker. orchestration that never lets the task fall through. -->
+          <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: banky -
+               two phases of a turn. First the short pulses on the left: tool calls the harness
+               runs, one per beat, none of them the answer. Then the climb to a plateau - the
+               composed interface - which passes through a gate (the validator) and takes one
+               notch of repair before it latches at the marker. The model never draws the screen
+               itself; it proposes, the gate decides. -->
             <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  d="M4 27 H116"/>
-            <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  d="M4 13 H26 L36 27 H48 L58 13 H100 L116 13"/>
-            <rect x="34.5" y="25.5" width="3" height="3"/>
-            <rect x="46.5" y="25.5" width="3" height="3"/>
-            <circle cx="116" cy="13" r="3.4"/>
+                  d="M4 28 H12 L15 19 L18 28 H23 L26 19 L29 28 H34 L37 19 L40 28
+                     H46 L56 11 H64 L67 16 L70 11 H116"/>
+            <rect x="62.5" y="9.5" width="3" height="3"/>
+            <circle cx="116" cy="11" r="3.4"/>
           </svg>
-          <p class="channel__tagline" data-i18n="proj.claudeunlimited.tagline">Orquestador multi-agente resiliente sobre un gateway LLM propio.</p>
-          <p class="channel__blurb" data-i18n="proj.claudeunlimited.blurb">Orquestador multi-agente resiliente: reparte el trabajo por roles y, cuando un modelo falla o cae por debajo del piso de calidad de su rol, hace fallback a otro sin perder la tarea. Corre sobre OmniRoute —un gateway LLM self-hosted— con política de quality-floor por rol. Es el trabajo de orquestación propio más sustancial del banco.</p>
-          <p class="channel__note" data-i18n="proj.claudeunlimited.note">Sin demo en vivo: es infraestructura de orquestación que corre contra tu propio gateway y tus modelos.</p>
+          <!-- Finalist is a classification, not a prize: .channel__result, not
+               .channel__award. Same well as Elyos's ribbon, below the readout. -->
+          <p class="channel__result" data-i18n="proj.banky.result">Finalista · reto Banorte, HackMTY 2026</p>
+          <p class="channel__tagline" data-i18n="proj.banky.tagline">Un asistente financiero donde el agente construye la interfaz, no la respuesta.</p>
+          <p class="channel__blurb" data-i18n="proj.banky.blurb">El LLM no contesta texto: compone la pantalla con un catálogo A2UI de 19 componentes que un validador acepta o rechaza, y nunca se renderiza HTML del modelo. Arquitectura y backend completos míos: ciclo agnóstico de proveedor —APIs y CLIs headless como pares—, MCP multi-servidor y herramientas que ejecuta el harness, no el modelo. Después lo porté a una demo que corre entera en el navegador, con paridad numérica contra el Python verificada en CI. Diseño y front original por el equipo.</p>
+          <p class="channel__note" data-i18n="proj.banky.note">Demo sin backend: una sesión grabada sin credenciales, o tu propia key de Anthropic o Gemini (se queda en tu pestaña).</p>
           <ul class="badges">
-            <li class="badge">Multi-agent</li>
-            <li class="badge">Role fallback</li>
-            <li class="badge">Quality-floor</li>
-            <li class="badge">OmniRoute</li>
-            <li class="badge">Self-hosted LLM</li>
+            <li class="badge">A2UI</li>
+            <li class="badge">MCP</li>
+            <li class="badge">Provider-agnostic</li>
+            <li class="badge">Headless CLIs</li>
+            <li class="badge">Golden tests</li>
+            <li class="badge">GitHub Pages</li>
           </ul>
           <div class="channel__links">
-            <a class="btn btn--code" href="https://github.com/luisxavierxd/claude-unlimited" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+            <!-- banky.mx vence 12-sep-2027: cambiar a https://luisxavierxd.github.io/HackMTY-2026_Banorte/ tras quitar el CNAME -->
+            <a class="btn btn--demo" href="https://www.banky.mx" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
+            <a class="btn btn--code" href="https://devpost.com/software/banky-ipv7mz" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.devpost">Devpost</a>
+            <a class="btn btn--code" href="https://github.com/luisxavierxd/HackMTY-2026_Banorte" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
           </div>
         </article>
       </section>
@@ -644,7 +656,7 @@
           <li class="pill" data-skill="React">React</li>
           <li class="pill" data-skill="Node.js">Node.js</li>
           <li class="pill" data-skill="WebSocket">WebSocket</li>
-          <li class="pill">FastAPI</li>
+          <li class="pill" data-skill="FastAPI">FastAPI</li>
           <li class="pill" data-skill="InfluxDB">InfluxDB</li>
           <li class="pill" data-skill="Grafana">Grafana</li>
           <li class="pill">Docker</li>
@@ -653,6 +665,7 @@
           <li class="pill">MQTT/TLS</li>
           <li class="pill" data-i18n="skill.tsSchema">esquema de series de tiempo</li>
           <li class="pill" data-i18n="skill.kalman">filtro de Kalman</li>
+          <li class="pill" data-skill="golden tests">golden tests</li>
         </ul>
       </div>
       <div class="skills__group" style="--ch: var(--ch-emerald)">
@@ -674,6 +687,9 @@
         <span class="skills__group-name" data-i18n="about.skills.genai">GenAI / IA generativa</span>
         <ul class="pills">
           <li class="pill pill--expert" data-skill="llm-orchestration" data-i18n="skill.llmOrchestration">orquestación de LLMs por CLI</li>
+          <li class="pill pill--expert" data-skill="MCP">MCP</li>
+          <li class="pill" data-skill="A2UI">A2UI</li>
+          <li class="pill" data-skill="provider-agnostic tool calling" data-i18n="skill.agnosticTools">tool-calling agnóstico de proveedor</li>
           <li class="pill">Ollama</li>
           <li class="pill pill--expert">Stable Diffusion</li>
           <li class="pill">GPT4All</li>

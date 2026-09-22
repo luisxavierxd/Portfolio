@@ -40,7 +40,7 @@ default in the HTML (the inline text is what a visitor without JavaScript sees).
 | `senales.html` | NeuroBeat, Malaria · Dielectroforesis |
 | `telemetria.html` | Coche MadRams, Quantum Speed Racing, Silca Elyos |
 | `software.html` | TelemetryStack, Mapa TEC GDL, Loopzels, Frenado Magnético |
-| `ia.html` | claude-unlimited, LaTeX Studio, websight, exploded-view, watermarks-remover |
+| `ia.html` | Banky, claude-unlimited, LaTeX Studio, websight, exploded-view, watermarks-remover |
 | `formacion.html` | Cursos MadRams + the three-block training program |
 
 ## Local preview

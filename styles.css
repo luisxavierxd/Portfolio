@@ -48,6 +48,12 @@
   --ch-teal:    #5eead4; /* LaTeX Studio  — typeset paper-mint           */
   --ch-indigo:  #818cf8; /* Frenado Magn. — field-line periwinkle        */
   --ch-orchid:  #c084fc; /* LLM / Orquest.— agent-orchestration violet   */
+  /* Banky — Banorte red, moved to a scarlet. The brand red (#eb0029) sits ~5°
+     from --ch-red's hue and reads as the same family on --bg, and it only
+     reaches 3.9:1 on --panel. Dropping the blue channel (6e → 33) keeps the
+     readout as bright as Malaria's while swinging the hue to 3°: a true red
+     next to a rose, and 4.8:1 on the darkest panel.                         */
+  --ch-banky:   #ff3d33; /* Banky         — Banorte scarlet (vs. --ch-red)   */
 
   /* Default channel for anything outside a channel module (nav, hero,
      footer). Amber is the master channel. Every accent, focus ring and
@@ -823,6 +829,31 @@ button:focus-visible,
   line-height: 1;
 }
 
+/* Result ribbon — same well as the award, but for a placing rather than a
+   prize: no trophy, and it hugs its text instead of spanning the card, so a
+   fact of classification never dresses itself up as a win. Shares the mono
+   caret language of .vresult (§14), which states vehicle placings. */
+.channel__result {
+  align-self: start;
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: var(--s2) var(--s3);
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ch);
+  background: color-mix(in srgb, var(--ch) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ch) 34%, var(--rule));
+  border-radius: var(--r-sm);
+}
+
+.channel__result::before {
+  content: "▸";
+  color: var(--ch);
+}
+
 .channel > .channel__name {
   margin-top: var(--s3);
   font-family: var(--font-mono);
@@ -894,6 +925,23 @@ button:focus-visible,
   font-size: var(--t-sm);
   letter-spacing: 0.04em;
   color: var(--dim-strong);
+}
+
+/* Two-line unit. Banky's unit carries three counts — the longest unit string on
+   the site — and no size on the scale fits it on one line in a board column, so
+   the ellipsis above would eat "107 tests", a number the copy makes a claim
+   about. The modifier lets the unit wrap and reserves the second line; on the
+   sub-page it goes on the board, so every channel in the row reserves it too and
+   one wrapping readout cannot push its own trace out of line with the traces
+   beside it. On the landing the hero has no row to line up with, so it carries
+   the modifier itself. */
+.board--unit-2l .reading__unit,
+.channel__reading--2l .reading__unit {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.45;
+  min-height: 2.9em; /* 2 × line-height: the reserved second line */
 }
 
 /* --------------------------------------------------------------------------
