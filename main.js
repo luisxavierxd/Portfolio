@@ -121,7 +121,7 @@
       'cat.ia.more': 'Ver los 6 · LLM / Orquestación',
 
       'cat.formacion.name': 'Formación',
-      'cat.formacion.line': 'Enseñar lo que me enseñó el coche: cursos abiertos para que un equipo nuevo arranque sin esperar a nadie.',
+      'cat.formacion.line': 'Enseñar lo que aprendí: cursos abiertos para que quien empieza —en el equipo o en la carrera— arranque sin esperar a nadie.',
       'cat.formacion.count': '2 canales',
       'cat.formacion.more': 'Ver los 2 · Formación',
 
@@ -166,9 +166,9 @@
       'proj.mapatec.panel.body': 'Mapa interactivo del campus con rutas peatonales entre edificios (datos de OpenStreetMap). Tu ubicación se procesa solo en tu dispositivo, con aviso de privacidad conforme a la LFPDPPP.',
       'proj.mapatec.panel.privacy': 'Tu ubicación nunca sale de tu dispositivo: no se envía ni se guarda en ningún servidor.',
 
-      'proj.madrams.unit': 'formación de equipo',
-      'proj.madrams.tagline': 'Portal de formación del equipo Baja SAE.',
-      'proj.madrams.blurb': 'Biblioteca de cursos de nuevo ingreso para MadRams (Minibaja SAE, Tec GDL): cursos por categoría y nivel, con un render 3D del coche por secuencia de imágenes. HTML/CSS/JS estático.',
+      'proj.madrams.unit': 'sesiones · 2 cursos × 3 niveles',
+      'proj.madrams.tagline': 'Formación del equipo Baja SAE, trazada sobre el coche real.',
+      'proj.madrams.blurb': 'Programa de nuevo ingreso de MadRams (Minibaja SAE, Tec GDL): Telemetría y CAD en SolidWorks, tres niveles cada uno. En Telemetría las sesiones se mapean a subsistemas del coche —potenciómetro de suspensión, dos DS18B20 en motor y CVT, IMU MPU6050, GPS a microSD— y los niveles altos salen con documentos que se usan tal cual: el pinout firmado de la ECU en ESP32, el presupuesto de enlace LoRa a 915 MHz y la pantalla de pits en Grafana.',
 
       'proj.cuaderno.unit': 'sesiones · 2 cursos',
       'proj.cuaderno.tagline': 'Clases universitarias de cálculo y física, autogestionadas. Proyecto de alumnos, no oficial.',
@@ -333,8 +333,8 @@
       'skill.fea': 'FEA/factor de seguridad',
 
       'courses.eyebrow': 'Programa de formación',
-      'course.telemetria.name': 'Telemetría (Arduino)',
-      'course.telemetria.extra': '18 sesiones de 90 min · prácticas en Wokwi · un entregable evaluado por sesión. Con simuladores interactivos y modelos 3D.',
+      'course.telemetria.name': 'Telemetría',
+      'course.telemetria.extra': '18 sesiones de 90 min · un entregable por sesión. Básico con prácticas en Wokwi, simuladores y modelos 3D; Intermedio y Avanzado de diseño en papel, con una herramienta interactiva por sesión y documentos que se usan tal cual en el coche.',
       'course.cad.name': 'CAD (SolidWorks)',
       'course.cad.extra': '18 sesiones de 90 min · teoría con ejemplos del coche + ejercicios oficiales de SOLIDWORKS. Con modelos 3D interactivos de la suspensión, el chasis y el coche completo.',
       'course.electronica.name': 'Electrónica',
@@ -446,7 +446,7 @@
       'cat.ia.more': 'See all 6 · LLM / Orchestration',
 
       'cat.formacion.name': 'Training',
-      'cat.formacion.line': 'Teaching what the car taught me: open courses so a new team can start without waiting on anyone.',
+      'cat.formacion.line': 'Teaching what I learned: open courses so anyone starting out —on the team or in the degree— can get going without waiting on anyone.',
       'cat.formacion.count': '2 channels',
       'cat.formacion.more': 'See both · Training',
 
@@ -491,9 +491,9 @@
       'proj.mapatec.panel.body': 'Interactive campus map with pedestrian routing between buildings (OpenStreetMap data). Your location is processed on-device only, with an LFPDPPP privacy notice.',
       'proj.mapatec.panel.privacy': 'Your location never leaves your device: nothing is sent to or stored on a server.',
 
-      'proj.madrams.unit': 'team onboarding',
-      'proj.madrams.tagline': 'Baja SAE team onboarding portal.',
-      'proj.madrams.blurb': 'Onboarding course library for MadRams (Minibaja SAE, Tec GDL): courses by category and level, with a 3D image-sequence render of the car. Static HTML/CSS/JS.',
+      'proj.madrams.unit': 'sessions · 2 courses × 3 levels',
+      'proj.madrams.tagline': 'Baja SAE team training, traced onto the real car.',
+      'proj.madrams.blurb': 'Onboarding program for MadRams (Minibaja SAE, Tec GDL): Telemetry and SolidWorks CAD, three levels each. In Telemetry the sessions map onto the car’s subsystems —suspension potentiometer, two DS18B20s on engine and CVT, MPU6050 IMU, GPS to microSD— and the upper levels ship documents used as-is: the signed ESP32 ECU pinout, the 915 MHz LoRa link budget and the Grafana pit screen.',
 
       'proj.cuaderno.unit': 'sessions · 2 courses',
       'proj.cuaderno.tagline': 'Self-paced university calculus and physics. A student project, not official.',
@@ -648,8 +648,8 @@
       'skill.fea': 'FEA/factor of safety',
 
       'courses.eyebrow': 'Training program',
-      'course.telemetria.name': 'Telemetry (Arduino)',
-      'course.telemetria.extra': '18 sessions of 90 min · hands-on labs in Wokwi · one graded deliverable per session. With interactive simulators and 3D models.',
+      'course.telemetria.name': 'Telemetry',
+      'course.telemetria.extra': '18 sessions of 90 min · one deliverable per session. Basic runs hands-on in Wokwi with simulators and 3D models; Intermediate and Advanced are paper design, with one interactive tool per session and documents used as-is on the car.',
       'course.cad.name': 'CAD (SolidWorks)',
       'course.cad.extra': '18 sessions of 90 min · theory with examples from the car + official SOLIDWORKS exercises. With interactive 3D models of the suspension, the chassis and the full car.',
       'course.electronica.name': 'Electronics',

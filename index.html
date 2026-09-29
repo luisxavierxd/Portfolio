@@ -472,7 +472,7 @@
         <div class="bank__intro">
           <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 6</p>
           <h3 class="bank__name" id="bank-formacion" data-i18n="cat.formacion.name">Formación</h3>
-          <p class="bank__line" data-i18n="cat.formacion.line">Enseñar lo que me enseñó el coche: cursos abiertos para que un equipo nuevo arranque sin esperar a nadie.</p>
+          <p class="bank__line" data-i18n="cat.formacion.line">Enseñar lo que aprendí: cursos abiertos para que quien empieza —en el equipo o en la carrera— arranque sin esperar a nadie.</p>
           <p class="bank__count" data-i18n="cat.formacion.count">2 canales</p>
           <a class="bank__link" href="formacion" data-page-link data-i18n="cat.formacion.more">Ver los 2 · Formación</a>
           <div class="bank__rest">
@@ -487,28 +487,6 @@
               </li>
             </ul>
           </div>
-          <!-- The program stays on the landing: its three blocks are the hero's
-               courses, not channels of their own, so they list under their own label. -->
-          <div class="bank__rest">
-            <p class="bank__rest-label" data-i18n="courses.eyebrow">Programa de formación</p>
-            <ul>
-              <li class="rest" style="--ch: var(--ch-lime)">
-                <span class="rest__addr" aria-hidden="true">✅</span>
-                <span class="rest__name" data-i18n="course.telemetria.name">Telemetría (Arduino)</span>
-                <span class="rest__status rest__status--live" data-i18n="course.state.live">En línea</span>
-              </li>
-              <li class="rest" style="--ch: var(--ch-lime)">
-                <span class="rest__addr" aria-hidden="true">✅</span>
-                <span class="rest__name" data-i18n="course.cad.name">CAD (SolidWorks)</span>
-                <span class="rest__status rest__status--live" data-i18n="course.state.live">En línea</span>
-              </li>
-              <li class="rest" style="--ch: var(--ch-lime)">
-                <span class="rest__addr" aria-hidden="true">🔜</span>
-                <span class="rest__name" data-i18n="course.electronica.name">Electrónica</span>
-                <span class="rest__status" data-i18n="course.state.soon">Próximamente</span>
-              </li>
-            </ul>
-          </div>
         </div>
 
         <article class="channel" style="--ch: var(--ch-lime)">
@@ -516,8 +494,8 @@
           <h4 class="channel__name">Cursos MadRams</h4>
           <p class="channel__reading">
             <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-            <span class="reading__value">SAE</span>
-            <span class="reading__unit" data-i18n="proj.madrams.unit">formación de equipo</span>
+            <span class="reading__value">36</span>
+            <span class="reading__unit" data-i18n="proj.madrams.unit">sesiones · 2 cursos × 3 niveles</span>
           </p>
           <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: madrams -
                three plateaus joined by ramps (basico, intermedio, avanzado) with a level tick on
@@ -527,13 +505,13 @@
             <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                   d="M12 29 V33 M46 21 V25 M84 13 V17"/>
           </svg>
-          <p class="channel__tagline" data-i18n="proj.madrams.tagline">Portal de formación del equipo Baja SAE.</p>
-          <p class="channel__blurb" data-i18n="proj.madrams.blurb">Biblioteca de cursos de nuevo ingreso para MadRams (Minibaja SAE, Tec GDL): cursos por categoría y nivel, con un render 3D del coche por secuencia de imágenes. HTML/CSS/JS estático.</p>
+          <p class="channel__tagline" data-i18n="proj.madrams.tagline">Formación del equipo Baja SAE, trazada sobre el coche real.</p>
+          <p class="channel__blurb" data-i18n="proj.madrams.blurb">Programa de nuevo ingreso de MadRams (Minibaja SAE, Tec GDL): Telemetría y CAD en SolidWorks, tres niveles cada uno. En Telemetría las sesiones se mapean a subsistemas del coche —potenciómetro de suspensión, dos DS18B20 en motor y CVT, IMU MPU6050, GPS a microSD— y los niveles altos salen con documentos que se usan tal cual: el pinout firmado de la ECU en ESP32, el presupuesto de enlace LoRa a 915 MHz y la pantalla de pits en Grafana.</p>
           <ul class="badges">
-            <li class="badge">HTML</li>
-            <li class="badge">CSS</li>
-            <li class="badge">JavaScript</li>
-            <li class="badge">UX</li>
+            <li class="badge">ESP32</li>
+            <li class="badge">LoRa</li>
+            <li class="badge">Grafana</li>
+            <li class="badge">SolidWorks</li>
           </ul>
           <div class="channel__links">
             <a class="btn btn--demo" href="https://luisxavierxd.github.io/MadRamsBibliotecaCursos/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
@@ -681,8 +659,6 @@
           <li class="pill" data-i18n="skill.kalman">filtro de Kalman</li>
           <li class="pill" data-skill="golden tests">golden tests</li>
           <li class="pill" data-skill="Playwright">Playwright / QA E2E</li>
-          <li class="pill" data-skill="WCAG AA" data-i18n="skill.wcag">accesibilidad WCAG AA</li>
-          <li class="pill" data-skill="KaTeX / MathLive">KaTeX / MathLive</li>
         </ul>
       </div>
       <div class="skills__group" style="--ch: var(--ch-emerald)">
@@ -723,6 +699,8 @@
           <li class="pill" data-i18n="skill.curriculum">diseño curricular</li>
           <li class="pill" data-i18n="skill.rubrics">rúbricas de evaluación</li>
           <li class="pill" data-skill="instructional design" data-i18n="skill.instructional">diseño instruccional</li>
+          <li class="pill" data-skill="WCAG AA" data-i18n="skill.wcag">accesibilidad WCAG AA</li>
+          <li class="pill" data-skill="KaTeX / MathLive">KaTeX / MathLive</li>
         </ul>
       </div>
       <div class="skills__group" style="--ch: var(--ch-lime)">
