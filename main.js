@@ -174,7 +174,9 @@
       'proj.cuaderno.tagline': 'Clases universitarias de cálculo y física, autogestionadas. Proyecto de alumnos, no oficial.',
       'proj.cuaderno.blurb': 'Cursos autogestionados de Cálculo 1 y Física 1 para alumnos de nuevo ingreso: labs que comparan tu respuesta con la real, bancos de preguntas y simulacros de examen. Sitio estático con CI en cada push (Playwright, WCAG AA).',
       'proj.cuaderno.note': 'Diseño instruccional, arquitectura de datos y estrategia de validación propios; implementación asistida por IA (Claude Code).',
-      'proj.cuaderno.license': 'Código: MIT; contenido: CC BY-NC-SA 4.0 (lecciones adaptadas de OpenStax; ejercicios y bancos propios).',
+      'proj.cuaderno.license': 'Código: MIT. Contenido educativo (lecciones adaptadas de OpenStax; ejemplos, ejercicios, problemas, bancos y formularios propios): CC BY-NC-SA 4.0.',
+      'proj.cuaderno.thumb.alt': 'Lab de antiderivadas: escribes tu F(x), se verifica contra f(x) y se anima el Teorema Fundamental.',
+      'proj.cuaderno.ci.alt': 'Estado del CI (GitHub Actions): validate',
       'proj.cuaderno.panel.eyebrow': 'Qué trae',
       'proj.cuaderno.panel.body': '2 cursos completos, 15 sesiones cada uno; Cálculo 2–3 y Física 2–3 en plan. Cada sesión: lección paso a paso → lab animado → ejercicios parametrizados → quiz.',
       'proj.cuaderno.panel.p1': 'Por curso: banco de 100 preguntas por sesión, simulacros de examen con incisos encadenados y formulario imprimible (carta, ≤ 2 hojas).',
@@ -497,7 +499,9 @@
       'proj.cuaderno.tagline': 'Self-paced university calculus and physics. A student project, not official.',
       'proj.cuaderno.blurb': 'Self-paced Calculus I and Physics I courses for first-year students: labs that compare your answer against the real one, question banks and mock exams. Static site with CI on every push (Playwright, WCAG AA).',
       'proj.cuaderno.note': 'Instructional design, data architecture and validation strategy by me; AI-assisted implementation (Claude Code).',
-      'proj.cuaderno.license': 'Code: MIT; content: CC BY-NC-SA 4.0 (lessons adapted from OpenStax; original exercises and banks).',
+      'proj.cuaderno.license': 'Code: MIT. Educational content (lessons adapted from OpenStax; original examples, exercises, problems, banks and formula sheets): CC BY-NC-SA 4.0.',
+      'proj.cuaderno.thumb.alt': 'Antiderivative lab: you type your F(x), it is checked against f(x) and the Fundamental Theorem animates.',
+      'proj.cuaderno.ci.alt': 'CI status (GitHub Actions): validate',
       'proj.cuaderno.panel.eyebrow': 'What’s inside',
       'proj.cuaderno.panel.body': '2 complete courses, 15 sessions each; Calculus II–III and Physics II–III planned. Every session: step-by-step lesson → animated lab → parametrized exercises → quiz.',
       'proj.cuaderno.panel.p1': 'Per course: a 100-question bank per session, mock exams with chained sub-questions, and a printable formula sheet (letter, ≤ 2 pages).',
@@ -766,6 +770,16 @@
       var ariaKey = ariaNode.getAttribute('data-i18n-aria');
       if (Object.prototype.hasOwnProperty.call(dict, ariaKey)) {
         ariaNode.setAttribute('aria-label', dict[ariaKey]);
+      }
+    }
+
+    /* Image alt text is content a screen reader reads aloud, so it follows
+       the language too. */
+    var altNodes = document.querySelectorAll('[data-i18n-alt]');
+    for (var a = 0; a < altNodes.length; a++) {
+      var altKey = altNodes[a].getAttribute('data-i18n-alt');
+      if (Object.prototype.hasOwnProperty.call(dict, altKey)) {
+        altNodes[a].setAttribute('alt', dict[altKey]);
       }
     }
 

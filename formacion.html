@@ -119,10 +119,18 @@
           <rect x="86.7" y="7.8" width="3" height="3"/>
           <circle cx="114" cy="6" r="3.4"/>
         </svg>
+        <!-- Recorded from the live lab (the repo's docs/media/lab-demo.gif), re-encoded
+             to WebP at card width. Reduced-motion gets its last frame, still. -->
+        <picture class="channel__thumb">
+          <source media="(prefers-reduced-motion: reduce)" srcset="assets/cuaderno-lab-still.webp">
+          <img src="assets/cuaderno-lab.webp" width="480" height="499" loading="lazy" decoding="async"
+               alt="Lab de antiderivadas: escribes tu F(x), se verifica contra f(x) y se anima el Teorema Fundamental."
+               data-i18n-alt="proj.cuaderno.thumb.alt">
+        </picture>
         <p class="channel__tagline" data-i18n="proj.cuaderno.tagline">Clases universitarias de cálculo y física, autogestionadas. Proyecto de alumnos, no oficial.</p>
         <p class="channel__blurb" data-i18n="proj.cuaderno.blurb">Cursos autogestionados de Cálculo 1 y Física 1 para alumnos de nuevo ingreso: labs que comparan tu respuesta con la real, bancos de preguntas y simulacros de examen. Sitio estático con CI en cada push (Playwright, WCAG AA).</p>
         <p class="channel__note" data-i18n="proj.cuaderno.note">Diseño instruccional, arquitectura de datos y estrategia de validación propios; implementación asistida por IA (Claude Code).</p>
-        <p class="channel__note" data-i18n="proj.cuaderno.license">Código: MIT; contenido: CC BY-NC-SA 4.0 (lecciones adaptadas de OpenStax; ejercicios y bancos propios).</p>
+        <p class="channel__note" data-i18n="proj.cuaderno.license">Código: MIT. Contenido educativo (lecciones adaptadas de OpenStax; ejemplos, ejercicios, problemas, bancos y formularios propios): CC BY-NC-SA 4.0.</p>
         <ul class="badges">
           <li class="badge">KaTeX</li>
           <li class="badge">MathLive</li>
@@ -133,7 +141,7 @@
         </ul>
         <p class="channel__ci">
           <a href="https://github.com/luisxavierxd/CuadernoDelBorrego/actions/workflows/validate.yml" target="_blank" rel="noopener noreferrer">
-            <img src="https://github.com/luisxavierxd/CuadernoDelBorrego/actions/workflows/validate.yml/badge.svg" alt="Estado del CI (GitHub Actions): validate" height="20" loading="lazy">
+            <img src="https://github.com/luisxavierxd/CuadernoDelBorrego/actions/workflows/validate.yml/badge.svg?branch=main&amp;event=push" alt="Estado del CI (GitHub Actions): validate" data-i18n-alt="proj.cuaderno.ci.alt" height="20" loading="lazy">
           </a>
         </p>
         <div class="channel__links">

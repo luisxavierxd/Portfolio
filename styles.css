@@ -1652,6 +1652,18 @@ button:focus-visible,
 
 .channel .badges { margin-top: var(--s4); }
 
+/* A recorded demo of the project, framed like a scope screen: squared, ruled
+   in the channel color, never wider than the module. */
+.channel__thumb { display: block; margin: var(--s4) 0 0; }
+.channel__thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid color-mix(in srgb, var(--ch) 30%, var(--rule));
+  border-radius: var(--r-md);
+  background: var(--panel-2);
+}
+
 /* A live CI status image (the workflow's own badge.svg), set under the tags it
    backs up. No box of its own: GitHub's badge already reads as one. */
 .channel__ci { margin-top: var(--s3); font-size: var(--t-xs); }
