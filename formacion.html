@@ -60,7 +60,7 @@
     <a class="backlink" href="./" data-page-link data-i18n="nav.back">Volver al tablero</a>
     <h1 class="subhead__title" data-i18n="cat.formacion.name">Formación</h1>
     <p class="subhead__line" data-i18n="cat.formacion.line">Enseñar lo que me enseñó el coche: cursos abiertos para que un equipo nuevo arranque sin esperar a nadie.</p>
-    <p class="subhead__count" data-i18n="cat.formacion.count">programa de 3 bloques</p>
+    <p class="subhead__count" data-i18n="cat.formacion.count">2 canales</p>
   </section>
 
   <section class="section section--projects" aria-labelledby="board-heading" style="--ch: var(--ch-lime)">
@@ -95,6 +95,72 @@
         <div class="channel__links">
           <a class="btn btn--demo" href="https://luisxavierxd.github.io/MadRamsBibliotecaCursos/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
           <a class="btn btn--code" href="https://github.com/luisxavierxd/MadRamsBibliotecaCursos" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+      </article>
+
+      <!-- Second channel, below the hero. The CI badge is GitHub's own live SVG,
+           not a static tick: the blurb claims CI on every push, so the card shows
+           the workflow's real state. -->
+      <article class="channel" id="cuaderno-del-borrego" style="--ch: var(--ch-cuaderno)">
+        <p class="channel__addr">CH.6.2</p>
+        <h3 class="channel__name">Cuaderno del Borrego</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">30</span>
+          <span class="reading__unit" data-i18n="proj.cuaderno.unit">sesiones · 2 cursos</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: cuaderno -
+             the real function, drawn once, and the student's answers checked against it:
+             each sample lands on the curve, and the last one latches at the marker. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M6 30 C46 30 66 8 114 6"/>
+          <rect x="36.4" y="23.7" width="3" height="3"/>
+          <rect x="60.3" y="15.5" width="3" height="3"/>
+          <rect x="86.7" y="7.8" width="3" height="3"/>
+          <circle cx="114" cy="6" r="3.4"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.cuaderno.tagline">Clases universitarias de cálculo y física, autogestionadas. Proyecto de alumnos, no oficial.</p>
+        <p class="channel__blurb" data-i18n="proj.cuaderno.blurb">Cursos autogestionados de Cálculo 1 y Física 1 para alumnos de nuevo ingreso: labs que comparan tu respuesta con la real, bancos de preguntas y simulacros de examen. Sitio estático con CI en cada push (Playwright, WCAG AA).</p>
+        <p class="channel__note" data-i18n="proj.cuaderno.note">Diseño instruccional, arquitectura de datos y estrategia de validación propios; implementación asistida por IA (Claude Code).</p>
+        <p class="channel__note" data-i18n="proj.cuaderno.license">Código: MIT; contenido: CC BY-NC-SA 4.0 (lecciones adaptadas de OpenStax; ejercicios y bancos propios).</p>
+        <ul class="badges">
+          <li class="badge">KaTeX</li>
+          <li class="badge">MathLive</li>
+          <li class="badge">math.js</li>
+          <li class="badge">Playwright</li>
+          <li class="badge">WCAG AA</li>
+          <li class="badge">GitHub Actions</li>
+        </ul>
+        <p class="channel__ci">
+          <a href="https://github.com/luisxavierxd/CuadernoDelBorrego/actions/workflows/validate.yml" target="_blank" rel="noopener noreferrer">
+            <img src="https://github.com/luisxavierxd/CuadernoDelBorrego/actions/workflows/validate.yml/badge.svg" alt="Estado del CI (GitHub Actions): validate" height="20" loading="lazy">
+          </a>
+        </p>
+        <div class="channel__links">
+          <a class="btn btn--demo" href="https://luisxavierxd.github.io/CuadernoDelBorrego/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.live">Ver proyecto</a>
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/CuadernoDelBorrego" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
+        </div>
+        <button class="disclosure" type="button" aria-expanded="false" aria-controls="panel-cuaderno">
+          <svg class="disclosure__chevron" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
+            <path d="M2.75 4.5 6 7.75 9.25 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="disclosure__label disclosure__label--more" data-i18n="disclosure.more">Ver más</span>
+          <span class="disclosure__label disclosure__label--less" data-i18n="disclosure.less">Ver menos</span>
+        </button>
+        <div class="panel" id="panel-cuaderno" hidden>
+          <div class="panel__inner">
+            <div class="panel__body">
+              <p class="panel__eyebrow" data-i18n="proj.cuaderno.panel.eyebrow">Qué trae</p>
+              <p class="panel__text" data-i18n="proj.cuaderno.panel.body">2 cursos completos, 15 sesiones cada uno; Cálculo 2–3 y Física 2–3 en plan. Cada sesión: lección paso a paso → lab animado → ejercicios parametrizados → quiz.</p>
+              <ul class="panel__list">
+                <li data-i18n="proj.cuaderno.panel.p1">Por curso: banco de 100 preguntas por sesión, simulacros de examen con incisos encadenados y formulario imprimible (carta, ≤ 2 hojas).</li>
+                <li data-i18n="proj.cuaderno.panel.p2">HTML/CSS/JS vanilla sin build step; KaTeX, math.js, MathLive (editor de fórmulas estilo WebAssign), anime.js y manim-web.</li>
+                <li data-i18n="proj.cuaderno.panel.p3">npm run validate: esquemas y links, contraste WCAG AA en ambos temas, labs y ejemplos verificados en cientos de instancias, motor de quizzes y QA Playwright a 360/1024/1440 px, claro/oscuro y reduced-motion.</li>
+                <li data-i18n="proj.cuaderno.panel.p4">CI (GitHub Actions): la suite completa corre en cada push y PR; los links externos se revisan en un job semanal aparte, para que un sitio caído de terceros no rompa el build.</li>
+                <li data-i18n="proj.cuaderno.panel.p5">Contenido conceptual basado en OpenStax (CC BY-NC-SA 4.0), citado por sesión; ejercicios propios.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </article>
 

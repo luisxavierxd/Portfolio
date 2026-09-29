@@ -122,8 +122,8 @@
 
       'cat.formacion.name': 'Formación',
       'cat.formacion.line': 'Enseñar lo que me enseñó el coche: cursos abiertos para que un equipo nuevo arranque sin esperar a nadie.',
-      'cat.formacion.count': 'programa de 3 bloques',
-      'cat.formacion.more': 'Ver el programa completo',
+      'cat.formacion.count': '2 canales',
+      'cat.formacion.more': 'Ver los 2 · Formación',
 
       'proj.jtcs.unit': 'conteo por carril',
       'proj.jtcs.tagline': 'Semáforos que se adaptan al tráfico en tiempo real.',
@@ -169,6 +169,19 @@
       'proj.madrams.unit': 'formación de equipo',
       'proj.madrams.tagline': 'Portal de formación del equipo Baja SAE.',
       'proj.madrams.blurb': 'Biblioteca de cursos de nuevo ingreso para MadRams (Minibaja SAE, Tec GDL): cursos por categoría y nivel, con un render 3D del coche por secuencia de imágenes. HTML/CSS/JS estático.',
+
+      'proj.cuaderno.unit': 'sesiones · 2 cursos',
+      'proj.cuaderno.tagline': 'Clases universitarias de cálculo y física, autogestionadas. Proyecto de alumnos, no oficial.',
+      'proj.cuaderno.blurb': 'Cursos autogestionados de Cálculo 1 y Física 1 para alumnos de nuevo ingreso: labs que comparan tu respuesta con la real, bancos de preguntas y simulacros de examen. Sitio estático con CI en cada push (Playwright, WCAG AA).',
+      'proj.cuaderno.note': 'Diseño instruccional, arquitectura de datos y estrategia de validación propios; implementación asistida por IA (Claude Code).',
+      'proj.cuaderno.license': 'Código: MIT; contenido: CC BY-NC-SA 4.0 (lecciones adaptadas de OpenStax; ejercicios y bancos propios).',
+      'proj.cuaderno.panel.eyebrow': 'Qué trae',
+      'proj.cuaderno.panel.body': '2 cursos completos, 15 sesiones cada uno; Cálculo 2–3 y Física 2–3 en plan. Cada sesión: lección paso a paso → lab animado → ejercicios parametrizados → quiz.',
+      'proj.cuaderno.panel.p1': 'Por curso: banco de 100 preguntas por sesión, simulacros de examen con incisos encadenados y formulario imprimible (carta, ≤ 2 hojas).',
+      'proj.cuaderno.panel.p2': 'HTML/CSS/JS vanilla sin build step; KaTeX, math.js, MathLive (editor de fórmulas estilo WebAssign), anime.js y manim-web.',
+      'proj.cuaderno.panel.p3': 'npm run validate: esquemas y links, contraste WCAG AA en ambos temas, labs y ejemplos verificados en cientos de instancias, motor de quizzes y QA Playwright a 360/1024/1440 px, claro/oscuro y reduced-motion.',
+      'proj.cuaderno.panel.p4': 'CI (GitHub Actions): la suite completa corre en cada push y PR; los links externos se revisan en un job semanal aparte, para que un sitio caído de terceros no rompa el build.',
+      'proj.cuaderno.panel.p5': 'Contenido conceptual basado en OpenStax (CC BY-NC-SA 4.0), citado por sesión; ejercicios propios.',
 
       'proj.loopzels.unit': 'carga cognitiva',
       'proj.loopzels.tagline': 'Rompecabezas animados para entrenar la mente.',
@@ -238,6 +251,7 @@
       'proj.btn.itch': 'itch.io',
       'proj.btn.pr': 'Ver PR',
       'proj.btn.release': 'Release',
+      'proj.btn.live': 'Ver proyecto',
 
       /* Disclosure labels. Both live in the DOM at once (CSS shows the one the
          current aria-expanded state calls for), so state and language never
@@ -301,6 +315,8 @@
       'skill.kalman': 'filtro de Kalman',
       'skill.curriculum': 'diseño curricular',
       'skill.rubrics': 'rúbricas de evaluación',
+      'skill.instructional': 'diseño instruccional',
+      'skill.wcag': 'accesibilidad WCAG AA',
       'skill.sketch2d': 'Sketch 2D',
       'skill.extrude': 'Extrusión',
       'skill.revolve': 'Revolución',
@@ -429,8 +445,8 @@
 
       'cat.formacion.name': 'Training',
       'cat.formacion.line': 'Teaching what the car taught me: open courses so a new team can start without waiting on anyone.',
-      'cat.formacion.count': '3-block program',
-      'cat.formacion.more': 'See the full program',
+      'cat.formacion.count': '2 channels',
+      'cat.formacion.more': 'See both · Training',
 
       'proj.jtcs.unit': 'count per lane',
       'proj.jtcs.tagline': 'Traffic signals that adapt to demand in real time.',
@@ -476,6 +492,19 @@
       'proj.madrams.unit': 'team onboarding',
       'proj.madrams.tagline': 'Baja SAE team onboarding portal.',
       'proj.madrams.blurb': 'Onboarding course library for MadRams (Minibaja SAE, Tec GDL): courses by category and level, with a 3D image-sequence render of the car. Static HTML/CSS/JS.',
+
+      'proj.cuaderno.unit': 'sessions · 2 courses',
+      'proj.cuaderno.tagline': 'Self-paced university calculus and physics. A student project, not official.',
+      'proj.cuaderno.blurb': 'Self-paced Calculus I and Physics I courses for first-year students: labs that compare your answer against the real one, question banks and mock exams. Static site with CI on every push (Playwright, WCAG AA).',
+      'proj.cuaderno.note': 'Instructional design, data architecture and validation strategy by me; AI-assisted implementation (Claude Code).',
+      'proj.cuaderno.license': 'Code: MIT; content: CC BY-NC-SA 4.0 (lessons adapted from OpenStax; original exercises and banks).',
+      'proj.cuaderno.panel.eyebrow': 'What’s inside',
+      'proj.cuaderno.panel.body': '2 complete courses, 15 sessions each; Calculus II–III and Physics II–III planned. Every session: step-by-step lesson → animated lab → parametrized exercises → quiz.',
+      'proj.cuaderno.panel.p1': 'Per course: a 100-question bank per session, mock exams with chained sub-questions, and a printable formula sheet (letter, ≤ 2 pages).',
+      'proj.cuaderno.panel.p2': 'Vanilla HTML/CSS/JS with no build step; KaTeX, math.js, MathLive (WebAssign-style formula editor), anime.js and manim-web.',
+      'proj.cuaderno.panel.p3': 'npm run validate: schemas and links, WCAG AA contrast in both themes, labs and examples checked across hundreds of instances, the quiz engine, and Playwright QA at 360/1024/1440 px, light/dark and reduced-motion.',
+      'proj.cuaderno.panel.p4': 'CI (GitHub Actions): the full suite runs on every push and PR; external links are checked in a separate weekly job, so a third-party site going down never breaks the build.',
+      'proj.cuaderno.panel.p5': 'Conceptual content based on OpenStax (CC BY-NC-SA 4.0), cited per session; original exercises.',
 
       'proj.loopzels.unit': 'cognitive load',
       'proj.loopzels.tagline': 'Animated puzzles for cognitive training.',
@@ -540,6 +569,7 @@
       'proj.btn.itch': 'itch.io',
       'proj.btn.pr': 'View PR',
       'proj.btn.release': 'Release',
+      'proj.btn.live': 'Live site',
 
       'disclosure.more': 'Show more',
       'disclosure.less': 'Show less',
@@ -598,6 +628,8 @@
       'skill.kalman': 'Kalman filter',
       'skill.curriculum': 'curriculum design',
       'skill.rubrics': 'assessment rubrics',
+      'skill.instructional': 'instructional design',
+      'skill.wcag': 'WCAG AA accessibility',
       'skill.sketch2d': '2D sketch',
       'skill.extrude': 'Extrude',
       'skill.revolve': 'Revolve',
@@ -1558,7 +1590,8 @@
     malaria:     { page: 'senales',  id: 'malaria',           name: 'Malaria · Dielectroforesis' },
     telemetry:   { page: 'software', id: 'telemetrystack',    name: 'TelemetryStack' },
     claude:      { page: 'ia',       id: 'claude-unlimited',  name: 'claude-unlimited' },
-    banky:       { page: 'ia',       id: 'banky',             name: 'Banky' }
+    banky:       { page: 'ia',       id: 'banky',             name: 'Banky' },
+    cuaderno:    { page: 'formacion', id: 'cuaderno-del-borrego', name: 'Cuaderno del Borrego' }
   };
 
   var SKILL_PROJECTS = {
@@ -1591,7 +1624,11 @@
        here: a pill that lands on that card would be claiming their work. */
     'MCP':                ['banky'],
     'A2UI':               ['banky'],
-    'provider-agnostic tool calling': ['banky']
+    'provider-agnostic tool calling': ['banky'],
+    'Playwright':         ['cuaderno'],
+    'WCAG AA':            ['cuaderno'],
+    'KaTeX / MathLive':   ['cuaderno'],
+    'instructional design': ['cuaderno']
   };
 
   function initSkillLinks() {

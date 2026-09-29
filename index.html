@@ -473,8 +473,22 @@
           <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 6</p>
           <h3 class="bank__name" id="bank-formacion" data-i18n="cat.formacion.name">Formación</h3>
           <p class="bank__line" data-i18n="cat.formacion.line">Enseñar lo que me enseñó el coche: cursos abiertos para que un equipo nuevo arranque sin esperar a nadie.</p>
-          <p class="bank__count" data-i18n="cat.formacion.count">programa de 3 bloques</p>
-          <a class="bank__link" href="formacion" data-page-link data-i18n="cat.formacion.more">Ver el programa completo</a>
+          <p class="bank__count" data-i18n="cat.formacion.count">2 canales</p>
+          <a class="bank__link" href="formacion" data-page-link data-i18n="cat.formacion.more">Ver los 2 · Formación</a>
+          <div class="bank__rest">
+            <p class="bank__rest-label" data-i18n="bank.rest">También en este banco</p>
+            <ul>
+              <li class="rest" style="--ch: var(--ch-cuaderno)">
+                <span class="rest__addr">CH.6.2</span>
+                <span class="rest__name">Cuaderno del Borrego</span>
+                <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
+                  <path pathLength="1" d="M3 19 C30 19 46 4 81 3"/>
+                </svg>
+              </li>
+            </ul>
+          </div>
+          <!-- The program stays on the landing: its three blocks are the hero's
+               courses, not channels of their own, so they list under their own label. -->
           <div class="bank__rest">
             <p class="bank__rest-label" data-i18n="courses.eyebrow">Programa de formación</p>
             <ul>
@@ -666,6 +680,9 @@
           <li class="pill" data-i18n="skill.tsSchema">esquema de series de tiempo</li>
           <li class="pill" data-i18n="skill.kalman">filtro de Kalman</li>
           <li class="pill" data-skill="golden tests">golden tests</li>
+          <li class="pill" data-skill="Playwright">Playwright / QA E2E</li>
+          <li class="pill" data-skill="WCAG AA" data-i18n="skill.wcag">accesibilidad WCAG AA</li>
+          <li class="pill" data-skill="KaTeX / MathLive">KaTeX / MathLive</li>
         </ul>
       </div>
       <div class="skills__group" style="--ch: var(--ch-emerald)">
@@ -705,6 +722,7 @@
           <li class="pill pill--expert" data-i18n="skill.teachingTag">docencia</li>
           <li class="pill" data-i18n="skill.curriculum">diseño curricular</li>
           <li class="pill" data-i18n="skill.rubrics">rúbricas de evaluación</li>
+          <li class="pill" data-skill="instructional design" data-i18n="skill.instructional">diseño instruccional</li>
         </ul>
       </div>
       <div class="skills__group" style="--ch: var(--ch-lime)">

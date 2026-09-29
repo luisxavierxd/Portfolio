@@ -41,7 +41,7 @@ default in the HTML (the inline text is what a visitor without JavaScript sees).
 | `telemetria.html` | Coche MadRams, Quantum Speed Racing, Silca Elyos |
 | `software.html` | TelemetryStack, Mapa TEC GDL, Loopzels, Frenado Magnético |
 | `ia.html` | Banky, claude-unlimited, LaTeX Studio, websight, exploded-view, watermarks-remover |
-| `formacion.html` | Cursos MadRams + the three-block training program |
+| `formacion.html` | Cursos MadRams, Cuaderno del Borrego + the three-block training program |
 
 ## Local preview
 

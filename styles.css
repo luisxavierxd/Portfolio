@@ -54,6 +54,11 @@
      readout as bright as Malaria's while swinging the hue to 3°: a true red
      next to a rose, and 4.8:1 on the darkest panel.                         */
   --ch-banky:   #ff3d33; /* Banky         — Banorte scarlet (vs. --ch-red)   */
+  /* Cuaderno del Borrego — the blue of a notebook's ruled lines. Shares the
+     Formación board with lime only, so it just has to sit far from a yellow-
+     green; lighter than --ch-elyos and less violet than --ch-indigo, and well
+     past AA on every surface.                                               */
+  --ch-cuaderno: #93c5fd; /* Cuaderno    — ruled-notebook ink blue          */
 
   /* Default channel for anything outside a channel module (nav, hero,
      footer). Amber is the master channel. Every accent, focus ring and
@@ -1646,6 +1651,12 @@ button:focus-visible,
 }
 
 .channel .badges { margin-top: var(--s4); }
+
+/* A live CI status image (the workflow's own badge.svg), set under the tags it
+   backs up. No box of its own: GitHub's badge already reads as one. */
+.channel__ci { margin-top: var(--s3); font-size: var(--t-xs); }
+.channel__ci a { display: inline-block; border-radius: var(--r-sm); }
+.channel__ci img { display: block; height: 20px; width: auto; }
 
 .channel > .channel__links {
   margin-top: auto;
