@@ -2788,3 +2788,50 @@ button:focus-visible,
 
 .rest--more .rest__link { color: var(--dim-strong); }
 .rest--more .rest__link:hover { color: var(--ch); }
+
+/* Main team: the season's team gets its own row above the plain list, in its
+   channel colour, with the role and a link to its card. */
+.team-main {
+  display: grid;
+  gap: var(--s2);
+  padding: var(--s4) var(--s5);
+  background: color-mix(in srgb, var(--ch) 7%, var(--panel));
+  border: 1px solid color-mix(in srgb, var(--ch) 30%, var(--rule));
+  border-left: 3px solid var(--ch);
+  border-radius: var(--r-md);
+}
+
+.team-main__label {
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--ch);
+}
+
+.team-main__name {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--t-xl);
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.team-main__role {
+  font-size: var(--t-md);
+  line-height: 1.55;
+  color: var(--dim-strong);
+}
+
+.team-main__link {
+  justify-self: start;
+  margin-top: var(--s1, 0.25rem);
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--ch);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--ch) 45%, transparent);
+  text-underline-offset: 0.2em;
+}
+
+.team-main__link:hover { text-decoration-color: var(--ch); }

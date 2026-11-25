@@ -551,35 +551,29 @@
       <p data-i18n="about.n4">Los últimos dos años de prepa hice un robot con ROS y AgroBot, un brazo que recolecta frambuesas por visión. Aquí soy honesto sobre el alcance: a nivel prepa construí las piezas, no siempre la integración. En AgroBot armé el brazo, probé la cinemática inversa a una posición y entrené el modelo de detección — pero el sistema completo, todo junto, no llegó a integrarse. En el robot de interprepas, el día de la competencia no funcionó: no logré integrar una ruta planificada al abrir SLAM, por inexperiencia y falta de documentación. Tenía la ruta. Tenía el robot moviéndose. No los uní a tiempo. Ayudé a un segundo equipo que preprogramó todo en un EV3 — y ganamos.</p>
       <p data-i18n="about.n5">Cuento esos tropiezos a propósito. El SLAM que no pude integrar en prepa es exactamente la razón por la que hoy me obsesiona la estimación de estado y el control. Los huecos marcan hacia dónde voy.</p>
       <p data-i18n="about.n6">Ahora estudio Ingeniería en Robótica en el Tec de Monterrey, Campus Guadalajara. Formo parte del equipo Baja SAE MadRams y trabajo en telemetría y sistemas de potencia de varios equipos de competencia. Me interesa el camino completo del sensor a la decisión — visión en el borde, embebidos, señales — y tengo una manía útil: cuando una herramienta me limita, bajo un nivel y la controlo por debajo. He revertido protocolos, tratado formatos cerrados como lo que son, y hecho que las herramientas hagan lo que necesito, no lo que traen de fábrica.</p>
+      <p data-i18n="about.adc">En agosto de 2026 entré a Elyos Racing, el equipo del Tec en Shell Eco-marathon, y ahí encontré el proyecto que junta todo lo anterior: un coche que tiene que manejar solo. Lidero el driver del motor —un FOC en Teensy 4.1 al que le bajé el cómputo del lazo de 68 a 5.4 µs, medido en banco— y el kit del Autonomous Driving Challenge: el stack de ROS 2 que estima, planea y actúa, y un gemelo digital en Gazebo e Isaac Sim que ya corre en paralelo al hardware en banco. Todavía no va montado en el coche; la meta es la demo autónoma en abril y el ADC en Silesia Ring, Polonia, en junio de 2027. Es el SLAM de la prepa con una segunda oportunidad: esta vez la ruta y el coche tienen que unirse a tiempo.</p>
       <p data-i18n="about.n7">Sigo en lo mismo que a los siete: construir cosas que perciben, deciden y actúan. Solo que ahora los sensores son mejores.</p>
     </div>
 
     <!-- Teams are stated separately from skills: one is where the work happens,
-         the other is what it uses. The upcoming three are marked planned in
-         words and in style, same contract as the Aeroespacial legend group. -->
+         the other is what it uses. Elyos is the main team this season, so it gets
+         its own row with the role and a door to the card; the other two stay below
+         as a plain list. -->
     <div class="teams">
+      <div class="team-main" style="--ch: var(--ch-elyos)">
+        <p class="team-main__label" data-i18n="about.teams.main">Equipo principal</p>
+        <p class="team-main__name">Elyos Racing</p>
+        <p class="team-main__role" data-i18n="about.teams.mainRole">Shell Eco-marathon · lead de control del motor y del Autonomous Driving Challenge · desde agosto de 2026</p>
+        <a class="team-main__link" href="robotica#elyos" data-page-link data-i18n="about.teams.mainLink">Ver mi trabajo en Elyos</a>
+      </div>
       <div class="skills__group" style="--ch: var(--ch-coche)">
         <span class="skills__dot" aria-hidden="true"></span>
-        <span class="skills__group-name" data-i18n="about.teams">Equipos de competencia</span>
+        <span class="skills__group-name" data-i18n="about.teams.also">También compito con</span>
         <ul class="pills">
-          <li class="pill pill--expert">MadRams · Baja SAE</li>
-          <li class="pill pill--expert">Quantum Speed Racing · Electrathon</li>
-          <li class="pill pill--expert" data-i18n="team.elyos">Elyos Racing · Shell Eco-marathon</li>
+          <li class="pill">MadRams · Baja SAE</li>
+          <li class="pill">Quantum Speed Racing · Electrathon</li>
         </ul>
       </div>
-      <div class="skills__group skills__group--planned" style="--ch: var(--ch-elyos)">
-        <span class="skills__dot" aria-hidden="true"></span>
-        <span class="skills__group-name">
-          <span data-i18n="about.teams.soon">Equipos por venir</span>
-          <span class="skills__status" data-i18n="about.skills.aeroStatus">en diseño</span>
-        </span>
-        <ul class="pills">
-          <li class="pill">Cefiro Aerodesign · SAE Aero Design</li>
-          <li class="pill" data-i18n="team.ignitia">Ignitia Rocketlab · cohetería</li>
-          <li class="pill">Axolotl Motosport · MotoStudent</li>
-        </ul>
-      </div>
-      <p class="tier-note" data-i18n="about.teams.note">Los que brillan son donde pongo más horas.</p>
     </div>
 
     <div class="skills">
