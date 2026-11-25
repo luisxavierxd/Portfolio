@@ -55,7 +55,6 @@
          browser-tab / share title the same way a bank page does. */
       'meta.title.vehiculo.madrams': 'MadRams — Luis Xavier García Pimentel Ascencio',
       'meta.title.vehiculo.quantum': 'Quantum Speed Racing — Luis Xavier García Pimentel Ascencio',
-      'meta.title.vehiculo.elyos': 'Silca Elyos Racing — Luis Xavier García Pimentel Ascencio',
 
       'nav.back': 'Volver al tablero',
       'nav.siblings': 'Otros bancos',
@@ -87,6 +86,38 @@
       'bank.label': 'Banco',
       'bank.rest': 'También en este banco',
 
+      /* Elyos Racing hero (bank 1) */
+      'proj.elyos.name': 'Elyos Racing · control y autonomía',
+      'proj.elyos.kicker': 'Shell Eco-marathon · Prototype eléctrico + Autonomous Driving Challenge · temporada 2027 (desde agosto de 2026)',
+      'proj.elyos.unit': 'cómputo del lazo FOC · banco',
+      'proj.elyos.sub': 'jitter 27 → 0.6 µs',
+      'proj.elyos.traceAria': 'Traza ilustrativa, no datos crudos: el lazo pasa de ruidoso a limpio y regular',
+      'proj.elyos.traceTitle': 'Ilustrativa, no datos crudos',
+      'proj.elyos.role': 'Lead de control del motor y del ADC · owner de la org',
+      'proj.elyos.blurb': 'Lidero el driver del motor y el kit autónomo del equipo Elyos Racing (Shell Eco-marathon). En el driver FOC (Teensy 4.1) implementé el muestreo de corriente sincronizado con el PWM: el cómputo del lazo bajó de ≈68 a ≈5.4 µs y el jitter de ≈27 a ≈0.6 µs, medidos en banco. Ahora encabezo el paso a FOC sensorless. Construí la mayor parte del stack ROS 2 del ADC (estimación, planeación y actuación), con perfiles de velocidad de energía óptima y un gemelo digital en Gazebo e Isaac Sim que ya corre en paralelo al hardware en banco. También diseñé la gobernanza y la gestión del equipo en GitHub, siguiendo PMBOK 8: 13 repos con CI.',
+      'proj.elyos.ms.head': 'Hitos del ADC',
+      'proj.elyos.ms.state': 'en calibración',
+      'proj.elyos.ms.1': 'Stack ROS 2 en SIL',
+      'proj.elyos.ms.2': 'Gemelo (Gazebo + Isaac Sim) en paralelo al hardware, en banco',
+      'proj.elyos.ms.3': 'Montaje en el coche',
+      'proj.elyos.ms.4': 'Demo autónoma (abr-2027)',
+      'proj.elyos.ms.5': 'ADC Polonia, Silesia Ring (jun-2027)',
+      'ms.done': 'hecho',
+      'ms.pending': 'pendiente',
+      'proj.elyos.btn.work': 'Mi trabajo',
+      'proj.elyos.btn.adc': 'Kit autónomo',
+      'proj.elyos.btn.gov': 'Gobernanza',
+      'rest.jtcs.note': 'demo en vivo · Guadalahacks 2026',
+      'rest.robotica.more': '+1 más',
+      'rest.elyos.xref': 'Elyos · driver FOC ↗ Robótica',
+      'skill.sensorless': 'FOC sensorless (observador Luenberger + PLL; SMO de respaldo)',
+      'skill.pwmSync': 'muestreo de corriente sincronizado con PWM',
+      'skill.twin': 'gemelo digital',
+      'skill.casadi': 'CasADi + IPOPT (control óptimo)',
+      'about.skills.management': 'Gestión',
+      'skill.pmbok': 'PMBOK 8 (riesgos, control de cambios, gates)',
+      'skill.orgGov': 'gobernanza de org en GitHub (CODEOWNERS, rulesets, CI con ci-ok, DCO)',
+
       /* Sub-group labels. A bank large enough to split its board names the
          groups (LLM/Orquestación), and the same keys caption the landing
          teaser and the sub-page board headings. */
@@ -97,8 +128,8 @@
          how many channels it holds, and the landing card's handoff link. */
       'cat.robotica.name': 'Robótica',
       'cat.robotica.line': 'Percibir: visión, brazos y navegación — máquinas que leen el mundo antes de moverse.',
-      'cat.robotica.count': '4 canales',
-      'cat.robotica.more': 'Ver los 4 · Robótica',
+      'cat.robotica.count': '5 canales',
+      'cat.robotica.more': 'Ver los 5 · Robótica',
 
       'cat.senales.name': 'Señales e IA',
       'cat.senales.line': 'Procesar: señales crudas convertidas en decisiones — EEG, física aplicada y aprendizaje automático.',
@@ -107,8 +138,8 @@
 
       'cat.telemetria.name': 'Telemetría y potencia',
       'cat.telemetria.line': 'Coches de competencia que se explican solos: telemetría en pista y los sistemas de potencia que la alimentan.',
-      'cat.telemetria.count': '3 canales',
-      'cat.telemetria.more': 'Ver los 3 · Telemetría',
+      'cat.telemetria.count': '2 canales',
+      'cat.telemetria.more': 'Ver los 2 · Telemetría',
 
       'cat.software.name': 'Software y herramientas',
       'cat.software.line': 'Las herramientas: plataformas, mapas y utilidades que uso —o entrego— para que otros trabajen más rápido.',
@@ -197,11 +228,6 @@
       'proj.quantum.tagline': 'Potencia eléctrica de un auto de carreras, domada.',
       'proj.quantum.blurb': 'Sistema de potencia para el auto eléctrico de Electrathon (48 V, 6 kWh): configuración y prueba del motor Motenergy ME0909 con controlador Alltrax SR48300, packs LiFePO4 16S4P en paralelo con ecualización de voltaje, y seguridad (kill-switch, fusibles 250 A). Reverticé el protocolo BLE de un BMS Daly clon para leerlo con Python (bleak) en una Raspberry Pi 4 a ~5.4 Hz. Display de piloto TFT SSD1963. La telemetría del coche corre sobre mi TelemetryStack, por WiFi en pits y enlace celular LTE/4G en pista.',
 
-      'proj.elyos.unit': 'optimización de consumo',
-      'proj.elyos.award': 'Data & Telemetry Award · Schmid Elektronik',
-      'proj.elyos.tagline': 'Menos energía por vuelta, en un auto de eficiencia premiado.',
-      'proj.elyos.blurb': 'Contribución de optimización sobre el sistema (ya existente) del equipo Silca Elyos, ganador del Data & Telemetry Award (patrocinado por Schmid Elektronik). Mi trabajo: control de consumo del motor con estrategia pulse-and-coast por segmentos, un modelo de coast-down derivado de telemetría para predecir el deslizamiento, ajuste de ganancias FOC del driver BLDC y métricas de eficiencia (kWh/km, % coasting). Bosch como patrocinador del equipo.',
-      'proj.elyos.note': 'Optimicé un sistema que ya existía: el resto de la plataforma del equipo —enlace, estimación de estado, electrónica y tablero— no es trabajo mío.',
 
       'proj.latex.unit': 'reportes APA-7',
       'proj.latex.tagline': 'Convierte PDFs en reportes LaTeX con formato APA-7.',
@@ -272,7 +298,7 @@
       'about.n7': 'Sigo en lo mismo que a los siete: construir cosas que perciben, deciden y actúan. Solo que ahora los sensores son mejores.',
       'about.teams': 'Equipos de competencia',
       'about.teams.soon': 'Equipos por venir',
-      'team.elyos': 'Silca Elyos · Shell Eco Marathon',
+      'team.elyos': 'Elyos Racing · Shell Eco-marathon',
       'team.ignitia': 'Ignitia Rocketlab · cohetería',
       'about.skills.edgeai': 'Edge AI / Visión',
       'about.skills.robotics': 'Robótica',
@@ -392,7 +418,6 @@
 
       'meta.title.vehiculo.madrams': 'MadRams — Luis Xavier García Pimentel Ascencio',
       'meta.title.vehiculo.quantum': 'Quantum Speed Racing — Luis Xavier García Pimentel Ascencio',
-      'meta.title.vehiculo.elyos': 'Silca Elyos Racing — Luis Xavier García Pimentel Ascencio',
 
       'nav.back': 'Back to the board',
       'nav.siblings': 'Other banks',
@@ -417,13 +442,45 @@
       'bank.label': 'Bank',
       'bank.rest': 'Also in this bank',
 
+      /* Elyos Racing hero (bank 1) */
+      'proj.elyos.name': 'Elyos Racing · control & autonomy',
+      'proj.elyos.kicker': 'Shell Eco-marathon · electric Prototype + Autonomous Driving Challenge · 2027 season (since August 2026)',
+      'proj.elyos.unit': 'FOC loop compute time · bench',
+      'proj.elyos.sub': 'jitter 27 → 0.6 µs',
+      'proj.elyos.traceAria': 'Illustrative trace, not raw data: the loop goes from noisy to clean and regular',
+      'proj.elyos.traceTitle': 'Illustrative, not raw data',
+      'proj.elyos.role': 'Motor-control & ADC lead · org owner',
+      'proj.elyos.blurb': 'I lead the motor driver and the autonomy kit of the Elyos Racing team (Shell Eco-marathon). In the FOC driver (Teensy 4.1) I implemented PWM-synchronized current sampling: loop compute time dropped from ≈68 to ≈5.4 µs and jitter from ≈27 to ≈0.6 µs, measured on the bench. I\'m now leading the move to sensorless FOC. I built most of the ADC\'s ROS 2 stack (estimation, planning and actuation), with energy-optimal speed profiles and a digital twin in Gazebo and Isaac Sim that already runs in parallel with the hardware on the bench. I also designed the team\'s GitHub governance and project management following PMBOK 8: 13 repositories with CI.',
+      'proj.elyos.ms.head': 'ADC milestones',
+      'proj.elyos.ms.state': 'calibrating',
+      'proj.elyos.ms.1': 'ROS 2 stack in SIL',
+      'proj.elyos.ms.2': 'Twin (Gazebo + Isaac Sim) in parallel with the hardware, on the bench',
+      'proj.elyos.ms.3': 'Mounted on the car',
+      'proj.elyos.ms.4': 'Autonomous demo (Apr 2027)',
+      'proj.elyos.ms.5': 'ADC Poland, Silesia Ring (Jun 2027)',
+      'ms.done': 'done',
+      'ms.pending': 'pending',
+      'proj.elyos.btn.work': 'My work',
+      'proj.elyos.btn.adc': 'Autonomy kit',
+      'proj.elyos.btn.gov': 'Governance',
+      'rest.jtcs.note': 'live demo · Guadalahacks 2026',
+      'rest.robotica.more': '+1 more',
+      'rest.elyos.xref': 'Elyos · FOC driver ↗ Robotics',
+      'skill.sensorless': 'sensorless FOC (Luenberger observer + PLL; SMO fallback)',
+      'skill.pwmSync': 'PWM-synchronized current sampling',
+      'skill.twin': 'digital twin',
+      'skill.casadi': 'CasADi + IPOPT (optimal control)',
+      'about.skills.management': 'Management',
+      'skill.pmbok': 'PMBOK 8 (risk, change control, gates)',
+      'skill.orgGov': 'GitHub org governance (CODEOWNERS, rulesets, CI with ci-ok, DCO)',
+
       'group.orquestacion': 'In-house orchestration',
       'group.capacidades': 'Capabilities / skills for Claude Code',
 
       'cat.robotica.name': 'Robotics',
       'cat.robotica.line': 'Perceive: vision, arms and navigation — machines that read the world before they move.',
-      'cat.robotica.count': '4 channels',
-      'cat.robotica.more': 'See all 4 · Robotics',
+      'cat.robotica.count': '5 channels',
+      'cat.robotica.more': 'See all 5 · Robotics',
 
       'cat.senales.name': 'Signals & AI',
       'cat.senales.line': 'Process: raw signals turned into decisions — EEG, applied physics and machine learning.',
@@ -432,8 +489,8 @@
 
       'cat.telemetria.name': 'Telemetry & power',
       'cat.telemetria.line': 'Competition cars that explain themselves: trackside telemetry and the power systems feeding it.',
-      'cat.telemetria.count': '3 channels',
-      'cat.telemetria.more': 'See all 3 · Telemetry',
+      'cat.telemetria.count': '2 channels',
+      'cat.telemetria.more': 'See all 2 · Telemetry',
 
       'cat.software.name': 'Software & tooling',
       'cat.software.line': 'The tooling: platforms, maps and utilities I use — or hand over — so other people move faster.',
@@ -522,11 +579,6 @@
       'proj.quantum.tagline': "A racing EV's electric powertrain, tamed.",
       'proj.quantum.blurb': 'Power system for the Electrathon electric car (48 V, 6 kWh): configured and bench-tested the Motenergy ME0909 motor with an Alltrax SR48300 controller, LiFePO4 16S4P packs in parallel with voltage equalization, and safety (kill-switch, 250 A fuses). I reverse-engineered a clone Daly BMS\'s BLE protocol to read it in Python (bleak) on a Raspberry Pi 4 at ~5.4 Hz. TFT SSD1963 pilot display. The car\'s telemetry runs on my TelemetryStack, over WiFi in the pits and an LTE/4G cellular link on track.',
 
-      'proj.elyos.unit': 'consumption optimization',
-      'proj.elyos.award': 'Data & Telemetry Award · Schmid Elektronik',
-      'proj.elyos.tagline': 'Less energy per lap, on an award-winning efficiency car.',
-      'proj.elyos.blurb': "Optimization work on team Silca Elyos's (existing) system, winner of the Data & Telemetry Award (sponsored by Schmid Elektronik). My part: motor energy-consumption control with a segment-based pulse-and-coast strategy, a coast-down model derived from telemetry to predict glide, FOC gain tuning on the BLDC driver, and efficiency metrics (kWh/km, coasting %). Bosch as team sponsor.",
-      'proj.elyos.note': "I optimized a system that already existed: the rest of the team's platform —link, state estimation, electronics and dashboard— is not my work.",
 
       'proj.latex.unit': 'APA-7 reports',
       'proj.latex.tagline': 'Turns PDFs into APA-7 LaTeX reports.',
@@ -589,7 +641,7 @@
       'about.n7': "I'm still doing what I did at seven: building things that sense, decide, and act. The sensors are just better now.",
       'about.teams': 'Competition teams',
       'about.teams.soon': 'Teams coming up',
-      'team.elyos': 'Silca Elyos · Shell Eco Marathon',
+      'team.elyos': 'Elyos Racing · Shell Eco-marathon',
       'team.ignitia': 'Ignitia Rocketlab · rocketry',
       'about.skills.edgeai': 'Edge AI / Vision',
       'about.skills.robotics': 'Robotics',
@@ -1219,7 +1271,7 @@
   /* --------------------------------------------------------------------
      5b. Vehicle pages — data-driven build sheets
 
-     A vehicle page (coche-madrams.html, quantum.html, elyos.html) is a thin
+     A vehicle page (coche-madrams.html, quantum.html) is a thin
      shell: <div id="vehicle-root" data-vehicle="…"> and nothing else in the
      main. Everything visible is rendered here from the table below, in the
      current language, and re-rendered on every toggle. The rule the spec
@@ -1368,84 +1420,10 @@
       doc: { url: 'https://balsam-ringer-081.notion.site/1aab2fdbb6b982959ef201dbf93ec2cf', label: 'default' }
     },
 
-    elyos: {
-      ch: 'elyos',
-      name: 'Silca Elyos Racing',
-      category: { es: 'Shell Eco-marathon US 2026 · Indianapolis · Prototype Battery Electric', en: 'Shell Eco-marathon US 2026 · Indianapolis · Prototype Battery Electric' },
-      tagline: {
-        es: 'Menos energía por vuelta, escrita en el firmware.',
-        en: 'Less energy per lap, written into the firmware.'
-      },
-      hero: {
-        title: { es: 'Eficiencia energética escrita en el firmware', en: 'Energy efficiency written into the firmware' },
-        lede: {
-          es: 'Dos ECUs: un Teensy 4.1 que convierte pedal en corriente con FOC, y un ESP32 que adquiere, fusiona y transmite. La optimización de consumo vive en el pipeline del pedal: limitación de slew asimétrica — la subida de corriente se limita al doble de lento que la bajada (100 vs 200 A/s), porque en Eco-marathon los picos de corriente son pérdida pura por I²R, mientras que la bajada rápida se conserva por seguridad. Más un techo de corriente dependiente de la velocidad: bajo 5 rad/s el motor está casi en corto y la corriente no produce trabajo útil, así que se capa el arranque.',
-          en: 'Two ECUs: a Teensy 4.1 that turns pedal into current with FOC, and an ESP32 that acquires, fuses and transmits. The consumption optimization lives in the pedal pipeline: asymmetric slew limiting — current rise is limited twice as slowly as its fall (100 vs 200 A/s), because in Eco-marathon current spikes are pure I²R loss, while a fast fall is kept for safety. Plus a speed-dependent current ceiling: below 5 rad/s the motor is nearly shorted and current does no useful work, so the launch is capped.'
-        }
-      },
-      result: { es: '6.º · ~310 km/kWh', en: '6th · ~310 km/kWh' },
-      modules: [
-        {
-          name: { es: 'Fusión de sensores', en: 'Sensor fusion' },
-          solves: { es: 'Estado del vehículo desde tres sensores dispares.', en: 'Vehicle state from three mismatched sensors.' },
-          decision: {
-            es: 'Kalman 2D de 6 estados que fusiona acelerómetro, GPS y velocidad. Las mediciones llegan por cola con tipo etiquetado, lo que permite que cada sensor corra a su propia frecuencia sin sincronizar tres tareas contra el filtro. Filtro fijado al core 0, adquisición al core 1.',
-            en: 'A 6-state 2D Kalman filter fusing accelerometer, GPS and speed. Measurements arrive on a queue with a tagged type, letting each sensor run at its own rate without synchronizing three tasks against the filter. Filter pinned to core 0, acquisition to core 1.'
-          },
-          chips: ['Kalman 2D', 'ESP32', 'dual-core'],
-          status: 'track'
-        },
-        {
-          name: { es: 'Protocolo entre ECUs', en: 'Inter-ECU protocol' },
-          solves: { es: 'El enlace entre las dos ECUs.', en: 'The link between the two ECUs.' },
-          decision: {
-            es: 'Binario propio sobre UART: SOF 0xAA, CRC-8 ATM, máquina de estados de 4 estados. Un comando agregado (GET_ALL_FAST, 14 B) en vez de cinco round-trips; struct packed en ambos lados porque ARM y Xtensa alinean distinto.',
-            en: 'A custom binary over UART: SOF 0xAA, CRC-8 ATM, a 4-state machine. One aggregated command (GET_ALL_FAST, 14 B) instead of five round-trips; a packed struct on both sides because ARM and Xtensa align differently.'
-          },
-          chips: ['UART', 'CRC-8 ATM', 'Teensy 4.1', 'ESP32'],
-          status: 'track'
-        },
-        {
-          name: { es: 'Adquisición', en: 'Acquisition' },
-          solves: { es: 'Sensores de a bordo a 5–10 Hz sin saturar el UART.', en: 'Onboard sensors at 5–10 Hz without saturating the UART.' },
-          decision: {
-            es: 'GPS MT3333 multiconstelación con control PMTK por sentencia — apagar sentencias NMEA individuales es lo que hace viable subir a 5–10 Hz sin saturar el UART. Pitot MS4525DO con calibración de cero en reposo.',
-            en: 'A multi-constellation MT3333 GPS with per-sentence PMTK control — turning off individual NMEA sentences is what makes 5–10 Hz viable without saturating the UART. An MS4525DO pitot with a zero calibration at rest.'
-          },
-          chips: ['MT3333', 'PMTK', 'MS4525DO pitot'],
-          status: 'track'
-        },
-        {
-          name: { es: 'Arquitectura RTOS', en: 'RTOS architecture' },
-          solves: { es: 'Ocho tareas priorizadas por lo que cuesta perder el dato.', en: 'Eight tasks prioritized by the cost of losing the data.' },
-          decision: {
-            es: '8 tareas con prioridad y núcleo explícitos, asignadas por la consecuencia de perder el dato: display del piloto (15) sobre parseo de GPS (5), consola de depuración al fondo (1).',
-            en: '8 tasks with explicit priority and core, assigned by the consequence of losing the data: driver display (15) over GPS parsing (5), debug console at the bottom (1).'
-          },
-          chips: ['FreeRTOS', '8 tasks', 'dual-core'],
-          status: 'track'
-        },
-        {
-          name: { es: 'Autónomo', en: 'Autonomous' },
-          solves: { es: 'Dirección exploratoria, nada implementado.', en: 'An exploratory direction, nothing implemented.' },
-          decision: {
-            es: 'Exploratorio. Nada implementado todavía; si la categoría entra, la página crece de 4 a más módulos sin reescribirse — sólo se agregan entradas.',
-            en: 'Exploratory. Nothing implemented yet; if the category lands, the page grows from 4 modules to more without a rewrite — entries are just added.'
-          },
-          chips: [],
-          status: 'explore'
-        }
-      ],
-      state: {
-        es: 'Firmware implementado y documentado. La sección autónoma es exploración. La contribución fue de optimización sobre un sistema existente, no autoría del sistema — el repositorio del driver es un fork.',
-        en: 'Firmware implemented and documented. The autonomous section is exploration. The contribution was optimization over an existing system, not authorship of it — the driver repository is a fork.'
-      },
-      doc: { url: 'https://balsam-ringer-081.notion.site/d1fb2fdbb6b98201b694810bf2f59373', label: 'team' }
-    }
   };
 
-  var VEHICLE_ORDER = ['madrams', 'quantum', 'elyos'];
-  var VEHICLE_PAGE = { madrams: 'coche-madrams', quantum: 'quantum', elyos: 'elyos' };
+  var VEHICLE_ORDER = ['madrams', 'quantum'];
+  var VEHICLE_PAGE = { madrams: 'coche-madrams', quantum: 'quantum' };
 
   /* Pick the current-language string from an {es, en} pair, falling back to ES
      (the authored language) if a translation is ever missing. */
@@ -1605,11 +1583,12 @@
     telemetry:   { page: 'software', id: 'telemetrystack',    name: 'TelemetryStack' },
     claude:      { page: 'ia',       id: 'claude-unlimited',  name: 'claude-unlimited' },
     banky:       { page: 'ia',       id: 'banky',             name: 'Banky' },
-    cuaderno:    { page: 'formacion', id: 'cuaderno-del-borrego', name: 'Cuaderno del Borrego' }
+    cuaderno:    { page: 'formacion', id: 'cuaderno-del-borrego', name: 'Cuaderno del Borrego' },
+    elyos:       { page: 'robotica', id: 'elyos',             name: 'Elyos Racing' }
   };
 
   var SKILL_PROJECTS = {
-    'ROS2':               ['interprepas', 'omnisim'],
+    'ROS2':               ['elyos', 'interprepas', 'omnisim'],
     'Nav2':               ['interprepas', 'omnisim'],
     'LiDAR':              ['interprepas', 'omnisim'],
     'teleop':             ['interprepas', 'omnisim'],
@@ -1625,7 +1604,7 @@
     'PCA':                ['malaria'],
     'ESP32':              ['telemetry'],
     'LoRa/SX1262':        ['telemetry'],
-    'FreeRTOS':           ['telemetry'],
+    'FreeRTOS':           ['elyos', 'telemetry'],
     'InfluxDB':           ['telemetry'],
     'Grafana':            ['telemetry'],
     'React':              ['jtcs'],
@@ -1642,7 +1621,20 @@
     'Playwright':         ['cuaderno'],
     'WCAG AA':            ['cuaderno'],
     'KaTeX / MathLive':   ['cuaderno'],
-    'instructional design': ['cuaderno']
+    'instructional design': ['cuaderno'],
+    'FOC/BLDC':           ['elyos'],
+    'sensorless FOC':     ['elyos'],
+    'PWM-synced sampling': ['elyos'],
+    'Teensy 4.1':         ['elyos'],
+    'ROS 2 Jazzy':        ['elyos'],
+    'Gazebo Harmonic':    ['elyos'],
+    'Isaac Sim / OpenUSD': ['elyos'],
+    'digital twin':       ['elyos'],
+    'CasADi':             ['elyos'],
+    'pymoo':              ['elyos'],
+    'PMBOK 8':            ['elyos'],
+    'GitHub org governance': ['elyos'],
+    'GitHub Actions':     ['elyos']
   };
 
   function initSkillLinks() {

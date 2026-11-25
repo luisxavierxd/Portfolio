@@ -60,7 +60,7 @@
     <a class="backlink" href="./" data-page-link data-i18n="nav.back">Volver al tablero</a>
     <h1 class="subhead__title" data-i18n="cat.telemetria.name">Telemetría y potencia</h1>
     <p class="subhead__line" data-i18n="cat.telemetria.line">Coches de competencia que se explican solos: telemetría en pista y los sistemas de potencia que la alimentan.</p>
-    <p class="subhead__count" data-i18n="cat.telemetria.count">3 canales</p>
+    <p class="subhead__count" data-i18n="cat.telemetria.count">2 canales</p>
   </section>
 
   <section class="section section--projects" aria-labelledby="board-heading" style="--ch: var(--ch-coche)">
@@ -140,38 +140,6 @@
         </ul>
         <p class="channel__links">
           <a class="btn btn--demo btn--small" href="quantum" data-page-link data-i18n="vehicle.cta">Ver el vehículo</a>
-        </p>
-      </article>
-
-      <article class="channel" style="--ch: var(--ch-elyos)">
-        <p class="channel__addr">CH.3.3</p>
-        <h3 class="channel__name">Silca Elyos Racing</h3>
-        <p class="channel__reading">
-          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-          <span class="reading__value">kWh/km ↓</span>
-          <span class="reading__unit" data-i18n="proj.elyos.unit">optimización de consumo</span>
-        </p>
-        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: silca elyos -
-             a pulse-and-coast lap: each burst of motor power is a steep climb, each glide a long
-             shallow decay. Same average speed, far less energy - which is the whole strategy. -->
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M4 27 L14 9 L34 19 L44 8 L64 18 L74 7 L94 17 L104 6 L116 12"/>
-        </svg>
-        <!-- Award sits below the readout well, not above it: the three wells on
-             this page stay on one line, and the ribbon still reads before the copy. -->
-        <p class="channel__award" data-i18n="proj.elyos.award">Data &amp; Telemetry Award · Schmid Elektronik</p>
-        <p class="channel__tagline" data-i18n="proj.elyos.tagline">Menos energía por vuelta, en un auto de eficiencia premiado.</p>
-        <p class="channel__blurb" data-i18n="proj.elyos.blurb">Contribución de optimización sobre el sistema (ya existente) del equipo Silca Elyos, ganador del Data &amp; Telemetry Award (patrocinado por Schmid Elektronik). Mi trabajo: control de consumo del motor con estrategia pulse-and-coast por segmentos, un modelo de coast-down derivado de telemetría para predecir el deslizamiento, ajuste de ganancias FOC del driver BLDC y métricas de eficiencia (kWh/km, % coasting). Bosch como patrocinador del equipo.</p>
-        <p class="channel__note" data-i18n="proj.elyos.note">Optimicé un sistema que ya existía: el resto de la plataforma del equipo —enlace, estimación de estado, electrónica y tablero— no es trabajo mío.</p>
-        <ul class="badges">
-          <li class="badge">Energy Optimization</li>
-          <li class="badge">Pulse-and-Coast</li>
-          <li class="badge">FOC</li>
-          <li class="badge">BLDC</li>
-          <li class="badge">Race Strategy</li>
-        </ul>
-        <p class="channel__links">
-          <a class="btn btn--demo btn--small" href="elyos" data-page-link data-i18n="vehicle.cta">Ver el vehículo</a>
         </p>
       </article>
 

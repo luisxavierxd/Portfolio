@@ -118,16 +118,16 @@
           <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 1</p>
           <h3 class="bank__name" id="bank-robotica" data-i18n="cat.robotica.name">Robótica</h3>
           <p class="bank__line" data-i18n="cat.robotica.line">Percibir: visión, brazos y navegación — máquinas que leen el mundo antes de moverse.</p>
-          <p class="bank__count" data-i18n="cat.robotica.count">4 canales</p>
-          <a class="bank__link" href="robotica" data-page-link data-i18n="cat.robotica.more">Ver los 4 · Robótica</a>
+          <p class="bank__count" data-i18n="cat.robotica.count">5 canales</p>
+          <a class="bank__link" href="robotica" data-page-link data-i18n="cat.robotica.more">Ver los 5 · Robótica</a>
           <div class="bank__rest">
             <p class="bank__rest-label" data-i18n="bank.rest">También en este banco</p>
             <ul>
-              <li class="rest" style="--ch: var(--ch-emerald)">
+              <li class="rest" style="--ch: var(--ch-amber)">
                 <span class="rest__addr">CH.1.2</span>
-                <span class="rest__name">AgroBot</span>
+                <span class="rest__name"><a class="rest__link" href="https://luisxavierxd.github.io/JTCS/" target="_blank" rel="noopener noreferrer">JTCS</a><span class="rest__note" data-i18n="rest.jtcs.note">demo en vivo · Guadalahacks 2026</span></span>
                 <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
-                  <path pathLength="1" d="M3 19 C14 19 20 4 42 4 C62 4 70 12 81 15"/>
+                  <path pathLength="1" d="M3 19 H8 V15 H14 V19 H18 V11 H24 V19 H28 V7 H34 V19 H38 V4 H44 V19 H48 V4 H81"/>
                 </svg>
               </li>
               <li class="rest" style="--ch: var(--ch-violet)">
@@ -145,63 +145,70 @@
                   <path pathLength="1" d="M22 16 C30 16 32 6 40 6 H52 C60 6 62 16 70 16"/>
                 </svg>
               </li>
+              <li class="rest rest--more">
+                <a class="rest__link" href="robotica" data-page-link data-i18n="rest.robotica.more">+1 más</a>
+              </li>
             </ul>
           </div>
         </div>
 
-        <article class="channel" style="--ch: var(--ch-amber)">
+        <!-- Elyos Racing carries this bank: it is the current season's work and the one
+             with measured numbers. It keeps --ch-elyos rather than the bank's amber, like
+             Banky in bank 5: the team's blue is the premise. Every figure carries its
+             condition (bench, SIL, in progress); nothing here says "on the car" or "on track". -->
+        <article class="channel channel--hero" id="elyos" style="--ch: var(--ch-elyos)">
           <p class="channel__addr">CH.1.1</p>
-          <h4 class="channel__name">JTCS</h4>
-          <p class="channel__reading">
+          <h4 class="channel__name" data-i18n="proj.elyos.name">Elyos Racing · control y autonomía</h4>
+          <p class="channel__kicker" data-i18n="proj.elyos.kicker">Shell Eco-marathon · Prototype eléctrico + Autonomous Driving Challenge · temporada 2027 (desde agosto de 2026)</p>
+          <p class="channel__reading channel__reading--2l">
             <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-            <span class="reading__value">06</span>
-            <span class="reading__unit" data-i18n="proj.jtcs.unit">conteo por carril</span>
+            <span class="reading__value">68 → 5.4 µs</span>
+            <span class="reading__unit" data-i18n="proj.elyos.unit">cómputo del lazo FOC · banco</span>
           </p>
-          <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: jtcs -
-               discrete count pulses per lane, each taller than the last until the green-time
-               allocation clamps at its ceiling and holds. -->
+          <svg class="trace" viewBox="0 0 120 36" role="img" aria-label="Traza ilustrativa, no datos crudos: el lazo pasa de ruidoso a limpio y regular" data-i18n-aria="proj.elyos.traceAria" focusable="false">
+            <title data-i18n="proj.elyos.traceTitle">Ilustrativa, no datos crudos</title>
+            <!-- TRACE: elyos - the loop before and after PWM-synchronized sampling: a jittery,
+                 uneven line on the left, then past the marker the same signal as a clean,
+                 regular period. Illustrative only, as the title says. -->
             <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  d="M4 30 H10 V25 H18 V30 H24 V19 H32 V30 H38 V13 H46 V30 H52 V7 H60 V30
-                     H66 V7 H74 V30 H80 V7 H88 V30 H96 V7 H116"/>
+                  d="M4 18 L7 10 L9 25 L12 12 L14 27 L17 9 L20 23 L23 14 L26 26 L29 11 L32 22 L35 15 L38 23 L41 16 L44 20 L48 18
+                     C52 8 59 8 63 18 C67 28 74 28 78 18 C82 8 89 8 93 18 C97 28 104 28 108 18 L116 18"/>
+            <rect x="46.5" y="2" width="3" height="3"/>
           </svg>
-          <p class="channel__tagline" data-i18n="proj.jtcs.tagline">Semáforos que se adaptan al tráfico en tiempo real.</p>
-          <p class="channel__blurb" data-i18n="proj.jtcs.blurb">Control de intersecciones con visión en el borde: un detector YOLOv11 cuenta vehículos por carril y reparte el verde con una fórmula derivada de Webster (HCM/MUTCD). Dashboard en React con simulación de red y ondas verdes; corre en Raspberry Pi. Guadalahacks 2026.</p>
+          <p class="channel__subreading" data-i18n="proj.elyos.sub">jitter 27 → 0.6 µs</p>
+          <p class="channel__result" data-i18n="proj.elyos.role">Lead de control del motor y del ADC · owner de la org</p>
+          <p class="channel__blurb" data-i18n="proj.elyos.blurb">Lidero el driver del motor y el kit autónomo del equipo Elyos Racing (Shell Eco-marathon). En el driver FOC (Teensy 4.1) implementé el muestreo de corriente sincronizado con el PWM: el cómputo del lazo bajó de ≈68 a ≈5.4 µs y el jitter de ≈27 a ≈0.6 µs, medidos en banco. Ahora encabezo el paso a FOC sensorless. Construí la mayor parte del stack ROS 2 del ADC (estimación, planeación y actuación), con perfiles de velocidad de energía óptima y un gemelo digital en Gazebo e Isaac Sim que ya corre en paralelo al hardware en banco. También diseñé la gobernanza y la gestión del equipo en GitHub, siguiendo PMBOK 8: 13 repos con CI.</p>
+          <div class="milestones">
+            <p class="milestones__head">
+              <span data-i18n="proj.elyos.ms.head">Hitos del ADC</span>
+              <span class="status status--integration"><span class="status__dot" aria-hidden="true"></span><span data-i18n="proj.elyos.ms.state">en calibración</span></span>
+            </p>
+            <ol class="milestones__list">
+              <li class="milestone milestone--done"><span data-i18n="proj.elyos.ms.1">Stack ROS 2 en SIL</span><span class="milestone__state" data-i18n="ms.done">hecho</span></li>
+              <li class="milestone milestone--done"><span data-i18n="proj.elyos.ms.2">Gemelo (Gazebo + Isaac Sim) en paralelo al hardware, en banco</span><span class="milestone__state" data-i18n="ms.done">hecho</span></li>
+              <li class="milestone milestone--pending"><span data-i18n="proj.elyos.ms.3">Montaje en el coche</span><span class="milestone__state" data-i18n="ms.pending">pendiente</span></li>
+              <li class="milestone milestone--pending"><span data-i18n="proj.elyos.ms.4">Demo autónoma (abr-2027)</span><span class="milestone__state" data-i18n="ms.pending">pendiente</span></li>
+              <li class="milestone milestone--pending"><span data-i18n="proj.elyos.ms.5">ADC Polonia, Silesia Ring (jun-2027)</span><span class="milestone__state" data-i18n="ms.pending">pendiente</span></li>
+            </ol>
+          </div>
           <ul class="badges">
-            <li class="badge">YOLOv11</li>
-            <li class="badge">Computer Vision</li>
-            <li class="badge">React 19</li>
-            <li class="badge">Node.js</li>
-            <li class="badge">WebSocket</li>
-            <li class="badge">Python</li>
-            <li class="badge">Raspberry Pi</li>
+            <li class="badge">FOC</li>
+            <li class="badge">Sensorless</li>
+            <li class="badge">Teensy 4.1</li>
+            <li class="badge">ROS 2</li>
+            <li class="badge">Gazebo</li>
+            <li class="badge">Isaac Sim / OpenUSD</li>
+            <li class="badge">CasADi</li>
+            <li class="badge">pymoo</li>
+            <li class="badge">PMBOK 8</li>
+            <li class="badge">GitHub Actions</li>
           </ul>
           <div class="channel__links">
-            <a class="btn btn--demo" href="https://luisxavierxd.github.io/JTCS/" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.demo">Demo en vivo</a>
-            <a class="btn btn--code" href="https://github.com/luisxavierxd/JTCS" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
-          </div>
-          <!-- Disclosure: one button, no clickable wrapper. Both labels live in the
-               DOM and CSS shows exactly one of them per aria-expanded state, so the
-               language pass (which only writes textContent per data-i18n key) and the
-               state change (pure CSS) can never overwrite each other. -->
-          <button class="disclosure" type="button" aria-expanded="false" aria-controls="panel-jtcs">
-            <svg class="disclosure__chevron" viewBox="0 0 12 12" aria-hidden="true" focusable="false">
-              <path d="M2.75 4.5 6 7.75 9.25 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="disclosure__label disclosure__label--more" data-i18n="disclosure.more">Ver más</span>
-            <span class="disclosure__label disclosure__label--less" data-i18n="disclosure.less">Ver menos</span>
-          </button>
-          <div class="panel" id="panel-jtcs" hidden>
-            <div class="panel__inner">
-              <div class="panel__body">
-                <p class="panel__eyebrow" data-i18n="panel.eyebrow">Qué puedes probar</p>
-                <p class="panel__text" data-i18n="proj.jtcs.panel.body">Demo interactivo en el navegador — sin backend. Fase 1: ajusta el tráfico con +/− y ve cómo cambia el tiempo de verde (fórmula derivada de Webster). Fase 2: dibuja una red de intersecciones y simula autos con onda verde.</p>
-                <ul class="panel__list">
-                  <li data-i18n="proj.jtcs.panel.tech1">Detección en el borde con YOLOv11 sobre Raspberry Pi.</li>
-                  <li data-i18n="proj.jtcs.panel.tech2">Tiempos de verde según MUTCD/HCM.</li>
-                  <li data-i18n="proj.jtcs.panel.tech3">Onda verde sincronizada entre intersecciones.</li>
-                </ul>
-              </div>
-            </div>
+            <a class="btn btn--demo" href="https://elyos-racing.github.io/team-portfolio/members/luisxavierxd" target="_blank" rel="noopener noreferrer" data-i18n="proj.elyos.btn.work">Mi trabajo</a>
+            <a class="btn btn--code" href="https://elyos-racing.github.io/team-portfolio/projects/adc" target="_blank" rel="noopener noreferrer" data-i18n="proj.elyos.btn.adc">Kit autónomo</a>
+            <a class="btn btn--code" href="https://elyos-racing.github.io/team-portfolio/projects/driver" target="_blank" rel="noopener noreferrer">Driver FOC</a>
+            <!-- Governance (https://github.com/ELYOS-Racing/.github/blob/main/GOVERNANCE.md, key
+                 proj.elyos.btn.gov) goes here once the org's branch protection is live. Luis confirms. -->
           </div>
         </article>
       </section>
@@ -265,8 +272,8 @@
           <p class="bank__addr"><span data-i18n="bank.label">Banco</span> 3</p>
           <h3 class="bank__name" id="bank-telemetria" data-i18n="cat.telemetria.name">Telemetría y potencia</h3>
           <p class="bank__line" data-i18n="cat.telemetria.line">Coches de competencia que se explican solos: telemetría en pista y los sistemas de potencia que la alimentan.</p>
-          <p class="bank__count" data-i18n="cat.telemetria.count">3 canales</p>
-          <a class="bank__link" href="telemetria" data-page-link data-i18n="cat.telemetria.more">Ver los 3 · Telemetría</a>
+          <p class="bank__count" data-i18n="cat.telemetria.count">2 canales</p>
+          <a class="bank__link" href="telemetria" data-page-link data-i18n="cat.telemetria.more">Ver los 2 · Telemetría</a>
           <div class="bank__rest">
             <p class="bank__rest-label" data-i18n="bank.rest">También en este banco</p>
             <ul>
@@ -277,12 +284,8 @@
                   <path pathLength="1" d="M3 4 L11 7 L15 5 L23 9 L27 7 L35 11 L39 9 L47 13 L51 11 L59 15 L63 13 L71 17 L75 16 L81 19"/>
                 </svg>
               </li>
-              <li class="rest" style="--ch: var(--ch-elyos)">
-                <span class="rest__addr">CH.3.3</span>
-                <span class="rest__name">Silca Elyos Racing</span>
-                <svg class="rest__trace" viewBox="0 0 84 22" aria-hidden="true" focusable="false">
-                  <path pathLength="1" d="M3 17 L12 5 L28 12 L37 4 L53 11 L62 4 L78 10"/>
-                </svg>
+              <li class="rest rest--xref" style="--ch: var(--ch-elyos)">
+                <a class="rest__link" href="robotica#elyos" data-page-link data-i18n="rest.elyos.xref">Elyos · driver FOC ↗ Robótica</a>
               </li>
             </ul>
           </div>
@@ -561,7 +564,7 @@
         <ul class="pills">
           <li class="pill pill--expert">MadRams · Baja SAE</li>
           <li class="pill pill--expert">Quantum Speed Racing · Electrathon</li>
-          <li class="pill" data-i18n="team.elyos">Silca Elyos · Shell Eco Marathon</li>
+          <li class="pill pill--expert" data-i18n="team.elyos">Elyos Racing · Shell Eco-marathon</li>
         </ul>
       </div>
       <div class="skills__group skills__group--planned" style="--ch: var(--ch-elyos)">
@@ -602,6 +605,10 @@
         <span class="skills__group-name" data-i18n="about.skills.robotics">Robótica</span>
         <ul class="pills">
           <li class="pill pill--expert" data-skill="ROS2">ROS2</li>
+          <li class="pill" data-skill="ROS 2 Jazzy">ROS 2 Jazzy</li>
+          <li class="pill" data-skill="Gazebo Harmonic">Gazebo Harmonic</li>
+          <li class="pill" data-skill="Isaac Sim / OpenUSD">NVIDIA Isaac Sim / OpenUSD</li>
+          <li class="pill" data-skill="digital twin" data-i18n="skill.twin">gemelo digital</li>
           <li class="pill pill--expert" data-skill="Nav2">Nav2</li>
           <li class="pill pill--expert" data-skill="LiDAR">LiDAR</li>
           <li class="pill pill--expert" data-skill="teleop">teleop</li>
@@ -614,10 +621,11 @@
         <span class="skills__group-name" data-i18n="about.skills.control">Control</span>
         <ul class="pills">
           <li class="pill pill--expert">PID</li>
-          <li class="pill">pulse-and-coast</li>
           <li class="pill">coast-down</li>
           <li class="pill" data-i18n="skill.gainTuning">sintonía de ganancias</li>
-          <li class="pill">FOC/BLDC</li>
+          <li class="pill" data-skill="FOC/BLDC">FOC/BLDC</li>
+          <li class="pill" data-skill="sensorless FOC" data-i18n="skill.sensorless">FOC sensorless (observador Luenberger + PLL; SMO de respaldo)</li>
+          <li class="pill pill--expert" data-skill="PWM-synced sampling" data-i18n="skill.pwmSync">muestreo de corriente sincronizado con PWM</li>
         </ul>
       </div>
       <div class="skills__group" style="--ch: var(--ch-cyan)">
@@ -632,6 +640,7 @@
           <li class="pill pill--expert" data-i18n="skill.sensors">sensores/I²C</li>
           <li class="pill pill--expert" data-i18n="skill.reverseEng">ingeniería inversa</li>
           <li class="pill" data-skill="FreeRTOS">FreeRTOS</li>
+          <li class="pill" data-skill="Teensy 4.1">Teensy 4.1 (i.MX RT1062)</li>
           <li class="pill pill--expert">GPS NMEA</li>
           <li class="pill">microSD logging</li>
           <li class="pill">CAN bus/TWAI</li>
@@ -726,6 +735,17 @@
           <li class="pill">Matplotlib</li>
           <li class="pill">dielectrophoresis</li>
           <li class="pill">Cognitive Load Theory</li>
+          <li class="pill" data-skill="CasADi" data-i18n="skill.casadi">CasADi + IPOPT (control óptimo)</li>
+          <li class="pill" data-skill="pymoo">pymoo / NSGA-II</li>
+        </ul>
+      </div>
+      <div class="skills__group" style="--ch: var(--ch-elyos)">
+        <span class="skills__dot" aria-hidden="true"></span>
+        <span class="skills__group-name" data-i18n="about.skills.management">Gestión</span>
+        <ul class="pills">
+          <li class="pill" data-skill="PMBOK 8" data-i18n="skill.pmbok">PMBOK 8 (riesgos, control de cambios, gates)</li>
+          <li class="pill" data-skill="GitHub Actions">GitHub Actions</li>
+          <li class="pill" data-skill="GitHub org governance" data-i18n="skill.orgGov">gobernanza de org en GitHub (CODEOWNERS, rulesets, CI con ci-ok, DCO)</li>
         </ul>
       </div>
       <div class="skills__group skills__group--planned" style="--ch: var(--ch-elyos)">

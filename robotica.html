@@ -62,7 +62,7 @@
     <a class="backlink" href="./" data-page-link data-i18n="nav.back">Volver al tablero</a>
     <h1 class="subhead__title" data-i18n="cat.robotica.name">Robótica</h1>
     <p class="subhead__line" data-i18n="cat.robotica.line">Percibir: visión, brazos y navegación — máquinas que leen el mundo antes de moverse.</p>
-    <p class="subhead__count" data-i18n="cat.robotica.count">4 canales</p>
+    <p class="subhead__count" data-i18n="cat.robotica.count">5 canales</p>
   </section>
 
   <section class="section section--projects" aria-labelledby="board-heading" style="--ch: var(--ch-amber)">
@@ -70,8 +70,68 @@
 
     <div class="board">
 
-      <article class="channel" id="jtcs" style="--ch: var(--ch-amber)">
+      <!-- Elyos Racing carries this bank: it is the current season's work and the one
+           with measured numbers. It keeps --ch-elyos rather than the bank's amber, like
+           Banky in bank 5: the team's blue is the premise. Every figure carries its
+           condition (bench, SIL, in progress); nothing here says "on the car" or "on track". -->
+      <article class="channel channel--hero" id="elyos" style="--ch: var(--ch-elyos)">
         <p class="channel__addr">CH.1.1</p>
+        <h3 class="channel__name" data-i18n="proj.elyos.name">Elyos Racing · control y autonomía</h3>
+        <p class="channel__kicker" data-i18n="proj.elyos.kicker">Shell Eco-marathon · Prototype eléctrico + Autonomous Driving Challenge · temporada 2027 (desde agosto de 2026)</p>
+        <p class="channel__reading channel__reading--2l">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">68 → 5.4 µs</span>
+          <span class="reading__unit" data-i18n="proj.elyos.unit">cómputo del lazo FOC · banco</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" role="img" aria-label="Traza ilustrativa, no datos crudos: el lazo pasa de ruidoso a limpio y regular" data-i18n-aria="proj.elyos.traceAria" focusable="false">
+          <title data-i18n="proj.elyos.traceTitle">Ilustrativa, no datos crudos</title>
+          <!-- TRACE: elyos - the loop before and after PWM-synchronized sampling: a jittery,
+               uneven line on the left, then past the marker the same signal as a clean,
+               regular period. Illustrative only, as the title says. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M4 18 L7 10 L9 25 L12 12 L14 27 L17 9 L20 23 L23 14 L26 26 L29 11 L32 22 L35 15 L38 23 L41 16 L44 20 L48 18
+                   C52 8 59 8 63 18 C67 28 74 28 78 18 C82 8 89 8 93 18 C97 28 104 28 108 18 L116 18"/>
+          <rect x="46.5" y="2" width="3" height="3"/>
+        </svg>
+        <p class="channel__subreading" data-i18n="proj.elyos.sub">jitter 27 → 0.6 µs</p>
+        <p class="channel__result" data-i18n="proj.elyos.role">Lead de control del motor y del ADC · owner de la org</p>
+        <p class="channel__blurb" data-i18n="proj.elyos.blurb">Lidero el driver del motor y el kit autónomo del equipo Elyos Racing (Shell Eco-marathon). En el driver FOC (Teensy 4.1) implementé el muestreo de corriente sincronizado con el PWM: el cómputo del lazo bajó de ≈68 a ≈5.4 µs y el jitter de ≈27 a ≈0.6 µs, medidos en banco. Ahora encabezo el paso a FOC sensorless. Construí la mayor parte del stack ROS 2 del ADC (estimación, planeación y actuación), con perfiles de velocidad de energía óptima y un gemelo digital en Gazebo e Isaac Sim que ya corre en paralelo al hardware en banco. También diseñé la gobernanza y la gestión del equipo en GitHub, siguiendo PMBOK 8: 13 repos con CI.</p>
+        <div class="milestones">
+          <p class="milestones__head">
+            <span data-i18n="proj.elyos.ms.head">Hitos del ADC</span>
+            <span class="status status--integration"><span class="status__dot" aria-hidden="true"></span><span data-i18n="proj.elyos.ms.state">en calibración</span></span>
+          </p>
+          <ol class="milestones__list">
+            <li class="milestone milestone--done"><span data-i18n="proj.elyos.ms.1">Stack ROS 2 en SIL</span><span class="milestone__state" data-i18n="ms.done">hecho</span></li>
+            <li class="milestone milestone--done"><span data-i18n="proj.elyos.ms.2">Gemelo (Gazebo + Isaac Sim) en paralelo al hardware, en banco</span><span class="milestone__state" data-i18n="ms.done">hecho</span></li>
+            <li class="milestone milestone--pending"><span data-i18n="proj.elyos.ms.3">Montaje en el coche</span><span class="milestone__state" data-i18n="ms.pending">pendiente</span></li>
+            <li class="milestone milestone--pending"><span data-i18n="proj.elyos.ms.4">Demo autónoma (abr-2027)</span><span class="milestone__state" data-i18n="ms.pending">pendiente</span></li>
+            <li class="milestone milestone--pending"><span data-i18n="proj.elyos.ms.5">ADC Polonia, Silesia Ring (jun-2027)</span><span class="milestone__state" data-i18n="ms.pending">pendiente</span></li>
+          </ol>
+        </div>
+        <ul class="badges">
+          <li class="badge">FOC</li>
+          <li class="badge">Sensorless</li>
+          <li class="badge">Teensy 4.1</li>
+          <li class="badge">ROS 2</li>
+          <li class="badge">Gazebo</li>
+          <li class="badge">Isaac Sim / OpenUSD</li>
+          <li class="badge">CasADi</li>
+          <li class="badge">pymoo</li>
+          <li class="badge">PMBOK 8</li>
+          <li class="badge">GitHub Actions</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--demo" href="https://elyos-racing.github.io/team-portfolio/members/luisxavierxd" target="_blank" rel="noopener noreferrer" data-i18n="proj.elyos.btn.work">Mi trabajo</a>
+          <a class="btn btn--code" href="https://elyos-racing.github.io/team-portfolio/projects/adc" target="_blank" rel="noopener noreferrer" data-i18n="proj.elyos.btn.adc">Kit autónomo</a>
+          <a class="btn btn--code" href="https://elyos-racing.github.io/team-portfolio/projects/driver" target="_blank" rel="noopener noreferrer">Driver FOC</a>
+          <!-- Governance (https://github.com/ELYOS-Racing/.github/blob/main/GOVERNANCE.md, key
+               proj.elyos.btn.gov) goes here once the org's branch protection is live. Luis confirms. -->
+        </div>
+      </article>
+
+      <article class="channel" id="jtcs" style="--ch: var(--ch-amber)">
+        <p class="channel__addr">CH.1.2</p>
         <h3 class="channel__name">JTCS</h3>
         <p class="channel__reading">
           <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
@@ -119,39 +179,6 @@
               </ul>
             </div>
           </div>
-        </div>
-      </article>
-
-      <article class="channel" id="agrobot" style="--ch: var(--ch-emerald)">
-        <p class="channel__addr">CH.1.2</p>
-        <h3 class="channel__name">AgroBot</h3>
-        <p class="channel__reading">
-          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
-          <span class="reading__value">6 DOF</span>
-          <span class="reading__unit" data-i18n="proj.agrobot.unit">brazo + visión de madurez</span>
-        </p>
-        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: agrobot -
-             the end-effector's reach: one smooth arc lifting off the base, carrying over, and
-             settling onto the fruit, where two jaws close on the berry. A pick, not a signal. -->
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M5 31 C14 31 20 25 26 18 C33 10 42 6 56 6 C70 6 78 10 86 16 C91 19.8 95 22.4 98.5 22.5"/>
-          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                d="M98.5 22.5 L106 18.8 M98.5 22.5 L106 26.2"/>
-          <circle cx="110" cy="22.5" r="3"/>
-        </svg>
-        <p class="channel__tagline" data-i18n="proj.agrobot.tagline">Robot que cosecha berries maduras por visión.</p>
-        <p class="channel__blurb" data-i18n="proj.agrobot.blurb">Prototipo de prepa (equipo Silmarils, ITESO): una cinta transportadora guía frambuesas y una garra de brazo de 6 GDL las recolecta. Un detector YOLOv8n (TensorFlow, Pi Camera V2) identifica el fruto por madurez y su posición se pasa al brazo por cinemática inversa vía Arduino. Las piezas —visión, brazo, cinemática— se probaron por separado; la integración total quedó a nivel prototipo.</p>
-        <ul class="badges">
-          <li class="badge">YOLOv8n</li>
-          <li class="badge">TensorFlow</li>
-          <li class="badge">6-DOF Arm</li>
-          <li class="badge">Inverse Kinematics</li>
-          <li class="badge">Raspberry Pi 4</li>
-          <li class="badge">Arduino</li>
-          <li class="badge">Serial</li>
-        </ul>
-        <div class="channel__links">
-          <a class="btn btn--code" href="https://github.com/luisxavierxd/AgroBot" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
         </div>
       </article>
 
@@ -225,6 +252,39 @@
         <div class="channel__links">
           <a class="btn btn--demo" href="https://github.com/omnilink-tech/omnisim/releases/tag/v8.1.17" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.release">Release</a>
           <a class="btn btn--code" href="https://github.com/omnilink-tech/omnisim/pull/12" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.pr">Ver PR</a>
+        </div>
+      </article>
+
+      <article class="channel" id="agrobot" style="--ch: var(--ch-emerald)">
+        <p class="channel__addr">CH.1.5</p>
+        <h3 class="channel__name">AgroBot</h3>
+        <p class="channel__reading">
+          <span class="reading__label" data-i18n="channel.readingLabel">LECTURA</span>
+          <span class="reading__value">6 DOF</span>
+          <span class="reading__unit" data-i18n="proj.agrobot.unit">brazo + visión de madurez</span>
+        </p>
+        <svg class="trace" viewBox="0 0 120 36" aria-hidden="true" focusable="false"><!-- TRACE: agrobot -
+             the end-effector's reach: one smooth arc lifting off the base, carrying over, and
+             settling onto the fruit, where two jaws close on the berry. A pick, not a signal. -->
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M5 31 C14 31 20 25 26 18 C33 10 42 6 56 6 C70 6 78 10 86 16 C91 19.8 95 22.4 98.5 22.5"/>
+          <path pathLength="1" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                d="M98.5 22.5 L106 18.8 M98.5 22.5 L106 26.2"/>
+          <circle cx="110" cy="22.5" r="3"/>
+        </svg>
+        <p class="channel__tagline" data-i18n="proj.agrobot.tagline">Robot que cosecha berries maduras por visión.</p>
+        <p class="channel__blurb" data-i18n="proj.agrobot.blurb">Prototipo de prepa (equipo Silmarils, ITESO): una cinta transportadora guía frambuesas y una garra de brazo de 6 GDL las recolecta. Un detector YOLOv8n (TensorFlow, Pi Camera V2) identifica el fruto por madurez y su posición se pasa al brazo por cinemática inversa vía Arduino. Las piezas —visión, brazo, cinemática— se probaron por separado; la integración total quedó a nivel prototipo.</p>
+        <ul class="badges">
+          <li class="badge">YOLOv8n</li>
+          <li class="badge">TensorFlow</li>
+          <li class="badge">6-DOF Arm</li>
+          <li class="badge">Inverse Kinematics</li>
+          <li class="badge">Raspberry Pi 4</li>
+          <li class="badge">Arduino</li>
+          <li class="badge">Serial</li>
+        </ul>
+        <div class="channel__links">
+          <a class="btn btn--code" href="https://github.com/luisxavierxd/AgroBot" target="_blank" rel="noopener noreferrer" data-i18n="proj.btn.code">Código</a>
         </div>
       </article>
 

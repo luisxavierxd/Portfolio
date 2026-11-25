@@ -44,7 +44,7 @@
      eye on --bg, and no two colors ever share a board. */
   --ch-coche:   #f97316; /* Coche MadRams — Baja rust-orange (vs. lime)  */
   --ch-quantum: #a855f7; /* Quantum       — high-voltage electric purple */
-  --ch-elyos:   #3b82f6; /* Silca Elyos   — award steel-blue             */
+  --ch-elyos:   #3b82f6; /* Elyos Racing  — team steel-blue              */
   --ch-teal:    #5eead4; /* LaTeX Studio  — typeset paper-mint           */
   --ch-indigo:  #818cf8; /* Frenado Magn. — field-line periwinkle        */
   --ch-orchid:  #c084fc; /* LLM / Orquest.— agent-orchestration violet   */
@@ -811,7 +811,7 @@ button:focus-visible,
   background: color-mix(in srgb, var(--ch) 22%, var(--rule));
 }
 
-/* Award ribbon — one module carries it (Silca Elyos), so it is a modifier on
+/* Award ribbon — kept for a module that carries a prize; it is a modifier on
    the module rather than a channel of its own. */
 .channel__award {
   display: flex;
@@ -2668,3 +2668,123 @@ button:focus-visible,
   color: var(--dim-strong);
 }
 .vehicle-noscript a { color: var(--ch); }
+
+/* --------------------------------------------------------------------------
+   Elyos hero (bank 1): kicker, second readout, ADC milestones, teaser links
+   -------------------------------------------------------------------------- */
+
+/* context line under the name: where and when, quieter than the tagline */
+.channel > .channel__kicker {
+  font-size: var(--t-sm);
+  line-height: 1.5;
+  color: var(--dim-strong);
+}
+
+/* the second measured channel, read under the main one in the same mono voice */
+.channel > .channel__subreading {
+  margin-top: var(--s2);
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in srgb, var(--ch) 70%, var(--text));
+}
+
+/* ADC milestones: a real sequence, so an ordered list. Done is a lit square,
+   pending a dashed empty one, and each row also says its state in words. */
+.milestones {
+  padding: var(--s3) var(--s4);
+  background: var(--panel-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-md);
+}
+
+.milestones__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2) var(--s3);
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--dim-strong);
+}
+
+.milestones__list {
+  list-style: none;
+  margin: var(--s3) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s2);
+}
+
+.milestone {
+  display: grid;
+  grid-template-columns: 8px minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--s3);
+  font-size: var(--t-sm);
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.milestone::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  align-self: center;
+  background: var(--ch);
+  box-shadow: 0 0 5px color-mix(in srgb, var(--ch) 60%, transparent);
+}
+
+.milestone--pending { color: var(--dim-strong); }
+.milestone--pending::before {
+  background: transparent;
+  border: 1px dashed var(--dim-strong);
+  box-shadow: none;
+}
+
+.milestone__state {
+  font-family: var(--font-mono);
+  font-size: var(--t-2xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim-strong);
+}
+
+.milestone--done .milestone__state { color: color-mix(in srgb, var(--ch) 72%, var(--dim-strong)); }
+
+/* teaser rows that are links: JTCS keeps its live demo, «+1 more» opens the
+   bank, and the cross-reference in bank 3 points at the hero in bank 1 */
+.rest__link {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--ch) 45%, transparent);
+  text-underline-offset: 0.2em;
+}
+
+.rest__link:hover { color: var(--ch); }
+
+.rest__note {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  letter-spacing: 0.04em;
+  color: var(--dim-strong);
+}
+
+.rest--more,
+.rest--xref {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.rest--more .rest__link { color: var(--dim-strong); }
+.rest--more .rest__link:hover { color: var(--ch); }

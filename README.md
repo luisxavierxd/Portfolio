@@ -36,9 +36,9 @@ default in the HTML (the inline text is what a visitor without JavaScript sees).
 | Page | Contents |
 |---|---|
 | `index.html` | Hero, 6 featured modules, narrative About, booking |
-| `robotica.html` | JTCS, AgroBot, Robot Interprepas |
+| `robotica.html` | Elyos Racing · control y autonomía (hero), JTCS, Robot Interprepas, OmniSim, AgroBot |
 | `senales.html` | NeuroBeat, Malaria · Dielectroforesis |
-| `telemetria.html` | Coche MadRams, Quantum Speed Racing, Silca Elyos |
+| `telemetria.html` | Coche MadRams, Quantum Speed Racing |
 | `software.html` | TelemetryStack, Mapa TEC GDL, Loopzels, Frenado Magnético |
 | `ia.html` | Banky, claude-unlimited, LaTeX Studio, websight, exploded-view, watermarks-remover |
 | `formacion.html` | Cursos MadRams, Cuaderno del Borrego + the three-block training program |
